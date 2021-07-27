@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_field_required">This field is required</string>
+    <string name="skip_login">Skip Login</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
+    <string name="application_url_second">https://play.google.com/store/apps/details?id=io.rapidpro.surveyor</string>
+    <string name="application_url_first">market://details?id=io.rapidpro.surveyor</string>
+    <string name="quick_reply">Quick Reply</string>
+    <string name="login">Login</string>
+    <string name="fetching_stories">Fetching Stories</string>
+    <string name="updating_stories">Updating stories</string>
+    <string name="updating_photos">Updating photos</string>
+    <string name="fetching_data">Fetching Data</string>
+    <string name="fetch_polls">Fetching poll categories</string>
+    <string name="updating_polls">Updating polls</string>
+    <string name="hide">Hide</string>
+    <string name="empty_story">No Stories available. \nPlease pull down to refresh or tap Retry</string>
+    <string name="empty_poll">No Data available. \nPlease pull down to refresh or tap Retry</string>
+    <string name="select_your_location">Select your location</string>
+    <string name="response_rate">Response Rate</string>
+</resources>

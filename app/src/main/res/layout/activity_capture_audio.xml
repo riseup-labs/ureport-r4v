@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content_view"
+        tools:context=".ui.opinions.media_capture.CaptureAudioActivity">
+
+        <com.risuplabs.ureport.utils.ui.IconTextView
+            android:id="@+id/button_capture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="140dp"
+            android:paddingBottom="50dp"
+            android:onClick="toggleRecording"
+            android:layout_centerInParent="true"
+            android:text="@string/icon_mic"/>
+
+        <TextView
+            android:id="@+id/text_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_capture"
+            android:textSize="24sp"
+            android:layout_marginTop="-30dp"
+            android:text="@string/tap_to_record"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+</layout>

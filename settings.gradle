@@ -1,0 +1,3 @@
+include ':goflow'
+include ':app'
+rootProject.name = "UReport"
