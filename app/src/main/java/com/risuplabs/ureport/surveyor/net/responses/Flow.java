@@ -13,6 +13,12 @@ public class Flow {
     private int expires;
     private List<Labels> labels;
 
+    public Flow(){}
+
+    public Flow(String uuid) {
+        this.uuid = uuid;
+    }
+
     public String getUuid() {
         return uuid;
     }

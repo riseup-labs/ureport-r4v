@@ -23,12 +23,14 @@ import com.risuplabs.ureport.surveyor.net.responses.Token;
 import com.risuplabs.ureport.surveyor.net.responses.TokenResults;
 import com.risuplabs.ureport.surveyor.task.FetchOrgsTask;
 import com.risuplabs.ureport.ui.dashboard.DashBoardActivity;
+import com.risuplabs.ureport.utils.AppConstant;
 import com.risuplabs.ureport.utils.custom_dialog.CustomDialog;
 import com.risuplabs.ureport.utils.custom_dialog.CustomDialogInterface;
 import com.risuplabs.ureport.utils.pref_manager.PrefKeys;
 import com.risuplabs.ureport.utils.pref_manager.SurveyorPreferences;
 import com.risuplabs.ureport.utils.surveyor.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -154,7 +156,7 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
                     switch (response.statusCode) {
                         case "200":{
                             List<Token> tokens = response.data.getTokens();
-                            fetchOrgsAndLogin(email, tokens);
+                            fetchOrgsAndLogin(email, tokens, AppConstant.USER);
                             break;
                         }
                         case "403":
@@ -183,12 +185,12 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
         return password.length() >= 8;
     }
 
-    protected void fetchOrgsAndLogin(final String email, final List<Token> tokens) {
+    protected void fetchOrgsAndLogin(final String email, final List<Token> tokens, String from) {
         new FetchOrgsTask(new FetchOrgsTask.Listener() {
             @Override
             public void onComplete(Set<String> orgUUIDs) {
                 showProgress(false);
-                login(email, orgUUIDs);
+                login(email, orgUUIDs,from);
             }
 
             @Override
@@ -248,22 +250,30 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
         super.onBackPressed();
     }
 
+//    public void skipLlogin(View view){
+//        if(clickLock){
+//            return;
+//        }else{
+//            clickLock = true;
+//            // Unlock after 2 s
+//            new Handler().postDelayed(() -> clickLock = false, 1000);
+//        }
+//
+//        playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes, view);
+//        overridePendingTransition(0,0);
+//
+//        Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
+//        startActivity(intent);
+//        finish();
+//        overridePendingTransition(0,0);
+//    }
+
     public void skipLlogin(View view){
-        if(clickLock){
-            return;
-        }else{
-            clickLock = true;
-            // Unlock after 2 s
-            new Handler().postDelayed(() -> clickLock = false, 1000);
-        }
 
-        playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes, view);
-        overridePendingTransition(0,0);
+        List<Token> tokens = new ArrayList<>();
+        tokens.add(new Token("005528d0e6555f7fc145e8afdfe2057ab72fa2c7",new Token.OrgReference("151af206-cdfa-482d-9d32-3d97e943f670","Offline Login")));
 
-        Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
-        startActivity(intent);
-        finish();
-        overridePendingTransition(0,0);
+        fetchOrgsAndLogin("guest", tokens,AppConstant.GUEST);
     }
 
 }

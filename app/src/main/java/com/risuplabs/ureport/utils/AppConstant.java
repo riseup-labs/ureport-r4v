@@ -9,4 +9,8 @@ public interface AppConstant {
     int BRAZIL_ORG_ID = 37;
     int ECUADOR_ORG_ID = 38;
     int BOLIVIA_ORG_ID = 39;
+
+    String USER = "user";
+    String GUEST = "guest";
+
 }

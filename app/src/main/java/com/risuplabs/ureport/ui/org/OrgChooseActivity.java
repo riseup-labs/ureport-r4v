@@ -13,6 +13,10 @@ import com.risuplabs.ureport.databinding.ActivityOrgChooseBinding;
 import com.risuplabs.ureport.di.SurveyorApplication;
 import com.risuplabs.ureport.surveyor.data.Org;
 import com.risuplabs.ureport.ui.dashboard.DashBoardActivity;
+import com.risuplabs.ureport.ui.opinions.flow_list.FlowListActivity;
+import com.risuplabs.ureport.ui.registration.RegistrationActivity;
+import com.risuplabs.ureport.utils.AppConstant;
+import com.risuplabs.ureport.utils.IntentConstant;
 import com.risuplabs.ureport.utils.pref_manager.SurveyorPreferences;
 import com.risuplabs.ureport.utils.surveyor.Logger;
 import com.risuplabs.ureport.utils.surveyor.SurveyorIntent;
@@ -28,6 +32,9 @@ import static com.risuplabs.ureport.utils.StaticMethods.playNotification;
 
 public class OrgChooseActivity extends BaseSurveyorActivity<ActivityOrgChooseBinding> implements OrgListFragment.Container{
 
+
+    String from;
+
     @Inject
     OrgViewModel orgViewModel;
 
@@ -38,6 +45,8 @@ public class OrgChooseActivity extends BaseSurveyorActivity<ActivityOrgChooseBin
 
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
+
+        from = getIntent().getStringExtra(IntentConstant.COMING_FROM);
 
         if (!isLoggedIn()) {
             return;
@@ -96,9 +105,14 @@ public class OrgChooseActivity extends BaseSurveyorActivity<ActivityOrgChooseBin
 
     private void showOrg(Org org) {
         prefManager.putString(SurveyorPreferences.SAVED_UUID,org.getUuid());
-        Intent intent = new Intent(OrgChooseActivity.this, DashBoardActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+
+        if(from.equals(AppConstant.GUEST)){
+            startActivity(new Intent(this, RegistrationActivity.class));
+        }else if (from.equals(AppConstant.USER)){
+            Intent intent = new Intent(OrgChooseActivity.this, FlowListActivity.class);
+            startActivity(intent);
+        }
+
         finish();
         overridePendingTransition(0,0);
     }

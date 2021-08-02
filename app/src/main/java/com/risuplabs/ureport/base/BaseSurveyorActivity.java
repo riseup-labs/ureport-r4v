@@ -24,6 +24,9 @@ import com.risuplabs.ureport.R;
 import com.risuplabs.ureport.di.SurveyorApplication;
 import com.risuplabs.ureport.ui.auth.LoginActivity;
 import com.risuplabs.ureport.ui.org.OrgChooseActivity;
+import com.risuplabs.ureport.ui.registration.RegistrationActivity;
+import com.risuplabs.ureport.utils.AppConstant;
+import com.risuplabs.ureport.utils.IntentConstant;
 import com.risuplabs.ureport.utils.ui.ViewCache;
 import com.risuplabs.ureport.utils.pref_manager.SharedPrefManager;
 import com.risuplabs.ureport.utils.pref_manager.SurveyorPreferences;
@@ -48,7 +51,8 @@ public abstract class BaseSurveyorActivity<T extends ViewDataBinding> extends Pe
     private ViewCache m_viewCache;
 
 
-    public abstract @LayoutRes int getLayoutId();
+    public abstract @LayoutRes
+    int getLayoutId();
 
     @Inject
     public SharedPrefManager prefManager;
@@ -105,6 +109,7 @@ public abstract class BaseSurveyorActivity<T extends ViewDataBinding> extends Pe
         Logger.d("Logging out with error " + errorResId);
 
         prefManager.clearPreference(SurveyorPreferences.AUTH_USERNAME);
+        prefManager.clearPreference(SurveyorPreferences.PREV_USERNAME);
         prefManager.clearPreference(SurveyorPreferences.SAVED_UUID);
         prefManager.setPreference(SurveyorPreferences.AUTH_ORGS, Collections.<String>emptySet());
 
@@ -184,16 +189,20 @@ public abstract class BaseSurveyorActivity<T extends ViewDataBinding> extends Pe
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public void login(String email, Set<String> orgUUIDs) {
+    public void login(String email, Set<String> orgUUIDs, String from) {
         Logger.d("Logging in as " + email + " with access to orgs " + TextUtils.join(",", orgUUIDs));
 
         // save email which we'll need for submissions later
         prefManager.putString(SurveyorPreferences.AUTH_USERNAME, email);
         prefManager.putString(SurveyorPreferences.PREV_USERNAME, email);
+
         prefManager.setPreference(SurveyorPreferences.AUTH_ORGS, orgUUIDs);
 
         // let the user pick an org...
-        startActivity(new Intent(this, OrgChooseActivity.class));
+        Intent intent = new Intent(this, OrgChooseActivity.class);
+        intent.putExtra(IntentConstant.COMING_FROM, from);
+        startActivity(intent);
+
         // play sound
 
         playNotification(prefManager, getApplicationContext(), R.raw.sync_complete);

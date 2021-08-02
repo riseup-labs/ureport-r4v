@@ -198,7 +198,6 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
-
                     onActionSend(sendButtom);
                     return true;
                 }
@@ -496,6 +495,35 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
         }
     }
 
+    public void onActionSendManual() {
+        if (!session.getStatus().equals("waiting")) {
+            return;
+        }
+
+        // Remove All Quick Response
+        getViewCache().hide(R.id.quick_replies);
+        ((LinearLayout) findViewById(R.id.quick_replies)).removeAllViews();
+        getViewCache().show(R.id.chat_box);
+
+        String message = "stream";
+        hideKeyboard(this);
+
+        if (message.trim().length() > 0){
+            final MsgIn msg = Engine.createMsgIn(message);
+//            addMessage(message, true);
+//            playNotification(prefManager, getApplicationContext(), R.raw.send_message_sound);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    resumeSession(msg);
+                    playNotification(prefManager, getApplicationContext(), R.raw.receive_message_sound);
+                }
+            }, (int)(Math.random() * 1500 + 700));
+        }
+    }
+
 
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -521,7 +549,11 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
 
             if (event.type().equals("msg_created")) {
                 JsonObject msg = asObj.get("msg").getAsJsonObject();
-                addMessage(msg.get("text").getAsString(), false);
+                if(msg.get("text").getAsString().startsWith("Hi")){
+                    onActionSendManual();
+                }else{
+                    addMessage(msg.get("text").getAsString(), false);
+                }
             }
         }
 
@@ -633,7 +665,7 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
      */
     public void onActionSave(View view) {
         try {
-//            setReminder();
+            setReminder();
             submission.complete();
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             finish();

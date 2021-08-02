@@ -9,7 +9,7 @@ public class Token {
     public Token() {
     }
 
-    private Token(String token, OrgReference org) {
+    public Token(String token, OrgReference org) {
         this.token = token;
         this.org = org;
     }
@@ -42,7 +42,7 @@ public class Token {
         public OrgReference() {
         }
 
-        private OrgReference(String uuid, String name) {
+        public OrgReference(String uuid, String name) {
             this.uuid = uuid;
             this.name = name;
         }

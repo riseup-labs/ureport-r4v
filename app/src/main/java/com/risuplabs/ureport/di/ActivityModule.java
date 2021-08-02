@@ -9,6 +9,7 @@ import com.risuplabs.ureport.ui.opinions.media_capture.CaptureAudioActivity;
 import com.risuplabs.ureport.ui.opinions.media_capture.CaptureLocationActivity;
 import com.risuplabs.ureport.ui.opinions.media_capture.CaptureVideoActivity;
 import com.risuplabs.ureport.ui.org.OrgChooseActivity;
+import com.risuplabs.ureport.ui.registration.RegistrationActivity;
 import com.risuplabs.ureport.ui.results.poll_title_list.PollTitlesActivity;
 import com.risuplabs.ureport.ui.results.polls.PollsActivity;
 import com.risuplabs.ureport.ui.results.result_list.ResultListActivity;
@@ -66,6 +67,9 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract CaptureLocationActivity contributesCaptureLocationActivity();
+
+    @ContributesAndroidInjector
+    abstract RegistrationActivity contributesRegistrationActivity();
 
 
 
