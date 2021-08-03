@@ -1,6 +1,5 @@
 package com.risuplabs.ureport.ui.opinions.flow;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
@@ -17,7 +16,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,10 +24,8 @@ import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.View;
@@ -45,8 +41,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.CustomTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource;
@@ -56,7 +50,6 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.greysonparrelli.permiso.Permiso;
@@ -68,7 +61,6 @@ import com.nyaruka.goflow.mobile.Resume;
 import com.nyaruka.goflow.mobile.SessionAssets;
 import com.nyaruka.goflow.mobile.Trigger;
 import com.risuplabs.ureport.R;
-import com.risuplabs.ureport.Splash;
 import com.risuplabs.ureport.base.BaseSurveyorActivity;
 import com.risuplabs.ureport.databinding.ActivityRunFlowBinding;
 import com.risuplabs.ureport.notification.ReminderBroadcast;
@@ -84,6 +76,8 @@ import com.risuplabs.ureport.ui.opinions.media_capture.CaptureAudioActivity;
 import com.risuplabs.ureport.ui.opinions.media_capture.CaptureLocationActivity;
 import com.risuplabs.ureport.ui.opinions.media_capture.CaptureVideoActivity;
 import com.risuplabs.ureport.utils.ImageUtils;
+import com.risuplabs.ureport.utils.StaticMethods;
+import com.risuplabs.ureport.utils.pref_manager.PrefKeys;
 import com.risuplabs.ureport.utils.pref_manager.SurveyorPreferences;
 import com.risuplabs.ureport.utils.surveyor.Logger;
 import com.risuplabs.ureport.utils.surveyor.SurveyorIntent;
@@ -495,28 +489,23 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
         }
     }
 
-    public void onActionSendManual() {
+    public void CreateExternalID() {
         if (!session.getStatus().equals("waiting")) {
             return;
         }
-
         // Remove All Quick Response
         getViewCache().hide(R.id.quick_replies);
         ((LinearLayout) findViewById(R.id.quick_replies)).removeAllViews();
         getViewCache().show(R.id.chat_box);
 
-        String message = "stream";
+        String message =prefManager.getString(PrefKeys.EXTERNAL_ID);
         hideKeyboard(this);
 
         if (message.trim().length() > 0){
             final MsgIn msg = Engine.createMsgIn(message);
-//            addMessage(message, true);
-//            playNotification(prefManager, getApplicationContext(), R.raw.send_message_sound);
-
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-
                     resumeSession(msg);
                     playNotification(prefManager, getApplicationContext(), R.raw.receive_message_sound);
                 }
@@ -549,8 +538,8 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
 
             if (event.type().equals("msg_created")) {
                 JsonObject msg = asObj.get("msg").getAsJsonObject();
-                if(msg.get("text").getAsString().startsWith("Hi")){
-                    onActionSendManual();
+                if(msg.get("text").getAsString().contains("<UUID>")){
+                    CreateExternalID();
                 }else{
                     addMessage(msg.get("text").getAsString(), false);
                 }

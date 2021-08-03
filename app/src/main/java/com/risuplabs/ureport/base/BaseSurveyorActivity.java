@@ -121,9 +121,6 @@ public abstract class BaseSurveyorActivity<T extends ViewDataBinding> extends Pe
 
         Intent intent = new Intent(this, LoginActivity.class);
 
-        // clear the activity stack
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
         if (errorResId != -1) {
             intent.putExtra(SurveyorIntent.EXTRA_ERROR, getString(errorResId));
         }

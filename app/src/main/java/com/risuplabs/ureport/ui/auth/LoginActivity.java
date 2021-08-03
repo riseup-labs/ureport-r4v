@@ -271,7 +271,7 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
     public void skipLlogin(View view){
 
         List<Token> tokens = new ArrayList<>();
-        tokens.add(new Token("005528d0e6555f7fc145e8afdfe2057ab72fa2c7",new Token.OrgReference("151af206-cdfa-482d-9d32-3d97e943f670","Offline Login")));
+        tokens.add(new Token(AppConstant.TOKEN,new Token.OrgReference(AppConstant.ORG_UUID,"Offline Login")));
 
         fetchOrgsAndLogin("guest", tokens,AppConstant.GUEST);
     }

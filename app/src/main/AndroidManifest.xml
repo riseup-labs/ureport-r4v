@@ -15,7 +15,8 @@
         android:theme="@style/Theme.UReport"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.registration.RegistrationActivity"></activity>
+        <activity android:name=".ui.registration.RegistrationActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".ui.opinions.media_capture.CaptureLocationActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />

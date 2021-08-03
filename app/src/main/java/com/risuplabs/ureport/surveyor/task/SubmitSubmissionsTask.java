@@ -61,14 +61,18 @@ public class SubmitSubmissionsTask extends AsyncTask<Submission, Integer, Intege
         if (numFailed > 0) {
             this.listener.onFailure(numFailed);
         } else {
-            this.listener.onComplete(total);
+            try {
+                this.listener.onComplete(total);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public interface Listener {
         void onProgress(int percent);
 
-        void onComplete(int total);
+        void onComplete(int total) throws IOException;
 
         void onFailure(int numFailed);
     }
