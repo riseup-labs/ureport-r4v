@@ -306,7 +306,7 @@ public class TembaService {
         for(int i = 0 ; i < size ; i++){
             int label_size = flows.get(i).getLabels().size();
             for(int j = 0 ; j < label_size ; j++){
-                if(flows.get(i).getLabels().get(j).name.equals(prefManager.getString(PrefKeys.ORG_LABEL, AppConstant.BRAZIL_LABEL))){
+                if(flows.get(i).getLabels().get(j).name.toLowerCase().equals(prefManager.getString(PrefKeys.ORG_LABEL, AppConstant.BRAZIL_LABEL))){
                     filtered_flow.add(flows.get(i));
                 }
             }

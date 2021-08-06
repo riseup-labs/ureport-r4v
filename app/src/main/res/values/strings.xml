@@ -11,21 +11,8 @@
     <!-- activity titles -->
     <string name="app_name">U-Report App</string>
     <string name="support_email">support@rapidpro.io</string>
-    <string name="title_activity_login">Sign in</string>
-    <string name="title_activity_create_account">Create Account</string>
-    <string name="title_activity_org_choose">Choose Organization</string>
-    <string name="title_activity_org">Organization</string>
-    <string name="title_activity_flow">Flow Details</string>
-    <string name="title_activity_run">Run Flow</string>
-    <string name="title_activity_audio">Capture Audio</string>
 
     <!-- menu items and buttons -->
-    <string name="title_activity_video">Capture Video</string>
-    <string name="title_activity_location">Capture Location</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_logout">Logout</string>
-    <string name="action_refresh">Refresh</string>
-    <string name="action_bug_report">Bug Report</string>
     <string name="action_save">Save</string>
     <string name="action_discard">Discard</string>
     <string name="action_cancel">Cancel</string>
@@ -78,16 +65,12 @@
     <string name="pref_default_host">https://rapidpro.ilhasoft.mobi</string>
 
     <!-- miscellaneous -->
-    <string name="pref_title_host">RapidPro Host</string>
-    <string name="pref_summary_host">The address for your RapidPro installation</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
     <!-- font icons -->
     <string name="icon_camera_front">\ue146</string>
     <string name="icon_camera_rear">\ue147</string>
-    <string name="icon_cloud_download">\ue0fb</string>
-    <string name="icon_folder">\ue101</string>
     <string name="icon_forum">\ue04d</string>
     <string name="icon_gps_fixed">\ue0a3</string>
     <string name="icon_gps_off">\ue0a5</string>
@@ -103,56 +86,32 @@
     <string name="icon_volume_up">\ue033</string>
 
     <!-- legacy stuff to be removed -->
-    <string name="title_activity_legacy">Legacy Submissions</string>
-    <string name="action_legacy_submissions">Legacy Submissions</string>
-    <string name="legacy_submissions_blurb">This version of the Surveyor app uses a newer flow engine but you can still submit data collected with the old engine by clicking the button below.</string>
-    <string name="error_legacy_submissions_submit">A problem occurred submitting legacy submissions.</string>
 
     <!-- TODO clean up -->
     <string name="submit_body">Submitting flows to the server.</string>
     <string name="refresh_org">Refreshing organization details..</string>
-    <string name="action_delete">Delete</string>
-    <string name="action_submit">Submit</string>
-    <string name="pending_summary_flow">You have pending submissions for this flow to save on the server.</string>
-    <string name="pending_summary">You have pending submissions to save on the server.</string>
     <string name="one_moment">One Moment</string>
     <string name="unsupported_version">Your version of Surveyor is too old to run these flows. Would you like to download the latest version?</string>
-    <string name="please_login_again">Please login to your account again.</string>
     <string name="transition_chat">transition_chat</string>
-    <string name="intro_message">Intro message</string>
-    <string name="stop">Stop Recording</string>
-    <string name="record">Record</string>
-    <string name="camera_error">Camera Error</string>
-    <string name="description_info">Description info</string>
     <string name="tag_url">tag_url</string>
-    <string name="tag_handler">tag_handler</string>
     <string name="tag_media_type">tag_media_type</string>
     <string name="media_image">media_image</string>
     <string name="media_video">media_video</string>
     <string name="media_audio">media_audio</string>
 
     <string name="tap_to_stop">Recording. Tap to stop.</string>
-    <string name="quit">Quit</string>
-    <string name="settings">Settings</string>
     <string name="title_permissions">Permission</string>
-    <string name="location_unavailable">Your location is not currently available. Please try again.</string>
     <string name="media_location">media_location</string>
     <string name="made_recording">Made Recording</string>
-    <string name="error_invalid_host">Sorry, that is not a valid host. Try again.</string>
-    <string name="web_load_failure">Check your network connection and try again.</string>
     <string name="error_network">Could not contact server. Check your network connection and try again.</string>
 
-    <string name="v1_new_version">This version of the application is too old, please download the new version.</string>
-    <string name="v1_new_version_dashboard">There is a new version available. Would you like to update the application?</string>
     <string name="v1_settings">Settings</string>
     <string name="v1_stories">Stories</string>
     <string name="v1_ureport">Results</string>
     <string name="v1_survey">Opinions</string>
-    <string name="v1_welcome_to_app">Welcome to the U-Report App</string>
+    <string name="v1_welcome_to_app">U-Report Application</string>
     <string name="v1_story_see_more">See More</string>
     <string name="v1_story_details">Story Details</string>
-
-    <string name="v1_reporters_in_x" translatable="false">Reporters in %div</string>
 
     <string name="v1_ureport_female">Female</string>
     <string name="v1_ureport_male">Male</string>
@@ -164,16 +123,9 @@
     <string name="v1_ureport_participation_level">Participation Level</string>
     <string name="v1_ureport_results">Results</string>
     <string name="v1_ureport_other" translatable="false">Other</string>
-    <string name="v1_ureport_all">All Places</string>
     <string name="v1_ureport_out_of" translatable="false">%sub responded out of %sup polled</string>
     <string name="v1_ureport_poll_summary" translatable="false">Responses: %sup, Response Rate: %sub%</string>
-    <string name="v1_ureport_poll_summary_off" translatable="false">Responses: %sup</string>
-    <string name="v1_ureport_from_all">Reporters in All Places</string>
     <string name="v1_ureport_keyword_text">Keywords</string>
-
-    <string name="v1_install_tts_en" translatable="false">Text To Speech Package Not Found. Please Install Language Packages.</string>
-    <string name="v1_install_tts_bn" translatable="false">Bangla Text To Speech Package Not Found. Please Install Bangla Language Package.</string>
-    <string name="v1_install_tts_my" translatable="false">Please install SM Myanmar TTS for Burmese Text to Speech.</string>
 
     <string name="v1_settings_overall_support"><u>Overall Support of</u></string>
     <string name="v1_settings_designed_and_developed"><u>Designed &amp; Developed by</u></string>
@@ -185,9 +137,7 @@
     <string name="v1_off">Off</string>
 
     <string name="v1_ureport_title" translatable="false">U-Report</string>
-    <string name="v1_surveyor_title" translatable="false">Offline Surveyor</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="skip_login">Skip Login</string>
 
     <!-- Strings related to login -->
@@ -199,20 +149,16 @@
 
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="no_internet_text">No internet connection.</string>
     <string name="retry">Retry</string>
     <string name="cancel">Cancel</string>
     <string name="application_url_second">https://play.google.com/store/apps/details?id=io.rapidpro.surveyor</string>
     <string name="application_url_first">market://details?id=io.rapidpro.surveyor</string>
-    <string name="quick_reply">Quick Reply</string>
-    <string name="pref_header_general">General</string>
     <string name="login">Login</string>
     <string name="fetching_stories">Fetching Stories</string>
     <string name="updating_stories">Updating stories</string>
     <string name="updating_photos">Updating photos</string>
-    <string name="fetching_data">Fetching Data</string>
     <string name="fetch_polls">Fetching polls</string>
     <string name="updating_polls">Updating polls</string>
     <string name="hide">Hide</string>
@@ -220,5 +166,10 @@
     <string name="empty_poll">No Data available. \nPlease pull down to refresh or tap Retry</string>
     <string name="select_your_location">Select your location</string>
     <string name="response_rate">Response Rate</string>
+    <string name="register">Register</string>
+    <string name="shelter_login">Shelter Login</string>
+    <string name="opinions">Opinions</string>
+    <string name="informations">Informations</string>
+    <string name="no_flows_available_for_download">No flows available for download</string>
 
 </resources>

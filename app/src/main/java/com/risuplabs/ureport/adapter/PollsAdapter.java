@@ -112,78 +112,82 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
         switch (tab) {
             case 0:
                 binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.white));
-                binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.green2));
+                binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.dark_gray));
 
-                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.layoutStatistics.stateParent.setVisibility(View.VISIBLE);
                 binding.layoutAge.ageParent.setVisibility(View.GONE);
                 binding.layoutGender.genderParent.setVisibility(View.GONE);
                 binding.layoutLocation.parentLocation.setVisibility(View.GONE);
+                binding.linearLayout3.setBackground(context.getResources().getDrawable(R.drawable.poll_selector_border));
                 break;
 
             case 1:
-                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.white));
-                binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.green2));
+                binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.dark_gray));
 
-                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.layoutStatistics.stateParent.setVisibility(View.GONE);
                 binding.layoutAge.ageParent.setVisibility(View.GONE);
                 binding.layoutGender.genderParent.setVisibility(View.GONE);
                 binding.layoutLocation.parentLocation.setVisibility(View.VISIBLE);
+                binding.linearLayout3.setBackground(context.getResources().getDrawable(R.drawable.poll_selector_border));
                 break;
 
             case 2:
-                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.textViewGender.setTextColor(context.getResources().getColor(R.color.white));
-                binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.green2));
+                binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.dark_gray));
 
-                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.layoutStatistics.stateParent.setVisibility(View.GONE);
                 binding.layoutAge.ageParent.setVisibility(View.GONE);
                 binding.layoutGender.genderParent.setVisibility(View.VISIBLE);
                 binding.layoutLocation.parentLocation.setVisibility(View.GONE);
+                binding.linearLayout3.setBackground(context.getResources().getDrawable(R.drawable.poll_selector_border));
                 break;
 
             case 3:
-                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.green2));
-                binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.colorlightGrey));
+                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.textViewAge.setTextColor(context.getResources().getColor(R.color.white));
-                binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.green2));
+                binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.dark_gray));
 
                 binding.layoutAge.ageParent.setVisibility(View.VISIBLE);
                 binding.layoutStatistics.stateParent.setVisibility(View.GONE);
                 binding.layoutGender.genderParent.setVisibility(View.GONE);
                 binding.layoutLocation.parentLocation.setVisibility(View.GONE);
+                binding.linearLayout3.setBackground(context.getResources().getDrawable(R.drawable.poll_selector_border));
                 break;
         }
 

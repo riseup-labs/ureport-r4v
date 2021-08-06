@@ -65,20 +65,6 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
             e.printStackTrace();
         }
 
-        Permiso.getInstance().requestPermissions(new Permiso.IOnPermissionResult() {
-            @Override
-            public void onPermissionResult(Permiso.ResultSet resultSet) {
-                if (!resultSet.areAllPermissionsGranted()) {
-                    finish();
-                }
-            }
-
-            @Override
-            public void onRationaleRequested(Permiso.IOnRationaleProvided callback, String... permissions) {
-                LoginActivity.this.showRationaleDialog(R.string.permission_storage, callback);
-            }
-        }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
         overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
 
         Log.d(TAG, "onViewReady: " + prefManager.getString(SurveyorPreferences.PREV_USERNAME));
@@ -250,30 +236,22 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
         super.onBackPressed();
     }
 
-//    public void skipLlogin(View view){
-//        if(clickLock){
-//            return;
-//        }else{
-//            clickLock = true;
-//            // Unlock after 2 s
-//            new Handler().postDelayed(() -> clickLock = false, 1000);
-//        }
-//
-//        playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes, view);
-//        overridePendingTransition(0,0);
-//
-//        Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
-//        startActivity(intent);
-//        finish();
-//        overridePendingTransition(0,0);
-//    }
-
     public void skipLlogin(View view){
+        if(clickLock){
+            return;
+        }else{
+            clickLock = true;
+            // Unlock after 2 s
+            new Handler().postDelayed(() -> clickLock = false, 1000);
+        }
 
-        List<Token> tokens = new ArrayList<>();
-        tokens.add(new Token(AppConstant.TOKEN,new Token.OrgReference(AppConstant.ORG_UUID,"Offline Login")));
+        playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes, view);
+        overridePendingTransition(0,0);
 
-        fetchOrgsAndLogin("guest", tokens,AppConstant.GUEST);
+        Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        overridePendingTransition(0,0);
     }
 
 }

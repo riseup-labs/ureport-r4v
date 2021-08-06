@@ -2,6 +2,7 @@ package com.risuplabs.ureport.di;
 
 import com.risuplabs.ureport.Splash;
 import com.risuplabs.ureport.ui.auth.LoginActivity;
+import com.risuplabs.ureport.ui.auth.LoginChooserActivity;
 import com.risuplabs.ureport.ui.dashboard.DashBoardActivity;
 import com.risuplabs.ureport.ui.opinions.flow.RunFlowActivity;
 import com.risuplabs.ureport.ui.opinions.flow_list.FlowListActivity;
@@ -52,6 +53,9 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract LoginActivity contributesLoginActivity();
+
+    @ContributesAndroidInjector
+    abstract LoginChooserActivity contributesLoginChooserActivity();
 
     @ContributesAndroidInjector
     abstract OrgChooseActivity contributesOrgChooseActivity();

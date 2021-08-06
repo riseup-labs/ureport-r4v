@@ -1,34 +1,21 @@
 package com.risuplabs.ureport;
 
-import androidx.annotation.Nullable;
-
-import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
+
+import androidx.annotation.Nullable;
 
 import com.risuplabs.ureport.base.BaseActivity;
 import com.risuplabs.ureport.databinding.ActivitySplashBinding;
-import com.risuplabs.ureport.network.data.ApiConstants;
-import com.risuplabs.ureport.notification.ReminderBroadcast;
-import com.risuplabs.ureport.ui.auth.LoginActivity;
 import com.risuplabs.ureport.ui.dashboard.DashBoardActivity;
-import com.risuplabs.ureport.ui.org.OrgChooseActivity;
 import com.risuplabs.ureport.ui.splash.SplashViewModel;
 import com.risuplabs.ureport.utils.Navigator;
 import com.risuplabs.ureport.utils.StaticMethods;
 import com.risuplabs.ureport.utils.custom_dialog.LocationChooser;
 import com.risuplabs.ureport.utils.pref_manager.PrefKeys;
-import com.risuplabs.ureport.utils.pref_manager.SharedPrefManager;
-
-import java.util.Calendar;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -61,12 +48,18 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
 
         setLanguage();
 
-        if(prefManager.getString(PrefKeys.ORG_LABEL,"").equals("")){
-            LocationChooser.showDialog(this,prefManager);
-        }else{
-            Navigator.navigate(this,DashBoardActivity.class);
-            finish();
-        }
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(prefManager.getString(PrefKeys.ORG_LABEL,"").equals("")){
+                    LocationChooser.showDialog(Splash.this,prefManager);
+                }else{
+                    Navigator.navigate(Splash.this,DashBoardActivity.class);
+                    finish();
+                }
+            }
+        },2000);
 
     }
 

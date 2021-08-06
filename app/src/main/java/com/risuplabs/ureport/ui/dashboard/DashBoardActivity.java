@@ -132,9 +132,8 @@ public class DashBoardActivity extends BaseActivity<ActivityMainBinding> impleme
         Pair<View, String> p1 = Pair.create((View) cardImage, cardImage.getTransitionName());
         Pair<View, String> p2 = Pair.create((View) bgShade, bgShade.getTransitionName());
         Pair<View, String> p3 = Pair.create((View) activityName, activityName.getTransitionName());
-        Pair<View, String> p4 = Pair.create((View) imageSun, imageSun.getTransitionName());
 
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(DashBoardActivity.this, p1, p2, p3, p4);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(DashBoardActivity.this, p1, p2, p3);
 
         Fade fade = new Fade();
         fade.excludeChildren(cardImage, true);
@@ -152,9 +151,9 @@ public class DashBoardActivity extends BaseActivity<ActivityMainBinding> impleme
     void initDashboard() {
 
         dashboardLists.add(new ModelDashboardListRV(getString(R.string.v1_stories), R.drawable.v1_card_bg_stories, R.drawable.v1_header_image_stories, R.drawable.v1_bg_shade_stories));
-        dashboardLists.add(new ModelDashboardListRV(getString(R.string.v1_ureport), R.drawable.v1_card_bg_opinions, R.drawable.v1_header_image_results, R.drawable.v1_bg_shade_results));
-        dashboardLists.add(new ModelDashboardListRV(getString(R.string.v1_survey), R.drawable.v1_card_bg_reports, R.drawable.v1_header_image_opinion, R.drawable.v1_bg_shades_opinions));
-        dashboardLists.add(new ModelDashboardListRV(getString(R.string.v1_settings), R.drawable.v1_card_bg_settings, R.drawable.v1_header_image_settings, R.drawable.v1_bg_shade_settings));
+        dashboardLists.add(new ModelDashboardListRV(getString(R.string.v1_ureport), R.drawable.v1_card_bg_stories, R.drawable.v1_header_image_results, R.drawable.v1_bg_shade_results));
+        dashboardLists.add(new ModelDashboardListRV(getString(R.string.v1_survey), R.drawable.v1_card_bg_stories, R.drawable.v1_header_image_opinion, R.drawable.v1_bg_shade_stories));
+        dashboardLists.add(new ModelDashboardListRV(getString(R.string.v1_settings), R.drawable.v1_card_bg_stories, R.drawable.v1_header_image_settings, R.drawable.v1_bg_shade_results));
 
         scrollAdapter = new CustomScrollAdapter(dashboardLists);
         scrollAdapter.setOnItemClickListener(this);
@@ -388,7 +387,7 @@ public class DashBoardActivity extends BaseActivity<ActivityMainBinding> impleme
         }
 
         // Animate Color
-        colorChangeAnimator(prevColor, newColor);
+//        colorChangeAnimator(prevColor, newColor);
 
 
     }

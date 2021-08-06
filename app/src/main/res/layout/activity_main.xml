@@ -11,7 +11,7 @@
         android:id="@+id/root_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EFFFF7"
+        android:background="#FFFFFF"
         tools:context=".ui.dashboard.DashBoardActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,31 +54,14 @@
 
             <ImageView
                 android:id="@+id/map_top"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintBottom_toTopOf="@+id/guide_top_h"
-                app:layout_constraintStart_toStartOf="@+id/guide_top_v"
-                app:srcCompat="@drawable/v1_main_bg_top" />
-
-            <ImageView
-                android:id="@+id/map_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                app:layout_constraintStart_toStartOf="@+id/guide_bottom_v"
-                app:layout_constraintTop_toTopOf="@+id/guide_bottom_h"
-                app:srcCompat="@drawable/v1_main_bg_bottom" />
-
-            <ImageView
-                android:id="@+id/map_star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/v1_bg_star" />
+                app:layout_constraintStart_toStartOf="@+id/guide_top_v"
+                app:srcCompat="@drawable/v0_bg_top" />
+
 
             <ImageView
                 android:id="@+id/image_sun"
@@ -114,15 +97,14 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageSun"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="4dp"
                 android:transitionName="transition_sun"
                 app:layout_constraintBottom_toTopOf="@+id/text_app_name"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/v1_bg_sun" />
+                app:srcCompat="@drawable/report" />
 
             <TextView
                 android:id="@+id/text_app_name"
@@ -144,9 +126,9 @@
                 android:layout_marginStart="16dp"
                 android:text="Your voice matters!"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_app_name" />
         </androidx.constraintlayout.widget.ConstraintLayout>

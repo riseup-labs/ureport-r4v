@@ -70,7 +70,7 @@
                 android:id="@+id/bgColor"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/v1_layout_bg_opinion"
+                android:background="@drawable/v1_layout_bg_stories"
                 android:transitionName="transition_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +83,7 @@
                 android:layout_height="60dp"
                 android:gravity="center|left"
                 android:text="@string/v1_survey"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:transitionName="transition_text"
@@ -107,38 +107,16 @@
                 app:layout_constraintGuide_end="120dp" />
 
             <ImageView
-                android:id="@+id/headerShade"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:transitionName="transition_shadow"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/guideline3"
-
-                app:srcCompat="@drawable/v1_bg_shades_opinions" />
-
-            <ImageView
                 android:id="@+id/activityImage"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="90dp"
+                android:layout_marginEnd="20dp"
                 android:transitionName="transition_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/v1_header_image_opinion" />
 
-            <ImageView
-                android:id="@+id/imageSun"
-                android:layout_width="35dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:transitionName="transition_sun"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/v1_bg_sun" />
 
             <ImageView
                 android:id="@+id/backButton"
@@ -146,7 +124,7 @@
                 android:layout_height="64dp"
                 android:layout_marginTop="16dp"
                 android:padding="12dp"
-                app:tint="#000000"
+                app:tint="#ffffff"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/v1_back_button" />

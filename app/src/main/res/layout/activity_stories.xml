@@ -63,7 +63,7 @@
                 android:layout_height="60dp"
                 android:gravity="center|left"
                 android:text="@string/v1_stories"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:transitionName="transition_text"
@@ -103,8 +103,8 @@
                 android:id="@+id/activityImage"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="160dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
                 android:transitionName="transition_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -120,18 +120,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/v1_back_button"
-                app:tint="#000000" />
-
-            <ImageView
-                android:id="@+id/imageSun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:transitionName="transition_sun"
-                app:srcCompat="@drawable/v1_bg_sun" />
+                app:tint="#ffffff" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

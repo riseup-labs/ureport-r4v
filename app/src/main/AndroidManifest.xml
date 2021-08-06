@@ -15,48 +15,53 @@
         android:theme="@style/Theme.UReport"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.registration.RegistrationActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity android:name=".ui.auth.LoginChooserActivity"
+            android:theme="@style/Theme.UReportOffline" />
+        <activity
+            android:name=".ui.registration.RegistrationActivity"
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.opinions.media_capture.CaptureLocationActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.opinions.media_capture.CaptureAudioActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.opinions.media_capture.CaptureVideoActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.opinions.flow.RunFlowActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.org.OrgChooseActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.auth.LoginActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.opinions.flow_list.FlowListActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.settings.SettingsActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.results.polls.PollsActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.results.poll_title_list.PollTitlesActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.results.result_list.ResultListActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.stories.details.StoryDetailsActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.stories.list.StoriesListActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity android:name=".Splash">
+            android:theme="@style/Theme.UReportOffline" />
+        <activity
+            android:name=".Splash"
+            android:theme="@style/Theme.UReportOffline">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -65,7 +70,7 @@
         </activity>
         <activity
             android:name=".ui.dashboard.DashBoardActivity"
-            android:theme="@style/Theme.Design.NoActionBar" />
+            android:theme="@style/Theme.UReportOffline" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

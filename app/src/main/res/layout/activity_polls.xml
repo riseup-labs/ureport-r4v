@@ -57,7 +57,7 @@
                 android:id="@+id/bgColor"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/v1_layout_bg_results"
+                android:background="@drawable/v1_layout_bg_stories"
                 android:transitionName="transition_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
                 android:layout_marginEnd="8dp"
                 android:gravity="center|left"
                 android:text="@string/v1_ureport_title"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:transitionName="transition_text"
@@ -88,12 +88,13 @@
                 android:layout_height="64dp"
                 android:layout_marginTop="16dp"
                 android:padding="12dp"
-                app:tint="#000000"
+                app:tint="#ffffff"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/v1_back_button" />
 
             <TextView
+                android:textColor="@color/white"
                 android:id="@+id/poll_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

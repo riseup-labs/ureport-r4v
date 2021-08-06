@@ -4,19 +4,36 @@
 
         <item name="android:windowBackground">@color/white</item>
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimaryDark">@color/green3</item>
         <item name="colorAccent">@color/primary_lightest</item>
-
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
         <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
         <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
-
+        <item name="fontFamily">@font/dosis_regular</item>
+        <item name="android:fontFamily">@font/dosis_regular</item>
     </style>
 
     <style name="LoginTheme">
         <item name="colorControlNormal">@color/primary_lightest</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/green3</item>
+        <item name="colorAccent">@color/primary_lightest</item>
+        <item name="fontFamily">@font/dosis_regular</item>
+
+    </style>
+    <style name="Theme.UReportOffline" parent="Theme.Design.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/green3</item>
+        <item name="colorAccent">@color/primary_lightest</item>
+        <item name="fontFamily">@font/dosis_semibold</item>
+
     </style>
 
 

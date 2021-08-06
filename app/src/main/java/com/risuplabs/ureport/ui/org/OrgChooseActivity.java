@@ -110,6 +110,7 @@ public class OrgChooseActivity extends BaseSurveyorActivity<ActivityOrgChooseBin
             startActivity(new Intent(this, RegistrationActivity.class));
         }else if (from.equals(AppConstant.USER)){
             Intent intent = new Intent(OrgChooseActivity.this, FlowListActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
 

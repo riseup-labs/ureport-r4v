@@ -30,13 +30,14 @@
                 android:id="@+id/story_card"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:padding="8dp"
-                app:cardCornerRadius="0dp"
-                app:cardElevation="0dp"
+                android:padding="12dp"
+                app:cardCornerRadius="5dp"
+                android:backgroundTint="#F2FBFB"
+                app:cardElevation="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +65,8 @@
                             android:layout_marginTop="12dp"
                             tools:text="Dec 19, 2019"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
                             android:transitionName="story_date" />
 
                         <TextView
@@ -81,7 +83,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="8dp"
-                        android:scaleType="fitCenter"
+                        android:scaleType="fitXY"
                         android:transitionName="story_image"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -145,9 +147,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:background="@drawable/v1_card_bg_stories"
-                        android:backgroundTint="@color/white"
-                        android:padding="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -167,7 +166,11 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
-                            <androidx.constraintlayout.widget.ConstraintLayout
+                            <LinearLayout
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
@@ -180,21 +183,16 @@
                                     android:paddingBottom="8dp"
                                     android:text="@string/v1_story_see_more"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
+                                    android:textSize="12sp" />
 
                                 <ImageView
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginStart="5dp"
                                     android:id="@+id/imageView8"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="4dp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toEndOf="@+id/storySeeMore"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:srcCompat="@drawable/v1_item_stories_see_more" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
+                                    android:layout_width="20dp"
+                                    android:layout_height="15dp"
+                                    app:srcCompat="@drawable/arrow" />
+                            </LinearLayout>
 
                         </androidx.cardview.widget.CardView>
 

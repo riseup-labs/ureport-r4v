@@ -1,58 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="50dp"
+    app:cardCornerRadius="15dp"
+    android:backgroundTint="@android:color/transparent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:background="@drawable/location_chooser_background"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please choose your location"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.154" />
+        android:padding="30dp">
 
-    <RadioGroup
-        android:id="@+id/rg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/map_icon" />
 
-        <RadioButton
-            android:id="@+id/btnBrasil"
+        <RadioGroup
+            android:id="@+id/rg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Brasil"
-            android:textSize="16sp" />
+            android:layout_below="@+id/icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/btnEcuador"
+            <RadioButton
+                android:layout_margin="10dp"
+                android:elevation="3dp"
+                android:padding="10dp"
+                android:background="@drawable/location_chooser_background"
+                android:id="@+id/btnBrasil"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:paddingStart="10dp"
+                android:text="Brasil"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:layout_margin="10dp"
+                android:elevation="3dp"
+                android:padding="10dp"
+                android:background="@drawable/location_chooser_background"
+                android:id="@+id/btnEcuador"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:paddingStart="10dp"
+                android:text="Ecuador"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:layout_margin="10dp"
+                android:elevation="3dp"
+                android:padding="10dp"
+                android:background="@drawable/location_chooser_background"
+                android:id="@+id/btnBolivia"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:paddingStart="10dp"
+                android:text="Bolivia"
+                android:textSize="13sp" />
+
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ecuador"
-            android:textSize="16sp" />
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/icon"
+            android:text="Select"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <RadioButton
-            android:id="@+id/btnBolivia"
+        <TextView
+            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bolivia"
-            android:textSize="16sp" />
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/icon"
+            android:text="your location"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
+    </RelativeLayout>
 
-    </RadioGroup>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

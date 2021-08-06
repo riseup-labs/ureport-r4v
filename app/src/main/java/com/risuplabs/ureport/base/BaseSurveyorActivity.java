@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
@@ -23,15 +22,14 @@ import com.greysonparrelli.permiso.PermisoActivity;
 import com.risuplabs.ureport.R;
 import com.risuplabs.ureport.di.SurveyorApplication;
 import com.risuplabs.ureport.ui.auth.LoginActivity;
+import com.risuplabs.ureport.ui.auth.LoginChooserActivity;
 import com.risuplabs.ureport.ui.org.OrgChooseActivity;
-import com.risuplabs.ureport.ui.registration.RegistrationActivity;
-import com.risuplabs.ureport.utils.AppConstant;
 import com.risuplabs.ureport.utils.IntentConstant;
-import com.risuplabs.ureport.utils.ui.ViewCache;
 import com.risuplabs.ureport.utils.pref_manager.SharedPrefManager;
 import com.risuplabs.ureport.utils.pref_manager.SurveyorPreferences;
 import com.risuplabs.ureport.utils.surveyor.Logger;
 import com.risuplabs.ureport.utils.surveyor.SurveyorIntent;
+import com.risuplabs.ureport.utils.ui.ViewCache;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -119,7 +117,7 @@ public abstract class BaseSurveyorActivity<T extends ViewDataBinding> extends Pe
             Logger.e("Unable to clear submissions", e);
         }
 
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, LoginChooserActivity.class);
 
         if (errorResId != -1) {
             intent.putExtra(SurveyorIntent.EXTRA_ERROR, getString(errorResId));
@@ -192,7 +190,6 @@ public abstract class BaseSurveyorActivity<T extends ViewDataBinding> extends Pe
         // save email which we'll need for submissions later
         prefManager.putString(SurveyorPreferences.AUTH_USERNAME, email);
         prefManager.putString(SurveyorPreferences.PREV_USERNAME, email);
-
         prefManager.setPreference(SurveyorPreferences.AUTH_ORGS, orgUUIDs);
 
         // let the user pick an org...

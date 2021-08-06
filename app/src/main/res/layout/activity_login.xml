@@ -45,18 +45,10 @@
             android:id="@+id/bg_map_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/guide_bg_end_y"
-            app:layout_constraintStart_toStartOf="@+id/guide_bg_start_x"
-            app:srcCompat="@drawable/v1_bg_login_top" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bg_top" />
 
-        <ImageView
-            android:id="@+id/bg_map_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            app:layout_constraintEnd_toStartOf="@+id/guide_bg_bottom_x"
-            app:layout_constraintTop_toTopOf="@+id/guide_bg_bottom_y"
-            app:srcCompat="@drawable/v1_login_bg_bottom" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,7 +71,7 @@
                     android:onClick="skipLlogin"
                     android:clickable="true"
                     android:focusable="true"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -288,7 +280,9 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
 
-                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                    <LinearLayout
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
                                         android:id="@+id/email_sign_in_button"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
@@ -302,25 +296,18 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="16dp"
-                                            android:layout_marginBottom="8dp"
                                             android:text="@string/action_sign_in"
                                             android:textColor="@color/black"
                                             android:textSize="24sp"
-                                            android:textStyle="bold"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintEnd_toStartOf="@+id/imageView7"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
+                                            android:textStyle="bold" />
 
                                         <ImageView
+                                            android:layout_marginStart="10dp"
                                             android:id="@+id/imageView7"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:srcCompat="@drawable/v1_icon_signin" />
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                                            app:srcCompat="@drawable/login_icon" />
+                                    </LinearLayout>
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                             </LinearLayout>

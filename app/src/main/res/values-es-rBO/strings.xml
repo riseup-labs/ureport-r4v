@@ -5,7 +5,7 @@
     <string name="v1_settings">Ajustes</string>
     <string name="v1_ureport">Resultados</string>
     <string name="v1_survey">Opiniones</string>
-    <string name="v1_welcome_to_app">Bienvenido a la aplicación U-Report</string>
+    <string name="v1_welcome_to_app">Aplicación U-Report</string>
     <string name="v1_story_see_more">" Ver más"</string>
     <string name="v1_story_details">Detalles de la historia</string>
     <string name="v1_ureport_female">Mujer</string>
@@ -17,8 +17,6 @@
     <string name="v1_ureport_responses">Respuestas</string>
     <string name="v1_ureport_participation_level">Nivel de participación</string>
     <string name="v1_ureport_results">Resultados</string>
-    <string name="v1_ureport_all">Todos los lugares</string>
-    <string name="v1_ureport_from_all">Reporteros en todos los lugares</string>
     <string name="v1_ureport_keyword_text">Palabras clave</string>
     <string name="v1_settings_overall_support"><u> Soporte general de </u></string>
     <string name="v1_settings_designed_and_developed"><u> Diseñado &amp; Desarrollado por </u></string>

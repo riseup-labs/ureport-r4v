@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -634,6 +635,10 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         RecyclerView rvBOT = convertView.findViewById(R.id.recyclerViewBot);
         Button btnDownload = convertView.findViewById(R.id.btnDownload);
         Button btnCancel = convertView.findViewById(R.id.btnCancel);
+        LinearLayout layout_opinions = convertView.findViewById(R.id.layout_opinions);
+        LinearLayout layout_informations = convertView.findViewById(R.id.layout_informations);
+        TextView no_flows = convertView.findViewById(R.id.no_flows);
+
 
         rvOP.setLayoutManager(new LinearLayoutManager(FlowListActivity.this));
         rvBOT.setLayoutManager(new LinearLayoutManager(FlowListActivity.this));
@@ -661,6 +666,26 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         rvBOT.setAdapter(adapterBOT);
         if(getOrg() != null){
             adapterBOT.addItems(bot_flows);
+        }
+
+        if(poll_flows.size() == 0){
+            layout_opinions.setVisibility(View.GONE);
+        }else{
+            layout_opinions.setVisibility(View.VISIBLE);
+        }
+
+        if(bot_flows.size() == 0){
+            layout_informations.setVisibility(View.GONE);
+        }else{
+            layout_informations.setVisibility(View.VISIBLE);
+        }
+
+        if(getOrg().flowTitles.size() == 0){
+            no_flows.setVisibility(View.VISIBLE);
+            btnDownload.setVisibility(View.GONE);
+        }else{
+            btnDownload.setVisibility(View.VISIBLE);
+            no_flows.setVisibility(View.GONE);
         }
 
         btnDownload.setOnClickListener(v->{
