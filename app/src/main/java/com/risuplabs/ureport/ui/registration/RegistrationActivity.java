@@ -164,6 +164,8 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
         });
         progressModal.show();
 
+
+
         donx = new DownloadOrgTask(new DownloadOrgTask.Listener() {
             @Override
             public void onProgress(int percent) {
