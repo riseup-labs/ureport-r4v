@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sprint {
-    private List<Modifier> modifiers;
+    private final List<Modifier> modifiers;
 
-    private List<Event> events;
+    private final List<Event> events;
 
     private Sprint(List<Modifier> modifiers, List<Event> events) {
         this.modifiers = modifiers;

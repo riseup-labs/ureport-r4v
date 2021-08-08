@@ -5,7 +5,7 @@ import com.nyaruka.goflow.mobile.SessionAssets;
 import com.nyaruka.goflow.mobile.Wait;
 
 public class Session {
-    private com.nyaruka.goflow.mobile.Session target;
+    private final com.nyaruka.goflow.mobile.Session target;
 
     /**
      * Creates a new session

@@ -3,9 +3,9 @@ package com.risuplabs.ureport.surveyor.engine;
 import com.risuplabs.ureport.surveyor.net.responses.Field;
 
 public class FieldAsset {
-    private String key;
-    private String name;
-    private String type;
+    private final String key;
+    private final String name;
+    private final String type;
 
     public FieldAsset(String key, String name, String type) {
         this.key = key;

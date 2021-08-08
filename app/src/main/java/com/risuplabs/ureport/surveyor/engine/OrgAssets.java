@@ -12,10 +12,10 @@ import java.util.List;
 
 
 public class OrgAssets {
-    private List<FieldAsset> fields;
-    private List<GroupAsset> groups;
-    private List<LocationAsset> locations;
-    private List<RawJson> flows;
+    private final List<FieldAsset> fields;
+    private final List<GroupAsset> groups;
+    private final List<LocationAsset> locations;
+    private final List<RawJson> flows;
 
     /**
      * Constructs a new set of org assets (fields, groups, locations and flows)

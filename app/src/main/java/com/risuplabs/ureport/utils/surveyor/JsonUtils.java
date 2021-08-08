@@ -6,7 +6,7 @@ import com.google.gson.reflect.TypeToken;
 
 public class JsonUtils {
 
-    private static Gson s_gson = new GsonBuilder()
+    private static final Gson s_gson = new GsonBuilder()
             //.setPrettyPrinting()
             .registerTypeAdapter(RawJson.class, new RawJson.Adapter())
             .create();

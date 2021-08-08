@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class DownloadOrgTask extends AsyncTask<Org, Integer, Void> {
 
-    private Listener listener;
+    private final Listener listener;
     public List<Flow> flows;
     private boolean failed;
 

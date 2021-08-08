@@ -8,9 +8,9 @@ import java.util.Map;
 import com.risuplabs.ureport.surveyor.net.responses.Boundary;
 
 public class LocationAsset {
-    private String name;
-    private String[] aliases;
-    private List<LocationAsset> children;
+    private final String name;
+    private final String[] aliases;
+    private final List<LocationAsset> children;
 
     public LocationAsset(String name, String[] aliases) {
         this.name = name;

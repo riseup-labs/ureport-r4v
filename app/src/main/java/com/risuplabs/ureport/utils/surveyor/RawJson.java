@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class RawJson {
 
-    private String data;
+    private final String data;
 
     public RawJson(String data) {
         this.data = data;

@@ -9,17 +9,17 @@ import com.risuplabs.ureport.utils.surveyor.JsonUtils;
 import com.risuplabs.ureport.utils.surveyor.RawJson;
 
 public class Flow {
-    private String uuid;
+    private final String uuid;
 
-    private String name;
+    private final String name;
 
     @SerializedName("spec_version")
-    private String specVersion;
+    private final String specVersion;
 
-    private int revision;
+    private final int revision;
 
     @SerializedName("question_count")
-    private int questionCount;
+    private final int questionCount;
 
     /**
      * Creates a new flow

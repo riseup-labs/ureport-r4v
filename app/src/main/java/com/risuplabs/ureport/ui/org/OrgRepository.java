@@ -24,7 +24,7 @@ public class OrgRepository {
     }
 
     public List<Org> getOrgs() {
-        Set<String> orgUUIDs = prefManager.getStringSet(SurveyorPreferences.AUTH_ORGS, Collections.<String>emptySet());
+        Set<String> orgUUIDs = prefManager.getStringSet(SurveyorPreferences.AUTH_ORGS, Collections.emptySet());
         List<Org> orgs = new ArrayList<>(orgUUIDs.size());
 
         for (String uuid : orgUUIDs) {

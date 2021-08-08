@@ -16,9 +16,9 @@ import androidx.cardview.widget.CardView;
 import com.risuplabs.ureport.R;
 
 public class ViewCache {
-    private SparseArray<View> m_cache;
-    private View m_parent;
-    private Context m_context;
+    private final SparseArray<View> m_cache;
+    private final View m_parent;
+    private final Context m_context;
 
     public ViewCache(Context context, View parent) {
         m_cache = new SparseArray<>();

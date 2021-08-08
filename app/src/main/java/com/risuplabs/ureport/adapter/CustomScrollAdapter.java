@@ -16,7 +16,7 @@ import java.util.List;
 public class CustomScrollAdapter extends RecyclerView.Adapter<CustomScrollAdapter.ViewHolder> {
 
     private static ClickListener clickListener;
-    private List<ModelDashboardListRV> data;
+    private final List<ModelDashboardListRV> data;
 
     public CustomScrollAdapter(List<ModelDashboardListRV> data) {
         this.data = data;
@@ -45,10 +45,10 @@ public class CustomScrollAdapter extends RecyclerView.Adapter<CustomScrollAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView activityName;
-        private View bgColor;
-        private ImageView cardImage;
-        private ImageView bgShadow;
+        private final TextView activityName;
+        private final View bgColor;
+        private final ImageView cardImage;
+        private final ImageView bgShadow;
 
         public ViewHolder(View itemView) {
             super(itemView);

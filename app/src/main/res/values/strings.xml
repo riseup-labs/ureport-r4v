@@ -9,8 +9,8 @@
     </plurals>
 
     <!-- activity titles -->
-    <string name="app_name">U-Report App</string>
-    <string name="support_email">support@rapidpro.io</string>
+    <string name="app_name">U-Report R4V</string>
+    <string name="support_email" translatable="false">support@rapidpro.io</string>
 
     <!-- menu items and buttons -->
     <string name="action_save">Save</string>
@@ -60,30 +60,30 @@
     <string name="waiting_for_gps">Waiting for GPS…</string>
 
     <!-- preferences -->
-    <string name="latitude_longitude">Lat: %.3f Long: %.3f</string>
-    <string name="accuracy_meters">Accuracy: %d meters</string>
-    <string name="pref_default_host">https://rapidpro.ilhasoft.mobi</string>
+    <string name="latitude_longitude" translatable="false">Lat: %.3f Long: %.3f</string>
+    <string name="accuracy_meters" translatable="false">Accuracy: %d meters</string>
+    <string name="pref_default_host" translatable="false">https://rapidpro.ilhasoft.mobi</string>
 
     <!-- miscellaneous -->
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
     <!-- font icons -->
-    <string name="icon_camera_front">\ue146</string>
-    <string name="icon_camera_rear">\ue147</string>
-    <string name="icon_forum">\ue04d</string>
-    <string name="icon_gps_fixed">\ue0a3</string>
-    <string name="icon_gps_off">\ue0a5</string>
-    <string name="icon_gps_not_fixed">\ue0a4</string>
-    <string name="icon_mic">\ue00f</string>
-    <string name="icon_place">\ue1f7</string>
-    <string name="icon_play_arrow">\ue01b</string>
-    <string name="icon_photo">\ue1a2</string>
-    <string name="icon_photo_camera">\ue1a4</string>
-    <string name="icon_send">\ue087</string>
-    <string name="icon_stop">\ue02a</string>
-    <string name="icon_videocam">\ue02e</string>
-    <string name="icon_volume_up">\ue033</string>
+    <string name="icon_camera_front" translatable="false">\ue146</string>
+    <string name="icon_camera_rear" translatable="false">\ue147</string>
+    <string name="icon_forum" translatable="false">\ue04d</string>
+    <string name="icon_gps_fixed" translatable="false">\ue0a3</string>
+    <string name="icon_gps_off" translatable="false">\ue0a5</string>
+    <string name="icon_gps_not_fixed" translatable="false">\ue0a4</string>
+    <string name="icon_mic" translatable="false">\ue00f</string>
+    <string name="icon_place" translatable="false">\ue1f7</string>
+    <string name="icon_play_arrow" translatable="false">\ue01b</string>
+    <string name="icon_photo" translatable="false">\ue1a2</string>
+    <string name="icon_photo_camera" translatable="false">\ue1a4</string>
+    <string name="icon_send" translatable="false">\ue087</string>
+    <string name="icon_stop" translatable="false">\ue02a</string>
+    <string name="icon_videocam" translatable="false">\ue02e</string>
+    <string name="icon_volume_up" translatable="false">\ue033</string>
 
     <!-- legacy stuff to be removed -->
 
@@ -92,17 +92,17 @@
     <string name="refresh_org">Refreshing organization details..</string>
     <string name="one_moment">One Moment</string>
     <string name="unsupported_version">Your version of Surveyor is too old to run these flows. Would you like to download the latest version?</string>
-    <string name="transition_chat">transition_chat</string>
-    <string name="tag_url">tag_url</string>
-    <string name="tag_media_type">tag_media_type</string>
-    <string name="media_image">media_image</string>
-    <string name="media_video">media_video</string>
-    <string name="media_audio">media_audio</string>
+    <string name="transition_chat" translatable="false">transition_chat</string>
+    <string name="tag_url" translatable="false">tag_url</string>
+    <string name="tag_media_type" translatable="false">tag_media_type</string>
+    <string name="media_image" translatable="false">media_image</string>
+    <string name="media_video" translatable="false">media_video</string>
+    <string name="media_audio" translatable="false">media_audio</string>
 
     <string name="tap_to_stop">Recording. Tap to stop.</string>
-    <string name="title_permissions">Permission</string>
-    <string name="media_location">media_location</string>
-    <string name="made_recording">Made Recording</string>
+    <string name="title_permissions" translatable="false">Permission</string>
+    <string name="media_location" translatable="false">media_location</string>
+    <string name="made_recording" translatable="false">Made Recording</string>
     <string name="error_network">Could not contact server. Check your network connection and try again.</string>
 
     <string name="v1_settings">Settings</string>
@@ -138,7 +138,7 @@
 
     <string name="v1_ureport_title" translatable="false">U-Report</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="skip_login">Skip Login</string>
+    <string name="skip_login" translatable="false">Skip Login</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email" translatable="false">Email</string>
@@ -153,8 +153,8 @@
     <string name="no_internet_text">No internet connection.</string>
     <string name="retry">Retry</string>
     <string name="cancel">Cancel</string>
-    <string name="application_url_second">https://play.google.com/store/apps/details?id=io.rapidpro.surveyor</string>
-    <string name="application_url_first">market://details?id=io.rapidpro.surveyor</string>
+    <string name="application_url_second" translatable="false">https://play.google.com/store/apps/details?id=io.rapidpro.surveyor</string>
+    <string name="application_url_first" translatable="false">market://details?id=io.rapidpro.surveyor</string>
     <string name="login">Login</string>
     <string name="fetching_stories">Fetching Stories</string>
     <string name="updating_stories">Updating stories</string>
@@ -164,7 +164,7 @@
     <string name="hide">Hide</string>
     <string name="empty_story">No Stories available. \nPlease pull down to refresh or tap Retry</string>
     <string name="empty_poll">No Data available. \nPlease pull down to refresh or tap Retry</string>
-    <string name="select_your_location">Select your location</string>
+    <string name="select_your_location">Change location</string>
     <string name="response_rate">Response Rate</string>
     <string name="register">Register</string>
     <string name="shelter_login">Shelter Login</string>
@@ -172,5 +172,9 @@
     <string name="informations">Informations</string>
     <string name="no_flows_available_for_download">No flows available for download</string>
     <string name="cancel_registration">Are you sure you want to cancel registration flow ?</string>
+    <string name="your_voice_matters">Your voice matters!</string>
+    <string name="download">download</string>
+    <string name="select">Select</string>
+    <string name="your_location">your location</string>
 
 </resources>

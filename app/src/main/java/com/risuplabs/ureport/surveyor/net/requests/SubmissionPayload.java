@@ -5,9 +5,9 @@ import com.risuplabs.ureport.utils.surveyor.RawJson;
 import java.util.List;
 
 public class SubmissionPayload {
-    private RawJson session;
-    private List<RawJson> modifiers;
-    private List<RawJson> events;
+    private final RawJson session;
+    private final List<RawJson> modifiers;
+    private final List<RawJson> events;
 
     public SubmissionPayload(RawJson session, List<RawJson> modifiers, List<RawJson> events) {
         this.session = session;

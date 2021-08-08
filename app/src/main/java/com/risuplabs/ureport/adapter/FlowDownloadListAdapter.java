@@ -16,8 +16,8 @@ import java.util.List;
 
 public class FlowDownloadListAdapter extends BaseRecyclerViewAdapter<com.risuplabs.ureport.surveyor.net.responses.Flow, ItemDownloadFlowListBinding> {
 
-    private Context context;
-    private List<com.risuplabs.ureport.surveyor.net.responses.Flow> checkedList = new ArrayList<>();
+    private final Context context;
+    private final List<com.risuplabs.ureport.surveyor.net.responses.Flow> checkedList = new ArrayList<>();
 
     @Override
     public int getLayoutId() {

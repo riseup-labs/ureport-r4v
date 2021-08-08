@@ -31,7 +31,7 @@ import static com.risuplabs.ureport.utils.ShowUtils.loadImage;
 
 public class StoryListAdapter extends BaseRecyclerViewAdapter<ModelStory, ItemStoriesBinding> {
 
-    private Context context;
+    private final Context context;
     LifecycleOwner owner;
     int org_id;
     ImageDownloader downloader;

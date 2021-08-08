@@ -49,7 +49,7 @@ public class TembaService {
     @Inject
     SharedPrefManager prefManager;
 
-    private TembaAPI api;
+    private final TembaAPI api;
 
     public TembaService(String host) {
         this.api = createRetrofit(host).create(TembaAPI.class);

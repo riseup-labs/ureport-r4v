@@ -3,9 +3,9 @@ package com.risuplabs.ureport.surveyor.engine;
 import com.risuplabs.ureport.surveyor.net.responses.Group;
 
 public class GroupAsset {
-    private String uuid;
-    private String name;
-    private String query;
+    private final String uuid;
+    private final String name;
+    private final String query;
 
     public GroupAsset(String uuid, String name, String query) {
         this.uuid = uuid;

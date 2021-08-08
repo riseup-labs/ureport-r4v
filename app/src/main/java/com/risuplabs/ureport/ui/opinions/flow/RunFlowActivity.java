@@ -858,15 +858,15 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
         long timeAtButtonClick = System.currentTimeMillis();
         long alarmTime = timeAtButtonClick + 5000;
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY,16);
-        calendar.set(Calendar.MINUTE,41);
+        calendar.set(Calendar.HOUR_OF_DAY,18);
+        calendar.set(Calendar.MINUTE,0);
         calendar.set(Calendar.SECOND,0);
 
         Log.d("Calender", "setReminder: "+calendar.getTime());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(calendar.getTimeInMillis(), pendingIntent), pendingIntent);
-            alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(alarmTime, pendingIntent), pendingIntent);
+            alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(calendar.getTimeInMillis(), pendingIntent), pendingIntent);
+//            alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(alarmTime, pendingIntent), pendingIntent);
             Log.d("AlarmActivity", "first");
         }
         else {

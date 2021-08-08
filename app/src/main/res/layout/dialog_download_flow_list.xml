@@ -81,7 +81,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:background="@drawable/v1_layout_bg_stories"
                 android:layout_weight="1"
-                android:text="download"
+                android:text="@string/download"
                 android:drawableLeft="@drawable/ic_download"
                 android:paddingStart="10dp"
                 android:layout_marginTop="15dp"
@@ -95,7 +95,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:background="@drawable/v1_layout_bg_results"
                 android:layout_weight="1"
-                android:text="cencel"
+                android:text="@string/cancel"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:paddingStart="10dp"

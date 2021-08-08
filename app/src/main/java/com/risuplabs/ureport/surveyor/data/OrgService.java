@@ -13,9 +13,9 @@ import java.util.Map;
  */
 public class OrgService {
 
-    private File rootDir;
+    private final File rootDir;
 
-    private Map<String, Org> cache = new HashMap<>();
+    private final Map<String, Org> cache = new HashMap<>();
 
     public OrgService(File rootDir) {
         this.rootDir = rootDir;

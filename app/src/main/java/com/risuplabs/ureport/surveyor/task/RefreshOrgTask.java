@@ -22,7 +22,7 @@ import com.risuplabs.ureport.utils.surveyor.Logger;
  */
 public class RefreshOrgTask extends AsyncTask<Org, Integer, Void> {
 
-    private Listener listener;
+    private final Listener listener;
     private boolean failed;
 
     public RefreshOrgTask(Listener listener) {

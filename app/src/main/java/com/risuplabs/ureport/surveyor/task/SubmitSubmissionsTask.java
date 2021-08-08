@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class SubmitSubmissionsTask extends AsyncTask<Submission, Integer, Integer> {
 
-    private Listener listener;
+    private final Listener listener;
     private int numFailed = 0;
 
     public SubmitSubmissionsTask(Listener listener) {

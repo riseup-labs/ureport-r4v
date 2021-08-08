@@ -108,7 +108,7 @@ public abstract class BaseSurveyorActivity<T extends ViewDataBinding> extends Pe
         prefManager.clearPreference(SurveyorPreferences.AUTH_USERNAME);
         prefManager.clearPreference(SurveyorPreferences.PREV_USERNAME);
         prefManager.clearPreference(SurveyorPreferences.SAVED_UUID);
-        prefManager.setPreference(SurveyorPreferences.AUTH_ORGS, Collections.<String>emptySet());
+        prefManager.setPreference(SurveyorPreferences.AUTH_ORGS, Collections.emptySet());
 
         try {
             getSurveyor().getSubmissionService().clearAll();

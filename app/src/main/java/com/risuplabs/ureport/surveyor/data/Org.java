@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-;import javax.inject.Inject;
+import javax.inject.Inject;
 
 public class Org {
 

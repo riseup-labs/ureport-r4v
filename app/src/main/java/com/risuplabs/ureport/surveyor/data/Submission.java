@@ -37,7 +37,7 @@ public class Submission {
     private static final String COMPLETION_FILE = ".completed";
     private static final String MEDIA_DIR = "media";
 
-    private Org org;
+    private final Org org;
     private File directory;
 
     /**

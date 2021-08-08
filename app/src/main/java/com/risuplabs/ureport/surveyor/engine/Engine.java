@@ -29,9 +29,9 @@ public class Engine {
     /**
      * The engine singleton
      */
-    private static Engine engine = new Engine();
+    private static final Engine engine = new Engine();
 
-    private com.nyaruka.goflow.mobile.Engine target;
+    private final com.nyaruka.goflow.mobile.Engine target;
 
     public static Engine getInstance() {
         return engine;

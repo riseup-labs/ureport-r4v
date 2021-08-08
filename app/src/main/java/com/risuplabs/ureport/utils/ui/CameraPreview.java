@@ -20,7 +20,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     private SurfaceHolder m_surfaceHolder;
     private Camera m_camera;
     private int m_cameraId;
-    private Activity m_activity;
+    private final Activity m_activity;
     private boolean m_initialized;
     private int m_lastRotation;
 

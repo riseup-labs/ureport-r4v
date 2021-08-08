@@ -19,9 +19,9 @@ import java.util.UUID;
  */
 public class SubmissionService {
 
-    private File rootDir;
+    private final File rootDir;
 
-    private static FileFilter DIR_FILTER = DirectoryFileFilter.INSTANCE;
+    private static final FileFilter DIR_FILTER = DirectoryFileFilter.INSTANCE;
 
     /**
      * Creates a new submission service

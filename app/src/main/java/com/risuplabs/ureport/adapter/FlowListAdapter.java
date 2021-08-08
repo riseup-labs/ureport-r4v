@@ -22,7 +22,7 @@ import javax.inject.Inject;
 
 public class FlowListAdapter extends ArrayAdapter<Flow> {
 
-    private Org org;
+    private final Org org;
     private String firstUUID = "";
     SharedPrefManager prefManager;
 

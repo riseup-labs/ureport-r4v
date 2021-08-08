@@ -123,7 +123,7 @@ public class SetupPieChart {
             public void onValueSelected(Entry e, Highlight h) {
                 PieEntry pe = (PieEntry) e;
                 binding.pieDisplay.setVisibility(View.VISIBLE);
-                binding.pieLabel.setText(pe.getLabel().toString());
+                binding.pieLabel.setText(pe.getLabel());
                 binding.pieValue.setText(((int) pe.getValue()) + "");
             }
 

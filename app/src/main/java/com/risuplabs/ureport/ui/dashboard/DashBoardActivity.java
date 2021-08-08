@@ -423,6 +423,7 @@ public class DashBoardActivity extends BaseActivity<ActivityMainBinding> impleme
 
     public void reload(){
         binding.textAppName.setText(R.string.v1_welcome_to_app);
+        binding.textSubtitle.setText(R.string.your_voice_matters);
         binding.btnTextS.setText(R.string.v1_stories);
         binding.btnTextO.setText(R.string.v1_ureport);
         binding.btnTextR.setText(R.string.v1_survey);

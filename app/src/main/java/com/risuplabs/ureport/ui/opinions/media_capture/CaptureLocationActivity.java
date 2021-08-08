@@ -60,7 +60,6 @@ public class CaptureLocationActivity extends BaseSurveyorActivity<ActivityCaptur
             public void onLocationResult(LocationResult locationResult) {
                 if (locationResult != null) {
                     onLocationUpdate(locationResult.getLastLocation());
-                    ;
                 }
             }
         };

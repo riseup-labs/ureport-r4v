@@ -17,7 +17,7 @@ import java.util.Set;
  */
 public class FetchOrgsTask extends AsyncTask<Token, Void, Set<String>> {
 
-    private Listener listener;
+    private final Listener listener;
     private boolean failed;
 
     public FetchOrgsTask(Listener listener) {
