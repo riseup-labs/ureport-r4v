@@ -46,6 +46,7 @@ public class ChatBubbleView extends CachedLinearLayout {
         tv.setMovementMethod(LinkMovementMethod.getInstance());
 
         if (!inbound) {
+            tv.setTextColor(getResources().getColor(R.color.black));
             tv.setBackground(getResources().getDrawable(R.drawable.chat_bubble_out));
         }
 

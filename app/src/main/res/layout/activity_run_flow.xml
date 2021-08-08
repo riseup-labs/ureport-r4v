@@ -24,7 +24,7 @@
                 android:id="@+id/bgColor"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/v1_layout_bg_opinion"
+                android:background="@drawable/v1_layout_bg_stories"
                 android:transitionName="transition_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
                 android:layout_marginEnd="8dp"
                 android:gravity="center|left"
                 android:text="@string/v1_survey"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:transitionName="transition_text"
@@ -67,7 +67,7 @@
                 android:layout_height="64dp"
                 android:layout_marginTop="16dp"
                 android:padding="12dp"
-                app:tint="#000000"
+                app:tint="#ffffff"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/v1_back_button" />
@@ -209,8 +209,8 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="0dp"
                     android:onClick="onActionSend"
-                    android:scaleX="1.75"
-                    android:scaleY="1.75"
+                    android:scaleX=".8"
+                    android:scaleY=".8"
                     app:srcCompat="@drawable/v1_icon_message_send" />
 
                 <com.risuplabs.ureport.utils.ui.IconTextView

@@ -54,7 +54,6 @@ public class TembaService {
     public TembaService(String host) {
         this.api = createRetrofit(host).create(TembaAPI.class);
     }
-
     /**
      * Utility to create a Authorization header value from a token
      */

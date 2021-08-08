@@ -13,10 +13,12 @@ import androidx.fragment.app.Fragment;
 
 import com.risuplabs.ureport.BuildConfig;
 import com.risuplabs.ureport.R;
+import com.risuplabs.ureport.network.data.ApiConstants;
 import com.risuplabs.ureport.surveyor.data.OrgService;
 import com.risuplabs.ureport.surveyor.data.SubmissionService;
 import com.risuplabs.ureport.surveyor.net.TembaService;
 import com.risuplabs.ureport.surveyor.net.responses.Flow;
+import com.risuplabs.ureport.utils.AppConstant;
 import com.risuplabs.ureport.utils.pref_manager.SharedPrefManager;
 import com.risuplabs.ureport.utils.surveyor.Logger;
 import com.risuplabs.ureport.utils.surveyor.SurveyUtils;
@@ -164,7 +166,8 @@ public class SurveyorApplication extends Application implements HasActivityInjec
      * @return the base URL
      */
     public String getTembaHost() {
-        String host = getPreferences().getString(SurveyorPreferences.HOST, getString(R.string.pref_default_host));
+
+        String host = getPreferences().getString(SurveyorPreferences.HOST, ApiConstants.PROXY_SURVEYOR_BASE_URL);
 
         // strip any trailing slash
         if (host.endsWith("/")) {
@@ -181,14 +184,6 @@ public class SurveyorApplication extends Application implements HasActivityInjec
         String newHost = getTembaHost();
 
         Logger.d("Host changed to " + newHost);
-
-        clearPreference(SurveyorPreferences.AUTH_USERNAME);
-        clearPreference(SurveyorPreferences.AUTH_ORGS);
-        try {
-            getSubmissionService().clearAll();
-        } catch (IOException e) {
-            Logger.e("Unable to clear submissions", e);
-        }
 
         tembaService = new TembaService(newHost);
     }

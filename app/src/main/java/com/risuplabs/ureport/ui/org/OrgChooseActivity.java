@@ -48,9 +48,9 @@ public class OrgChooseActivity extends BaseSurveyorActivity<ActivityOrgChooseBin
 
         from = getIntent().getStringExtra(IntentConstant.COMING_FROM);
 
-        if (!isLoggedIn()) {
-            return;
-        }
+//        if (!isLoggedIn()) {
+//            return;
+//        }
 
         List<Org> orgs = orgViewModel.getOrgs();
 
@@ -121,5 +121,10 @@ public class OrgChooseActivity extends BaseSurveyorActivity<ActivityOrgChooseBin
     @Override
     public void onItemClick(Org org) {
         showOrg(org);
+    }
+
+    @Override
+    public boolean requireLogin() {
+        return false;
     }
 }

@@ -171,5 +171,6 @@
     <string name="opinions">Opinions</string>
     <string name="informations">Informations</string>
     <string name="no_flows_available_for_download">No flows available for download</string>
+    <string name="cancel_registration">Are you sure you want to cancel registration flow ?</string>
 
 </resources>

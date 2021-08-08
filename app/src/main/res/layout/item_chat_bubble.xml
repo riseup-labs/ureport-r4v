@@ -18,6 +18,7 @@
         android:linksClickable="true"
         android:padding="16dp"
         android:text=""
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
     <RelativeLayout

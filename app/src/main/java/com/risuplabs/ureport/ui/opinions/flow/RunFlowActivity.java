@@ -24,6 +24,7 @@ import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -50,6 +51,7 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.greysonparrelli.permiso.Permiso;
@@ -543,6 +545,28 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
                 }else{
                     addMessage(msg.get("text").getAsString(), false);
                 }
+
+                if(msg.get("quick_replies") != null){
+                    JsonArray quick_replies = msg.get("quick_replies").getAsJsonArray();
+                    LinearLayout quick_reply_box = findViewById(R.id.quick_replies);
+
+                    for(int i = 0; i < quick_replies.size(); i++) {
+                        String reply_data = quick_replies.get(i).getAsString();
+
+                        View quickTemplate = LayoutInflater.from(this).inflate(R.layout.v1_quick_reply_button, null);
+
+                        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 38, getResources().getDisplayMetrics());
+                        int space = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics());
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height);
+                        layoutParams.setMargins(0, space, 0, space);
+
+                        ((Button) quickTemplate).setText(reply_data);
+                        quick_reply_box.addView(quickTemplate, layoutParams);
+                    }
+
+                    getViewCache().show(R.id.quick_replies);
+                }
+
             }
         }
 

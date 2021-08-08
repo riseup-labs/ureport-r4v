@@ -17,6 +17,7 @@ import com.greysonparrelli.permiso.Permiso;
 import com.risuplabs.ureport.R;
 import com.risuplabs.ureport.base.BaseSurveyorActivity;
 import com.risuplabs.ureport.databinding.ActivityLoginBinding;
+import com.risuplabs.ureport.di.SurveyorApplication;
 import com.risuplabs.ureport.network.data.ApiConstants;
 import com.risuplabs.ureport.surveyor.net.TembaService;
 import com.risuplabs.ureport.surveyor.net.responses.Token;
@@ -141,6 +142,8 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
                 if (response.statusCode != null) {
                     switch (response.statusCode) {
                         case "200":{
+                            SurveyorApplication.get().setPreference(SurveyorPreferences.HOST, ApiConstants.SURVEYOR_BASE_URL);
+                            SurveyorApplication.get().onTembaHostChanged();
                             List<Token> tokens = response.data.getTokens();
                             fetchOrgsAndLogin(email, tokens, AppConstant.USER);
                             break;

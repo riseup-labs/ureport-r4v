@@ -13,11 +13,14 @@ import com.risuplabs.ureport.R;
 import com.risuplabs.ureport.base.BaseActivity;
 import com.risuplabs.ureport.base.BaseSurveyorActivity;
 import com.risuplabs.ureport.databinding.ActivityLoginChooserBinding;
+import com.risuplabs.ureport.di.SurveyorApplication;
+import com.risuplabs.ureport.network.data.ApiConstants;
 import com.risuplabs.ureport.surveyor.net.responses.Token;
 import com.risuplabs.ureport.surveyor.task.FetchOrgsTask;
 import com.risuplabs.ureport.ui.dashboard.DashBoardActivity;
 import com.risuplabs.ureport.utils.AppConstant;
 import com.risuplabs.ureport.utils.Navigator;
+import com.risuplabs.ureport.utils.pref_manager.SurveyorPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +59,9 @@ public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChoo
         binding.register.setOnClickListener(v -> {
             List<Token> tokens = new ArrayList<>();
             tokens.add(new Token(AppConstant.TOKEN,new Token.OrgReference(AppConstant.ORG_UUID,"Offline Login")));
-            fetchOrgsAndLogin("guest", tokens,AppConstant.GUEST);
+            SurveyorApplication.get().setPreference(SurveyorPreferences.HOST, ApiConstants.PROXY_SURVEYOR_BASE_URL);
+            SurveyorApplication.get().onTembaHostChanged();
+            fetchOrgsAndLogin("", tokens,AppConstant.GUEST);
         });
 
         binding.skipLogin.setOnClickListener(v -> {
@@ -88,5 +93,13 @@ public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChoo
     @Override
     public boolean requireLogin() {
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this,DashBoardActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

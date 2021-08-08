@@ -800,7 +800,7 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
             @Override
             public void onComplete(int total) throws IOException {
 
-                cancelAlarm(getApplicationContext());
+                prefManager.putString(SurveyorPreferences.AUTH_USERNAME,AppConstant.GUEST);
 
                 refresh();
 
@@ -874,12 +874,17 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
         dialog6.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog6.setContentView(R.layout.submission_dialog);
         dialog6.findViewById(R.id.textSubText).setVisibility(View.GONE);
-        ((TextView) dialog6.findViewById(R.id.textMainText)).setText(getString(R.string.confirm_submission_discard));
+        ((TextView) dialog6.findViewById(R.id.textMainText)).setText(R.string.cancel_registration);
         ((TextView) dialog6.findViewById(R.id.button_yes_text)).setText(getText(R.string.yes));
         ((TextView) dialog6.findViewById(R.id.button_no_text)).setText(getText(R.string.no));
 
         dialog6.findViewById(R.id.button_yes).setOnClickListener(view -> {
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes, view);
+            try {
+                removing_registration_flow();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             submission.delete();
             dialog6.dismiss();
             finish();

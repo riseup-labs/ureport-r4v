@@ -105,7 +105,6 @@ public abstract class BaseSurveyorActivity<T extends ViewDataBinding> extends Pe
 
     protected void logout(int errorResId) {
         Logger.d("Logging out with error " + errorResId);
-
         prefManager.clearPreference(SurveyorPreferences.AUTH_USERNAME);
         prefManager.clearPreference(SurveyorPreferences.PREV_USERNAME);
         prefManager.clearPreference(SurveyorPreferences.SAVED_UUID);
