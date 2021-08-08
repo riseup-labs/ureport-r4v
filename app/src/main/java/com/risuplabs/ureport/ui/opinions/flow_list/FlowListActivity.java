@@ -335,12 +335,12 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
                         StaticMethods.scaleView(
                                 cache.getView(R.id.pending_submission),
                                 1.0f, 1.0f,
-                                1.2f, 1.2f,
+                                1.02f, 1.02f,
                                 250);
 
                         // Zoom Out
                         new Handler().postDelayed(() -> {
-                            StaticMethods.scaleView(cache.getView(R.id.pending_submission), 1.2f, 1.2f, 1.0f, 1.0f, 200);
+                            StaticMethods.scaleView(cache.getView(R.id.pending_submission), 1.02f, 1.02f, 1.0f, 1.0f, 200);
                         }, 260);
 
                     }

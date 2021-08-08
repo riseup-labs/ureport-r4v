@@ -1,16 +1,35 @@
 package com.risuplabs.ureport.ui.results.polls;
 
+import android.content.Context;
 import android.view.View;
 
+import com.risuplabs.ureport.R;
 import com.risuplabs.ureport.databinding.ItemPollAgeBinding;
+import com.risuplabs.ureport.databinding.ItemPollStatisticsBinding;
 import com.risuplabs.ureport.model.results.ModelQuestion;
 import com.risuplabs.ureport.model.results.ModelQuestionCategory;
 import com.risuplabs.ureport.model.results.ModelResultsByAge;
+import com.risuplabs.ureport.utils.AppConstant;
+import com.risuplabs.ureport.utils.pref_manager.PrefKeys;
+import com.risuplabs.ureport.utils.pref_manager.SharedPrefManager;
 
 
 public class SetupAgeResult {
 
-    public static void setUpAge(ModelQuestion item, ItemPollAgeBinding binding) {
+    public static void setUpAge(Context context, SharedPrefManager prefManager, ModelQuestion item, ItemPollAgeBinding binding) {
+
+        switch(prefManager.getInt(PrefKeys.ORG_ID)){
+            case AppConstant.BRAZIL_ORG_ID :
+                setProgressColor(binding, R.color.color_brasil,context);
+                break;
+            case AppConstant.ECUADOR_ORG_ID :
+                setProgressColor(binding,R.color.color_ecuador,context);
+                break;
+            case AppConstant.BOLIVIA_ORG_ID :
+                setProgressColor(binding,R.color.color_bolivia,context);
+                break;
+
+        }
 
         setUpAge0(item.results_by_age.get(0),binding);
         setUpAge15(item.results_by_age.get(1),binding);
@@ -1272,6 +1291,47 @@ public class SetupAgeResult {
 
 
         }
+
+    }
+
+
+    static void setProgressColor(ItemPollAgeBinding binding , int color , Context context){
+        binding.rounded1a0.setProgressColor(context.getResources().getColor(color));
+        binding.rounded2a0.setProgressColor(context.getResources().getColor(color));
+        binding.rounded3a0.setProgressColor(context.getResources().getColor(color));
+        binding.rounded4a0.setProgressColor(context.getResources().getColor(color));
+        binding.rounded5a0.setProgressColor(context.getResources().getColor(color));
+
+        binding.rounded1a15.setProgressColor(context.getResources().getColor(color));
+        binding.rounded2a15.setProgressColor(context.getResources().getColor(color));
+        binding.rounded3a15.setProgressColor(context.getResources().getColor(color));
+        binding.rounded4a15.setProgressColor(context.getResources().getColor(color));
+        binding.rounded5a15.setProgressColor(context.getResources().getColor(color));
+
+        binding.rounded1a20.setProgressColor(context.getResources().getColor(color));
+        binding.rounded2a20.setProgressColor(context.getResources().getColor(color));
+        binding.rounded3a20.setProgressColor(context.getResources().getColor(color));
+        binding.rounded4a20.setProgressColor(context.getResources().getColor(color));
+        binding.rounded5a20.setProgressColor(context.getResources().getColor(color));
+
+        binding.rounded1a25.setProgressColor(context.getResources().getColor(color));
+        binding.rounded2a25.setProgressColor(context.getResources().getColor(color));
+        binding.rounded3a25.setProgressColor(context.getResources().getColor(color));
+        binding.rounded4a25.setProgressColor(context.getResources().getColor(color));
+        binding.rounded5a25.setProgressColor(context.getResources().getColor(color));
+
+        binding.rounded1a31.setProgressColor(context.getResources().getColor(color));
+        binding.rounded2a31.setProgressColor(context.getResources().getColor(color));
+        binding.rounded3a31.setProgressColor(context.getResources().getColor(color));
+        binding.rounded4a31.setProgressColor(context.getResources().getColor(color));
+        binding.rounded5a31.setProgressColor(context.getResources().getColor(color));
+
+        binding.rounded1a35.setProgressColor(context.getResources().getColor(color));
+        binding.rounded2a35.setProgressColor(context.getResources().getColor(color));
+        binding.rounded3a35.setProgressColor(context.getResources().getColor(color));
+        binding.rounded4a35.setProgressColor(context.getResources().getColor(color));
+        binding.rounded5a35.setProgressColor(context.getResources().getColor(color));
+
 
     }
 

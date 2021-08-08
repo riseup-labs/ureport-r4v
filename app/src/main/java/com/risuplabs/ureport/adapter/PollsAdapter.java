@@ -58,18 +58,18 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
         );
         binding.textViewDate.setText(pollDate);
 
-        setUpStatistics(items.get(position), binding.layoutStatistics);
+        setUpStatistics(context,prefManager,items.get(position), binding.layoutStatistics);
 
         if (item.results.categories.size() > 5) {
             setUpPieChart(items.get(position), binding.layoutPieChart, binding);
         }
 
         if (item.results_by_age != null) {
-            setUpAge(item, binding.layoutAge);
+            setUpAge(context,prefManager,item, binding.layoutAge);
         }
 
         if (item.results_by_gender != null) {
-            setupGenderResult(item, binding.layoutGender);
+            setupGenderResult(context,prefManager,item, binding.layoutGender);
         }
         if (item.results_by_location != null) {
             setupLocation(item, binding.layoutLocation, context);

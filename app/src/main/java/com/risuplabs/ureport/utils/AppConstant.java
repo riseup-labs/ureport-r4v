@@ -13,8 +13,8 @@ public interface AppConstant {
     String USER = "user";
     String GUEST = "guest";
 
-    String TOKEN = "a688fc58b4f1bdd9da09c9ac82c593598c509b98";
-    String ORG_UUID = "offline_org";
-    String REG_FLOW_UUID = "9e092f03-bf62-4aad-a036-58d7c27fcae3";
+    String TOKEN = "token";
+    String ORG_UUID = StaticMethods.getAlphaNumericString(15);
+    String REG_FLOW_UUID = "598d947c-a7bc-4223-be17-727f94018088";
 
 }

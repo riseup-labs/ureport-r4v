@@ -170,9 +170,9 @@ public class SurveyorApplication extends Application implements HasActivityInjec
         String host = getPreferences().getString(SurveyorPreferences.HOST, ApiConstants.PROXY_SURVEYOR_BASE_URL);
 
         // strip any trailing slash
-        if (host.endsWith("/")) {
-            host = host.substring(0, host.length() - 1);
-        }
+//        if (host.endsWith("/")) {
+//            host = host.substring(0, host.length() - 1);
+//        }
 
         return host;
     }

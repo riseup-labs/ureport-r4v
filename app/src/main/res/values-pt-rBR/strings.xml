@@ -26,4 +26,12 @@
     <string name="v1_logout">Sair</string>
     <string name="v1_on">Sobre</string>
     <string name="v1_off">Fora</string>
+    <string name="action_save">Salvar</string>
+    <string name="action_discard">Descartar</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_start">Começar</string>
+    <string name="action_start_flow">Iniciar fluxo</string>
+    <string name="please_refresh">Puxe para baixo para atualizar ...</string>
+    <string name="confirm_org_download">Os fluxos para esta organização ainda não foram baixados. Baixar todos os fluxos agora?</string>
+    <string name="confirm_org_refresh">Atualizar todos os fluxos para esta organização?</string>
 </resources>

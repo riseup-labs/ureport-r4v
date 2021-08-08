@@ -1,15 +1,34 @@
 package com.risuplabs.ureport.ui.results.polls;
 
+import android.content.Context;
 import android.view.View;
 
+import com.risuplabs.ureport.R;
 import com.risuplabs.ureport.databinding.ItemPollGenderBinding;
+import com.risuplabs.ureport.databinding.ItemPollStatisticsBinding;
 import com.risuplabs.ureport.model.results.ModelQuestion;
 import com.risuplabs.ureport.model.results.ModelQuestionCategory;
 import com.risuplabs.ureport.model.results.ModelResultsByGender;
+import com.risuplabs.ureport.utils.AppConstant;
+import com.risuplabs.ureport.utils.pref_manager.PrefKeys;
+import com.risuplabs.ureport.utils.pref_manager.SharedPrefManager;
 
 public class SetupGenderResult {
 
-    public static void setupGenderResult(ModelQuestion item, ItemPollGenderBinding binding) {
+    public static void setupGenderResult(Context context, SharedPrefManager prefManager, ModelQuestion item, ItemPollGenderBinding binding) {
+
+        switch(prefManager.getInt(PrefKeys.ORG_ID)){
+            case AppConstant.BRAZIL_ORG_ID :
+                setProgressColor(binding, R.color.color_brasil,context);
+                break;
+            case AppConstant.ECUADOR_ORG_ID :
+                setProgressColor(binding,R.color.color_ecuador,context);
+                break;
+            case AppConstant.BOLIVIA_ORG_ID :
+                setProgressColor(binding,R.color.color_bolivia,context);
+                break;
+
+        }
 
         setUpMale(item.results_by_gender.get(0), binding);
         setUpFemale(item.results_by_gender.get(1), binding);
@@ -452,6 +471,20 @@ public class SetupGenderResult {
                 binding.textViewPercentage5f.setText(((progressValue5 * 100) / maxValue5) + " %");
             }
         }
+    }
+
+    static void setProgressColor(ItemPollGenderBinding binding , int color , Context context){
+        binding.rounded1f.setProgressColor(context.getResources().getColor(color));
+        binding.rounded2f.setProgressColor(context.getResources().getColor(color));
+        binding.rounded3f.setProgressColor(context.getResources().getColor(color));
+        binding.rounded4f.setProgressColor(context.getResources().getColor(color));
+        binding.rounded5f.setProgressColor(context.getResources().getColor(color));
+        binding.rounded1m.setProgressColor(context.getResources().getColor(color));
+        binding.rounded2m.setProgressColor(context.getResources().getColor(color));
+        binding.rounded3m.setProgressColor(context.getResources().getColor(color));
+        binding.rounded4m.setProgressColor(context.getResources().getColor(color));
+        binding.rounded5m.setProgressColor(context.getResources().getColor(color));
+
     }
 
 }

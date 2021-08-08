@@ -54,7 +54,7 @@
 
             <ImageView
                 android:id="@+id/map_top"
-                android:layout_width="150dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintBottom_toTopOf="@+id/guide_top_h"
@@ -62,6 +62,18 @@
                 app:layout_constraintStart_toStartOf="@+id/guide_top_v"
                 app:srcCompat="@drawable/v0_bg_top" />
 
+
+            <ImageView
+                android:id="@+id/r4v"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/guide_top_h"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/guide_top_v"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.933"
+                app:srcCompat="@drawable/r_v" />
 
             <ImageView
                 android:id="@+id/image_sun"

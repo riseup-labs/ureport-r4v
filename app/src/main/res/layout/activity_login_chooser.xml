@@ -120,6 +120,15 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
+                    <ProgressBar
+                        android:visibility="invisible"
+                        android:id="@+id/pb_register"
+                        android:layout_marginEnd="8dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>

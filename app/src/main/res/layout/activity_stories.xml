@@ -93,11 +93,11 @@
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:transitionName="transition_shadow"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toTopOf="@+id/guideline3"
 
-                app:srcCompat="@drawable/v1_bg_shade_stories" />
+                app:srcCompat="@drawable/icon_bg" />
 
             <ImageView
                 android:id="@+id/activityImage"

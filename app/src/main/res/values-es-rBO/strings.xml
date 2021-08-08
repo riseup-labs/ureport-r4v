@@ -26,4 +26,12 @@
     <string name="v1_logout">Cerrar sesión</string>
     <string name="v1_on">En</string>
     <string name="v1_off">Apagado</string>
+    <string name="action_save">Salvar</string>
+    <string name="action_discard">Descarte</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_start">Comienzo</string>
+    <string name="action_start_flow">Iniciar flujo</string>
+    <string name="please_refresh">Tire hacia abajo para refrescar…</string>
+    <string name="confirm_org_download">Los flujos de esta organización aún no se han descargado. ¿Descargar todos los flujos ahora?</string>
+    <string name="confirm_org_refresh">Actualizar todos los flujos de esta organización?</string>
 </resources>

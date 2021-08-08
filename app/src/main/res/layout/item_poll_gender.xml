@@ -58,7 +58,6 @@
                         app:rcBackgroundPadding="0dp"
                         app:rcMax="100"
                         app:rcProgress="60"
-                        app:rcProgressColor="@color/option1"
                         app:rcRadius="5dp" />
 
                     <TextView
@@ -118,7 +117,6 @@
                         app:rcBackgroundPadding="0dp"
                         app:rcMax="100"
                         app:rcProgress="80"
-                        app:rcProgressColor="@color/option2"
                         app:rcRadius="5dp" />
 
                     <TextView
@@ -178,7 +176,6 @@
                         app:rcBackgroundPadding="0dp"
                         app:rcMax="100"
                         app:rcProgress="80"
-                        app:rcProgressColor="@color/option3"
                         app:rcRadius="5dp" />
 
                     <TextView
@@ -238,7 +235,6 @@
                         app:rcBackgroundPadding="0dp"
                         app:rcMax="100"
                         app:rcProgress="80"
-                        app:rcProgressColor="@color/option4"
                         app:rcRadius="5dp" />
 
                     <TextView
@@ -299,7 +295,6 @@
                         app:rcBackgroundPadding="0dp"
                         app:rcMax="100"
                         app:rcProgress="80"
-                        app:rcProgressColor="@color/option5"
                         app:rcRadius="5dp" />
 
                     <TextView
@@ -374,7 +369,6 @@
                         app:rcBackgroundPadding="0dp"
                         app:rcMax="100"
                         app:rcProgress="60"
-                        app:rcProgressColor="@color/option1"
                         app:rcRadius="5dp" />
 
                     <TextView
@@ -434,7 +428,6 @@
                         app:rcBackgroundPadding="0dp"
                         app:rcMax="100"
                         app:rcProgress="80"
-                        app:rcProgressColor="@color/option2"
                         app:rcRadius="5dp" />
 
                     <TextView
@@ -495,7 +488,6 @@
                         app:rcBackgroundPadding="0dp"
                         app:rcMax="100"
                         app:rcProgress="80"
-                        app:rcProgressColor="@color/option3"
                         app:rcRadius="5dp" />
 
                     <TextView
@@ -556,7 +548,6 @@
                         app:rcBackgroundPadding="0dp"
                         app:rcMax="100"
                         app:rcProgress="80"
-                        app:rcProgressColor="@color/option4"
                         app:rcRadius="5dp" />
 
                     <TextView
@@ -616,7 +607,6 @@
                         app:rcBackgroundPadding="0dp"
                         app:rcMax="100"
                         app:rcProgress="80"
-                        app:rcProgressColor="@color/option5"
                         app:rcRadius="5dp" />
 
                     <TextView
