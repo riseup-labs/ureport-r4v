@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.risuplabs.ureport">
+    package="com.risuplabs.ureport_r4v">
 
     <application
-        android:name=".di.SurveyorApplication"
+        android:name="com.risuplabs.ureport_r4v.di.SurveyorApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,52 +15,52 @@
         android:theme="@style/Theme.UReport"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.auth.LoginChooserActivity"
+        <activity android:name="com.risuplabs.ureport_r4v.ui.auth.LoginChooserActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.registration.RegistrationActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.registration.RegistrationActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.opinions.media_capture.CaptureLocationActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.opinions.media_capture.CaptureLocationActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.opinions.media_capture.CaptureAudioActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.opinions.media_capture.CaptureAudioActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.opinions.media_capture.CaptureVideoActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.opinions.media_capture.CaptureVideoActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.opinions.flow.RunFlowActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.opinions.flow.RunFlowActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.org.OrgChooseActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.org.OrgChooseActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.auth.LoginActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.auth.LoginActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.opinions.flow_list.FlowListActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.opinions.flow_list.FlowListActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.settings.SettingsActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.settings.SettingsActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.results.polls.PollsActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.results.polls.PollsActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.results.poll_title_list.PollTitlesActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.results.poll_title_list.PollTitlesActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.results.result_list.ResultListActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.results.result_list.ResultListActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.stories.details.StoryDetailsActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.stories.details.StoryDetailsActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".ui.stories.list.StoriesListActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.stories.list.StoriesListActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
-            android:name=".Splash"
+            android:name="com.risuplabs.ureport_r4v.Splash"
             android:theme="@style/Theme.UReportOffline">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -69,7 +69,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.dashboard.DashBoardActivity"
+            android:name="com.risuplabs.ureport_r4v.ui.dashboard.DashBoardActivity"
             android:theme="@style/Theme.UReportOffline" />
 
         <provider
@@ -82,7 +82,7 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <receiver android:name=".notification.ReminderBroadcast" />
+        <receiver android:name="com.risuplabs.ureport_r4v.notification.ReminderBroadcast" />
     </application>
     <uses-feature
         android:name="android.hardware.camera"

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="listener"
-            type="com.risuplabs.ureport.ui.stories.listener.ItemClickListener" />
+            type="com.risuplabs.ureport_r4v.ui.stories.listener.ItemClickListener" />
     </data>
 
     <LinearLayout

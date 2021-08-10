@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.risuplabs.ureport.utils.widget.IconLinkView
+<com.risuplabs.ureport_r4v.utils.widget.IconLinkView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/chat_bubble"
     android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <com.risuplabs.ureport.utils.ui.IconTextView
+        <com.risuplabs.ureport_r4v.utils.ui.IconTextView
             android:id="@+id/media_icon"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="6dp"
@@ -57,4 +57,4 @@
     </LinearLayout>
 
 
-</com.risuplabs.ureport.utils.widget.IconLinkView>
+</com.risuplabs.ureport_r4v.utils.widget.IconLinkView>

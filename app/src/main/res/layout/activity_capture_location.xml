@@ -13,7 +13,7 @@
         android:id="@+id/content_view"
         tools:context=".ui.opinions.media_capture.CaptureLocationActivity">
 
-        <com.risuplabs.ureport.utils.ui.IconTextView
+        <com.risuplabs.ureport_r4v.utils.ui.IconTextView
             android:id="@+id/button_capture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

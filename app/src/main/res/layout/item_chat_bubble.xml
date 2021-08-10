@@ -1,4 +1,4 @@
-<com.risuplabs.ureport.utils.widget.ChatBubbleView
+<com.risuplabs.ureport_r4v.utils.widget.ChatBubbleView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/chat_bubble"
     android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
-        <com.risuplabs.ureport.utils.ui.IconTextView
+        <com.risuplabs.ureport_r4v.utils.ui.IconTextView
             android:id="@+id/media_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,4 +55,4 @@
         android:layout_height="wrap_content"
         android:layout_weight="@dimen/bubble_space" />
 
-</com.risuplabs.ureport.utils.widget.ChatBubbleView>
+</com.risuplabs.ureport_r4v.utils.widget.ChatBubbleView>

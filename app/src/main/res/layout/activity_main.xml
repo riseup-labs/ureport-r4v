@@ -276,10 +276,10 @@
                         android:gravity="center|center_horizontal|center_vertical"
                         android:minWidth="16dp"
                         android:padding="1dp"
-                        android:text="999"
+                        tools:text="999"
                         android:textAlignment="gravity"
                         android:textColor="@color/pending_button_text"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="@+id/btn_imageR"
                         app:layout_constraintTop_toTopOf="@+id/btn_imageR" />
