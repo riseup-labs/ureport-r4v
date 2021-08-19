@@ -37,7 +37,7 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
 
         AndroidRemoteDebugger.init(
                 new AndroidRemoteDebugger.Builder(this)
-                        .enabled(true)
+                        .enabled(false)
                         .enableDuplicateLogging()
                         .excludeUncaughtException()
                         .port(8082)
@@ -49,15 +49,12 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
         setLanguage();
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if(prefManager.getString(PrefKeys.ORG_LABEL,"").equals("")){
-                    LocationChooser.showDialog(Splash.this,prefManager);
-                }else{
-                    Navigator.navigate(Splash.this,DashBoardActivity.class);
-                    finish();
-                }
+        handler.postDelayed(() -> {
+            if(prefManager.getString(PrefKeys.ORG_LABEL,"").equals("")){
+                LocationChooser.showDialog(Splash.this,prefManager);
+            }else{
+                Navigator.navigate(Splash.this,DashBoardActivity.class);
+                finish();
             }
         },2000);
 

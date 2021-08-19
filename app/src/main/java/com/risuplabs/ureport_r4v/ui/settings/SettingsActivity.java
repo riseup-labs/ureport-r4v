@@ -271,6 +271,7 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
 
         binding.activityName.setText(R.string.v1_settings);
         binding.txtChangeLanguage.setText(R.string.v1_change_language);
+        binding.txtCountryLanguage.setText(R.string.select_your_location);
         binding.txtChangeSound.setText(R.string.v1_sound);
         binding.btnSoundOn.setText(R.string.v1_on);
         binding.btnSoundOff.setText(R.string.v1_off);

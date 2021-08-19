@@ -22,5 +22,4 @@ public class OpinionRepository {
         dataManager.performRequest(surveyorApi.getFlows(),responseListener);
     }
 
-
 }

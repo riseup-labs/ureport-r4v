@@ -21,10 +21,10 @@
     <!-- confirmation prompts -->
     <string name="action_start_flow">Start Flow</string>
     <string name="please_refresh">Pull down to refresh…</string>
-    <string name="confirm_org_download">Flows for this organization haven\'t been downloaded yet. Download all flows now?</string>
+    <string name="confirm_org_download">Flows for this organization are not being downloaded yet. Download all flows now?</string>
     <string name="confirm_org_refresh">Refresh all flows for this organization?</string>
-    <string name="confirm_org_refresh_old">This organization\'s flows are too old to work with this version of Surveyor. Refresh all flows for this organization?</string>
-    <string name="confirm_bug_report">Oops, it looks like Surveyor is having difficulty. Would you like to send a bug report so we can look into it?</string>
+    <string name="confirm_org_refresh_old">Flows for this organization are too old to work with this app. Refresh all flows for this organization?</string>
+    <string name="confirm_bug_report">Oops, it looks like app is having difficulty. Would you like to send a bug report so we can look into it?</string>
 
     <!-- error messages -->
     <string name="confirm_submission_discard">Are you sure you want to discard the data collected?</string>
@@ -32,9 +32,9 @@
     <string name="error_server_not_found">Server is unavailable. Please check your settings or try again later.</string>
     <string name="error_server_failure">Server error, please try again later.</string>
     <string name="error_invalid_login">Invalid login. Check your username and password and try again.</string>
-    <string name="error_fetching_org">Unable to fetch org details. Please check your settings or try again later.</string>
+    <string name="error_fetching_org">Unable to fetch organization details. Please check your settings or try again later.</string>
     <string name="error_no_orgs">Sorry, your account doesn\'t have access to submit surveys. Check with your system administrator.</string>
-    <string name="error_org_refresh">A problem occurred whilst refreshing this org. Please try again later.</string>
+    <string name="error_org_refresh">A problem occurred whilst refreshing this organization. Please try again later.</string>
 
     <!-- chat log messages -->
     <string name="error_submissions_send">A problem occurred whilst sending submissions to the server. Please try again later.</string>
@@ -89,7 +89,7 @@
 
     <!-- TODO clean up -->
     <string name="submit_body">Submitting flows to the server.</string>
-    <string name="refresh_org">Refreshing organization details..</string>
+    <string name="refresh_org">Refreshing organization details…</string>
     <string name="one_moment">One Moment</string>
     <string name="unsupported_version">Your version of Surveyor is too old to run these flows. Would you like to download the latest version?</string>
     <string name="transition_chat" translatable="false">transition_chat</string>
@@ -122,9 +122,9 @@
     <string name="v1_ureport_responses">Responses</string>
     <string name="v1_ureport_participation_level">Participation Level</string>
     <string name="v1_ureport_results">Results</string>
-    <string name="v1_ureport_other" translatable="false">Other</string>
-    <string name="v1_ureport_out_of" translatable="false">%sub responded out of %sup polled</string>
-    <string name="v1_ureport_poll_summary" translatable="false">Responses: %sup, Response Rate: %sub%</string>
+    <string name="v1_ureport_other">Other</string>
+    <string name="v1_ureport_out_of">%sub responded out of %sup polled</string>
+    <string name="v1_ureport_poll_summary">Responses: %sup, Response Rate: %sub%</string>
     <string name="v1_ureport_keyword_text">Keywords</string>
 
     <string name="v1_settings_overall_support"><u>Overall Support of</u></string>
@@ -138,18 +138,18 @@
 
     <string name="v1_ureport_title" translatable="false">U-Report</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="skip_login" translatable="false">Skip Login</string>
+    <string name="skip_login">Skip Login</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email" translatable="false">Email</string>
-    <string name="prompt_password" translatable="false">Password</string>
-    <string name="action_sign_in" translatable="false">Sign in</string>
-    <string name="action_sign_in_short" translatable="false">Sign in</string>
-    <string name="create_account" translatable="false">Create Account</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="create_account">Create Account</string>
 
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="error_invalid_email">This email address is invalid.</string>
+    <string name="error_invalid_password">This password is too short.</string>
+    <string name="error_field_required">This field is required.</string>
     <string name="no_internet_text">No internet connection.</string>
     <string name="retry">Retry</string>
     <string name="cancel">Cancel</string>
@@ -157,24 +157,25 @@
     <string name="application_url_first" translatable="false">market://details?id=io.rapidpro.surveyor</string>
     <string name="login">Login</string>
     <string name="fetching_stories">Fetching Stories</string>
-    <string name="updating_stories">Updating stories</string>
+    <string name="updating_stories">Updating Stories</string>
     <string name="updating_photos">Updating photos</string>
-    <string name="fetch_polls">Fetching polls</string>
-    <string name="updating_polls">Updating polls</string>
+    <string name="fetch_polls">Fetching Polls</string>
+    <string name="updating_polls">Updating Polls</string>
     <string name="hide">Hide</string>
-    <string name="empty_story">No Stories available. \nPlease pull down to refresh or tap Retry</string>
-    <string name="empty_poll">No Data available. \nPlease pull down to refresh or tap Retry</string>
+    <string name="empty_story">No stories are available. \nPlease pull down to refresh or tap Retry.</string>
+    <string name="empty_poll">No poll results are available. \nPlease pull down to refresh or tap Retry.</string>
     <string name="select_your_location">Change location</string>
     <string name="response_rate">Response Rate</string>
     <string name="register">Register</string>
     <string name="shelter_login">Shelter Login</string>
     <string name="opinions">Opinions</string>
     <string name="informations">Informations</string>
-    <string name="no_flows_available_for_download">No flows available for download</string>
+    <string name="no_flows_available_for_download">No flows are available to download.</string>
     <string name="cancel_registration">Are you sure you want to cancel registration flow ?</string>
     <string name="your_voice_matters">Your voice matters!</string>
     <string name="download">download</string>
     <string name="select">Select</string>
     <string name="your_location">your location</string>
+    <string name="submit_your_response">Submit your response</string>
 
 </resources>
