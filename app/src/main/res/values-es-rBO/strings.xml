@@ -7,7 +7,7 @@
     </plurals>
 
     <string name="app_name">U-Report R4V</string>
-    <string name="v1_stories">Cuentos</string>
+    <string name="v1_stories">Historias</string>
     <string name="v1_settings">Ajustes</string>
     <string name="v1_ureport">Resultados</string>
     <string name="v1_survey">Opiniones</string>
@@ -15,11 +15,11 @@
     <string name="v1_story_see_more">Ver más</string>
     <string name="v1_story_details">Detalles de la historia</string>
     <string name="v1_ureport_female">Mujer</string>
-    <string name="v1_ureport_male">Masculina</string>
+    <string name="v1_ureport_male">Hombre</string>
     <string name="v1_ureport_gender">Gênero</string>
-    <string name="v1_ureport_location">Localización</string>
+    <string name="v1_ureport_location">Ubicación</string>
     <string name="v1_ureport_age">Edad</string>
-    <string name="v1_ureport_statistics">Estatisticas</string>
+    <string name="v1_ureport_statistics">Estadística</string>
     <string name="v1_ureport_responses">Respuestas</string>
     <string name="v1_ureport_participation_level">Nivel de participación</string>
     <string name="v1_ureport_results">Resultados</string>
@@ -27,13 +27,13 @@
     <string name="v1_settings_overall_support"><u> Soporte general de </u></string>
     <string name="v1_settings_designed_and_developed"><u> Diseñado &amp; Desarrollado por </u></string>
     <string name="v1_change_language">Cambiar idioma</string>
-    <string name="v1_sound">Sonar</string>
+    <string name="v1_sound">Sonido</string>
     <string name="v1_vibration">Vibración</string>
     <string name="v1_logout">Cerrar sesión</string>
-    <string name="v1_on">En</string>
+    <string name="v1_on">Encendido</string>
     <string name="v1_off">Apagado</string>
-    <string name="action_save">Salvar</string>
-    <string name="action_discard">Descarte</string>
+    <string name="action_save">Guardar</string>
+    <string name="action_discard">Descartar</string>
     <string name="action_cancel">Cancelar</string>
     <string name="action_start">Comienzo</string>
     <string name="action_start_flow">Iniciar flujo</string>
@@ -56,7 +56,7 @@
     <string name="request_image">Toma una foto</string>
     <string name="request_video">Grabar un video</string>
     <string name="request_audio">Hacer una grabación</string>
-    <string name="request_gps">Comparte ubicacion</string>
+    <string name="request_gps">Comparte ubicación</string>
     <string name="permission_camera">Necesitamos permiso para acceder a su cámara a fin de recopilar fotos y videos.</string>
     <string name="permission_record">Necesitamos permiso para grabar audio a fin de recopilar grabaciones de audio.</string>
     <string name="permission_location">Necesitamos permiso para acceder a su ubicación con el fin de recopilar datos de GPS.</string>
@@ -77,7 +77,7 @@
     <string name="error_invalid_password">Esta contraseña es demasiado corta.</string>
     <string name="error_field_required">Este campo es obligatorio.</string>
     <string name="no_internet_text">Sin conexión a Internet.</string>
-    <string name="retry">Rever</string>
+    <string name="retry">Volver a intentar</string>
     <string name="cancel">Cancelar</string>
     <string name="login">Acceso</string>
     <string name="fetching_stories">Obteniendo historias</string>
@@ -86,9 +86,9 @@
     <string name="fetch_polls">Obteniendo categorías de encuestas</string>
     <string name="updating_polls">Actualizar encuestas</string>
     <string name="hide">Esconder</string>
-    <string name="empty_story">No hay historias disponibles. \nPor favor, desplácese hacia abajo para actualizar o toque Reintentar.</string>
-    <string name="empty_poll">No hay resultados de encuestas disponibles. \nPor favor, desplácese hacia abajo para actualizar o toque Reintentar.</string>
-    <string name="select_your_location">Cambiar locación</string>
+    <string name="empty_story">No hay historias disponibles. \ nPor favor, desplácese hacia abajo para actualizar o toque Reintentar.</string>
+    <string name="empty_poll">No hay resultados de encuestas disponibles. \ nPor favor, desplácese hacia abajo para actualizar o toque Reintentar.</string>
+    <string name="select_your_location">Cambiar ubicación</string>
     <string name="response_rate">Tasa de respuesta</string>
     <string name="register">Registrarse</string>
     <string name="shelter_login">Inicio de sesión en refugio</string>
@@ -107,7 +107,7 @@
     <string name="action_sign_in">Registrarse</string>
     <string name="action_sign_in_short">Registrarse</string>
     <string name="create_account">Crear una cuenta</string>
-    <string name="v1_ureport_out_of">%sub respondió de %sup encuestado</string>
+    <string name="v1_ureport_out_of">%sub respondieron de %sup encuestado</string>
     <string name="v1_ureport_poll_summary">Respuestas: %sup, Tasa de respuesta: %sub %</string>
     <string name="v1_ureport_other">Outro</string>
 </resources>
