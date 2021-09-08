@@ -42,7 +42,7 @@ public class ResultCategoryAdapter extends BaseRecyclerViewAdapter<ModelPollCate
             }else{
                 holder.binding.rootLayout.setVisibility(View.GONE);
                 holder.binding.ureportLastUpdate.setVisibility(View.VISIBLE);
-                holder.binding.ureportLastUpdate.setText("Last update: "+last_update_date+"\nPull down to refresh");
+                holder.binding.ureportLastUpdate.setText(context.getResources().getString(R.string.last_update)+": "+last_update_date+"\n"+context.getResources().getString(R.string.please_refresh));
             }
 
         }else{

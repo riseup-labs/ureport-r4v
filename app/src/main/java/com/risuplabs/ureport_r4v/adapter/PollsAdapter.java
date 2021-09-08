@@ -28,9 +28,8 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
     String pollDate;
     TextView summeryText;
 
-    public PollsAdapter(Context context, TextView summeryText) {
+    public PollsAdapter(Context context) {
         this.context = context;
-        this.summeryText = summeryText;
     }
 
     @Override
@@ -71,8 +70,6 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
         if (item.results_by_location != null) {
             setupLocation(item, binding.layoutLocation, context);
         }
-
-        setSummeryText(numSub, numSup);
 
     }
 
@@ -193,22 +190,6 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
     public void setPollDate(String pollDate) {
         this.pollDate = pollDate;
         notifyDataSetChanged();
-    }
-
-    public void setSummeryText(int numSub, int numSup) {
-        float responseRate = 0f;
-        DecimalFormat df = new DecimalFormat("#.00");
-
-        if (numSub > 0 && numSup > 0) {
-            responseRate = (float) numSub / ((float) numSup / 100);
-//            responseRate = Float.valueOf(df.format(responseRate));
-        }
-
-        summeryText.setText(
-                context.getString(R.string.v1_ureport_poll_summary)
-                        .replace("%sup", String.valueOf(numSub))
-                        .replace("%sub", String.valueOf(String.format("%.2f",responseRate)))
-        );
     }
 
 

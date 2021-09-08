@@ -1,6 +1,7 @@
 package com.risuplabs.ureport_r4v.utils;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,7 +15,7 @@ public class DateFormatUtils {
 
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'+06:00'");
-        SimpleDateFormat newFormatDate = new SimpleDateFormat("dd MMM, yyyy", Locale.getDefault());
+        SimpleDateFormat newFormatDate = new SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH);
 
         Date parseDate = dateFormat.parse(dateStr);
 
@@ -25,7 +26,7 @@ public class DateFormatUtils {
 
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:SS'+06:00'");
-        SimpleDateFormat newFormatDate = new SimpleDateFormat("dd MMM, yyyy", Locale.getDefault());
+        SimpleDateFormat newFormatDate = new SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH);
 
         Date parseDate = dateFormat.parse(dateStr);
 

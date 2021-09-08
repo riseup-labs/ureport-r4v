@@ -89,7 +89,7 @@
     <string name="empty_story">Não há histórias disponíveis. \ nArraste para baixo para atualizar ou toque em Tentar novamente.</string>
     <string name="empty_poll">Nenhum resultado de enquete está disponível. \ nArraste para baixo para atualizar ou toque em Tentar novamente.</string>
     <string name="select_your_location">Mudar localização</string>
-    <string name="response_rate">Taxa de resposta</string>
+    <string name="response_rate">TASA DE RESPUESTA</string>
     <string name="register">Registro</string>
     <string name="shelter_login">Login do abrigo</string>
     <string name="opinions">Opiniões</string>
@@ -110,4 +110,9 @@
     <string name="v1_ureport_out_of" translatable="false">%sub responderam de %sup perguntados</string>
     <string name="v1_ureport_poll_summary">Respostas: %sup, Taxa de resposta: %sub %</string>
     <string name="v1_ureport_other" translatable="false">Outro</string>
+    <string name="respondents">RESPONDEDORES</string>
+    <string name="response_rate_small">Tasa de respuesta</string>
+    <string name="last_update">Última actualización</string>
+    <string name="respondents_small">Respondedores</string>
+    <string name="surveyed">Encuestados</string>
 </resources>

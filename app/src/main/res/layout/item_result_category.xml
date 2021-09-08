@@ -31,7 +31,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal|top"
-                android:text="Last updated: 07 May, 2020 02:30 PM\nPull down to refresh"
                 android:textAlignment="center"
                 android:textSize="12sp"
                 android:visibility="gone"

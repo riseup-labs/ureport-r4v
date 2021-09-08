@@ -164,8 +164,8 @@
     <string name="hide">Hide</string>
     <string name="empty_story">No stories are available. \nPlease pull down to refresh or tap Retry.</string>
     <string name="empty_poll">No poll results are available. \nPlease pull down to refresh or tap Retry.</string>
-    <string name="select_your_location">Change location</string>
-    <string name="response_rate">Response Rate</string>
+    <string name="select_your_location">Change Location</string>
+    <string name="response_rate">RESPONSE RATE</string>
     <string name="register">Register</string>
     <string name="shelter_login">Shelter Login</string>
     <string name="opinions">Opinions</string>
@@ -177,5 +177,10 @@
     <string name="select">Select</string>
     <string name="your_location">your location</string>
     <string name="submit_your_response">Submit your response</string>
+    <string name="respondents">RESPONDENTS</string>
+    <string name="response_rate_small">Response Rate</string>
+    <string name="last_update">Last update</string>
+    <string name="respondents_small">Respondents</string>
+    <string name="surveyed">Surveyed</string>
 
 </resources>

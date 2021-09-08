@@ -50,7 +50,7 @@ public class ChatBubbleView extends CachedLinearLayout {
             tv.setBackground(getResources().getDrawable(R.drawable.chat_bubble_out));
         }
 
-        addView(getSpacer(), inbound ? 1 : 0);
+        addView(getSpacer(), inbound ? 0 : 1);
     }
 
     public void setThumbnail(Bitmap image, String url, int type) {
@@ -80,7 +80,6 @@ public class ChatBubbleView extends CachedLinearLayout {
             } else {
                 iconView.setText(R.string.icon_place);
             }
-
             iconView.setIconColor(R.color.primary_lightest);
             getView(R.id.media_view).setBackground(null);
             final float scale = getContext().getResources().getDisplayMetrics().density;

@@ -115,12 +115,15 @@ public abstract class BaseSurveyorActivity<T extends ViewDataBinding> extends Pe
             Logger.e("Unable to clear submissions", e);
         }
 
-        Intent intent = new Intent(this, LoginChooserActivity.class);
-
-        if (errorResId != -1) {
-            intent.putExtra(SurveyorIntent.EXTRA_ERROR, getString(errorResId));
+        if(errorResId == -1) {
+            Intent intent = new Intent(this, LoginChooserActivity.class);
+            intent.putExtra(IntentConstant.COMING_FROM,"opinions");
+            startActivity(intent);
+        }else if(errorResId == -2) {
+            Intent intent = new Intent(this, LoginChooserActivity.class);
+            intent.putExtra(IntentConstant.COMING_FROM,"settings");
+            startActivity(intent);
         }
-        startActivity(intent);
     }
 
     public void showRationaleDialog(int body, Permiso.IOnRationaleProvided callback) {

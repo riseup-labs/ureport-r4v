@@ -57,7 +57,7 @@ public class StoryListAdapter extends BaseRecyclerViewAdapter<ModelStory, ItemSt
             }else{
                 holder.binding.rootLayout.setVisibility(View.GONE);
                 holder.binding.lastUpdate.setVisibility(View.VISIBLE);
-                holder.binding.lastUpdate.setText("Last update: "+last_update_date+"\nPull down to refresh");
+                holder.binding.lastUpdate.setText(context.getResources().getString(R.string.last_update)+": "+last_update_date+"\n"+context.getResources().getString(R.string.please_refresh));
             }
         } else{
             holder.binding.rootLayout.setVisibility(View.VISIBLE);
@@ -90,6 +90,12 @@ public class StoryListAdapter extends BaseRecyclerViewAdapter<ModelStory, ItemSt
                 public void onClick(View v) {
                     Bundle b = new Bundle();
                     b.putInt(IntentConstant.CONTENT_ID, items.get(position-1).id);
+                    b.putString(IntentConstant.TITLE, items.get(position-1).title);
+                    try {
+                        b.putString(IntentConstant.STORY_DATE, DateFormatUtils.getDate(items.get(position-1).created_on));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                     Navigator.navigateWithBundle(context, StoryDetailsActivity.class, IntentConstant.INTENT_DATA, b);
                 }
             });

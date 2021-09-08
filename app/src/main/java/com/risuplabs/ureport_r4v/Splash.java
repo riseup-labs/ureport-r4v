@@ -37,7 +37,7 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
 
         AndroidRemoteDebugger.init(
                 new AndroidRemoteDebugger.Builder(this)
-                        .enabled(true)
+                        .enabled(false)
                         .enableDuplicateLogging()
                         .excludeUncaughtException()
                         .port(8082)

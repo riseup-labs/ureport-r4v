@@ -4,6 +4,9 @@ public class IntentConstant {
 
     public static final String INTENT_DATA = "intent_data";
     public static final String CONTENT_ID = "content_id";
+    public static final String TITLE = "title";
+    public static final String STORY_DATE = "date";
+    public static final String POLL_DATE = "date";
     public static final String CATEGORY_NAME = "category_name";
     public static final String POLL_ID = "poll_id";
     public static final String ACTIVITY_NAME = "activity_name";

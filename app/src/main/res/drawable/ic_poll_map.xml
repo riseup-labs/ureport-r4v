@@ -8,7 +8,7 @@
     <group>
         <path
             android:name="Bolivia"
-            android:fillColor="#6EC9C1"
+            android:fillColor="#b1b1b1"
             android:fillAlpha="0.7"
             android:fillType="nonZero"
             android:strokeColor="#ffffff"
@@ -19,7 +19,7 @@
 
         <path
             android:name="Brasil"
-            android:fillColor="#6EC9C1"
+            android:fillColor="#b1b1b1"
             android:fillAlpha="0.7"
             android:fillType="nonZero"
             android:strokeColor="#ffffff"
@@ -31,7 +31,7 @@
         <path
             android:name="Ecuador"
             android:fillAlpha="0.7"
-            android:fillColor="#6EC9C1"
+            android:fillColor="#b1b1b1"
             android:fillType="nonZero"
             android:pathData="M118 63L119 64L118 63zM119 63L119 63zM118 63L118 63zM120 63L120 63zM120 62L119 63L120 62zM119 59L119 60zM120 58L121 59L119 59L119 61L118 59L120 58zM120 58L120 58zM122 57L122 57zM122 57L122 57zM120 57L119 58L120 57zM121 57L120 57zM121 57L121 57zM120 56L120 56zM121 57L121 56zM120 56L120 56zM119 57L120 56zM120 56L120 56zM121 56L120 56zM121 55L121 57L121 55zM121 55L121 55zM50 48L49 49zM44 48L44 48zM47 45L47 45zM52 44L51 45L52 44zM42 43L42 43zM46 42L46 44L44 44L43 43L45 42zM45 42L45 42zM37 41L35 41L37 41zM42 40L43 41L41 40zM38 38L42 44L40 46L36 45L40 43L36 39L37 38zM44 36L44 36zM120 36L120 36zM120 34L120 35zM42 34L42 34zM127 30L127 30zM127 30L127 30zM128 29L128 29zM128 29L128 29zM129 28L139 36L149 36L150 38L154 39L153 42L155 46L153 46L151 52L147 56L136 60L132 64L130 72L126 75L122 71L118 71L118 69L116 68L119 67L118 64L121 62L122 57L121 54L118 57L118 59L115 56L113 56L115 54L113 46L115 46L117 43L118 44L116 42L120 38L119 33L127 30L128 28z"
             android:strokeWidth="1"

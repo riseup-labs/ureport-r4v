@@ -12,13 +12,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.results.polls.PollsActivity">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guide_out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="1.02" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/uCard"
             android:layout_width="match_parent"

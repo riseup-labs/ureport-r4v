@@ -28,6 +28,8 @@
                 android:id="@+id/Female"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                style="@style/boldText"
                 android:text="@string/v1_ureport_female" />
 
             <LinearLayout
@@ -193,6 +195,7 @@
                         android:id="@+id/textViewLabel3f"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:layout_weight="1"
                         android:maxLines="1"
                         android:text="2-50"
@@ -328,13 +331,14 @@
 
             <LinearLayout
                 android:id="@+id/border7"
-
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorlightGrey"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical"/>
 
             <TextView
+                android:textStyle="bold"
+                style="@style/boldText"
                 android:id="@+id/male"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -568,6 +572,7 @@
                         android:layout_weight="1"
                         android:maxLines="1"
                         android:text="2-50"
+                        android:layout_marginLeft="5dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/rounded4m"
                         app:layout_constraintStart_toStartOf="parent"
@@ -626,7 +631,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:maxLines="1"
                         android:text="2-50"
                         app:layout_constraintBottom_toBottomOf="parent"

@@ -2,6 +2,7 @@ package com.risuplabs.ureport_r4v.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,11 @@ import com.risuplabs.ureport_r4v.databinding.ItemPollTitleBinding;
 import com.risuplabs.ureport_r4v.databinding.ItemResultCategoryBinding;
 import com.risuplabs.ureport_r4v.model.results.ModelPolls;
 import com.risuplabs.ureport_r4v.ui.results.polls.PollsActivity;
+import com.risuplabs.ureport_r4v.utils.DateFormatUtils;
 import com.risuplabs.ureport_r4v.utils.IntentConstant;
 import com.risuplabs.ureport_r4v.utils.Navigator;
+
+import java.text.ParseException;
 
 public class PollTitlesAdapter extends BaseRecyclerViewAdapter<ModelPolls, ItemPollTitleBinding> {
 
@@ -37,6 +41,7 @@ public class PollTitlesAdapter extends BaseRecyclerViewAdapter<ModelPolls, ItemP
                 Bundle b = new Bundle();
                 b.putInt(IntentConstant.POLL_ID,items.get(position).id);
                 b.putString(IntentConstant.ACTIVITY_NAME,items.get(position).title);
+                b.putString(IntentConstant.CATEGORY_NAME,items.get(position).category_tag);
                 Navigator.navigateWithBundle(context, PollsActivity.class,IntentConstant.INTENT_DATA,b);
             }
         });

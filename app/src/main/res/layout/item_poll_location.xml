@@ -24,6 +24,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginBottom="5dp"
+                android:textStyle="bold"
+                style="@style/boldText"
                 android:text="@string/v1_ureport_participation_level" />
 
             <View
@@ -54,7 +56,7 @@
                         android:id="@+id/textViewResponseInZone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/response_rate" />
+                        android:text="@string/response_rate_small" />
 
                 </LinearLayout>
 
@@ -87,6 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                style="@style/boldText"
                 android:text="@string/v1_ureport_results" />
 
             <View

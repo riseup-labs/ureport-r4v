@@ -31,6 +31,7 @@ import com.risuplabs.ureport_r4v.ui.opinions.flow_list.FlowListActivity;
 import com.risuplabs.ureport_r4v.ui.results.result_list.ResultListActivity;
 import com.risuplabs.ureport_r4v.ui.settings.SettingsActivity;
 import com.risuplabs.ureport_r4v.utils.ConnectivityCheck;
+import com.risuplabs.ureport_r4v.utils.IntentConstant;
 import com.risuplabs.ureport_r4v.utils.pref_manager.SurveyorPreferences;
 import com.risuplabs.ureport_r4v.utils.ui.ViewCache;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
@@ -62,6 +63,7 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityMainBindin
     ConstraintLayout selected_button = null, previous_button = null;
     private Org org;
     String orgUUID = "";
+    String from = "";
     ViewCache cache;
 
     @Override
@@ -71,7 +73,6 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityMainBindin
 
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
-
         initDashboard();
         cache = getViewCache();
         orgUUID = prefManager.getString(SurveyorPreferences.SAVED_UUID);
@@ -163,6 +164,14 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityMainBindin
         scrollAdapter = new CustomScrollAdapter(dashboardLists);
         scrollAdapter.setOnItemClickListener(this);
         binding.scrollView.setAdapter(scrollAdapter);
+
+        if(getIntent().getStringExtra(IntentConstant.COMING_FROM) != null){
+            from = getIntent().getStringExtra(IntentConstant.COMING_FROM);
+            if(from.equals("opinions")){
+                binding.scrollView.scrollToPosition(2);
+                setBottomBar(2);
+            }
+        }
 
         binding.scrollView.setItemTransformer(new ScaleTransformer.Builder()
                 .setMaxScale(1.05f)

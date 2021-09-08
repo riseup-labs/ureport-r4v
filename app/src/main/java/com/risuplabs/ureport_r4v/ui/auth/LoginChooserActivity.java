@@ -18,6 +18,7 @@ import com.risuplabs.ureport_r4v.surveyor.net.responses.Token;
 import com.risuplabs.ureport_r4v.surveyor.task.FetchOrgsTask;
 import com.risuplabs.ureport_r4v.ui.dashboard.DashBoardActivity;
 import com.risuplabs.ureport_r4v.utils.AppConstant;
+import com.risuplabs.ureport_r4v.utils.IntentConstant;
 import com.risuplabs.ureport_r4v.utils.Navigator;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialog;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialogInterface;
@@ -32,6 +33,8 @@ import static com.risuplabs.ureport_r4v.utils.StaticMethods.playNotification;
 
 public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChooserBinding> {
 
+    String from = "";
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_login_chooser;
@@ -39,6 +42,10 @@ public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChoo
 
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
+
+        if(getIntent().getStringExtra(IntentConstant.COMING_FROM) != null){
+            from = getIntent().getStringExtra(IntentConstant.COMING_FROM);
+        }
 
         Permiso.getInstance().requestPermissions(new Permiso.IOnPermissionResult() {
             @Override
@@ -66,9 +73,14 @@ public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChoo
         binding.skipLogin.setOnClickListener(v -> {
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes, v);
             overridePendingTransition(0,0);
-            Intent intent = new Intent(LoginChooserActivity.this, DashBoardActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
+            if(from.equals("opinions")){
+                Intent intent = new Intent(LoginChooserActivity.this, DashBoardActivity.class);
+                intent.putExtra(IntentConstant.COMING_FROM,from);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }else{
+                finish();
+            }
             overridePendingTransition(0,0);
         });
 
@@ -124,8 +136,11 @@ public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChoo
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this,DashBoardActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        if(from.equals("opinions")){
+            Intent intent = new Intent(this,DashBoardActivity.class);
+            intent.putExtra(IntentConstant.COMING_FROM,from);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
     }
 }

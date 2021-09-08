@@ -49,10 +49,10 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
         binding.layerLogout.setOnClickListener(v -> {
             playNotification(prefManager, this, R.raw.button_click_yes, v);
             if (!isLoggedIn()) {
-                logout();
+                logout(-2);
             } else {
-                logout();
-                finish();
+                logout(-3);
+                binding.textLogout.setText(R.string.login);
             }
 
         });
@@ -288,5 +288,9 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        reload();
+    }
 }
