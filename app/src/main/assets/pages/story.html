@@ -4,10 +4,10 @@
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../font-my/font.css" rel="stylesheet"/>
-    <link href="../css/story.css" rel="stylesheet"/>
+    <link href="../font-my/font.css" rel="stylesheet" />
+    <link href="../css/story.css" rel="stylesheet" />
     <script src="../js/vue.js" type="text/javascript"></script>
-    <link href="../css/lc_switch.css" rel="stylesheet"/>
+    <link href="../css/lc_switch.css" rel="stylesheet" />
     <script src="../js/jquery.js" type="text/javascript"></script>
     <script src="../js/lc_switch.js" type="text/javascript"></script>
 
@@ -24,6 +24,16 @@ body {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
 }
+
+.tbox img{
+  width: 80% !important;
+  margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
 .zoom-holder {
     position: fixed;
     left: 0px;
@@ -55,8 +65,7 @@ body {
 .lcs_off .lcs_cursor {
     background-image: linear-gradient(#21F619, #218F00);
 }
-
-    </style>
+</style>
 </head>
 <body>
 <br>
@@ -92,33 +101,28 @@ body {
         <div id="sp_0" class="tbox title" v-on:click="textToSpeech(0)">#TitleData</div>
         <hr>
 
-        <!--        <div v-if="video_path != '' && video_path != '::video' + '_' + 'path::'">-->
-        <!--            <br>-->
-        <!--            <video preload="metadata" width="95%" poster="#ImageFile" controls>-->
-        <!--                <source v-bind:src="video_path">-->
-        <!--            </video>-->
-        <!--        </div>-->
-        <!--        <div v-else>-->
-        <!--            <div class="image_box"><img src="#ImageFile"></div>-->
-        <!--        </div>-->
+        <div v-if="video_path != '' && video_path != '::video' + '_' + 'path::'">
+            <br>
+            <video preload="metadata" width="95%" poster="#ImageFile" controls>
+                <source v-bind:src="video_path">
+            </video>
+        </div>
+        <div v-else>
+            <div class="image_box"><img src="#ImageFile"></div>
+        </div>
 
         <div id="sourceText" style="display: none;">#TextData</div>
         <div class="textbox" v-bind:style="{ fontSize: font_size + 'px' }">
             <span v-for="(item,index) in line_array">
-                <span class="tbox" :id="'sp_' + index" v-if="index != 0" v-html="item"
-                      v-on:click="textToSpeech(index)"></span><span v-if="index != 0">{{line_spliter}}</span>
+                <span class="tbox" :id="'sp_' + index" v-if="index != 0" v-html="item" v-on:click="textToSpeech(index)"></span><span v-if="index != 0">{{line_spliter}}</span>
             </span>
-
-
         </div>
     </div>
     <div class="zoom-holder">
         &nbsp;&nbsp;&nbsp;
-        <img src="../images/v1_story_zoom_in.png" v-on:click="zoomIn"
-             v-bind:style="{ opacity: zoomInButton }">
+        <img src="../images/v1_story_zoom_in.png" v-on:click="zoomIn" v-bind:style="{ opacity: zoomInButton }">
         &nbsp;&nbsp;&nbsp;
-        <img src="../images/v1_story_zoom_out.png" v-on:click="zoomOut"
-             v-bind:style="{ opacity: zoomOutButton }">
+        <img src="../images/v1_story_zoom_out.png" v-on:click="zoomOut" v-bind:style="{ opacity: zoomOutButton }">
     </div>
 </div>
 <br><br>
@@ -163,11 +167,15 @@ var vueApp = new Vue({
             this.last_index = index;
 
             // Set Background Color for 1 Second
-            document.getElementById("sp_"+vueApp.last_index).style.backgroundColor = "#a5d6a7";
-            setTimeout(function(){ 
+            document.getElementById("sp_"+vueApp.last_index).style.backgroundColor = "#ffecb3";
+            document.getElementById("sp_"+vueApp.last_index).scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+            });
+            setTimeout(function(){
                 document.getElementById("sp_"+vueApp.last_index).style.backgroundColor = "";
                 vueApp.click_locked = 0;
-            }, 1500);
+            }, 1000);
 
             this.click_locked = 1;
 
@@ -213,9 +221,13 @@ var vueApp = new Vue({
                     SurveyorStory.ttsData(textData);
                 }
                 this.last_index = index;
+                document.getElementById("sp_"+vueApp.last_index).style.backgroundColor = "#ffecb3";
+                document.getElementById("sp_"+vueApp.last_index).scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+                });
 
-                document.getElementById("sp_"+vueApp.last_index).style.backgroundColor = "#a5d6a7";
-                setTimeout(function(){ 
+                setTimeout(function(){
                     document.getElementById("sp_"+vueApp.last_index).style.backgroundColor = "";
                 }, 1500);
 
@@ -237,11 +249,11 @@ var vueApp = new Vue({
         this.activate();
 
         // Langauge Change Button
-        setTimeout(function(){ 
+        setTimeout(function(){
             $('#change_lang').lc_switch("English", vueApp.lang_2_text);
             startChecker();
 
-            setTimeout(function(){ 
+            setTimeout(function(){
                 if(vueApp.current_lang == "en"){
                     $('#change_lang').lcs_off();
                 }else{
@@ -266,7 +278,7 @@ function startChecker() {
             // Language Changed : Trigger Native
             console.log("Last: " + last_lang);
             console.log("Lang: " + lang_code);
-            
+
 
             if(skipFirst == true && lang_code != "" && last_lang == ""){
                 last_lang = $('input[name=change_lang]:checked').val() ? vueApp.lang_2_key : "English";
@@ -277,6 +289,8 @@ function startChecker() {
             // Play Sound
             document.getElementById("audio_change").play();
 
+            // Do Stuff
+            if(lang_code == "English"){
                 vueApp.storyTitle = document.getElementById("title_lang_1").innerHTML;
                 document.getElementById("sp_0").innerHTML = document.getElementById("title_lang_1").innerHTML;
                 document.getElementById("sourceText").innerHTML = document.getElementById("body_lang_1").innerHTML;
@@ -284,8 +298,17 @@ function startChecker() {
                 if(typeof SurveyorStory !== 'undefined'){
                     SurveyorStory.reloadLang("en");
                 }
+            }else{
+                vueApp.storyTitle = document.getElementById("title_lang_2").innerHTML;
+                document.getElementById("sp_0").innerHTML = document.getElementById("title_lang_2").innerHTML;
+                document.getElementById("sourceText").innerHTML = document.getElementById("body_lang_2").innerHTML;
+                vueApp.line_spliter = "।";
+                if(typeof SurveyorStory !== 'undefined'){
+                    SurveyorStory.reloadLang("bn");
+                }
+            }
 
-            setTimeout(function(){ 
+            setTimeout(function(){
                 vueApp.activate();
             }, 250);
 
@@ -293,7 +316,6 @@ function startChecker() {
         }
     }, 100);
 }
-
 
 </script>
 

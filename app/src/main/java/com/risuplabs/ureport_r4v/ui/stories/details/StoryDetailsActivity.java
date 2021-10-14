@@ -3,6 +3,7 @@ package com.risuplabs.ureport_r4v.ui.stories.details;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
@@ -60,6 +61,7 @@ public class StoryDetailsActivity extends AppCompatActivity {
 
     WebView webStory;
     String imagePath = "";
+    String image_name = "";
     ImageView speechButton;
     LottieAnimationView speechButtonAnim;
 
@@ -78,74 +80,6 @@ public class StoryDetailsActivity extends AppCompatActivity {
 
     SharedPrefManager prefManager;
 
-
-//    @Override
-//    public int getLayoutId() {
-//        return R.layout.activity_story_details;
-//    }
-
-//    @Override
-//    public void onViewReady(@Nullable Bundle savedInstanceState) {
-//
-//        Bundle b = new Bundle();
-//        if (getIntent().getBundleExtra(IntentConstant.INTENT_DATA) != null) {
-//            b = getIntent().getBundleExtra(IntentConstant.INTENT_DATA);
-//            content_id = b.getInt(IntentConstant.CONTENT_ID);
-//        }
-//        content_file_name = prefManager.getInt(PrefKeys.ORG_ID, 37) + "_" + content_id;
-//
-//        binding.webStory.setWebChromeClient(new ChromeClient());
-//
-//        binding.webStory.setBackgroundColor(Color.TRANSPARENT);
-//        binding.webStory.getSettings().setDomStorageEnabled(true);
-//        binding.webStory.getSettings().setJavaScriptEnabled(true);
-//        binding.webStory.getSettings().setAllowFileAccess(true);
-//        WebSettings settings = binding.webStory.getSettings();
-//        settings.setDefaultTextEncodingName("utf-8");
-//
-//
-//
-//
-//        Handler handler = new Handler();
-//        Runnable r = () -> {
-//            String english_title = "";
-//            final String[] english_body = {""};
-//            String content = StorageUtils.getContent(StoryDetailsActivity.this, content_file_name);
-//            data = Html.fromHtml(content).toString();
-//            data = data.replace("￼","");
-//            data = data.replace("\n\n\n\n\n","\n");
-//            data = data.replace("\n\n\n\n","\n");
-//            data = data.replace("\n\n\n","\n");
-//            data = data.replace("\n\n","\n");
-//            Log.d(TAG, "StoryData: " + data);
-//            handler.post(new Runnable() {
-//                public void run() {
-//
-//                    String WebContent = LoadData("pages/story.html");
-//                    WebContent = WebContent.replace("#DateData", "Date of the story");
-////        WebContent = WebContent.replace("#ImageFile", imagePath);
-//
-//                    WebContent = WebContent.replace("#TitleData", "Story Title");
-//                    WebContent = WebContent.replace("#TextData", content.replace("\r\n", "<br>"));
-//
-//
-//
-//                    english_body[0] = english_body[0] + "<br>" + content.replace("\r\n", "<br>");
-//
-//                }
-//            });
-//        };
-//
-//
-//        Thread t = new Thread(r);
-//        t.start();
-//
-//        binding.backButton.setOnClickListener(v -> {
-//            onBackPressed();
-//        });
-//
-//    }
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story_details);
@@ -157,7 +91,10 @@ public class StoryDetailsActivity extends AppCompatActivity {
             content_id = b.getInt(IntentConstant.CONTENT_ID);
             title = b.getString(IntentConstant.TITLE);
             date = b.getString(IntentConstant.STORY_DATE);
+            this.image_name = b.getString(IntentConstant.IMAGE_NAME);
         }
+
+        getImagePath();
 
         prefManager = new SharedPrefManager(this);
 
@@ -208,8 +145,17 @@ public class StoryDetailsActivity extends AppCompatActivity {
         Handler handler = new Handler();
         Runnable r = () -> {
             content = StorageUtils.getContent(StoryDetailsActivity.this, content_file_name);
-
-//            String pattern = "data:(?<mime>[\\w/\\-.]+);(?<encoding>\\w+),(?<data>.*)";
+            content = content.replaceAll("(?s)style=\".*?\"", "");
+            content = content.replaceAll("(?s)href=\".*?\"", "");
+            content = content.replaceAll("(?s)<iframe.*?</iframe>", "");
+            content = content.replaceAll("(?s)<p.*?>", "");
+            content = content.replaceAll("<p>", "");
+            content = content.replaceAll("</p>", "");
+            content = content.replaceAll("</p>", "");
+            content = content.replaceAll("<s>", "");
+            content = content.replaceAll("</s>", "");
+            content = content.replaceAll("</s>", "");
+            content = content.replaceAll(".png", "");
 
 
             data = Html.fromHtml(content).toString();
@@ -224,7 +170,7 @@ public class StoryDetailsActivity extends AppCompatActivity {
                     WebContent = WebContent.replace("#DateData", date);
                     WebContent = WebContent.replace("#ImageFile", imagePath);
                     WebContent = WebContent.replace("#TitleData", title);
-                    WebContent = WebContent.replace("#TextData", data);
+                    WebContent = WebContent.replace("#TextData", content);
                     WebContent = WebContent.replace("::current_lang::", "en");
                     WebContent = WebContent.replace("::spliter::", ".");
                     webStory.loadDataWithBaseURL("file:///android_asset/pages/story.html", WebContent, "text/html; charset=utf-8", "UTF-8", null);
@@ -245,6 +191,14 @@ public class StoryDetailsActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_tts_lottie).setOnClickListener(view -> toggleSound());
 
+    }
+
+    public void getImagePath() {
+        File file = new File(new ContextWrapper(this).getDir("Images", 0), this.image_name);
+        this.imagePath = file.getAbsolutePath();
+        if (!file.exists()) {
+            this.imagePath = "file:///android_asset/images/no-image.png";
+        }
     }
 
     public void reloadTTS() {

@@ -12,5 +12,6 @@ public class IntentConstant {
     public static final String ACTIVITY_NAME = "activity_name";
     public static final String SUBMISSION_INTENT = "submission_intent";
     public static final String COMING_FROM = "from";
+    public static final String IMAGE_NAME = "image_name";
 
 }

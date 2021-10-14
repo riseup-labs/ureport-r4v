@@ -91,6 +91,7 @@ public class StoryListAdapter extends BaseRecyclerViewAdapter<ModelStory, ItemSt
                     Bundle b = new Bundle();
                     b.putInt(IntentConstant.CONTENT_ID, items.get(position-1).id);
                     b.putString(IntentConstant.TITLE, items.get(position-1).title);
+                    b.putString(IntentConstant.IMAGE_NAME, "org_" + StoryListAdapter.this.org_id + "_content_image_" + items.get(position - 1).id + ".jpg");
                     try {
                         b.putString(IntentConstant.STORY_DATE, DateFormatUtils.getDate(items.get(position-1).created_on));
                     } catch (ParseException e) {
