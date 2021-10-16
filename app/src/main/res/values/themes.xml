@@ -32,7 +32,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/green3</item>
         <item name="colorAccent">@color/primary_lightest</item>
-        <item name="fontFamily">@font/dosis_semibold</item>
+        <item name="fontFamily">@font/dosis_regular</item>
     </style>
 
     <style name="boldText" parent="TextAppearance.AppCompat">

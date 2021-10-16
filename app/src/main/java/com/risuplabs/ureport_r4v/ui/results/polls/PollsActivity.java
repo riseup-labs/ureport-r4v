@@ -13,7 +13,6 @@ import com.risuplabs.ureport_r4v.R;
 import com.risuplabs.ureport_r4v.adapter.PollsAdapter;
 import com.risuplabs.ureport_r4v.base.BaseActivity;
 import com.risuplabs.ureport_r4v.databinding.ActivityPollsNewBinding;
-import com.risuplabs.ureport_r4v.databinding.ItemPollLocationBinding;
 import com.risuplabs.ureport_r4v.model.results.ModelResultsByLocation;
 import com.risuplabs.ureport_r4v.ui.results.ResultsViewModel;
 import com.risuplabs.ureport_r4v.utils.DateFormatUtils;

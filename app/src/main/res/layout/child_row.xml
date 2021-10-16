@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:id="@+id/icon"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_baseline_arrow_right"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/icon"
+        android:text="United States Of America"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+</RelativeLayout>

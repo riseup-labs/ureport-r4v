@@ -15,7 +15,9 @@ import com.risuplabs.ureport_r4v.model.story.ModelStory;
 import com.risuplabs.ureport_r4v.model.story.ModelStoryImage;
 import com.risuplabs.ureport_r4v.network.data.ApiConstants;
 import com.risuplabs.ureport_r4v.ui.stories.StoryViewModel;
+import com.risuplabs.ureport_r4v.ui.stories.search.StorySearchActivity;
 import com.risuplabs.ureport_r4v.utils.ConnectivityCheck;
+import com.risuplabs.ureport_r4v.utils.Navigator;
 import com.risuplabs.ureport_r4v.utils.ProgressData;
 import com.risuplabs.ureport_r4v.utils.ImageDownloader;
 import com.risuplabs.ureport_r4v.utils.StaticMethods;
@@ -78,6 +80,10 @@ public class StoriesListFragment extends BaseFragment<FragmentStoriesListBinding
 
         binding.btnHide.setOnClickListener(v->{
             gone(binding.noInternetLayout);
+        });
+
+        binding.searchLayout.setOnClickListener(v->{
+            Navigator.navigate(getContext(), StorySearchActivity.class);
         });
 
     }

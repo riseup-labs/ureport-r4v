@@ -36,7 +36,7 @@ public class StoryListAdapter extends BaseRecyclerViewAdapter<ModelStory, ItemSt
         return R.layout.item_stories;
     }
 
-    public StoryListAdapter(LifecycleOwner owner,Context context,int org_id) {
+    public StoryListAdapter(LifecycleOwner owner, Context context, int org_id) {
         this.context = context;
         this.owner = owner;
         this.org_id = org_id;
@@ -47,64 +47,51 @@ public class StoryListAdapter extends BaseRecyclerViewAdapter<ModelStory, ItemSt
 
         prefManager = new SharedPrefManager(context);
         downloader = new ImageDownloader();
-
-        if(position == 0){
-            String tag =PrefKeys.LAST_LOCAL_STORY_UPDATE_TIME+org_id;
-            String last_update_date = prefManager.getString(tag);
-            if(last_update_date.equals("")){
-                holder.binding.rootLayout.setVisibility(View.GONE);
-                holder.binding.lastUpdate.setVisibility(View.GONE);
-            }else{
-                holder.binding.rootLayout.setVisibility(View.GONE);
-                holder.binding.lastUpdate.setVisibility(View.VISIBLE);
-                holder.binding.lastUpdate.setText(context.getResources().getString(R.string.last_update)+": "+last_update_date+"\n"+context.getResources().getString(R.string.please_refresh));
-            }
-        } else{
-            holder.binding.rootLayout.setVisibility(View.VISIBLE);
-            holder.binding.lastUpdate.setVisibility(View.GONE);
-            holder.binding.storyTitle.setText(items.get(position-1).title);
-            holder.binding.summery.setText(items.get(position-1).summary);
+        holder.binding.rootLayout.setVisibility(View.VISIBLE);
+        holder.binding.lastUpdate.setVisibility(View.GONE);
+        holder.binding.storyTitle.setText(items.get(position).title);
+        holder.binding.summery.setText(items.get(position).summary);
 //            holder.binding.storyContentImage.setImageURI(null);
-            if (items.get(position-1).images.size() > 0) {
-                String filename = "org_"+org_id+"_content_image_" + items.get(position-1).id+ ".jpg";
-                downloader.getImageUri(context,filename).observe(owner,uri ->{
-                    if(uri != null){
-                        loadImage(context,uri,holder.binding.storyContentImage);
-                    }else{
-                        holder.binding.storyContentImage.setImageResource(R.drawable.no_image);
-                    }
-                });
-            }else{
-                holder.binding.storyContentImage.setImageResource(R.drawable.no_image);
-            }
-
-            try {
-                holder.binding.storyDate.setText(DateFormatUtils.getDate(items.get(position-1).created_on));
-            } catch (ParseException e) {
-                e.printStackTrace();
-                Log.d(TAG, "onBindViewHolder: " + e.getMessage());
-            }
-
-            holder.binding.storySeeMore.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Bundle b = new Bundle();
-                    b.putInt(IntentConstant.CONTENT_ID, items.get(position-1).id);
-                    b.putString(IntentConstant.TITLE, items.get(position-1).title);
-                    b.putString(IntentConstant.IMAGE_NAME, "org_" + StoryListAdapter.this.org_id + "_content_image_" + items.get(position - 1).id + ".jpg");
-                    try {
-                        b.putString(IntentConstant.STORY_DATE, DateFormatUtils.getDate(items.get(position-1).created_on));
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    Navigator.navigateWithBundle(context, StoryDetailsActivity.class, IntentConstant.INTENT_DATA, b);
+        if (items.get(position).images.size() > 0) {
+            String filename = "org_" + org_id + "_content_image_" + items.get(position).id + ".jpg";
+            downloader.getImageUri(context, filename).observe(owner, uri -> {
+                if (uri != null) {
+                    loadImage(context, uri, holder.binding.storyContentImage);
+                } else {
+                    holder.binding.storyContentImage.setImageResource(R.drawable.no_image);
                 }
             });
+        } else {
+            holder.binding.storyContentImage.setImageResource(R.drawable.no_image);
         }
+
+        try {
+            holder.binding.storyDate.setText(DateFormatUtils.getDate(items.get(position).created_on));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.d(TAG, "onBindViewHolder: " + e.getMessage());
+        }
+
+        holder.binding.storySeeMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle b = new Bundle();
+                b.putInt(IntentConstant.CONTENT_ID, items.get(position).id);
+                b.putString(IntentConstant.TITLE, items.get(position).title);
+                b.putString(IntentConstant.IMAGE_NAME, "org_" + StoryListAdapter.this.org_id + "_content_image_" + items.get(position).id + ".jpg");
+                try {
+                    b.putString(IntentConstant.STORY_DATE, DateFormatUtils.getDate(items.get(position).created_on));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Navigator.navigateWithBundle(context, StoryDetailsActivity.class, IntentConstant.INTENT_DATA, b);
+            }
+        });
+
     }
 
     public int getItemCount() {
-        return items.size()+1;
+        return items.size();
     }
 
 }

@@ -17,6 +17,7 @@ import com.risuplabs.ureport_r4v.ui.results.result_list.ResultListActivity;
 import com.risuplabs.ureport_r4v.ui.settings.SettingsActivity;
 import com.risuplabs.ureport_r4v.ui.stories.details.StoryDetailsActivity;
 import com.risuplabs.ureport_r4v.ui.stories.list.StoriesListActivity;
+import com.risuplabs.ureport_r4v.ui.stories.search.StorySearchActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -74,6 +75,9 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract RegistrationActivity contributesRegistrationActivity();
+
+    @ContributesAndroidInjector
+    abstract StorySearchActivity contributesStorySearchActivity();
 
 
 
