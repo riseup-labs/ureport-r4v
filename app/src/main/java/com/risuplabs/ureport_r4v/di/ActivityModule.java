@@ -14,6 +14,7 @@ import com.risuplabs.ureport_r4v.ui.registration.RegistrationActivity;
 import com.risuplabs.ureport_r4v.ui.results.poll_title_list.PollTitlesActivity;
 import com.risuplabs.ureport_r4v.ui.results.polls.PollsActivity;
 import com.risuplabs.ureport_r4v.ui.results.result_list.ResultListActivity;
+import com.risuplabs.ureport_r4v.ui.results.search.ResultsSearchActivity;
 import com.risuplabs.ureport_r4v.ui.settings.SettingsActivity;
 import com.risuplabs.ureport_r4v.ui.stories.details.StoryDetailsActivity;
 import com.risuplabs.ureport_r4v.ui.stories.list.StoriesListActivity;
@@ -78,6 +79,9 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract StorySearchActivity contributesStorySearchActivity();
+
+    @ContributesAndroidInjector
+    abstract ResultsSearchActivity contributesResultsSearchActivity();
 
 
 

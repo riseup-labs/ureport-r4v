@@ -28,6 +28,7 @@ import com.risuplabs.ureport_r4v.surveyor.data.Org;
 import com.risuplabs.ureport_r4v.surveyor.data.Submission;
 import com.risuplabs.ureport_r4v.surveyor.task.SubmitSubmissionsTask;
 import com.risuplabs.ureport_r4v.ui.opinions.flow_list.FlowListActivity;
+import com.risuplabs.ureport_r4v.ui.results.polls.PollsActivity;
 import com.risuplabs.ureport_r4v.ui.results.result_list.ResultListActivity;
 import com.risuplabs.ureport_r4v.ui.settings.SettingsActivity;
 import com.risuplabs.ureport_r4v.utils.ConnectivityCheck;
@@ -125,7 +126,7 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityMainBindin
                 intent = new Intent(this, StoriesListActivity.class);
                 break;
             case 1:
-                intent = new Intent(this, ResultListActivity.class);
+                intent = new Intent(this, PollsActivity.class);
                 break;
             case 2:
                 intent = new Intent(this, FlowListActivity.class);

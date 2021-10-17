@@ -1,6 +1,6 @@
 package com.risuplabs.ureport_r4v.model.story;
 
-class ModelStoryCategory
+public class ModelStoryCategory
 {
     public String image_url;
 

@@ -24,8 +24,7 @@ public class ModelStory {
 
     public List<String> images;
 
-//    @SerializedName("category")
-//    public ModelStoryCategory category;
+    public ModelStoryCategory category;
 
     public String created_on;
 

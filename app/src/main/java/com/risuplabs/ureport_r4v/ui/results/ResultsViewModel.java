@@ -68,8 +68,16 @@ public class ResultsViewModel extends BaseViewModel {
         return resultRepository.getPollTitlesFromLocal(tag,org_id);
     }
 
+    public LiveData<List<ModelPolls>> getResultCategoriesFromLocal(int org_id){
+        return resultRepository.getResultsCategoriesFromLocal(org_id);
+    }
+
     public LiveData<List<ModelPolls>> getQuestionsFromLocal(int id,int org_id){
         return resultRepository.getQuestionsFromLocal(id,org_id);
+    }
+
+    public LiveData<List<ModelPolls>> getLatestQuestionsFromLocal(int org_id){
+        return resultRepository.getLatestQuestionsFromLocal(org_id);
     }
 
 }

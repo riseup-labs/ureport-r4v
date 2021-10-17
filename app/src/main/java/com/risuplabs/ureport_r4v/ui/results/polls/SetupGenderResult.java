@@ -50,7 +50,7 @@ public class SetupGenderResult {
             binding.textViewLabel1m.setText(label);
             binding.rounded1m.setMax(maxValue);
             binding.rounded1m.setProgress(progressValue);
-            if (maxValue == 0) {
+            if (maxValue != 0) {
                 binding.textViewPercentage1m.setText(((progressValue * 100) / maxValue) + " %");
             }
 
@@ -66,7 +66,7 @@ public class SetupGenderResult {
             binding.textViewLabel1m.setText(label);
             binding.rounded1m.setMax(maxValue);
             binding.rounded1m.setProgress(progressValue);
-            if (maxValue == 0) {
+            if (maxValue != 0) {
                 binding.textViewPercentage1m.setText(((progressValue * 100) / maxValue) + " %");
             }
 
@@ -79,7 +79,7 @@ public class SetupGenderResult {
             binding.textViewLabel2m.setText(label2);
             binding.rounded2m.setMax(maxValue2);
             binding.rounded2m.setProgress(progressValue2);
-            if (maxValue2 == 0) {
+            if (maxValue2 != 0) {
                 binding.textViewPercentage2m.setText(((progressValue2 * 100) / maxValue2) + " %");
             }
 
@@ -98,7 +98,7 @@ public class SetupGenderResult {
             binding.textViewLabel1m.setText(label);
             binding.rounded1m.setMax(maxValue);
             binding.rounded1m.setProgress(progressValue);
-            if (maxValue == 0) {
+            if (maxValue != 0) {
                 binding.textViewPercentage1m.setText(((progressValue * 100) / maxValue) + " %");
             }
 
@@ -111,7 +111,7 @@ public class SetupGenderResult {
             binding.textViewLabel2m.setText(label2);
             binding.rounded2m.setMax(maxValue2);
             binding.rounded2m.setProgress(progressValue2);
-            if (maxValue2 == 0) {
+            if (maxValue2 != 0) {
                 binding.textViewPercentage2m.setText(((progressValue2 * 100) / maxValue2) + " %");
             }
 
@@ -142,7 +142,7 @@ public class SetupGenderResult {
             binding.textViewLabel1m.setText(label);
             binding.rounded1m.setMax(maxValue);
             binding.rounded1m.setProgress(progressValue);
-            if (maxValue == 0) {
+            if (maxValue != 0) {
                 binding.textViewPercentage1m.setText(((progressValue * 100) / maxValue) + " %");
             }
 
@@ -155,7 +155,7 @@ public class SetupGenderResult {
             binding.textViewLabel2m.setText(label2);
             binding.rounded2m.setMax(maxValue2);
             binding.rounded2m.setProgress(progressValue2);
-            if (maxValue2 == 0) {
+            if (maxValue2 != 0) {
                 binding.textViewPercentage2m.setText(((progressValue2 * 100) / maxValue2) + " %");
             }
 
@@ -197,7 +197,7 @@ public class SetupGenderResult {
             binding.textViewLabel1m.setText(label);
             binding.rounded1m.setMax(maxValue);
             binding.rounded1m.setProgress(progressValue);
-            if (maxValue == 0) {
+            if (maxValue != 0) {
                 binding.textViewPercentage1m.setText(((progressValue * 100) / maxValue) + " %");
             }
 
@@ -210,7 +210,7 @@ public class SetupGenderResult {
             binding.textViewLabel2m.setText(label2);
             binding.rounded2m.setMax(maxValue2);
             binding.rounded2m.setProgress(progressValue2);
-            if (maxValue2 == 0) {
+            if (maxValue2 != 0) {
                 binding.textViewPercentage2m.setText(((progressValue2 * 100) / maxValue2) + " %");
             }
 

@@ -49,7 +49,15 @@ public class ResultRepository {
         return resultsDao.getTitles(tag,org_id);
     }
 
+    public LiveData<List<ModelPolls>> getResultsCategoriesFromLocal(int org_id){
+        return resultsDao.getResultCategories(org_id);
+    }
+
     public LiveData<List<ModelPolls>> getQuestionsFromLocal(int id,int org_id){
         return resultsDao.getQuestions(id,org_id);
+    }
+
+    public LiveData<List<ModelPolls>> getLatestQuestionsFromLocal(int org_id){
+        return resultsDao.getLatestQuestions(org_id);
     }
 }

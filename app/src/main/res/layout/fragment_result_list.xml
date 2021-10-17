@@ -27,7 +27,7 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:listitem="@layout/item_stories"/>
+                    tools:listitem="@layout/item_polls"/>
                 <TextView
                     android:visibility="gone"
                     android:id="@+id/emptyListWarning"

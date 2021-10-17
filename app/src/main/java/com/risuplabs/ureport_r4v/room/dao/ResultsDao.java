@@ -26,7 +26,13 @@ public interface ResultsDao {
     @Query("SELECT id,org,title,category_tag,created_on FROM table_polls WHERE category_tag = :tag AND org = :org_id")
     LiveData<List<ModelPolls>> getTitles(String tag,int org_id);
 
+    @Query("SELECT id,org,title,category_tag,created_on FROM table_polls WHERE  org = :org_id")
+    LiveData<List<ModelPolls>> getResultCategories(int org_id);
+
     @Query("SELECT * FROM table_polls WHERE id = :id AND org = :org_id")
     LiveData<List<ModelPolls>> getQuestions(int id,int org_id);
+
+    @Query("SELECT * FROM table_polls WHERE org = :org_id ORDER BY id DESC LIMIT 1")
+    LiveData<List<ModelPolls>> getLatestQuestions(int org_id);
 
 }
