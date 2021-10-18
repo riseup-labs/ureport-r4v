@@ -6,9 +6,9 @@ public interface AppConstant {
     String ECUADOR_LABEL = "ecuador";
     String BOLIVIA_LABEL = "bolivia";
 
-    int BRAZIL_ORG_ID = 37;
-    int ECUADOR_ORG_ID = 38;
-    int BOLIVIA_ORG_ID = 39;
+    int BRAZIL_ORG_ID = 1;
+    int ECUADOR_ORG_ID = 26;
+    int BOLIVIA_ORG_ID = 27;
 
     String USER = "user";
     String GUEST = "guest";

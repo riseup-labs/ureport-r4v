@@ -14,7 +14,8 @@ public class DateFormatUtils {
     public static String getDate(String dateStr) throws ParseException {
 
         @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'+06:00'");
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'-05:00'");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSX");
         SimpleDateFormat newFormatDate = new SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH);
 
         Date parseDate = dateFormat.parse(dateStr);

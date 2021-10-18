@@ -56,12 +56,6 @@ public class NetworkModule {
         return new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
     }
 
-//    @Singleton
-//    @Provides
-//    OkHttpClient provideDebugClientInterceptor() {
-//        return new OkHttpClient.Builder().addInterceptor(new NetLoggingInterceptor()).build();
-//    }
-
 
     @Singleton
     @Provides
@@ -108,7 +102,6 @@ public class NetworkModule {
                                       Interceptor cacheInterceptor
     ) {
         return new OkHttpClient.Builder()
-//                .addInterceptor(logging)
                 .addInterceptor(cacheInterceptor)
                 .addInterceptor(new Interceptor() {
                     @NotNull

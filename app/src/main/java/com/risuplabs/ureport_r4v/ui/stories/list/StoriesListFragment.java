@@ -115,7 +115,7 @@ public class StoriesListFragment extends BaseFragment<FragmentStoriesListBinding
                     ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
                     ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
                     refreshLock = false;
-                    getRemoteData(ApiConstants.STORIES + org_id);
+                    getRemoteData("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/"+ApiConstants.STORIES + org_id);
                 }else{
                     ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
                     ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
@@ -161,7 +161,12 @@ public class StoriesListFragment extends BaseFragment<FragmentStoriesListBinding
             binding.loadingTvProgress.setText("("+progressValue+"/"+count+")");
             Log.d(TAG, "onViewReady: " + count);
             if (next_url != null) {
-                getRemoteData(next_url);
+                if(!next_url.equals("https")){
+                    next_url = next_url.replace("http","https");
+                    getRemoteData(next_url);
+                }else{
+                    getRemoteData(next_url);
+                }
             } else {
                 progressValue = 0;
                 gone(binding.loadingLayout);
@@ -176,11 +181,16 @@ public class StoriesListFragment extends BaseFragment<FragmentStoriesListBinding
                     saveToFile(getContext(), content, contentFileName);
                     //Changing the META off content
                     story.content = contentFileName;
+                    //Check if imageList is empty
+                    if(story.images.size() == 0){
+                        if(story.category.image_url != null){
+                            story.images.add(story.category.image_url);
+                        }
+                    }
                     //Insert story to the database
                     storyViewModel.insertStory(story);
                     //Save the content.json into internal storage
                     Log.d(TAG, "saveData: "+content);
-
 
                     //Setting up Image download list
                     if (story.images.size() > 0) {
