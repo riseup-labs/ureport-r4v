@@ -33,6 +33,7 @@ import com.risuplabs.ureport_r4v.adapter.FlowListAdapter;
 import com.risuplabs.ureport_r4v.base.BaseSubmissionActivity;
 import com.risuplabs.ureport_r4v.databinding.ActivityFlowListBinding;
 import com.risuplabs.ureport_r4v.di.SurveyorApplication;
+import com.risuplabs.ureport_r4v.model.surveyor.ModelSurvey;
 import com.risuplabs.ureport_r4v.surveyor.data.Flow;
 import com.risuplabs.ureport_r4v.surveyor.data.Org;
 import com.risuplabs.ureport_r4v.surveyor.data.Submission;
@@ -40,6 +41,7 @@ import com.risuplabs.ureport_r4v.surveyor.engine.Engine;
 import com.risuplabs.ureport_r4v.surveyor.task.DownloadOrgTask;
 import com.risuplabs.ureport_r4v.surveyor.task.RefreshOrgTask;
 import com.risuplabs.ureport_r4v.ui.dashboard.DashBoardActivity;
+import com.risuplabs.ureport_r4v.ui.opinions.OpinionViewModel;
 import com.risuplabs.ureport_r4v.ui.opinions.flow.RunFlowActivity;
 import com.risuplabs.ureport_r4v.utils.ConnectivityCheck;
 import com.risuplabs.ureport_r4v.utils.IntentConstant;
@@ -48,6 +50,7 @@ import com.risuplabs.ureport_r4v.utils.StaticMethods;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialog;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialogComponent;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialogInterface;
+import com.risuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 import com.risuplabs.ureport_r4v.utils.pref_manager.SurveyorPreferences;
 import com.risuplabs.ureport_r4v.utils.surveyor.Logger;
 import com.risuplabs.ureport_r4v.utils.surveyor.SurveyorIntent;
@@ -58,6 +61,8 @@ import com.vdurmont.semver4j.Semver;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import static com.risuplabs.ureport_r4v.utils.StaticMethods.playNotification;
 
@@ -79,6 +84,9 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
     private Dialog confirmRefreshDialog;
 
+    @Inject
+    OpinionViewModel viewModel;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_flow_list;
@@ -91,7 +99,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         manager.cancel(522);
 
         Intent intent = getIntent();
-        if(intent != null && intent.getIntExtra(IntentConstant.SUBMISSION_INTENT,1) == 0){
+        if (intent != null && intent.getIntExtra(IntentConstant.SUBMISSION_INTENT, 1) == 0) {
             from = 0;
             if (ConnectivityCheck.isConnected(this)) {
                 playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes, null);
@@ -105,7 +113,8 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
                     }
 
                     @Override
-                    public void cancel() {}
+                    public void cancel() {
+                    }
                 });
             }
         }
@@ -302,10 +311,10 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         ObjectAnimator.ofFloat(binding.bgColor, "translationY", 0, -500).setDuration(500).start();
         ObjectAnimator.ofFloat(binding.opinionList, "translationY", 0, 1000).setDuration(750).start();
         ObjectAnimator.ofFloat(binding.backButton, "translationX", 0, -200).setDuration(1000).start();
-        if(from == 0) {
+        if (from == 0) {
             Navigator.navigate(FlowListActivity.this, DashBoardActivity.class);
             finish();
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -357,7 +366,6 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
                 org = SurveyorApplication.get().getOrgService().get(orgUUID);
             } catch (Exception e) {
                 Logger.e("Unable to load org", e);
-//                showBugReportDialog();
                 finish();
                 return;
             }
@@ -572,7 +580,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
                 progressModal.dismiss();
                 Toast.makeText(FlowListActivity.this, getString(R.string.error_org_refresh), Toast.LENGTH_SHORT).show();
             }
-        },flows);
+        }, flows,"poll");
         donx.execute(getOrg());
     }
 
@@ -612,7 +620,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         return true;
     }
 
-    public void downloadAlert(){
+    public void downloadAlert() {
 
         List<com.risuplabs.ureport_r4v.surveyor.net.responses.Flow> selected_flows = new ArrayList<>();
         List<com.risuplabs.ureport_r4v.surveyor.net.responses.Flow> bot_flows = new ArrayList<>();
@@ -638,12 +646,14 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         rvOP.setHasFixedSize(true);
         rvBOT.setHasFixedSize(true);
 
-        for(int i = 0 ; i < getOrg().flowTitles.size(); i++){
-            for(int j = 0 ; j < getOrg().flowTitles.get(i).getLabels().size(); j++){
-                if(getOrg().flowTitles.get(i).getLabels().get(j).name.equals("Bot")){
-                    bot_flows.add(getOrg().flowTitles.get(i));
-                }else if(getOrg().flowTitles.get(i).getLabels().get(j).name.equals("Poll")){
+        for (int i = 0; i < getOrg().flowTitles.size(); i++) {
+            for (int j = 0; j < getOrg().flowTitles.get(i).getLabels().size(); j++) {
+//                if(getOrg().flowTitles.get(i).getLabels().get(j).name.equals("Bot")){
+//                    bot_flows.add(getOrg().flowTitles.get(i));
+//                }else
+                if (getOrg().flowTitles.get(i).getLabels().get(j).name.equals("Poll")) {
                     poll_flows.add(getOrg().flowTitles.get(i));
+                    viewModel.insertStory(new ModelSurvey(getOrg().flowTitles.get(i).getUuid(),"poll",prefManager.getString(PrefKeys.ORG_LABEL)));
                 }
             }
 
@@ -651,53 +661,53 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
         FlowDownloadListAdapter adapterOP = new FlowDownloadListAdapter(SurveyorApplication.get());
         rvOP.setAdapter(adapterOP);
-        if(getOrg() != null){
+        if (getOrg() != null) {
             adapterOP.addItems(poll_flows);
         }
 
-        FlowDownloadListAdapter adapterBOT= new FlowDownloadListAdapter(SurveyorApplication.get());
+        FlowDownloadListAdapter adapterBOT = new FlowDownloadListAdapter(SurveyorApplication.get());
         rvBOT.setAdapter(adapterBOT);
-        if(getOrg() != null){
+        if (getOrg() != null) {
             adapterBOT.addItems(bot_flows);
         }
 
-        if(poll_flows.size() == 0){
+        if (poll_flows.size() == 0) {
             layout_opinions.setVisibility(View.GONE);
-        }else{
+        } else {
             layout_opinions.setVisibility(View.VISIBLE);
         }
 
-        if(bot_flows.size() == 0){
+        if (bot_flows.size() == 0) {
             layout_informations.setVisibility(View.GONE);
-        }else{
+        } else {
             layout_informations.setVisibility(View.VISIBLE);
         }
 
-        if(getOrg().flowTitles.size() == 0){
+        if (getOrg().flowTitles.size() == 0) {
             no_flows.setVisibility(View.VISIBLE);
             btnDownload.setVisibility(View.GONE);
-        }else{
+        } else {
             btnDownload.setVisibility(View.VISIBLE);
             no_flows.setVisibility(View.GONE);
         }
 
-        btnDownload.setOnClickListener(v->{
-            if(adapterBOT.getCheckedList() != null){
+        btnDownload.setOnClickListener(v -> {
+            if (adapterBOT.getCheckedList() != null) {
                 selected_flows.addAll(adapterBOT.getCheckedList());
             }
-            if(adapterOP.getCheckedList() != null){
+            if (adapterOP.getCheckedList() != null) {
                 selected_flows.addAll(adapterOP.getCheckedList());
             }
-            if(selected_flows.size() != 0){
+            if (selected_flows.size() != 0) {
                 dialog.cancel();
                 download(selected_flows);
-            }else{
+            } else {
                 showToast("Please select at least one flow");
             }
 
         });
 
-        btnCancel.setOnClickListener(v->{
+        btnCancel.setOnClickListener(v -> {
             dialog.cancel();
             finish();
         });

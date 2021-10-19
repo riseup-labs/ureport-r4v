@@ -15,11 +15,13 @@ public class DownloadOrgTask extends AsyncTask<Org, Integer, Void> {
 
     private final Listener listener;
     public List<Flow> flows;
+    String type;
     private boolean failed;
 
-    public DownloadOrgTask(Listener listener, List<Flow> flows) {
+    public DownloadOrgTask(Listener listener, List<Flow> flows, String type) {
         this.listener = listener;
         this.flows = flows;
+        this.type = type;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class DownloadOrgTask extends AsyncTask<Org, Integer, Void> {
                 public void reportProgress(int percent) {
                     publishProgress(percent);
                 }
-            },flows);
+            },flows,type);
 
         } catch (Exception e) {
             Logger.e("Unable to refresh org", e);

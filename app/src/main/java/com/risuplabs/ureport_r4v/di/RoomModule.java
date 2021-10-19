@@ -7,6 +7,7 @@ import androidx.room.Room;
 import com.risuplabs.ureport_r4v.room.AppDatabase;
 import com.risuplabs.ureport_r4v.room.dao.ResultsDao;
 import com.risuplabs.ureport_r4v.room.dao.StoriesDao;
+import com.risuplabs.ureport_r4v.room.dao.SurveyDao;
 
 import javax.inject.Singleton;
 
@@ -32,6 +33,12 @@ public class RoomModule {
     @Singleton
     ResultsDao providesResultsDao(AppDatabase appDatabase){
         return appDatabase.resultsDao();
+    }
+
+    @Provides
+    @Singleton
+    SurveyDao providesSurveyDao(AppDatabase appDatabase){
+        return appDatabase.surveyDao();
     }
 
 

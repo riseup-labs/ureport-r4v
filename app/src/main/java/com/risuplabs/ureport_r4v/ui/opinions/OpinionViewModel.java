@@ -2,12 +2,17 @@ package com.risuplabs.ureport_r4v.ui.opinions;
 
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.risuplabs.ureport_r4v.base.BaseViewModel;
+import com.risuplabs.ureport_r4v.model.story.ModelStory;
+import com.risuplabs.ureport_r4v.model.surveyor.ModelSurvey;
 import com.risuplabs.ureport_r4v.network.utils.ApiResponse;
 import com.risuplabs.ureport_r4v.rx.ResponseListener;
 import com.risuplabs.ureport_r4v.surveyor.net.responses.FlowResponse;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -21,27 +26,16 @@ public class OpinionViewModel extends BaseViewModel {
         this.opinionRepository = opinionRepository;
     }
 
-    public void getFlows() {
-        opinionRepository.getFlows(new ResponseListener<FlowResponse>() {
-            @Override
-            public void onStart() {
-                loadingStatus.setValue(true);
-            }
+    public void insertStory(ModelSurvey survey){
+        opinionRepository.insertSurvey(survey);
+    }
 
-            @Override
-            public void onFinish() {
-                loadingStatus.setValue(false);
-            }
+    public LiveData<List<ModelSurvey>> getAllSurveysFromLocal(int org_id){
+        return opinionRepository.getAllSurveysFromLocal(org_id);
+    }
 
-            @Override
-            public void onResponse(ApiResponse<FlowResponse> apiResponse) {
-                if(apiResponse.data != null) {
-                    flowsFromRemote.setValue(apiResponse);
-                }else{
-                    Log.d(TAG, "onResponse: "+apiResponse.statusCode);
-                }
-            }
-        });
+    public LiveData<Integer> getSurveyCount(int org_id){
+        return opinionRepository.getSurveyCount(org_id);
     }
     
 }

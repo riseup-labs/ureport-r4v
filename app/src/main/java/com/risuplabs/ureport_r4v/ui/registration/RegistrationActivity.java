@@ -217,7 +217,7 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
                 progressModal.dismiss();
                 Toast.makeText(RegistrationActivity.this, getString(R.string.error_org_refresh), Toast.LENGTH_SHORT).show();
             }
-        },flows);
+        },flows,"poll");
         donx.execute(getOrg());
     }
 

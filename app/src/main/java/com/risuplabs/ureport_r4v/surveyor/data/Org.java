@@ -88,6 +88,12 @@ public class Org {
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BRAZIL_ORG_ID), "[]");
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.ECUADOR_ORG_ID), "[]");
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BOLIVIA_ORG_ID), "[]");
+        FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BRAZIL_ORG_ID+"poll"), "[]");
+        FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BRAZIL_ORG_ID+"bot"), "[]");
+        FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.ECUADOR_ORG_ID+"poll"), "[]");
+        FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.ECUADOR_ORG_ID+"bot"), "[]");
+        FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BOLIVIA_ORG_ID+"poll"), "[]");
+        FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BOLIVIA_ORG_ID+"bot"), "[]");
 
         return org;
     }
@@ -244,7 +250,7 @@ public class Org {
         }
     }
 
-    public void download(boolean includeAssets, RefreshProgress progress, List<com.risuplabs.ureport_r4v.surveyor.net.responses.Flow> flows) throws TembaException, IOException {
+    public void download(boolean includeAssets, RefreshProgress progress, List<com.risuplabs.ureport_r4v.surveyor.net.responses.Flow> flows,String type) throws TembaException, IOException {
         TembaService svc = SurveyorApplication.get().getTembaService();
         com.risuplabs.ureport_r4v.surveyor.net.responses.Org apiOrg = svc.getOrg(this.token);
 
@@ -262,7 +268,7 @@ public class Org {
         }
 
         if (includeAssets) {
-            downloadAssets(progress, flows);
+            downloadAssets(progress, flows, type);
         }
     }
 
@@ -287,7 +293,7 @@ public class Org {
 
     }
 
-    public void downloadAssets(RefreshProgress progress, List<com.risuplabs.ureport_r4v.surveyor.net.responses.Flow> filtered_flows) throws TembaException, IOException {
+    public void downloadAssets(RefreshProgress progress, List<com.risuplabs.ureport_r4v.surveyor.net.responses.Flow> filtered_flows, String type) throws TembaException, IOException {
 
         List<Field> fields = SurveyorApplication.get().getTembaService().getFields(getToken());
 
@@ -319,6 +325,7 @@ public class Org {
         // and write that to flows.json as well
         String summariesJSON = JsonUtils.marshal(this.flows);
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + SharedPrefManager.getORGID()), summariesJSON);
+        FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + SharedPrefManager.getORGID()+type), summariesJSON);
 
         progress.reportProgress(100);
 
