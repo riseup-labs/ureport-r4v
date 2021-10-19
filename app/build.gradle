@@ -118,5 +118,10 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.10.5'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.5'
 
+    //WordCloud
+    implementation 'com.mordred.wordcloud:Wordcloud:2.6'
+    implementation 'net.alhazmy13.wordcloud:library:0.2.0-beta'
+
+
 
 }

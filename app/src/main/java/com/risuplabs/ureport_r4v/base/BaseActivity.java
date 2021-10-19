@@ -3,6 +3,7 @@ package com.risuplabs.ureport_r4v.base;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
@@ -62,6 +63,14 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     }
 
     public void hideLoading() { progressDialog.dismiss(); }
+
+    public void visible(View view){
+        view.setVisibility(View.VISIBLE);
+    }
+
+    public void gone(View view){
+        view.setVisibility(View.GONE);
+    }
 
     public abstract void onViewReady(@Nullable Bundle savedInstanceState);
 

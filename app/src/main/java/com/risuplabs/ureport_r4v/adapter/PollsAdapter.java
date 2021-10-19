@@ -56,7 +56,7 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
 
         setUpStatistics(context,prefManager,items.get(position), binding.layoutStatistics);
 
-        if (item.results_by_age == null) {
+        if (item.results.categories.size() > 5) {
             setUpPieChart(items.get(position), binding.layoutPieChart, binding);
         }
 
