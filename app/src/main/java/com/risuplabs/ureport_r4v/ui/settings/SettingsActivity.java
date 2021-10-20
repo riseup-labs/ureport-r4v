@@ -279,7 +279,6 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
         binding.btnVibrationOn.setText(R.string.v1_on);
         binding.btnVibrationOff.setText(R.string.v1_off);
         binding.textLogout.setText(R.string.v1_logout);
-        binding.txtSupport.setText(R.string.v1_settings_overall_support);
         binding.txtDeveloped.setText(R.string.v1_settings_designed_and_developed);
 
         if (!isLoggedIn()) {

@@ -138,7 +138,7 @@
 
     <string name="v1_ureport_title" translatable="false">U-Report</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="skip_login">Skip Login</string>
+    <string name="skip_login"><u>Skip Login</u></string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

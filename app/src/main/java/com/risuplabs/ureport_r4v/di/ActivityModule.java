@@ -3,6 +3,7 @@ package com.risuplabs.ureport_r4v.di;
 import com.risuplabs.ureport_r4v.Splash;
 import com.risuplabs.ureport_r4v.ui.auth.LoginActivity;
 import com.risuplabs.ureport_r4v.ui.auth.LoginChooserActivity;
+import com.risuplabs.ureport_r4v.ui.auth.ProgramChooserActivity;
 import com.risuplabs.ureport_r4v.ui.dashboard.DashBoardActivity;
 import com.risuplabs.ureport_r4v.ui.opinions.flow.RunFlowActivity;
 import com.risuplabs.ureport_r4v.ui.opinions.flow_list.FlowListActivity;
@@ -82,6 +83,9 @@ public abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract ResultsSearchActivity contributesResultsSearchActivity();
+
+    @ContributesAndroidInjector
+    abstract ProgramChooserActivity contributesProgramChooserActivity();
 
 
 

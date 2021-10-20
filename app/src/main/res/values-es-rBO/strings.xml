@@ -101,7 +101,7 @@
     <string name="select">Seleccione</string>
     <string name="your_location">tu ubicación</string>
     <string name="submit_your_response">Envíe su respuesta</string>
-    <string name="skip_login" translatable="false">Omitir inicio de sesión</string>
+    <string name="skip_login"><u>Omitir inicio de sesión</u></string>
     <string name="prompt_email">Correo electrónico</string>
     <string name="prompt_password">Clave</string>
     <string name="action_sign_in">Registrarse</string>

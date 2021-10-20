@@ -23,6 +23,7 @@ import com.risuplabs.ureport_r4v.ui.dashboard.DashBoardActivity;
 import com.risuplabs.ureport_r4v.utils.AppConstant;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialog;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialogInterface;
+import com.risuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 import com.risuplabs.ureport_r4v.utils.pref_manager.SurveyorPreferences;
 
 import java.util.List;
@@ -63,6 +64,14 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
             hideKeyboard(this);
             attemptLogin();
         });
+
+        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_brasil);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_ecuador);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_bolivia_logo);
+        }
 
         binding.textView3.setOnClickListener(v->{
             binding.email.setText("robiul@riseuplabs.com");

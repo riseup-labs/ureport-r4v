@@ -9,11 +9,12 @@
     android:paddingBottom="8dp">
     <ImageView
         android:id="@+id/org_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
+        android:scaleType="fitXY"
         android:gravity="center_vertical"
-        app:srcCompat="@drawable/v1_org_icon" />
+        app:srcCompat="@drawable/icon_folder" />
 
     <LinearLayout
         android:layout_width="match_parent"

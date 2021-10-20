@@ -281,6 +281,9 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
             String next_url = response.data.next;
             count = response.data.count;
             progressValue += 30;
+            if(progressValue > response.data.count){
+                progressValue = response.data.count;
+            }
             binding.progressBar.setIndeterminate(false);
             binding.progressBar.setProgress(progressValue);
             binding.progressBar.setMax(count);

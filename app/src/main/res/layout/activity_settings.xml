@@ -113,12 +113,9 @@
                         android:background="@drawable/v1_card_background"
                         android:visibility="visible"></View>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/fragmentContainer"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="16dp">
-
+                        android:layout_height="match_parent">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -385,108 +382,76 @@
                                 </androidx.constraintlayout.widget.ConstraintLayout>
                             </androidx.cardview.widget.CardView>
 
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/layerLogout"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="32dp">
 
-                                <LinearLayout
-                                    android:gravity="center"
+                            <RelativeLayout
+                                android:id="@+id/layerLogout"
+                                android:layout_gravity="center"
+                                android:minWidth="250dp"
+                                android:layout_marginTop="40dp"
+                                android:background="@drawable/program_chooser_button_bg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="45dp">
+
+                                <TextView
+                                    android:layout_centerHorizontal="true"
+                                    android:textAlignment="center"
+                                    android:layout_centerVertical="true"
+                                    android:id="@+id/textLogout"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="24dp"
-                                    android:orientation="horizontal"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent">
+                                    android:text="@string/v1_logout"
+                                    android:textColor="@color/white"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
 
-                                    <TextView
-                                        android:id="@+id/textLogout"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/v1_logout"
-                                        android:textColor="@color/black"
-                                        android:textSize="24sp"
-                                        android:textStyle="bold" />
-
-                                    <ImageView
-                                        android:layout_marginStart="10dp"
-                                        android:id="@+id/imgLogout"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:src="@drawable/logout_icon" />
-                                </LinearLayout>
-
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="48dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1.15"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/txtSupport"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:gravity="center"
-                                            android:text="@string/v1_settings_overall_support"
-                                            android:textColor="@color/black"
-                                            android:textStyle="bold" />
-
-                                        <ImageView
-                                            android:id="@+id/imgUnicef"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="24dp"
-                                            android:src="@drawable/v3_unicef_logo" />
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="0.85"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/txtDeveloped"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:gravity="center"
-                                            android:text="@string/v1_settings_designed_and_developed"
-                                            android:textColor="@color/black"
-                                            android:textStyle="bold" />
-
-                                        <ImageView
-                                            android:id="@+id/imgRiseup"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/v3_riseup_logo" />
-                                    </LinearLayout>
-                                </LinearLayout>
-                            </androidx.constraintlayout.widget.ConstraintLayout>
+                                <ImageView
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_marginStart="20dp"
+                                    android:id="@+id/imgLogout"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:src="@drawable/logout_icon" />
+                            </RelativeLayout>
 
                         </LinearLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/imgRiseup"
+                            android:layout_marginBottom="15dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:textColor="@color/black"
+                                android:layout_marginStart="20dp"
+                                android:text="Ver: 1.0.1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txtDeveloped"
+                                android:textColor="@color/black"
+                                android:layout_toStartOf="@+id/riseupLabs"
+                                android:text="@string/v1_settings_designed_and_developed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:textColor="@color/black"
+                                android:layout_marginEnd="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:text=" : Riseup Labs"
+                                android:id="@+id/riseupLabs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </RelativeLayout>
+
+
+
+                    </RelativeLayout>
+
+
 
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>

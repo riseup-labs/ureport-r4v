@@ -22,6 +22,7 @@ import com.risuplabs.ureport_r4v.utils.IntentConstant;
 import com.risuplabs.ureport_r4v.utils.Navigator;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialog;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialogInterface;
+import com.risuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 import com.risuplabs.ureport_r4v.utils.pref_manager.SurveyorPreferences;
 
 import java.util.ArrayList;
@@ -60,6 +61,15 @@ public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChoo
                 LoginChooserActivity.this.showRationaleDialog(R.string.permission_storage, callback);
             }
         }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+
+        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_brasil);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_ecuador);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_bolivia_logo);
+        }
 
         binding.shelterLogin.setOnClickListener(v -> {
             Navigator.navigate(this,LoginActivity.class);

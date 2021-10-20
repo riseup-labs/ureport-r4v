@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.risuplabs.ureport_r4v.base.BaseActivity;
 import com.risuplabs.ureport_r4v.databinding.ActivitySplashBinding;
+import com.risuplabs.ureport_r4v.ui.auth.ProgramChooserActivity;
 import com.risuplabs.ureport_r4v.ui.dashboard.DashBoardActivity;
 import com.risuplabs.ureport_r4v.ui.splash.SplashViewModel;
 import com.risuplabs.ureport_r4v.utils.Navigator;
@@ -51,7 +52,8 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
         Handler handler = new Handler();
         handler.postDelayed(() -> {
             if(prefManager.getString(PrefKeys.ORG_LABEL,"").equals("")){
-                LocationChooser.showDialog(Splash.this,prefManager);
+                Navigator.navigate(Splash.this, ProgramChooserActivity.class);
+                finish();
             }else{
                 Navigator.navigate(Splash.this,DashBoardActivity.class);
                 finish();
