@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
-                android:background="@drawable/v1_layout_bg_stories"
+                android:background="@color/colorPrimary"
                 android:layout_weight="1"
                 android:text="@string/download"
                 android:drawableLeft="@drawable/ic_download"

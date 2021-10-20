@@ -78,6 +78,7 @@ import com.risuplabs.ureport_r4v.ui.opinions.media_capture.CaptureAudioActivity;
 import com.risuplabs.ureport_r4v.ui.opinions.media_capture.CaptureLocationActivity;
 import com.risuplabs.ureport_r4v.ui.opinions.media_capture.CaptureVideoActivity;
 import com.risuplabs.ureport_r4v.utils.ImageUtils;
+import com.risuplabs.ureport_r4v.utils.IntentConstant;
 import com.risuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 import com.risuplabs.ureport_r4v.utils.pref_manager.SurveyorPreferences;
 import com.risuplabs.ureport_r4v.utils.surveyor.Logger;
@@ -121,6 +122,7 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
     private Submission submission;
     ExoPlayer exoPlayer;
     Org org = null;
+    String poll_type = "";
 
     @Override
     public int getLayoutId() {
@@ -132,6 +134,7 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
 
         String orgUUID = prefManager.getString(SurveyorPreferences.SAVED_UUID);
         String flowUUID = getIntent().getStringExtra(SurveyorIntent.EXTRA_FLOW_UUID);
+        poll_type = getIntent().getStringExtra(IntentConstant.COMING_FROM);
 
         initUI();
 
@@ -141,9 +144,9 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
         });
 
         try {
-            org = getSurveyor().getOrgService().get(orgUUID);
+            org = getSurveyor().getOrgService().get(orgUUID,poll_type);
             Environment environment = Engine.createEnvironment(org);
-            SessionAssets assets = Engine.createSessionAssets(environment, Engine.loadAssets(org.getAssets()));
+            SessionAssets assets = Engine.createSessionAssets(environment, Engine.loadAssets(org.getAssets(poll_type)));
 
             Flow flow = org.getFlow(flowUUID);
             setTitle(flow.getName());
@@ -235,7 +238,12 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
 
     @Override
     public void onBackPressed() {
-        confirmDiscardRun();
+        if(poll_type.equals("poll")){
+            confirmDiscardRun();
+        }else {
+            super.onBackPressed();
+        }
+
     }
 
     /**
@@ -463,8 +471,16 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
         }
 
         // Remove All Quick Response
-        getViewCache().hide(R.id.quick_replies);
-        ((LinearLayout) findViewById(R.id.quick_replies)).removeAllViews();
+        getViewCache().hide(R.id.quick_replies1);
+        getViewCache().hide(R.id.quick_replies2);
+        getViewCache().hide(R.id.quick_replies3);
+        getViewCache().hide(R.id.quick_replies4);
+        getViewCache().hide(R.id.quick_replies5);
+        ((LinearLayout) findViewById(R.id.quick_replies1)).removeAllViews();
+        ((LinearLayout) findViewById(R.id.quick_replies2)).removeAllViews();
+        ((LinearLayout) findViewById(R.id.quick_replies3)).removeAllViews();
+        ((LinearLayout) findViewById(R.id.quick_replies4)).removeAllViews();
+        ((LinearLayout) findViewById(R.id.quick_replies5)).removeAllViews();
         getViewCache().show(R.id.chat_box);
 
         EditText chatBox = findViewById(R.id.chat_compose);
@@ -495,8 +511,16 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
             return;
         }
         // Remove All Quick Response
-        getViewCache().hide(R.id.quick_replies);
-        ((LinearLayout) findViewById(R.id.quick_replies)).removeAllViews();
+        getViewCache().hide(R.id.quick_replies1);
+        getViewCache().hide(R.id.quick_replies2);
+        getViewCache().hide(R.id.quick_replies3);
+        getViewCache().hide(R.id.quick_replies4);
+        getViewCache().hide(R.id.quick_replies5);
+        ((LinearLayout) findViewById(R.id.quick_replies1)).removeAllViews();
+        ((LinearLayout) findViewById(R.id.quick_replies2)).removeAllViews();
+        ((LinearLayout) findViewById(R.id.quick_replies3)).removeAllViews();
+        ((LinearLayout) findViewById(R.id.quick_replies4)).removeAllViews();
+        ((LinearLayout) findViewById(R.id.quick_replies5)).removeAllViews();
         getViewCache().show(R.id.chat_box);
 
         String message =prefManager.getString(PrefKeys.EXTERNAL_ID);
@@ -547,23 +571,40 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
 
                 if(msg.get("quick_replies") != null){
                     JsonArray quick_replies = msg.get("quick_replies").getAsJsonArray();
-                    LinearLayout quick_reply_box = findViewById(R.id.quick_replies);
+                    LinearLayout quick_reply_box1 = findViewById(R.id.quick_replies1);
+                    LinearLayout quick_reply_box2 = findViewById(R.id.quick_replies2);
+                    LinearLayout quick_reply_box3 = findViewById(R.id.quick_replies3);
+                    LinearLayout quick_reply_box4 = findViewById(R.id.quick_replies4);
+                    LinearLayout quick_reply_box5 = findViewById(R.id.quick_replies5);
 
                     for(int i = 0; i < quick_replies.size(); i++) {
                         String reply_data = quick_replies.get(i).getAsString();
 
                         View quickTemplate = LayoutInflater.from(this).inflate(R.layout.v1_quick_reply_button, null);
 
-                        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 38, getResources().getDisplayMetrics());
-                        int space = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics());
-                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height);
-                        layoutParams.setMargins(0, space, 0, space);
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        layoutParams.setMargins(5, 0, 5, 0);
 
                         ((Button) quickTemplate).setText(reply_data);
-                        quick_reply_box.addView(quickTemplate, layoutParams);
+                        layoutParams.weight = 1;
+                        if(i <= 1){
+                            quick_reply_box1.addView(quickTemplate, layoutParams);
+                        }else if(i <= 3){
+                            quick_reply_box2.addView(quickTemplate, layoutParams);
+                        }else if(i <= 5){
+                            quick_reply_box3.addView(quickTemplate, layoutParams);
+                        }else if(i <= 7){
+                            quick_reply_box4.addView(quickTemplate, layoutParams);
+                        }else if(i <= 9){
+                            quick_reply_box5.addView(quickTemplate, layoutParams);
+                        }
                     }
 
-                    getViewCache().show(R.id.quick_replies);
+                    getViewCache().show(R.id.quick_replies1);
+                    getViewCache().show(R.id.quick_replies2);
+                    getViewCache().show(R.id.quick_replies3);
+                    getViewCache().show(R.id.quick_replies4);
+                    getViewCache().show(R.id.quick_replies5);
                 }
 
             }
@@ -575,7 +616,10 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
             ViewCache cache = getViewCache();
             cache.hide(R.id.chat_box, true);
             cache.hide(R.id.container_request_media);
-            cache.show(R.id.completed_session_actions);
+            if(poll_type.equals("poll")){
+                cache.show(R.id.completed_session_actions);
+            }
+
         } else {
             waitForInput(session.getWait().hint());
         }
@@ -694,7 +738,6 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
 
         chatBox.setText(reply_text);
         onActionSend(sendButtom);
-
 
     }
 

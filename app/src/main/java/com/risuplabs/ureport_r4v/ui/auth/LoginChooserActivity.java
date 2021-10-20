@@ -125,7 +125,7 @@ public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChoo
 
                 Toast.makeText(LoginChooserActivity.this, getString(R.string.error_fetching_org), Toast.LENGTH_SHORT).show();
             }
-        }).execute(tokens.toArray(new Token[0]));
+        },"poll").execute(tokens.toArray(new Token[0]));
     }
 
     @Override

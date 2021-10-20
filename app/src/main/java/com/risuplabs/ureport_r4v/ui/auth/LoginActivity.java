@@ -176,7 +176,7 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
                 setErrorMessage(getString(R.string.error_fetching_org));
                 showProgress(false);
             }
-        }).execute(tokens.toArray(new Token[0]));
+        },"poll").execute(tokens.toArray(new Token[0]));
     }
 
     private void setErrorMessage(String message) {

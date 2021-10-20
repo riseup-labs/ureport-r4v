@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.AppCompatButton xmlns:android="http://schemas.android.com/apk/res/android"
     style="?android:textAppearanceSmall"
-    android:layout_width="match_parent"
-    android:layout_height="35dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_weight="1"
-    android:background="@drawable/v1_layout_bg_stories"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/textView"
+    android:background="#00AAAD"
     android:onClick="onActionQuickReply"
     android:text="Quick Reply"
     android:textAllCaps="false"
     android:textColor="@color/white"
-    android:textSize="20sp" />
+    android:textStyle="bold"
+    android:textSize="14sp" />

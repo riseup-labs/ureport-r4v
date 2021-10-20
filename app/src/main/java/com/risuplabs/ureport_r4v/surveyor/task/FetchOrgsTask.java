@@ -19,9 +19,11 @@ public class FetchOrgsTask extends AsyncTask<Token, Void, Set<String>> {
 
     private final Listener listener;
     private boolean failed;
+    String type;
 
-    public FetchOrgsTask(Listener listener) {
+    public FetchOrgsTask(Listener listener, String type) {
         this.listener = listener;
+        this.type = type;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class FetchOrgsTask extends AsyncTask<Token, Void, Set<String>> {
 
         for (Token token : tokens) {
             try {
-                Org org = svc.getOrFetch(token.getOrg().getUuid(), token.getOrg().getName(), token.getToken());
+                Org org = svc.getOrFetch(token.getOrg().getUuid(), token.getOrg().getName(), token.getToken(), type);
 
                 orgs.add(org);
                 orgUUIDs.add(org.getUuid());

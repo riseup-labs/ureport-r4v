@@ -81,6 +81,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
     public DownloadOrgTask donx;
     private boolean skipFirst = true;
     int from = -1;
+    String poll_type = "";
 
     private Dialog confirmRefreshDialog;
 
@@ -117,6 +118,10 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
                     }
                 });
             }
+        }
+        
+        if(intent != null){
+            poll_type = intent.getStringExtra(IntentConstant.COMING_FROM);
         }
 
         isOpen = true;
@@ -223,6 +228,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes, view);
             Intent intent = new Intent(this, RunFlowActivity.class);
             intent.putExtra(SurveyorIntent.EXTRA_FLOW_UUID, dialog_flow.getUuid());
+            intent.putExtra(IntentConstant.COMING_FROM, poll_type);
             startActivity(intent);
             dialog3.dismiss();
         });
@@ -363,7 +369,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
         if (org == null) {
             try {
-                org = SurveyorApplication.get().getOrgService().get(orgUUID);
+                org = SurveyorApplication.get().getOrgService().get(orgUUID,poll_type);
             } catch (Exception e) {
                 Logger.e("Unable to load org", e);
                 finish();
@@ -389,7 +395,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         }
 
         if (confirmRefreshDialog == null) {
-            if (!org.hasAssets()) {
+            if (!org.hasAssets(poll_type)) {
                 // if this org doesn't have downloaded assets, ask the user if we can download them now
                 if (ConnectivityCheck.isConnected(this)) {
                     confirmRefreshOrg(R.string.confirm_org_download);
@@ -534,7 +540,23 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
             @Override
             public void onComplete() {
                 progressModal.dismiss();
-                downloadAlert();
+                List<com.risuplabs.ureport_r4v.surveyor.net.responses.Flow> poll_flows = new ArrayList<>();
+
+                for (int i = 0; i < getOrg().flowTitles.size(); i++) {
+                    for (int j = 0; j < getOrg().flowTitles.get(i).getLabels().size(); j++) {
+                        if (getOrg().flowTitles.get(i).getLabels().get(j).name.toLowerCase().equals(poll_type)) {
+                            poll_flows.add(getOrg().flowTitles.get(i));
+                        }
+                    }
+
+                }
+
+                if(poll_flows.size() > 0){
+                    downloadAlert();
+                }else{
+                    showToast("No flow is available to download");
+                }
+
                 ((SwipeRefreshLayout) flowListFragment.getView().findViewById(R.id.flowRefreshLayout)).setRefreshing(false);
             }
 
@@ -580,7 +602,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
                 progressModal.dismiss();
                 Toast.makeText(FlowListActivity.this, getString(R.string.error_org_refresh), Toast.LENGTH_SHORT).show();
             }
-        }, flows,"poll");
+        }, flows,poll_type);
         donx.execute(getOrg());
     }
 
@@ -648,12 +670,8 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
         for (int i = 0; i < getOrg().flowTitles.size(); i++) {
             for (int j = 0; j < getOrg().flowTitles.get(i).getLabels().size(); j++) {
-//                if(getOrg().flowTitles.get(i).getLabels().get(j).name.equals("Bot")){
-//                    bot_flows.add(getOrg().flowTitles.get(i));
-//                }else
-                if (getOrg().flowTitles.get(i).getLabels().get(j).name.equals("Poll")) {
+                if (getOrg().flowTitles.get(i).getLabels().get(j).name.toLowerCase().equals(poll_type)) {
                     poll_flows.add(getOrg().flowTitles.get(i));
-                    viewModel.insertStory(new ModelSurvey(getOrg().flowTitles.get(i).getUuid(),"poll",prefManager.getString(PrefKeys.ORG_LABEL)));
                 }
             }
 

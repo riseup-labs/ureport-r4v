@@ -90,10 +90,13 @@ public class Org {
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BOLIVIA_ORG_ID), "[]");
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BRAZIL_ORG_ID+"poll"), "[]");
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BRAZIL_ORG_ID+"bot"), "[]");
+        FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BRAZIL_ORG_ID+"reg"), "[]");
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.ECUADOR_ORG_ID+"poll"), "[]");
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.ECUADOR_ORG_ID+"bot"), "[]");
+        FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.ECUADOR_ORG_ID+"reg"), "[]");
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BOLIVIA_ORG_ID+"poll"), "[]");
         FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BOLIVIA_ORG_ID+"bot"), "[]");
+        FileUtils.writeStringToFile(new File(directory, FLOWS_FILE + AppConstant.BOLIVIA_ORG_ID+"reg"), "[]");
 
         return org;
     }
@@ -104,7 +107,7 @@ public class Org {
      * @param directory the directory
      * @return the org
      */
-    static Org load(File directory) throws IOException {
+    static Org load(File directory, String types) throws IOException {
         if (!directory.exists() || !directory.isDirectory()) {
             throw new RuntimeException(directory.getPath() + " is not a valid org directory");
         }
@@ -115,7 +118,7 @@ public class Org {
         org.directory = directory;
 
         // read flows.json
-        String flowsJson = FileUtils.readFileToString(new File(directory, FLOWS_FILE + SharedPrefManager.getORGID()));
+        String flowsJson = FileUtils.readFileToString(new File(directory, FLOWS_FILE + SharedPrefManager.getORGID()+types));
 
         TypeToken type = new TypeToken<List<Flow>>() {
         };
@@ -212,8 +215,8 @@ public class Org {
      *
      * @return true if org has assets
      */
-    public boolean hasAssets() {
-        return new File(directory, ASSETS_FILE + SharedPrefManager.getORGID()).exists();
+    public boolean hasAssets(String type) {
+        return new File(directory, ASSETS_FILE + SharedPrefManager.getORGID()+type).exists();
     }
 
     /**
@@ -221,8 +224,8 @@ public class Org {
      *
      * @return the assets JSON
      */
-    public String getAssets() throws IOException {
-        return FileUtils.readFileToString(new File(directory, ASSETS_FILE + SharedPrefManager.getORGID()));
+    public String getAssets(String type) throws IOException {
+        return FileUtils.readFileToString(new File(directory, ASSETS_FILE + SharedPrefManager.getORGID()+type));
     }
 
     /**
@@ -314,7 +317,7 @@ public class Org {
         OrgAssets assets = OrgAssets.fromTemba(fields, groups, boundaries, definitions);
         String assetsJSON = JsonUtils.marshal(assets);
 
-        FileUtils.writeStringToFile(new File(directory, ASSETS_FILE + SharedPrefManager.getORGID()), assetsJSON);
+        FileUtils.writeStringToFile(new File(directory, ASSETS_FILE + SharedPrefManager.getORGID()+type), assetsJSON);
 
         progress.reportProgress(80);
 

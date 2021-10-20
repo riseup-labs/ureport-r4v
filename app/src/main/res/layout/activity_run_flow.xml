@@ -74,6 +74,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <LinearLayout
             android:id="@+id/bottom_options"
             android:layout_width="match_parent"
@@ -84,16 +85,50 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/quick_replies"
+                android:weightSum="2"
+                android:id="@+id/quick_replies1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:padding="8dp"
-                android:visibility="gone">
-
-
-            </LinearLayout>
+                android:orientation="horizontal"
+                android:padding="3dp"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:weightSum="2"
+                android:id="@+id/quick_replies2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="3dp"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:weightSum="2"
+                android:id="@+id/quick_replies3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="3dp"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:weightSum="2"
+                android:id="@+id/quick_replies4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="3dp"
+                android:visibility="gone"/>
+            <LinearLayout
+                android:weightSum="2"
+                android:id="@+id/quick_replies5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="3dp"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/completed_session_actions"

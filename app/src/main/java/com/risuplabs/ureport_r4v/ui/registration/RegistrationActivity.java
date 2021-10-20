@@ -186,9 +186,9 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
                     initUI();
 
                     try {
-                        org = getSurveyor().getOrgService().get(orgUUID);
+                        org = getSurveyor().getOrgService().get(orgUUID,"reg");
                         Environment environment = Engine.createEnvironment(org);
-                        SessionAssets assets = Engine.createSessionAssets(environment, Engine.loadAssets(org.getAssets()));
+                        SessionAssets assets = Engine.createSessionAssets(environment, Engine.loadAssets(org.getAssets("reg")));
 
                         com.risuplabs.ureport_r4v.surveyor.data.Flow flow = org.getFlow(AppConstant.REG_FLOW_UUID);
                         setTitle(flow.getName());
@@ -217,7 +217,7 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
                 progressModal.dismiss();
                 Toast.makeText(RegistrationActivity.this, getString(R.string.error_org_refresh), Toast.LENGTH_SHORT).show();
             }
-        },flows,"poll");
+        },flows,"reg");
         donx.execute(getOrg());
     }
 
@@ -239,7 +239,7 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
 
         if (org == null) {
             try {
-                org = SurveyorApplication.get().getOrgService().get(orgUUID);
+                org = SurveyorApplication.get().getOrgService().get(orgUUID,"reg");
             } catch (Exception e) {
                 Logger.e("Unable to load org", e);
 //                showBugReportDialog();

@@ -74,7 +74,7 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
         orgUUID = prefManager.getString(SurveyorPreferences.SAVED_UUID);
         if (org == null && !orgUUID.equals("")) {
             try {
-                org = SurveyorApplication.get().getOrgService().get(orgUUID);
+                org = SurveyorApplication.get().getOrgService().get(orgUUID,"poll");
             } catch (Exception e) {
                 Log.e(TAG, "onViewReady: ", e);
             }
@@ -106,10 +106,16 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
         });
 
         binding.polls.setOnClickListener(v ->{
-            Navigator.navigate(this,FlowListActivity.class);
+            Intent intent = new Intent(this,FlowListActivity.class);
+            intent.putExtra(IntentConstant.COMING_FROM,"poll");
+            startActivity(intent);
         });
 
-
+        binding.yourRights.setOnClickListener(v->{
+            Intent intent = new Intent(this,FlowListActivity.class);
+            intent.putExtra(IntentConstant.COMING_FROM,"bot");
+            startActivity(intent);
+        });
 
 
     }

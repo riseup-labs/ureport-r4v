@@ -29,7 +29,7 @@ public class OrgRepository {
 
         for (String uuid : orgUUIDs) {
             try {
-                orgs.add(SurveyorApplication.get().getOrgService().get(uuid));
+                orgs.add(SurveyorApplication.get().getOrgService().get(uuid,"poll"));
             } catch (Exception e) {
                 Logger.e("Unable to load org", e);
             }

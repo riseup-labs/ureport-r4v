@@ -3,7 +3,7 @@
 
     <color name="primary_lightest">#A5D6A7</color>
     <color name="primary_light">#81C784</color>
-    <color name="primary">#66BB6A</color>
+    <color name="primary">#00AAAD</color>
     <color name="primary_dark">#007179</color>
     <!--    <color name="primary_dark">#4CAF50</color>-->
     <color name="primary_darkest">#43A047</color>
@@ -30,7 +30,7 @@
     <color name="colorlightGrey">#E4E4E4</color>
     <color name="alpha">#00FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="colorPrimary">#1E87CA</color>
+    <color name="colorPrimary">#00AAAD</color>
 
     <color name="mapColor">#b1b1b1</color>
 
