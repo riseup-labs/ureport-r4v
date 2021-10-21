@@ -13,9 +13,16 @@ import com.risuplabs.ureport_r4v.databinding.ActivityProgramChooserBinding;
 import com.risuplabs.ureport_r4v.ui.dashboard.DashBoardActivity;
 import com.risuplabs.ureport_r4v.utils.AppConstant;
 import com.risuplabs.ureport_r4v.utils.Navigator;
+import com.risuplabs.ureport_r4v.utils.StaticMethods;
 import com.risuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 
 public class ProgramChooserActivity extends BaseActivity<ActivityProgramChooserBinding> {
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
+    }
 
     @Override
     public int getLayoutId() {
@@ -53,6 +60,7 @@ public class ProgramChooserActivity extends BaseActivity<ActivityProgramChooserB
         });
 
         binding.next.setOnClickListener(v->{
+            prefManager.putString(PrefKeys.LOGIN,"yes");
             Navigator.navigate(ProgramChooserActivity.this, DashBoardActivity.class);
             finish();
 

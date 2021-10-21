@@ -19,13 +19,13 @@
     <string name="v1_ureport_gender">Gênero</string>
     <string name="v1_ureport_location">Ubicación</string>
     <string name="v1_ureport_age">Edad</string>
-    <string name="v1_ureport_statistics">Estadística</string>
+    <string name="v1_ureport_statistics">Todo</string>
     <string name="v1_ureport_responses">Respuestas</string>
     <string name="v1_ureport_participation_level">Nivel de participación</string>
     <string name="v1_ureport_results">Resultados</string>
     <string name="v1_ureport_keyword_text">Palabras clave</string>
     <string name="v1_settings_overall_support"><u> Soporte general de </u></string>
-    <string name="v1_settings_designed_and_developed"><u> Diseñado &amp; Desarrollado por </u></string>
+    <string name="v1_settings_designed_and_developed">Diseñado &amp; Desarrollado por</string>
     <string name="v1_change_language">Cambiar idioma</string>
     <string name="v1_sound">Sonido</string>
     <string name="v1_vibration">Vibración</string>
@@ -115,10 +115,13 @@
     <string name="last_update">Última actualización</string>
     <string name="respondents_small">Respondedores</string>
     <string name="surveyed">Encuestados</string>
-    <string name="v2_about">about</string>
-    <string name="your_rights">Your Rights</string>
-    <string name="polls">Polls</string>
-    <string name="about">About</string>
-    <string name="admin_login">Admin Login?</string>
-    <string name="click_here">Click here</string>
+    <string name="v2_about">Sobre</string>
+    <string name="your_rights">Tus derechos</string>
+    <string name="polls">Sondeos</string>
+    <string name="about">Sobre</string>
+    <string name="admin_login">Inicio de sesión de administrador?</string>
+    <string name="click_here">haga clic aquí</string>
+    <string name="v2_continue">Continuar</string>
+    <string name="latest_opinion">ÚLTIMA OPINIÓN</string>
+    <string name="search">Buscar</string>
 </resources>

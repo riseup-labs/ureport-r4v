@@ -11,10 +11,17 @@ import com.risuplabs.ureport_r4v.R;
 import com.risuplabs.ureport_r4v.base.BaseActivity;
 import com.risuplabs.ureport_r4v.databinding.ActivityStoriesBinding;
 import com.risuplabs.ureport_r4v.utils.StaticMethods;
+import com.risuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 
 public class StoriesListActivity extends BaseActivity<ActivityStoriesBinding> {
 
     boolean isOpen = false;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
+    }
 
     @Override
     public int getLayoutId() {

@@ -38,6 +38,9 @@
     <style name="boldText" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/dosis_bold</item>
     </style>
+    <style name="semiboldText" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/dosis_semibold</item>
+    </style>
 
 
 </resources>

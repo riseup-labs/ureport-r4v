@@ -118,7 +118,7 @@
     <string name="v1_ureport_gender">Gender</string>
     <string name="v1_ureport_location">Location</string>
     <string name="v1_ureport_age">Age</string>
-    <string name="v1_ureport_statistics">Statistics</string>
+    <string name="v1_ureport_statistics">All</string>
     <string name="v1_ureport_responses">Responses</string>
     <string name="v1_ureport_participation_level">Participation Level</string>
     <string name="v1_ureport_results">Results</string>
@@ -128,7 +128,7 @@
     <string name="v1_ureport_keyword_text">Keywords</string>
 
     <string name="v1_settings_overall_support"><u>Overall Support of</u></string>
-    <string name="v1_settings_designed_and_developed"><u>Designed &amp; Developed by</u></string>
+    <string name="v1_settings_designed_and_developed">Designed &amp; Developed by</string>
     <string name="v1_change_language">Change Language</string>
     <string name="v1_sound">Sound</string>
     <string name="v1_vibration">Vibration</string>
@@ -188,5 +188,9 @@
     <string name="about">About</string>
     <string name="admin_login">Admin Login?</string>
     <string name="click_here">Click here</string>
+    <string name="v2_continue">Continue</string>
+    <string name="latest_opinion">LATEST OPINION</string>
+    <string name="search">Search</string>
+    <string name="riseup_labs" translatable="false">: <u>Riseup Labs</u> </string>
 
 </resources>

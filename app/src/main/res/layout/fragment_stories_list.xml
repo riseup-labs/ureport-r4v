@@ -41,7 +41,7 @@
                             android:layout_marginStart="20dp"
                             android:layout_centerVertical="true"
                             android:textSize="18sp"
-                            android:text="Search"
+                            android:text="@string/search"
                             android:textColor="@color/light_gray"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -66,13 +66,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/item_stories"/>
-                <TextView
+                <ProgressBar
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
                     android:visibility="gone"
                     android:id="@+id/emptyListWarning"
                     android:gravity="center"
-                    android:text="@string/empty_story"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
             </RelativeLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -89,7 +90,7 @@
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:paddingTop="10dp"
-                android:background="@color/secondary_dark"
+                android:background="@color/black"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -123,6 +124,7 @@
                     android:layout_weight="6"
                     android:layout_width="0dp"
                     android:layout_height="10dp"
+                    android:progressTint="@color/primary"
                     android:layout_gravity="center"
                     android:indeterminateTint="@color/primary"
                     android:indeterminateTintMode="multiply"
@@ -138,7 +140,7 @@
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:paddingTop="10dp"
-                android:background="@color/secondary_dark"
+                android:background="@color/black"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -147,6 +149,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_gravity="center"
                     android:textColor="@color/white"
+
                     android:layout_toStartOf="@+id/btnRetry"
                     android:text="@string/no_internet_text"
                     android:layout_width="match_parent"

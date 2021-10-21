@@ -33,7 +33,7 @@
                         android:id="@+id/bgColor"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:background="@drawable/v1_layout_bg_settings"
+                        android:background="@drawable/v1_layout_bg_stories"
                         android:transitionName="transition_color"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
 
                     <TextView
                         android:id="@+id/activityName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:gravity="center|left"
                         android:text="@string/v1_settings"
@@ -51,29 +51,43 @@
                         android:textStyle="bold"
                         android:transitionName="transition_text"
                         app:layout_constraintBottom_toBottomOf="@+id/backButton"
+                        app:layout_constraintEnd_toStartOf="@+id/activityImage"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/backButton"
-                        app:layout_constraintTop_toTopOf="@+id/backButton" />
+                        app:layout_constraintTop_toTopOf="@+id/backButton"
+                        app:layout_constraintVertical_bias="0.5" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="-0.22" />
+                        app:layout_constraintGuide_percent="-0.25" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_end="120dp" />
+                        app:layout_constraintGuide_end="145dp" />
+
+                    <ImageView
+                        android:id="@+id/headerShade"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:transitionName="transition_shadow"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="@+id/guideline2"
+                        app:layout_constraintTop_toTopOf="@+id/guideline3"
+
+                        app:srcCompat="@drawable/icon_bg" />
 
                     <ImageView
                         android:id="@+id/activityImage"
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="20dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="25dp"
                         android:transitionName="transition_image"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -81,14 +95,15 @@
 
                     <ImageView
                         android:id="@+id/backButton"
+                        android:transitionName="back_button"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_marginTop="16dp"
                         android:padding="12dp"
-                        app:tint="#ffffff"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/v1_back_button" />
+                        app:srcCompat="@drawable/v1_back_button"
+                        app:tint="#ffffff" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -409,10 +424,17 @@
                                     android:layout_alignParentStart="true"
                                     android:layout_marginStart="20dp"
                                     android:id="@+id/imgLogout"
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:src="@drawable/logout_icon" />
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/v2_ic_logout" />
                             </RelativeLayout>
+
+                            <ImageView
+                                android:layout_marginTop="15dp"
+                                android:layout_gravity="center"
+                                android:layout_width="250dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/v2_r4v_logo"/>
 
                         </LinearLayout>
 
@@ -441,7 +463,7 @@
                                 android:textColor="@color/black"
                                 android:layout_marginEnd="20dp"
                                 android:layout_alignParentEnd="true"
-                                android:text=" : Riseup Labs"
+                                android:text="@string/riseup_labs"
                                 android:id="@+id/riseupLabs"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>

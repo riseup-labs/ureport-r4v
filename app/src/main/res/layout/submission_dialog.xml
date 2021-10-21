@@ -174,13 +174,14 @@
                             android:layout_width="26dp"
                             android:layout_height="26dp"
                             android:layout_marginTop="4dp"
-                            android:scaleX="1.5"
-                            android:scaleY="1.5"
+                            android:scaleX="1"
+                            android:padding="5dp"
+                            android:scaleY="1"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/v1_start_survey_icon" />
+                            app:srcCompat="@drawable/play_icon" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>

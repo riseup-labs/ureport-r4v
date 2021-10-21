@@ -111,15 +111,15 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
         switch (tab) {
             case 0:
                 binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.white));
-                binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.black));
 
-                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.layoutStatistics.stateParent.setVisibility(View.VISIBLE);
@@ -130,16 +130,16 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
                 break;
 
             case 1:
-                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.white));
-                binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.black));
 
-                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.layoutStatistics.stateParent.setVisibility(View.GONE);
@@ -150,16 +150,16 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
                 break;
 
             case 2:
-                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.textViewGender.setTextColor(context.getResources().getColor(R.color.white));
-                binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.black));
 
-                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewAge.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.layoutStatistics.stateParent.setVisibility(View.GONE);
@@ -170,17 +170,17 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
                 break;
 
             case 3:
-                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewStatistics.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewStatistics.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewlocations.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewlocations.setBackgroundColor(context.getResources().getColor(R.color.white));
 
-                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewGender.setTextColor(context.getResources().getColor(R.color.black));
                 binding.textViewGender.setBackgroundColor(context.getResources().getColor(R.color.white));
 
                 binding.textViewAge.setTextColor(context.getResources().getColor(R.color.white));
-                binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.dark_gray));
+                binding.textViewAge.setBackgroundColor(context.getResources().getColor(R.color.black));
 
                 binding.layoutAge.ageParent.setVisibility(View.VISIBLE);
                 binding.layoutStatistics.stateParent.setVisibility(View.GONE);

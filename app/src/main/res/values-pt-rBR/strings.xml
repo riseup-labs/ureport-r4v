@@ -18,14 +18,14 @@
     <string name="v1_ureport_male">Homem</string>
     <string name="v1_ureport_gender">Gênero</string>
     <string name="v1_ureport_location">Localização</string>
-    <string name="v1_ureport_age">EIdadera</string>
-    <string name="v1_ureport_statistics">Estatisticas</string>
+    <string name="v1_ureport_age">Idade</string>
+    <string name="v1_ureport_statistics">Tudos</string>
     <string name="v1_ureport_responses">Respostas</string>
     <string name="v1_ureport_participation_level">Nível de Participação</string>
     <string name="v1_ureport_results">Resultados</string>
     <string name="v1_ureport_keyword_text">Palavras chave</string>
     <string name="v1_settings_overall_support"><u> Suporte geral de </u></string>
-    <string name="v1_settings_designed_and_developed"><u> Projetado &amp; Desenvolvido por </u></string>
+    <string name="v1_settings_designed_and_developed">Projetado &amp; Desenvolvido por</string>
     <string name="v1_change_language">Mudar idioma</string>
     <string name="v1_sound">Som</string>
     <string name="v1_vibration">Vibração</string>
@@ -115,10 +115,13 @@
     <string name="last_update">Última actualización</string>
     <string name="respondents_small">Respondedores</string>
     <string name="surveyed">Encuestados</string>
-    <string name="v2_about">about</string>
-    <string name="your_rights">Your Rights</string>
-    <string name="polls">Polls</string>
-    <string name="about">About</string>
-    <string name="admin_login">Admin Login?</string>
-    <string name="click_here">Click here</string>
+    <string name="v2_about">Cerca de</string>
+    <string name="your_rights">Seus Direitos</string>
+    <string name="polls">Enquetes</string>
+    <string name="about">Cerca de</string>
+    <string name="admin_login">Login de administrador?</string>
+    <string name="click_here">Clique aqui</string>
+    <string name="v2_continue">Prosseguir</string>
+    <string name="latest_opinion">ÚLTIMA OPINIÃO</string>
+    <string name="search">Procurar</string>
 </resources>

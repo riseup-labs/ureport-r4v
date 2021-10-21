@@ -120,6 +120,7 @@
                                     android:layout_height="0dp"/>
 
                                 <TextView
+                                    android:id="@+id/your_rights_text"
                                     android:layout_weight="1"
                                     style="@style/boldText"
                                     android:text="@string/your_rights"
@@ -165,6 +166,7 @@
                                     android:layout_height="0dp"/>
 
                                 <TextView
+                                    android:id="@+id/polls_text"
                                     android:layout_weight="1"
                                     style="@style/boldText"
                                     android:text="@string/polls"
@@ -320,6 +322,7 @@
                                     android:layout_height="0dp"/>
 
                                 <TextView
+                                    android:id="@+id/about_text"
                                     android:layout_weight="1"
                                     style="@style/boldText"
                                     android:text="@string/about"

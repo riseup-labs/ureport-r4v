@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -27,6 +28,10 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
     @Inject
     SplashViewModel splashViewModel;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     @Override
     public int getLayoutId() {
@@ -45,25 +50,24 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
                         .build()
         );
 
-        createNotificationChannel();
+//        createNotificationChannel();
 
-        setLanguage();
+
 
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            if(prefManager.getString(PrefKeys.ORG_LABEL,"").equals("")){
+            Log.d(TAG, "onViewReady: "+prefManager.getString(PrefKeys.ORG_LABEL,""));
+            if(prefManager.getString(PrefKeys.LOGIN,"").equals("")){
+                StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
                 Navigator.navigate(Splash.this, ProgramChooserActivity.class);
                 finish();
             }else{
+                StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
                 Navigator.navigate(Splash.this,DashBoardActivity.class);
                 finish();
             }
         },2000);
 
-    }
-
-    void setLanguage(){
-        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE),prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"en"));
     }
 
     private void createNotificationChannel(){

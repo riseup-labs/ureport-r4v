@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">U-Report R4V</string>
     <string name="support_email" translatable="false">support@rapidpro.io</string>
+    <string name="search">Search</string>
 </resources>

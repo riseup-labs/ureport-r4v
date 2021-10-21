@@ -24,6 +24,8 @@ import com.risuplabs.ureport_r4v.di.SurveyorApplication;
 import com.risuplabs.ureport_r4v.ui.auth.LoginChooserActivity;
 import com.risuplabs.ureport_r4v.ui.org.OrgChooseActivity;
 import com.risuplabs.ureport_r4v.utils.IntentConstant;
+import com.risuplabs.ureport_r4v.utils.StaticMethods;
+import com.risuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 import com.risuplabs.ureport_r4v.utils.pref_manager.SharedPrefManager;
 import com.risuplabs.ureport_r4v.utils.pref_manager.SurveyorPreferences;
 import com.risuplabs.ureport_r4v.utils.surveyor.Logger;
@@ -57,7 +59,6 @@ public abstract class BaseSurveyorActivity<T extends ViewDataBinding> extends Pe
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         performDependencyInjection();
         performDatabinding();
         onViewReady(savedInstanceState);

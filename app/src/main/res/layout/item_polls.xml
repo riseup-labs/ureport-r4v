@@ -44,7 +44,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:text="TextView"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/question" />
 
@@ -89,16 +90,19 @@
                     android:paddingBottom="5dp"
                     android:background="@color/dark_gray"
                     android:text="@string/v1_ureport_statistics"
+                    style="@style/semiboldText"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <LinearLayout
                     android:background="@color/dark_gray"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"/>
 
+
+
                 <TextView
-                    android:id="@+id/textViewlocations"
+                    android:id="@+id/textViewAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -106,9 +110,10 @@
                     android:paddingTop="5dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
-                    android:text="@string/v1_ureport_location"
+                    android:text="@string/v1_ureport_age"
+                    style="@style/semiboldText"
                     android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <LinearLayout
                     android:background="@color/dark_gray"
@@ -125,15 +130,16 @@
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
                     android:text="@string/v1_ureport_gender"
+                    style="@style/semiboldText"
                     android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
                 <LinearLayout
                     android:background="@color/dark_gray"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"/>
 
                 <TextView
-                    android:id="@+id/textViewAge"
+                    android:id="@+id/textViewlocations"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -141,9 +147,10 @@
                     android:paddingTop="5dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
-                    android:text="@string/v1_ureport_age"
+                    android:text="@string/v1_ureport_location"
+                    style="@style/semiboldText"
                     android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
 
                 <TextView
@@ -156,8 +163,9 @@
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
                     android:text="@string/v1_ureport_keyword_text"
+                    style="@style/semiboldText"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:visibility="gone" />
 
             </LinearLayout>
@@ -187,34 +195,11 @@
                     android:visibility="invisible"
                     android:background="@color/dark_gray"
                     android:text="@string/v1_ureport_statistics"
+                    style="@style/semiboldText"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
-                <TextView
-                    android:visibility="invisible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="5dp"
-                    android:text="@string/v1_ureport_location"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
 
-                <TextView
-                    android:visibility="invisible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="5dp"
-                    android:text="@string/v1_ureport_gender"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
 
                 <TextView
                     android:visibility="invisible"
@@ -226,8 +211,39 @@
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
                     android:text="@string/v1_ureport_age"
+                    style="@style/semiboldText"
                     android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/v1_ureport_gender"
+                    style="@style/semiboldText"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/v1_ureport_location"
+                    style="@style/semiboldText"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
 
             </LinearLayout>
 

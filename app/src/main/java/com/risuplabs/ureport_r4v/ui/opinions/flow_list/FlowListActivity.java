@@ -96,6 +96,8 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
 
+        poll_type = prefManager.getString(PrefKeys.POLL_TYPE,"");
+
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.cancel(522);
 
@@ -120,17 +122,17 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
             }
         }
 
-        if (intent != null) {
-            poll_type = intent.getStringExtra(IntentConstant.COMING_FROM);
-            if(poll_type.equals("poll")){
-                binding.activityName.setText(getResources().getString(R.string.polls));
-            }else{
-                binding.activityName.setText(getResources().getString(R.string.your_rights));
-            }
+        if (poll_type.equals("poll")) {
+            binding.activityName.setText(getResources().getString(R.string.polls));
+            binding.activityImage.setImageResource(R.drawable.v2_polls);
+        } else {
+            binding.activityName.setText(getResources().getString(R.string.your_rights));
+            binding.activityImage.setImageResource(R.drawable.v2_your_rights);
         }
 
+
         isOpen = true;
-        initAnimation();
+//        initAnimation();
         cache = getViewCache();
         cache.setText(R.id.button_pending, NumberFormat.getInstance().format(pending));
 
@@ -646,7 +648,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
     @Override
     public boolean requireLogin() {
-            return true;
+        return true;
     }
 
     public void downloadAlert() {

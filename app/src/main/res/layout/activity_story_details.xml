@@ -278,7 +278,7 @@
                     android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/sound_off" />
+                    app:srcCompat="@drawable/mic_off" />
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/btn_tts_lottie"

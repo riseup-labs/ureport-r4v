@@ -85,6 +85,6 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "onResume: ");
-        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
+        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"es"));
     }
 }

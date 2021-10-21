@@ -767,7 +767,6 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
         try {
             submission.complete();
             if (ConnectivityCheck.isConnected(this)) {
-                playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes, null);
                 onActionSubmit(null);
             } else {
                 new CustomDialog(this).displayNoInternetDialog(new CustomDialogInterface() {
@@ -781,7 +780,6 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
                     public void cancel() {}
                 });
             }
-            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
         } catch (IOException e) {
             Logger.e("unable to complete submission", e);
         }

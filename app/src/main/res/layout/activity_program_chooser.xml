@@ -150,7 +150,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Continue"
+                android:text="@string/v2_continue"
                 android:textColor="@color/white"
                 android:textAlignment="center"
                 android:layout_width="match_parent"

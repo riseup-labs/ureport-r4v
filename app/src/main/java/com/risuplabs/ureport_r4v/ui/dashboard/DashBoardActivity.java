@@ -72,6 +72,12 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
+    }
+
+    @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
         cache = getViewCache();
         orgUUID = prefManager.getString(SurveyorPreferences.SAVED_UUID);
@@ -120,6 +126,7 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
         });
 
         binding.polls.setOnClickListener(v ->{
+            prefManager.putString(PrefKeys.POLL_TYPE,"poll");
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Intent intent = new Intent(this,FlowListActivity.class);
             intent.putExtra(IntentConstant.COMING_FROM,"poll");
@@ -127,6 +134,7 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
         });
 
         binding.yourRights.setOnClickListener(v->{
+            prefManager.putString(PrefKeys.POLL_TYPE,"bot");
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Intent intent = new Intent(this,FlowListActivity.class);
             intent.putExtra(IntentConstant.COMING_FROM,"bot");
@@ -179,6 +187,9 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
         binding.btnTextStories.setText(R.string.v1_stories);
         binding.btnTextResults.setText(R.string.v1_ureport);
         binding.btnTextSettings.setText(R.string.v1_settings);
+        binding.yourRightsText.setText(R.string.your_rights);
+        binding.pollsText.setText(R.string.polls);
+        binding.aboutText.setText(R.string.about);
 
         if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
             binding.programLogo.setImageResource(R.drawable.v2_brasil);

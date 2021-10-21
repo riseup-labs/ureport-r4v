@@ -60,7 +60,7 @@
                                 android:layout_marginStart="20dp"
                                 android:layout_centerVertical="true"
                                 android:textSize="18sp"
-                                android:text="Search"
+                                android:text="@string/search"
                                 android:textColor="@color/light_gray"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -116,7 +116,7 @@
                                         android:textColor="@color/black"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="LATEST OPINION"
+                                        android:text="@string/latest_opinion"
                                         android:textSize="17sp" />
 
                                     <TextView
@@ -329,7 +329,7 @@
                                                 android:layout_height="50dp"
                                                 android:gravity="center"
                                                 android:textColor="@color/black"
-                                                android:textStyle="bold" />
+                                                style="@style/boldText" />
 
                                             <TextView
                                                 android:textSize="14sp"
@@ -337,7 +337,7 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:textColor="@color/black"
-                                                android:textStyle="bold" />
+                                                style="@style/boldText" />
                                         </LinearLayout>
 
 
@@ -370,20 +370,21 @@
 
 
 
-                <TextView
+                <ProgressBar
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
                     android:visibility="gone"
                     android:id="@+id/emptyListWarning"
                     android:gravity="center"
-                    android:text="@string/empty_poll"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
 
                 <RelativeLayout
                     android:layout_alignParentBottom="true"
                     android:id="@+id/layout_footer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <LinearLayout
+                    <RelativeLayout
                         android:visibility="gone"
                         android:paddingBottom="30dp"
                         android:id="@+id/loadingLayout"
@@ -391,13 +392,12 @@
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
                         android:paddingTop="10dp"
-                        android:background="@color/secondary_dark"
-                        android:orientation="horizontal"
+                        android:background="@color/black"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <LinearLayout
-                            android:layout_weight="5"
-                            android:layout_width="0dp"
+                            android:id="@+id/testS"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
                             <TextView
@@ -405,7 +405,6 @@
                                 android:layout_marginEnd="5dp"
                                 android:layout_gravity="center"
                                 android:textColor="@color/white"
-                                tools:text="Fetching Data"
                                 android:id="@+id/loadingTvTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -420,18 +419,20 @@
                         </LinearLayout>
 
                         <ProgressBar
+                            android:layout_marginTop="5dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_toEndOf="@+id/testS"
                             android:indeterminate="false"
                             android:id="@+id/progressBar"
-                            android:layout_weight="5"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="10dp"
-                            android:layout_gravity="center"
+                            android:progressTint="@color/primary"
                             android:indeterminateTint="@color/primary"
                             android:indeterminateTintMode="multiply"
                             style="@android:style/Widget.ProgressBar.Horizontal"
                             />
 
-                    </LinearLayout>
+                    </RelativeLayout>
                     <RelativeLayout
                         android:visibility="gone"
                         android:paddingBottom="30dp"
@@ -440,7 +441,7 @@
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
                         android:paddingTop="10dp"
-                        android:background="@color/secondary_dark"
+                        android:background="@color/black"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -548,7 +549,8 @@
             <ImageView
                 android:id="@+id/activityImage"
                 android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
                 android:transitionName="transition_image"

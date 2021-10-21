@@ -45,7 +45,6 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
     int count = 0;
     List<ModelPolls> list = new ArrayList<>();
 
-
     @Inject
     ResultsViewModel viewModel;
 
@@ -120,27 +119,36 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                         }
 
                         if (response.get(0).questions.size() > 0) {
+
+                            if(response.get(0).questions.size() == 2){
+
+                            }
                             int set = response.get(0).questions.get(0).results.set;
                             double total = set + response.get(0).questions.get(0).results.unset;
-                            double percent_all = (set / total) * 100;
+                            if(total != 0){
+                                double percent_all = (set / total) * 100;
+                                binding.responseRate.setText((int)Math.round(percent_all)  + " %");
+                            }
 
                             binding.totalRespondents.setText(set + "");
-                            binding.responseRate.setText((int) percent_all + " %");
+
 
                             int male_responded = response.get(0).questions.get(0).results_by_gender.get(0).set;
                             int female_responded = response.get(0).questions.get(0).results_by_gender.get(1).set;
                             double gender_total = male_responded + female_responded;
-                            double percent_male = (male_responded / gender_total) * 100;
-                            double percent_female = (female_responded / gender_total) * 100;
+                            if(gender_total != 0){
+                                double percent_male = (male_responded / gender_total) * 100;
+                                binding.malePercent.setText((int)Math.round(percent_male) + " %");
+                                double percent_female = (female_responded / gender_total) * 100;
+                                binding.femalePercent.setText((int)Math.round(percent_female) + " %");
+                            }else{
+                                binding.malePercent.setText("-");
+                                binding.femalePercent.setText("-");
+                            }
 
                             binding.femaleNumber.setText(female_responded + "");
                             binding.maleNumber.setText(male_responded + "");
 
-                            binding.femalePercent.setText((int) percent_female + " %");
-                            binding.malePercent.setText((int) percent_male + " %");
-
-                            final RichPath[] pathStack = new RichPath[2];
-                            List<ModelResultsByLocation> model = response.get(0).questions.get(0).results_by_location;
 
                         } else {
                             binding.femaleNumber.setText("---");

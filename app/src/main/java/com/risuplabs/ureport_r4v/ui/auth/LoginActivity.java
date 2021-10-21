@@ -21,6 +21,7 @@ import com.risuplabs.ureport_r4v.surveyor.net.responses.Token;
 import com.risuplabs.ureport_r4v.surveyor.task.FetchOrgsTask;
 import com.risuplabs.ureport_r4v.ui.dashboard.DashBoardActivity;
 import com.risuplabs.ureport_r4v.utils.AppConstant;
+import com.risuplabs.ureport_r4v.utils.StaticMethods;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialog;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialogInterface;
 import com.risuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
@@ -41,6 +42,12 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
 
     @Inject
     LoginViewModel viewModel;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
+    }
 
     @Override
     public int getLayoutId() {

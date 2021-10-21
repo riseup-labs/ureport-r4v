@@ -50,12 +50,16 @@
                         android:id="@+id/textView4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        style="@style/semiboldText"
                         android:text="@string/v1_ureport_responses" />
 
                     <TextView
                         android:id="@+id/textViewResponseInZone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        style="@style/semiboldText"
                         android:text="@string/response_rate_small" />
 
                 </LinearLayout>
@@ -70,6 +74,8 @@
                         android:id="@+id/textViewRespondedMap"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        style="@style/semiboldText"
                         android:gravity="center"
                         android:text="0" />
 
@@ -77,6 +83,8 @@
                         android:id="@+id/textViewRespondedAllMap"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        style="@style/semiboldText"
                         android:gravity="center"
                         android:text="0 %" />
 
@@ -109,6 +117,8 @@
                 <TextView
                     android:id="@+id/respondedPercentageMap"
                     android:layout_width="wrap_content"
+                    android:textSize="16sp"
+                    style="@style/semiboldText"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="0%" />
@@ -118,6 +128,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:textSize="16sp"
+                    style="@style/semiboldText"
                     android:layout_weight="1"
                     android:text="Yes" />
             </LinearLayout>
@@ -133,6 +145,8 @@
                     android:id="@+id/textViewRest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    style="@style/semiboldText"
                     android:layout_weight="1"
                     android:text="0%" />
 
@@ -142,6 +156,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
+                    android:textSize="16sp"
+                    style="@style/semiboldText"
                     android:text="@string/v1_ureport_other" />
             </LinearLayout>
         </LinearLayout>

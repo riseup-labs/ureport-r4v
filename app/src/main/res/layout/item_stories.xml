@@ -103,7 +103,7 @@
                         tools:text="From its medieval origins to the digital era, learn everything there is to know about."
                         android:textColor="@color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold"
+                        style="@style/boldText"
                         android:transitionName="story_title"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -131,6 +131,8 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginEnd="8dp"
+                        android:textSize="16sp"
+                        style="@style/semiboldText"
                         android:layout_marginBottom="14dp"
                         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                         android:textAlignment="viewStart"
@@ -183,7 +185,8 @@
                                     android:paddingBottom="8dp"
                                     android:text="@string/v1_story_see_more"
                                     android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    style="@style/semiboldText"
+                                    android:textSize="14sp" />
 
                                 <ImageView
                                     android:layout_marginEnd="5dp"

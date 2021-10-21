@@ -119,13 +119,12 @@
             <ImageView
                 android:id="@+id/activityImage"
                 android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
                 android:transitionName="transition_image"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/v1_header_image_opinion" />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <ImageView

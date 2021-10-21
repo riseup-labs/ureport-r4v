@@ -32,15 +32,21 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
+    }
+
+    @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
 
-        initAnimation();
+//        initAnimation();
 
         if (!isLoggedIn()) {
             binding.textLogout.setText(R.string.login);
         }
 
-        selectedLanguageButton(prefManager.getString(PrefKeys.SELECTED_LANGUAGE, "en"), prefManager.getString(PrefKeys.SELECTED_COUNTRY));
+        selectedLanguageButton(prefManager.getString(PrefKeys.SELECTED_LANGUAGE, "es"), prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
         selectedCountryButton(prefManager.getInt(PrefKeys.ORG_ID,37));
 
         selectSoundState(prefManager.getBoolean(PrefKeys.SOUND, true));
@@ -122,15 +128,14 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
             startActivity(browserIntent);
         });
 
+        binding.backButton.setOnClickListener(v->{
+            onBackPressed();
+        });
+
     }
 
     @Override
     public void onBackPressed() {
-        if (isOpen) {
-            isOpen = false;
-        } else {
-            return;
-        }
         playNotification(prefManager, getApplicationContext(), R.raw.button_click_no, findViewById(R.id.backButton));
         binding.headerLayout.setBackgroundColor(Color.parseColor("#00000000"));
         ObjectAnimator.ofFloat(binding.storyList, "alpha", 1f, 0).setDuration(750).start();

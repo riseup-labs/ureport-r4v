@@ -136,6 +136,12 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
         String flowUUID = getIntent().getStringExtra(SurveyorIntent.EXTRA_FLOW_UUID);
         poll_type = getIntent().getStringExtra(IntentConstant.COMING_FROM);
 
+        if(poll_type.equals("poll")){
+            binding.activityName.setText(R.string.polls);
+        }else{
+           binding.activityName.setText(R.string.your_rights);
+        }
+
         initUI();
 
         binding.backButton.setOnClickListener(v->{

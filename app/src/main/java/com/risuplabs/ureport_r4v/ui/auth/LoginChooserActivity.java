@@ -20,6 +20,7 @@ import com.risuplabs.ureport_r4v.ui.dashboard.DashBoardActivity;
 import com.risuplabs.ureport_r4v.utils.AppConstant;
 import com.risuplabs.ureport_r4v.utils.IntentConstant;
 import com.risuplabs.ureport_r4v.utils.Navigator;
+import com.risuplabs.ureport_r4v.utils.StaticMethods;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialog;
 import com.risuplabs.ureport_r4v.utils.custom_dialog.CustomDialogInterface;
 import com.risuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
@@ -39,6 +40,12 @@ public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChoo
     @Override
     public int getLayoutId() {
         return R.layout.activity_login_chooser;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
     }
 
     @Override
