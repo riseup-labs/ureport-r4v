@@ -41,6 +41,9 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
 
+        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
+        binding.txtDeveloped.setText(R.string.v1_settings_designed_and_developed);
+
         AndroidRemoteDebugger.init(
                 new AndroidRemoteDebugger.Builder(this)
                         .enabled(true)
@@ -58,12 +61,12 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
         handler.postDelayed(() -> {
             Log.d(TAG, "onViewReady: "+prefManager.getString(PrefKeys.ORG_LABEL,""));
             if(prefManager.getString(PrefKeys.LOGIN,"").equals("")){
-                StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
-                Navigator.navigate(Splash.this, ProgramChooserActivity.class);
+                StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
+                Navigator.navigate(this, ProgramChooserActivity.class);
                 finish();
             }else{
-                StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
-                Navigator.navigate(Splash.this,DashBoardActivity.class);
+                StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
+                Navigator.navigate(this,DashBoardActivity.class);
                 finish();
             }
         },2000);

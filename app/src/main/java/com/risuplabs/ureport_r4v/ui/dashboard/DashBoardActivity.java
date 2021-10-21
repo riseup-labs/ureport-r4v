@@ -111,21 +111,25 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
         }
 
         binding.stories.setOnClickListener(v ->{
+            StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Navigator.navigate(this,StoriesListActivity.class);
         });
 
         binding.results.setOnClickListener(v ->{
+            StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Navigator.navigate(this,PollsActivity.class);
         });
 
         binding.settings.setOnClickListener(v ->{
+            StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Navigator.navigate(this,SettingsActivity.class);
         });
 
         binding.polls.setOnClickListener(v ->{
+            StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
             prefManager.putString(PrefKeys.POLL_TYPE,"poll");
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Intent intent = new Intent(this,FlowListActivity.class);
@@ -134,6 +138,7 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
         });
 
         binding.yourRights.setOnClickListener(v->{
+            StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
             prefManager.putString(PrefKeys.POLL_TYPE,"bot");
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Intent intent = new Intent(this,FlowListActivity.class);
@@ -142,6 +147,7 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
         });
 
         binding.about.setOnClickListener(v->{
+            StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);

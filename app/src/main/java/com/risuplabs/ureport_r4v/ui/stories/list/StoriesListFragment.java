@@ -106,6 +106,7 @@ public class StoriesListFragment extends BaseFragment<FragmentStoriesListBinding
         storyViewModel.getStoriesCount(org_id).observe(getViewLifecycleOwner(), count -> {
             int storyCount = count;
             if (storyCount == 0) {
+                StaticMethods.setLanguage(getActivity(),prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
                 visible(binding.emptyListWarning);
                 if(ConnectivityCheck.isConnected(getContext())) {
                     binding.progressBar.setIndeterminate(true);

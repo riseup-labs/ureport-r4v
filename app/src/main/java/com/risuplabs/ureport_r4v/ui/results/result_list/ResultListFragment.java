@@ -95,6 +95,7 @@ public class ResultListFragment extends BaseFragment<FragmentResultListBinding> 
         viewModel.getAllCategoriesCountFromLocal(org_id).observe(getViewLifecycleOwner(), count -> {
             int pollCount = count;
             if (pollCount == 0) {
+                StaticMethods.setLanguage(getActivity(),prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
                 visible(binding.emptyListWarning);
                 if(ConnectivityCheck.isConnected(getContext())) {
                     binding.progressBar.setIndeterminate(true);

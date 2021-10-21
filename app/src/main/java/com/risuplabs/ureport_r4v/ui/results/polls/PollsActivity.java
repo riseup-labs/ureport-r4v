@@ -59,6 +59,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
         viewModel.getAllCategoriesCountFromLocal(org_id).observe(PollsActivity.this, count -> {
             int pollCount = count;
             if (pollCount == 0) {
+                StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
                 visible(binding.emptyListWarning);
                 if(ConnectivityCheck.isConnected(PollsActivity.this)) {
                     binding.progressBar.setIndeterminate(true);
@@ -100,7 +101,6 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
         viewModel.getAllCategoriesCountFromLocal(org_id).observe(PollsActivity.this, count -> {
 
             if(count != 0){
-                visible(binding.body);
                 if (id == 0) {
 
                     viewModel.getLatestQuestionsFromLocal(org_id).observe(this, response -> {
@@ -120,35 +120,73 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
                         if (response.get(0).questions.size() > 0) {
 
-                            if(response.get(0).questions.size() == 2){
+                            if(response.get(0).questions.get(0).results_by_gender.size() == 3){
+                                int set = response.get(0).questions.get(0).results.set;
+                                double total = set + response.get(0).questions.get(0).results.unset;
+                                if(total != 0){
+                                    double percent_all = (set / total) * 100;
+                                    binding.responseRate.setText((int)Math.round(percent_all)  + " %");
+                                }
 
-                            }
-                            int set = response.get(0).questions.get(0).results.set;
-                            double total = set + response.get(0).questions.get(0).results.unset;
-                            if(total != 0){
-                                double percent_all = (set / total) * 100;
-                                binding.responseRate.setText((int)Math.round(percent_all)  + " %");
-                            }
-
-                            binding.totalRespondents.setText(set + "");
+                                binding.totalRespondents.setText(set + "");
 
 
-                            int male_responded = response.get(0).questions.get(0).results_by_gender.get(0).set;
-                            int female_responded = response.get(0).questions.get(0).results_by_gender.get(1).set;
-                            double gender_total = male_responded + female_responded;
-                            if(gender_total != 0){
-                                double percent_male = (male_responded / gender_total) * 100;
-                                binding.malePercent.setText((int)Math.round(percent_male) + " %");
-                                double percent_female = (female_responded / gender_total) * 100;
-                                binding.femalePercent.setText((int)Math.round(percent_female) + " %");
+                                int male_responded = response.get(0).questions.get(0).results_by_gender.get(0).set;
+                                int female_responded = response.get(0).questions.get(0).results_by_gender.get(1).set;
+                                int other_responded = response.get(0).questions.get(0).results_by_gender.get(2).set;
+
+                                double gender_total = male_responded + female_responded + other_responded;
+
+                                if(gender_total != 0){
+                                    double percent_male = (male_responded / gender_total) * 100;
+                                    binding.malePercent.setText((int)Math.round(percent_male) + " %");
+                                    double percent_female = (female_responded / gender_total) * 100;
+                                    binding.femalePercent.setText((int)Math.round(percent_female) + " %");
+                                    double percent_other = (other_responded / gender_total) * 100;
+                                    binding.otherPercent.setText((int)Math.round(percent_other) + " %");
+                                }else{
+                                    binding.malePercent.setText("-");
+                                    binding.femalePercent.setText("-");
+                                    binding.otherPercent.setText("-");
+                                }
+
+                                binding.femaleNumber.setText(female_responded + "");
+                                binding.maleNumber.setText(male_responded + "");
+                                binding.otherNumber.setText(other_responded + "");
+
+                                binding.body.setVisibility(View.VISIBLE);
+                                binding.stateGenderLayout.setVisibility(View.VISIBLE);
+                                binding.stateGenderLayout2.setVisibility(View.GONE);
+
                             }else{
-                                binding.malePercent.setText("-");
-                                binding.femalePercent.setText("-");
+                                int set = response.get(0).questions.get(0).results.set;
+                                double total = set + response.get(0).questions.get(0).results.unset;
+                                if(total != 0){
+                                    double percent_all = (set / total) * 100;
+                                    binding.responseRate.setText((int)Math.round(percent_all)  + " %");
+                                }
+
+                                binding.totalRespondents.setText(set + "");
+
+                                int male_responded = response.get(0).questions.get(0).results_by_gender.get(0).set;
+                                int female_responded = response.get(0).questions.get(0).results_by_gender.get(1).set;
+                                double gender_total = male_responded + female_responded;
+                                if(gender_total != 0){
+                                    double percent_male = (male_responded / gender_total) * 100;
+                                    binding.malePercent2.setText((int)Math.round(percent_male) + " %");
+                                    double percent_female = (female_responded / gender_total) * 100;
+                                    binding.femalePercent2.setText((int)Math.round(percent_female) + " %");
+                                }else{
+                                    binding.malePercent2.setText("-");
+                                    binding.femalePercent2.setText("-");
+                                }
+
+                                binding.femaleNumber2.setText(female_responded + "");
+                                binding.maleNumber2.setText(male_responded + "");
+                                binding.body.setVisibility(View.VISIBLE);
+                                binding.stateGenderLayout.setVisibility(View.GONE);
+                                binding.stateGenderLayout2.setVisibility(View.VISIBLE);
                             }
-
-                            binding.femaleNumber.setText(female_responded + "");
-                            binding.maleNumber.setText(male_responded + "");
-
 
                         } else {
                             binding.femaleNumber.setText("---");
@@ -156,6 +194,8 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
                             binding.femalePercent.setText("0 %");
                             binding.malePercent.setText("0 %");
+                            binding.body.setVisibility(View.VISIBLE);
+                            binding.stateGenderLayout2.setVisibility(View.VISIBLE);
                         }
 
 

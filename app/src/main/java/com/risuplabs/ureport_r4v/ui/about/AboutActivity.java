@@ -43,12 +43,20 @@ public class AboutActivity extends BaseActivity<ActivityAboutBinding> {
     @Override
     protected void onStart() {
         super.onStart();
-        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
-        viewModel.getAbout("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/dashblocks/org/"+prefManager.getInt(PrefKeys.ORG_ID)+"/?dashblock_type=about");
+
     }
 
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
+
+        Log.d(TAG, "onViewReady: "+R.string.about);
+
+        viewModel.getAbout("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/dashblocks/org/"+prefManager.getInt(PrefKeys.ORG_ID)+"/?dashblock_type=about");
+
+
+        StaticMethods.setLanguage(this,prefManager.getString("pt"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
+        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
+        binding.activityName.setText(R.string.about);
 
         binding.backButton.setOnClickListener( v->{
             finish();

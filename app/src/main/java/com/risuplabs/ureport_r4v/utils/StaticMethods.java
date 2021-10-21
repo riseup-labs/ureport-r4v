@@ -1,10 +1,12 @@
 package com.risuplabs.ureport_r4v.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.Animation;
@@ -71,13 +73,16 @@ public class StaticMethods {
         prefManager.putString(tag, date_local);
     }
 
-    public static void setLanguage(Context context,String language,String country){
-        Locale locale = new Locale(language,country);
+    public static void setLanguage(Activity context, String language, String country){
+        Locale locale = new Locale(language);
         Locale.setDefault(locale);
         Resources resources = context.getResources();
         Configuration config = resources.getConfiguration();
         config.setLocale(locale);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            context.createConfigurationContext(config);
         resources.updateConfiguration(config,resources.getDisplayMetrics());
+
     }
 
     public static String getAlphaNumericString(int n)

@@ -20,7 +20,6 @@ public class StoriesListActivity extends BaseActivity<ActivityStoriesBinding> {
     @Override
     protected void onStart() {
         super.onStart();
-        StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY,"rBO"));
     }
 
     @Override

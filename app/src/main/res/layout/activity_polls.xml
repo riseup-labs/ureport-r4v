@@ -97,6 +97,7 @@
                                 android:layout_height="match_parent"/>
 
                             <LinearLayout
+                                android:visibility="gone"
                                 android:id="@+id/body"
                                 app:layout_collapseMode="parallax"
                                 android:layout_width="match_parent"
@@ -225,11 +226,13 @@
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:visibility="gone"
+                                    android:id="@+id/state_gender_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:orientation="horizontal"
-                                    android:weightSum="2">
+                                    android:weightSum="3">
 
                                     <LinearLayout
                                         android:layout_width="0dp"
@@ -276,6 +279,7 @@
                                                 style="@style/boldText" />
 
                                             <TextView
+                                                android:layout_gravity="center"
                                                 android:textSize="14sp"
                                                 android:id="@+id/male_number"
                                                 android:layout_width="wrap_content"
@@ -332,6 +336,7 @@
                                                 style="@style/boldText" />
 
                                             <TextView
+                                                android:layout_gravity="center"
                                                 android:textSize="14sp"
                                                 android:id="@+id/female_number"
                                                 android:layout_width="wrap_content"
@@ -342,6 +347,192 @@
 
 
                                     </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <LinearLayout
+                                            android:layout_marginStart="-8dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="50dp"
+                                                android:layout_height="50dp"
+                                                android:padding="12dp"
+                                                android:src="@drawable/gender_other" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/v1_ureport_other"
+                                                android:textSize="14sp"
+                                                android:textColor="@color/black"
+                                                style="@style/boldText" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center|start"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:textSize="18sp"
+                                                android:id="@+id/other_percent"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="50dp"
+                                                android:gravity="center"
+                                                android:textColor="@color/black"
+                                                style="@style/boldText" />
+
+                                            <TextView
+                                                android:layout_gravity="center"
+                                                android:textSize="14sp"
+                                                android:id="@+id/other_number"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="@color/black"
+                                                style="@style/boldText" />
+                                        </LinearLayout>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:id="@+id/state_gender_layout2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <LinearLayout
+                                            android:layout_marginStart="-8dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="50dp"
+                                                android:layout_height="50dp"
+                                                android:padding="12dp"
+                                                android:src="@drawable/gender_male" />
+
+                                            <TextView
+                                                android:layout_gravity="center"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/v1_ureport_male"
+                                                android:textSize="14sp"
+                                                android:textColor="@color/black"
+                                                style="@style/boldText" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center|start"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:textSize="18sp"
+                                                android:id="@+id/male_percent2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="50dp"
+                                                android:gravity="center"
+                                                android:textColor="@color/black"
+                                                style="@style/boldText" />
+
+                                            <TextView
+                                                android:layout_gravity="center"
+                                                android:textSize="14sp"
+                                                android:id="@+id/male_number2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="@color/black"
+                                                style="@style/boldText"/>
+                                        </LinearLayout>
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <LinearLayout
+                                            android:layout_marginStart="-8dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:layout_width="50dp"
+                                                android:layout_height="50dp"
+                                                android:padding="12dp"
+                                                android:src="@drawable/gender_female" />
+
+                                            <TextView
+                                                android:layout_gravity="center"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/v1_ureport_female"
+                                                android:textSize="14sp"
+                                                android:textColor="@color/black"
+                                                style="@style/boldText" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center|start"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:textSize="18sp"
+                                                android:id="@+id/female_percent2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="50dp"
+                                                android:gravity="center"
+                                                android:textColor="@color/black"
+                                                style="@style/boldText" />
+
+                                            <TextView
+                                                android:layout_gravity="center"
+                                                android:textSize="14sp"
+                                                android:id="@+id/female_number2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="@color/black"
+                                                style="@style/boldText" />
+                                        </LinearLayout>
+
+
+                                    </LinearLayout>
+
 
                                 </LinearLayout>
 
