@@ -12,6 +12,7 @@ import com.richpath.RichPath;
 import com.risuplabs.ureport_r4v.R;
 import com.risuplabs.ureport_r4v.adapter.PollsAdapter;
 import com.risuplabs.ureport_r4v.base.BaseActivity;
+import com.risuplabs.ureport_r4v.databinding.ActivityPollsBinding;
 import com.risuplabs.ureport_r4v.databinding.ActivityPollsNewBinding;
 import com.risuplabs.ureport_r4v.model.results.ModelPolls;
 import com.risuplabs.ureport_r4v.model.results.ModelResultsByLocation;
@@ -34,7 +35,7 @@ import javax.inject.Inject;
 
 import static com.risuplabs.ureport_r4v.utils.StaticMethods.playNotification;
 
-public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
+public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
     int id = 0;
     int org_id = 0;
@@ -50,7 +51,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_polls_new;
+        return R.layout.activity_polls;
     }
 
     @Override
@@ -67,7 +68,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
                     gone(binding.noInternetLayout);
                     ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
                     ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
-                    getRemoteData(ApiConstants.POLLS+org_id + "/?limit=30/featured");
+                    getRemoteData(ApiConstants.POLLS+org_id + "/featured/?limit=30");
                 }else{
                     ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
                     ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
@@ -100,7 +101,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
         viewModel.getAllCategoriesCountFromLocal(org_id).observe(PollsActivity.this, count -> {
 
             if(count != 0){
-                visible(binding.mainLayout);
+                visible(binding.body);
                 if (id == 0) {
 
                     viewModel.getLatestQuestionsFromLocal(org_id).observe(this, response -> {
@@ -140,31 +141,6 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
 
                             final RichPath[] pathStack = new RichPath[2];
                             List<ModelResultsByLocation> model = response.get(0).questions.get(0).results_by_location;
-
-                            switch (prefManager.getString(PrefKeys.ORG_LABEL)) {
-                                case AppConstant.BRAZIL_LABEL: {
-                                    RichPath initialRichPath = binding.richPathView.findRichPathByName("Brasil");
-                                    highlight(model, pathStack, initialRichPath, binding, PollsActivity.this);
-                                    break;
-                                }
-                                case AppConstant.ECUADOR_LABEL: {
-                                    RichPath initialRichPath = binding.richPathView.findRichPathByName("Ecuador");
-                                    highlight(model, pathStack, initialRichPath, binding, PollsActivity.this);
-                                    break;
-                                }
-                                case AppConstant.BOLIVIA_LABEL: {
-                                    RichPath initialRichPath = binding.richPathView.findRichPathByName("Bolivia");
-                                    highlight(model, pathStack, initialRichPath, binding, PollsActivity.this);
-                                    break;
-                                }
-                            }
-
-
-                            binding.richPathView.setOnPathClickListener(richPath -> {
-                                if (richPath.getName() != null) {
-                                    highlight(model, pathStack, richPath, binding, PollsActivity.this);
-                                }
-                            });
 
                         } else {
                             binding.femaleNumber.setText("---");
@@ -219,30 +195,6 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
                             final RichPath[] pathStack = new RichPath[2];
                             List<ModelResultsByLocation> model = response.get(0).questions.get(0).results_by_location;
 
-                            switch (prefManager.getString(PrefKeys.ORG_LABEL)) {
-                                case AppConstant.BRAZIL_LABEL: {
-                                    RichPath initialRichPath = binding.richPathView.findRichPathByName("Brasil");
-                                    highlight(model, pathStack, initialRichPath, binding, PollsActivity.this);
-                                    break;
-                                }
-                                case AppConstant.ECUADOR_LABEL: {
-                                    RichPath initialRichPath = binding.richPathView.findRichPathByName("Ecuador");
-                                    highlight(model, pathStack, initialRichPath, binding, PollsActivity.this);
-                                    break;
-                                }
-                                case AppConstant.BOLIVIA_LABEL: {
-                                    RichPath initialRichPath = binding.richPathView.findRichPathByName("Bolivia");
-                                    highlight(model, pathStack, initialRichPath, binding, PollsActivity.this);
-                                    break;
-                                }
-                            }
-
-
-                            binding.richPathView.setOnPathClickListener(richPath -> {
-                                if (richPath.getName() != null) {
-                                    highlight(model, pathStack, richPath, binding, PollsActivity.this);
-                                }
-                            });
 
                         } else {
                             binding.femaleNumber.setText("---");
@@ -256,7 +208,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
                     });
                 }
             }else{
-                gone(binding.mainLayout);
+                gone(binding.body);
             }
 
         });
@@ -274,10 +226,10 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
             finish();
         });
 
-//        binding.swipeToRefresh.setOnRefreshListener(() -> {
-//            binding.swipeToRefresh.setRefreshing(false);
-//            refresh();
-//        });
+        binding.swipeToRefresh.setOnRefreshListener(() -> {
+            binding.swipeToRefresh.setRefreshing(false);
+            refresh();
+        });
 
     }
 
@@ -298,7 +250,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
             list.addAll(response.data.results);
             String next_url = response.data.next;
             count = response.data.count;
-            progressValue += 30;
+            progressValue = list.size();
             if(progressValue > response.data.count){
                 progressValue = response.data.count;
             }
@@ -329,51 +281,6 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
         super.onBackPressed();
     }
 
-    public static void highlight(
-            List<ModelResultsByLocation> model,
-            RichPath[] pathStack,
-            RichPath richPath,
-            ActivityPollsNewBinding binding,
-            Context context) {
-        float scalex = 1.005f;
-        pathStack[1] = richPath;
-        binding.countryName.setText(richPath.getName().toUpperCase());
-        richPath.setScaleX(scalex);
-        richPath.setFillColor(context.getResources().getColor(R.color.colorPrimary));
-        if (pathStack[0] != null) {
-            if (pathStack[0] == pathStack[1]) {
-                pathStack[0].setFillColor(context.getResources().getColor(R.color.colorPrimary));
-            } else {
-                pathStack[0].setFillColor(context.getResources().getColor(R.color.mapColor));
-            }
-            //saving previous view
-            pathStack[0] = pathStack[1];
-        } else {
-            //Insert initial view
-            pathStack[0] = pathStack[1];
-        }
-        for (int i = 0; i < model.size(); i++) {
-            if (model.get(i).label.equals(richPath.getName())) {
-                setLocationData(binding, model.get(i), context);
-            }
-        }
-
-    }
-
-    public static void setLocationData(ActivityPollsNewBinding binding, ModelResultsByLocation model, Context context) {
-        int responses = model.set;
-        binding.countryName.setText(String.valueOf(responses));
-        if (responses > 0) {
-            int total_response = model.set + model.unset;
-            int set = model.set;
-            binding.countryName.setText(model.label);
-            binding.respondedCountry.setText(set + " " + context.getResources().getString(R.string.respondents_small) + " // " + total_response + " " + context.getResources().getString(R.string.surveyed));
-        } else {
-            binding.countryName.setText("---");
-            binding.respondedCountry.setText("---");
-        }
-    }
-
     public void getRemoteData(String url) {
         viewModel.getResults(url);
     }
@@ -386,7 +293,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
             gone(binding.noInternetLayout);
             binding.loadingTvTitle.setText(R.string.updating_polls);
             binding.progressBar.setIndeterminate(true);
-            getRemoteData(ApiConstants.POLLS+org_id + "/?limit=30");
+            getRemoteData(ApiConstants.POLLS+org_id + "/featured/?limit=30");
         }else{
             ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
             ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();

@@ -122,7 +122,7 @@
                                 <TextView
                                     android:layout_weight="1"
                                     style="@style/boldText"
-                                    android:text="Your Rights"
+                                    android:text="@string/your_rights"
                                     android:textSize="17sp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"/>
@@ -167,7 +167,7 @@
                                 <TextView
                                     android:layout_weight="1"
                                     style="@style/boldText"
-                                    android:text="Polls"
+                                    android:text="@string/polls"
                                     android:textSize="17sp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"/>
@@ -322,7 +322,7 @@
                                 <TextView
                                     android:layout_weight="1"
                                     style="@style/boldText"
-                                    android:text="About"
+                                    android:text="@string/about"
                                     android:textSize="17sp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="0dp"/>

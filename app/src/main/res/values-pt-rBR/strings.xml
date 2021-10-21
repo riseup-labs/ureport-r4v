@@ -116,4 +116,9 @@
     <string name="respondents_small">Respondedores</string>
     <string name="surveyed">Encuestados</string>
     <string name="v2_about">about</string>
+    <string name="your_rights">Your Rights</string>
+    <string name="polls">Polls</string>
+    <string name="about">About</string>
+    <string name="admin_login">Admin Login?</string>
+    <string name="click_here">Click here</string>
 </resources>

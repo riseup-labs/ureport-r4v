@@ -836,7 +836,6 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
 
                 removing_registration_flow();
 
-                startActivity(new Intent(RegistrationActivity.this, FlowListActivity.class));
                 finish();
             }
 

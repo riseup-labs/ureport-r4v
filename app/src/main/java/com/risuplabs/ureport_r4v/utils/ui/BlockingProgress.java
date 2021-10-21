@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import com.risuplabs.ureport_r4v.R;
+
 public class BlockingProgress extends ProgressDialog {
 
     public BlockingProgress(Context context, int title, int message) {
@@ -15,7 +17,7 @@ public class BlockingProgress extends ProgressDialog {
         setCancelable(false);
         setCanceledOnTouchOutside(false);
         setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", (dialog, which) -> {
+        setButton(DialogInterface.BUTTON_NEGATIVE, context.getResources().getString(R.string.cancel), (dialog, which) -> {
             dismiss();
         });
         setProgress(0);

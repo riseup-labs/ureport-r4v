@@ -122,6 +122,11 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
         if (intent != null) {
             poll_type = intent.getStringExtra(IntentConstant.COMING_FROM);
+            if(poll_type.equals("poll")){
+                binding.activityName.setText(getResources().getString(R.string.polls));
+            }else{
+                binding.activityName.setText(getResources().getString(R.string.your_rights));
+            }
         }
 
         isOpen = true;

@@ -183,5 +183,10 @@
     <string name="respondents_small">Respondents</string>
     <string name="surveyed">Surveyed</string>
     <string name="v2_about">About</string>
+    <string name="your_rights">Your Rights</string>
+    <string name="polls">Polls</string>
+    <string name="about">About</string>
+    <string name="admin_login">Admin Login?</string>
+    <string name="click_here">Click here</string>
 
 </resources>

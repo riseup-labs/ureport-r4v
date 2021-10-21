@@ -154,7 +154,7 @@ public class StoriesListFragment extends BaseFragment<FragmentStoriesListBinding
             list.addAll(response.data.stories);
             next_url = response.data.next;
             count = response.data.count;
-            progressValue += 10;
+            progressValue = list.size();
             binding.progressBar.setIndeterminate(false);
             binding.progressBar.setProgress(progressValue);
             binding.progressBar.setMax(count);
