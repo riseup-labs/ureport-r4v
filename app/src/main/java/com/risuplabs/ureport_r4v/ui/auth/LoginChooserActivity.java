@@ -72,15 +72,18 @@ public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChoo
         }
 
         binding.shelterLogin.setOnClickListener(v -> {
+            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Navigator.navigate(this,LoginActivity.class);
             finish();
         });
 
         binding.register.setOnClickListener(v -> {
+            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             attempt_registration();
         });
 
         binding.skipLogin.setOnClickListener(v -> {
+            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes, v);
             overridePendingTransition(0,0);
             if(from.equals("opinions")){

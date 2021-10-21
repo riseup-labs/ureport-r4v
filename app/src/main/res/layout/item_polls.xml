@@ -58,6 +58,8 @@
                 android:layout_marginRight="8dp"
                 android:text="Q: How many times in the city of Dhaka the number of traffic congestion?"
                 android:textColor="@color/black"
+                android:textSize="20sp"
+                style="@style/boldText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
@@ -255,8 +257,8 @@
 
 
                 <include
-                    android:id="@+id/layout_pie_chart"
-                    layout="@layout/item_poll_pie_chart"
+                    android:id="@+id/layout_word_cloud"
+                    layout="@layout/item_poll_word_cloud"
                     android:visibility="gone" />
 
                 <include

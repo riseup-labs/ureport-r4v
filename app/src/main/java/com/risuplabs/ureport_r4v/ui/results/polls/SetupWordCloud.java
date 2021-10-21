@@ -1,26 +1,17 @@
 package com.risuplabs.ureport_r4v.ui.results.polls;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.view.View;
 
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.MPPointF;
 import com.mordred.wordcloud.WordCloud;
-import com.risuplabs.ureport_r4v.databinding.ItemPollPieChartBinding;
+import com.risuplabs.ureport_r4v.R;
 import com.risuplabs.ureport_r4v.databinding.ItemPollWordCloudBinding;
 import com.risuplabs.ureport_r4v.databinding.ItemPollsBinding;
+import com.risuplabs.ureport_r4v.di.SurveyorApplication;
 import com.risuplabs.ureport_r4v.model.results.ModelQuestion;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,15 +19,8 @@ public class SetupWordCloud {
 
     public static void setUpWordCloud(ModelQuestion item, ItemPollWordCloudBinding binding, ItemPollsBinding parent) {
 
-        int count = 4;
+        int count = 3;
 
-        parent.layoutPieChart.chartParent.setVisibility(View.VISIBLE);
-        parent.layoutStatistics.stateParent.setVisibility(View.GONE);
-        parent.textViewStatistics.setVisibility(View.GONE);
-        parent.textViewlocations.setVisibility(View.GONE);
-        parent.textViewGender.setVisibility(View.GONE);
-        parent.textViewAge.setVisibility(View.GONE);
-        parent.textViewPieChart.setVisibility(View.GONE);
 
         Map<String, Integer> nMap = new HashMap<>();
 
@@ -45,16 +29,10 @@ public class SetupWordCloud {
             nMap.put(item.results.categories.get(i).label, count--);
         }
 
-//        nMap.put("oguzhan", 2);
-//        nMap.put("mordred", 2);
-//        nMap.put("is", 4);
-//        nMap.put("on",2);
-//        nMap.put("the", 3);
-//        nMap.put("salda lake",5);
-
-        WordCloud wd = new WordCloud(nMap,Color.BLUE,Color.WHITE);
+        WordCloud wd = new WordCloud(nMap, 350, 380, SurveyorApplication.get().getResources().getColor(R.color.colorPrimary),Color.WHITE);
         wd.setPaddingX(5);
         wd.setPaddingY(5);
+        wd.setWordColorOpacityAuto(true);
 
         Bitmap generatedWordCloudBmp = wd.generate();
 

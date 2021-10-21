@@ -162,6 +162,7 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
     }
 
     public void download(List<Flow> flows) {
+
         final BlockingProgress progressModal = new BlockingProgress(RegistrationActivity.this, R.string.one_moment, R.string.refresh_org);
         progressModal.setOnDismissListener(dialogInterface -> {
             donx.cancel(true);

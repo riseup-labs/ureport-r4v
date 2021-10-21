@@ -1,5 +1,6 @@
 package com.risuplabs.ureport_r4v.di;
 
+import com.risuplabs.ureport_r4v.network.apis.AboutApi;
 import com.risuplabs.ureport_r4v.network.apis.ResultsApi;
 import com.risuplabs.ureport_r4v.network.apis.StoriesApi;
 import com.risuplabs.ureport_r4v.network.apis.SurveyorApi;
@@ -30,6 +31,12 @@ public class ApiModule {
     @Provides
     SurveyorApi providesSurveyorApi(@Named("surveyor") Retrofit retrofit) {
         return retrofit.create(SurveyorApi.class);
+    }
+
+    @Singleton
+    @Provides
+    AboutApi providesAboutApi(@Named("story") Retrofit retrofit) {
+        return retrofit.create(AboutApi.class);
     }
 
 

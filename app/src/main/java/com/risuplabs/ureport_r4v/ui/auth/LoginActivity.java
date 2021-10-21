@@ -61,6 +61,7 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
         Log.d(TAG, "onViewReady: " + prefManager.getString(SurveyorPreferences.PREV_USERNAME));
         binding.email.setText(prefManager.getString(SurveyorPreferences.PREV_USERNAME));
         binding.emailSignInButton.setOnClickListener(v -> {
+            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             hideKeyboard(this);
             attemptLogin();
         });

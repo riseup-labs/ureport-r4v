@@ -119,8 +119,8 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
                 });
             }
         }
-        
-        if(intent != null){
+
+        if (intent != null) {
             poll_type = intent.getStringExtra(IntentConstant.COMING_FROM);
         }
 
@@ -136,6 +136,8 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         }
 
         orgUUID = prefManager.getString(SurveyorPreferences.SAVED_UUID);
+
+
         refresh();
 
         fm = getSupportFragmentManager();
@@ -369,7 +371,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
         if (org == null) {
             try {
-                org = SurveyorApplication.get().getOrgService().get(orgUUID,poll_type);
+                org = SurveyorApplication.get().getOrgService().get(orgUUID, poll_type);
             } catch (Exception e) {
                 Logger.e("Unable to load org", e);
                 finish();
@@ -551,9 +553,9 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
                 }
 
-                if(poll_flows.size() > 0){
+                if (poll_flows.size() > 0) {
                     downloadAlert();
-                }else{
+                } else {
                     showToast("No flow is available to download");
                 }
 
@@ -602,7 +604,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
                 progressModal.dismiss();
                 Toast.makeText(FlowListActivity.this, getString(R.string.error_org_refresh), Toast.LENGTH_SHORT).show();
             }
-        }, flows,poll_type);
+        }, flows, poll_type);
         donx.execute(getOrg());
     }
 
@@ -639,7 +641,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
     @Override
     public boolean requireLogin() {
-        return true;
+            return true;
     }
 
     public void downloadAlert() {

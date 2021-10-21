@@ -115,4 +115,5 @@
     <string name="last_update">Última actualización</string>
     <string name="respondents_small">Respondedores</string>
     <string name="surveyed">Encuestados</string>
+    <string name="v2_about">about</string>
 </resources>

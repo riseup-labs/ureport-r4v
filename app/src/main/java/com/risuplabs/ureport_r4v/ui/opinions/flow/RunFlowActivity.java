@@ -577,28 +577,50 @@ public class RunFlowActivity extends BaseSurveyorActivity<ActivityRunFlowBinding
                     LinearLayout quick_reply_box4 = findViewById(R.id.quick_replies4);
                     LinearLayout quick_reply_box5 = findViewById(R.id.quick_replies5);
 
-                    for(int i = 0; i < quick_replies.size(); i++) {
-                        String reply_data = quick_replies.get(i).getAsString();
+                    if(quick_replies.size() > 4){
+                        quick_reply_box1.setWeightSum(2);
+                        quick_reply_box1.setOrientation(LinearLayout.HORIZONTAL);
+                        for(int i = 0; i < quick_replies.size(); i++) {
+                            String reply_data = quick_replies.get(i).getAsString();
 
-                        View quickTemplate = LayoutInflater.from(this).inflate(R.layout.v1_quick_reply_button, null);
+                            View quickTemplate = LayoutInflater.from(this).inflate(R.layout.v1_quick_reply_button, null);
 
-                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                        layoutParams.setMargins(5, 0, 5, 0);
+                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                            layoutParams.setMargins(5, 0, 5, 0);
 
-                        ((Button) quickTemplate).setText(reply_data);
-                        layoutParams.weight = 1;
-                        if(i <= 1){
+                            ((Button) quickTemplate).setText(reply_data);
+                            layoutParams.weight = 1;
+                            if(i <= 1){
+                                quick_reply_box1.addView(quickTemplate, layoutParams);
+                            }else if(i <= 3){
+                                quick_reply_box2.addView(quickTemplate, layoutParams);
+                            }else if(i <= 5){
+                                quick_reply_box3.addView(quickTemplate, layoutParams);
+                            }else if(i <= 7){
+                                quick_reply_box4.addView(quickTemplate, layoutParams);
+                            }else if(i <= 9){
+                                quick_reply_box5.addView(quickTemplate, layoutParams);
+                            }
+                        }
+                    }else {
+                        quick_reply_box1.setWeightSum(1);
+                        quick_reply_box1.setOrientation(LinearLayout.VERTICAL);
+                        for(int i = 0; i < quick_replies.size(); i++) {
+                            String reply_data = quick_replies.get(i).getAsString();
+
+                            View quickTemplate = LayoutInflater.from(this).inflate(R.layout.v1_quick_reply_button, null);
+
+                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                            layoutParams.setMargins(5, 3, 5, 3);
+
+                            ((Button) quickTemplate).setText(reply_data);
+                            layoutParams.weight = 1;
                             quick_reply_box1.addView(quickTemplate, layoutParams);
-                        }else if(i <= 3){
-                            quick_reply_box2.addView(quickTemplate, layoutParams);
-                        }else if(i <= 5){
-                            quick_reply_box3.addView(quickTemplate, layoutParams);
-                        }else if(i <= 7){
-                            quick_reply_box4.addView(quickTemplate, layoutParams);
-                        }else if(i <= 9){
-                            quick_reply_box5.addView(quickTemplate, layoutParams);
+
                         }
                     }
+
+
 
                     getViewCache().show(R.id.quick_replies1);
                     getViewCache().show(R.id.quick_replies2);

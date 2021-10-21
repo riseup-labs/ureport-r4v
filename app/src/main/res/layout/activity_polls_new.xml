@@ -7,507 +7,621 @@
 
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.results.result_list.ResultListActivity">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/mainLayout"
-            android:visibility="gone"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="1.02" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/storyList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            tools:context=".ui.results.polls.PollsActivity">
+            android:layout_height="0dp"
+            android:layout_marginTop="100dp"
+            android:paddingBottom="32dp"
+            app:cardCornerRadius="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/guide_out"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/headerLayout">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/collapsing_toolbar_appbarlayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <!--app:contentScrim : The Toolbar color when the collapsing toolbar is collapsed.-->
-                <com.google.android.material.appbar.CollapsingToolbarLayout
-                    android:id="@+id/collapsing_toolbar_layout"
-                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                    app:contentScrim="@color/white">
+                    android:layout_height="match_parent">
 
-                    <RelativeLayout
-                        android:background="@color/white"
+                        <androidx.coordinatorlayout.widget.CoordinatorLayout
+                            android:id="@+id/mainLayout"
+                            android:visibility="visible"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            tools:context=".ui.results.polls.PollsActivity">
+
+                            <com.google.android.material.appbar.AppBarLayout
+                                android:id="@+id/collapsing_toolbar_appbarlayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <!--app:contentScrim : The Toolbar color when the collapsing toolbar is collapsed.-->
+                                <com.google.android.material.appbar.CollapsingToolbarLayout
+                                    android:id="@+id/collapsing_toolbar_layout"
+                                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                                    app:contentScrim="@color/white">
+
+                                    <RelativeLayout
+                                        android:background="@color/white"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+                                    <!--app:layout_collapseMode : parallax means an animation effect, pin means fixed.-->
+                                    <LinearLayout
+                                        android:layout_marginTop="80dp"
+                                        app:layout_collapseMode="parallax"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_marginStart="20dp"
+                                            android:layout_below="@+id/search_layout"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+                                            <TextView
+                                                android:id="@+id/text_latest"
+                                                android:layout_marginBottom="8dp"
+                                                android:textColor="@color/black"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:text="LATEST OPINION"
+                                                android:textSize="17sp" />
+
+                                            <TextView
+                                                android:id="@+id/poll_title"
+                                                android:layout_marginBottom="8dp"
+                                                android:textColor="@color/black"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:text="Poll Title"
+                                                android:textSize="20sp"
+                                                style="@style/boldText" />
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
+
+                                                <TextView
+                                                    android:textStyle="bold"
+                                                    android:textSize="12sp"
+                                                    android:id="@+id/category"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginEnd="15dp"
+                                                    android:background="@color/color_bolivia"
+                                                    android:padding="5dp"
+                                                    android:textColor="@color/white" />
+
+                                                <TextView
+                                                    android:textColor="@color/black"
+                                                    android:id="@+id/date"
+                                                    android:textStyle="bold"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_marginEnd="15dp"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:background="@color/colorlightGrey"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="horizontal"
+                                            android:weightSum="2">
+
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="center"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:textSize="18sp"
+                                                    android:id="@+id/total_respondents"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center"
+                                                    android:padding="5dp"
+                                                    android:textColor="@color/black"
+                                                    style="@style/boldText" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/respondents"
+                                                    android:textSize="14sp"
+                                                    android:textColor="@color/black"
+                                                    style="@style/boldText" />
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="center"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:textSize="18sp"
+                                                    android:id="@+id/response_rate"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center"
+                                                    android:padding="5dp"
+                                                    android:textColor="@color/black"
+                                                    style="@style/boldText" />
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/response_rate"
+                                                    android:textSize="14sp"
+                                                    android:textColor="@color/black"
+                                                    style="@style/boldText" />
+                                            </LinearLayout>
+
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center"
+                                            android:orientation="horizontal"
+                                            android:weightSum="2">
+
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="center"
+                                                android:orientation="horizontal">
+
+                                                <LinearLayout
+                                                    android:layout_marginStart="-8dp"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center"
+                                                    android:orientation="vertical">
+
+                                                    <ImageView
+                                                        android:layout_width="50dp"
+                                                        android:layout_height="50dp"
+                                                        android:padding="12dp"
+                                                        android:src="@drawable/gender_male" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:text="@string/v1_ureport_male"
+                                                        android:textSize="14sp"
+                                                        android:textColor="@color/black"
+                                                        style="@style/boldText" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center|start"
+                                                    android:orientation="vertical">
+
+                                                    <TextView
+                                                        android:textSize="18sp"
+                                                        android:id="@+id/male_percent"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="50dp"
+                                                        android:gravity="center"
+                                                        android:textColor="@color/black"
+                                                        style="@style/boldText" />
+
+                                                    <TextView
+                                                        android:textSize="14sp"
+                                                        android:id="@+id/male_number"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textColor="@color/black"
+                                                        style="@style/boldText"/>
+                                                </LinearLayout>
+
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="center"
+                                                android:orientation="horizontal">
+
+                                                <LinearLayout
+                                                    android:layout_marginStart="-8dp"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center"
+                                                    android:orientation="vertical">
+
+                                                    <ImageView
+                                                        android:layout_width="50dp"
+                                                        android:layout_height="50dp"
+                                                        android:padding="12dp"
+                                                        android:src="@drawable/gender_female" />
+
+                                                    <TextView
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:text="@string/v1_ureport_female"
+                                                        android:textSize="14sp"
+                                                        android:textColor="@color/black"
+                                                        style="@style/boldText" />
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:gravity="center|start"
+                                                    android:orientation="vertical">
+
+                                                    <TextView
+                                                        android:textSize="18sp"
+                                                        android:id="@+id/female_percent"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="50dp"
+                                                        android:gravity="center"
+                                                        android:textColor="@color/black"
+                                                        android:textStyle="bold" />
+
+                                                    <TextView
+                                                        android:textSize="14sp"
+                                                        android:id="@+id/female_number"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:textColor="@color/black"
+                                                        android:textStyle="bold" />
+                                                </LinearLayout>
+
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_marginTop="10dp"
+                                            android:background="#535353"
+                                            android:layout_marginEnd="20dp"
+                                            android:layout_marginStart="20dp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"/>
+
+                                        <LinearLayout
+                                            android:gravity="center"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+                                            <com.richpath.RichPathView
+                                                android:layout_marginTop="20dp"
+                                                android:layout_gravity="center"
+                                                android:id="@+id/rich_path_view"
+                                                android:layout_width="200dp"
+                                                android:layout_height="200dp"
+                                                app:vector="@drawable/ic_poll_map" />
+
+                                            <TextView
+                                                android:layout_marginTop="10dp"
+                                                android:textStyle="bold"
+                                                android:textColor="@color/black"
+                                                android:text="Brazil"
+                                                android:id="@+id/country_name"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"/>
+                                            <TextView
+                                                android:textStyle="bold"
+                                                android:textColor="@color/black"
+                                                android:id="@+id/responded_country"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"/>
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:background="#535353"
+                                            android:layout_marginEnd="20dp"
+                                            android:layout_marginStart="20dp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"/>
+
+                                    </LinearLayout>
+
+                                    <androidx.appcompat.widget.Toolbar
+                                        android:id="@+id/collapsing_toolbar"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        app:layout_collapseMode="pin" >
+                                        <RelativeLayout
+                                            android:background="@color/white"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+                                            <androidx.cardview.widget.CardView
+                                                android:layout_centerVertical="true"
+                                                android:layout_alignParentTop="true"
+                                                android:id="@+id/search_layout"
+                                                android:layout_marginTop="15dp"
+                                                app:cardCornerRadius="4dp"
+                                                android:layout_marginBottom="15dp"
+                                                android:layout_marginEnd="15dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="40dp">
+                                                <RelativeLayout
+                                                    android:background="@drawable/search_background"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent">
+
+                                                    <TextView
+                                                        android:layout_marginStart="20dp"
+                                                        android:layout_centerVertical="true"
+                                                        android:textSize="18sp"
+                                                        android:text="Search"
+                                                        android:textColor="@color/light_gray"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"/>
+
+                                                    <ImageView
+                                                        android:layout_marginEnd="15dp"
+                                                        android:layout_centerVertical="true"
+                                                        android:layout_alignParentEnd="true"
+                                                        android:scaleType="fitXY"
+                                                        android:src="@drawable/ic_baseline_arrow_drop_down"
+                                                        android:layout_width="40dp"
+                                                        android:layout_height="40dp"/>
+
+                                                </RelativeLayout>
+                                            </androidx.cardview.widget.CardView>
+                                        </RelativeLayout>
+
+                                    </androidx.appcompat.widget.Toolbar>
+
+                                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+                            </com.google.android.material.appbar.AppBarLayout>
+
+                            <!--app:layout_behavior attribute value settings make app tool bar appear while RecyclerView scroll. -->
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                android:id="@+id/recyclerView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+                        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/emptyListWarning"
+                        android:gravity="center"
+                        android:text="@string/empty_poll"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
-                    <!--app:layout_collapseMode : parallax means an animation effect, pin means fixed.-->
-                    <LinearLayout
-                        android:layout_marginTop="80dp"
-                        app:layout_collapseMode="parallax"
+
+                    <RelativeLayout
+                        android:layout_alignParentBottom="true"
+                        android:id="@+id/layout_footer"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
+                        android:layout_height="wrap_content">
                         <LinearLayout
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_below="@+id/search_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                            <TextView
-                                android:id="@+id/poll_title"
-                                android:layout_marginBottom="8dp"
-                                android:textColor="@color/black"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Poll Title"
-                                android:textSize="17sp"
-                                android:textStyle="bold" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:textStyle="bold"
-                                    android:textSize="12sp"
-                                    android:id="@+id/category"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="15dp"
-                                    android:background="@color/color_bolivia"
-                                    android:padding="3dp"
-                                    android:textColor="@color/white" />
-
-                                <TextView
-                                    android:textColor="@color/black"
-                                    android:id="@+id/date"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_marginEnd="15dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/colorlightGrey"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
+                            android:visibility="gone"
+                            android:paddingBottom="30dp"
+                            android:id="@+id/loadingLayout"
+                            android:weightSum="10"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingTop="10dp"
+                            android:background="@color/secondary_dark"
                             android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:textSize="18sp"
-                                    android:id="@+id/total_respondents"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:padding="5dp"
-                                    android:textColor="@color/black"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/respondents"
-                                    android:textSize="12sp"
-                                    android:textColor="@color/black"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:textSize="18sp"
-                                    android:id="@+id/response_rate"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:padding="5dp"
-                                    android:textColor="@color/black"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/response_rate"
-                                    android:textSize="12sp"
-                                    android:textColor="@color/black"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
+                            android:layout_height="wrap_content">
                             <LinearLayout
+                                android:layout_weight="5"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
                                 android:orientation="horizontal">
-
-                                <LinearLayout
+                                <TextView
+                                    android:textSize="12sp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/white"
+                                    tools:text="Fetching Data"
+                                    android:id="@+id/loadingTvTitle"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:padding="12dp"
-                                        android:src="@drawable/gender_male" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/v1_ureport_male"
-                                        android:textSize="12sp"
-                                        android:textColor="@color/black"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                                <LinearLayout
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:textSize="12sp"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/white"
+                                    tools:text="(24/40)"
+                                    android:id="@+id/loadingTvProgress"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center|start"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:textSize="18sp"
-                                        android:id="@+id/male_percent"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="50dp"
-                                        android:gravity="center"
-                                        android:textColor="@color/black"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:textSize="14sp"
-                                        android:id="@+id/male_number"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:textColor="@color/black"
-                                        android:textStyle="bold"/>
-                                </LinearLayout>
-
-
+                                    android:layout_height="wrap_content"/>
                             </LinearLayout>
 
-                            <LinearLayout
+                            <ProgressBar
+                                android:indeterminate="false"
+                                android:id="@+id/progressBar"
+                                android:layout_weight="5"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:padding="12dp"
-                                        android:src="@drawable/gender_female" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/v1_ureport_female"
-                                        android:textSize="12sp"
-                                        android:textColor="@color/black"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center|start"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:textSize="18sp"
-                                        android:id="@+id/female_percent"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="50dp"
-                                        android:gravity="center"
-                                        android:textColor="@color/black"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:textSize="14sp"
-                                        android:id="@+id/female_number"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:textColor="@color/black"
-                                        android:textStyle="bold" />
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_marginTop="10dp"
-                            android:background="#535353"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"/>
-
-                        <LinearLayout
-                            android:gravity="center"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                            <com.richpath.RichPathView
-                                android:layout_marginTop="20dp"
+                                android:layout_height="10dp"
                                 android:layout_gravity="center"
-                                android:id="@+id/rich_path_view"
-                                android:layout_width="200dp"
-                                android:layout_height="200dp"
-                                app:vector="@drawable/ic_poll_map" />
+                                android:indeterminateTint="@color/primary"
+                                android:indeterminateTintMode="multiply"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                />
 
-                            <TextView
-                                android:layout_marginTop="10dp"
-                                android:textStyle="bold"
-                                android:textColor="@color/black"
-                                android:text="Brazil"
-                                android:id="@+id/country_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                            <TextView
-                                android:textStyle="bold"
-                                android:textColor="@color/black"
-                                android:id="@+id/responded_country"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
                         </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:background="#535353"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"/>
-
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.Toolbar
-                        android:id="@+id/collapsing_toolbar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_collapseMode="pin" >
                         <RelativeLayout
-                            android:background="@color/white"
+                            android:visibility="gone"
+                            android:paddingBottom="30dp"
+                            android:id="@+id/no_internet_layout"
+                            android:weightSum="10"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingTop="10dp"
+                            android:background="@color/secondary_dark"
+                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <ImageView
-                                android:layout_centerVertical="true"
-                                android:id="@+id/backButton"
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:paddingEnd="8dp"
-                                app:tint="#000000"
-                                app:srcCompat="@drawable/v1_back_button"/>
-                            <androidx.cardview.widget.CardView
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentTop="true"
-                                android:id="@+id/search_layout"
-                                android:layout_toEndOf="@+id/backButton"
-                                android:layout_marginTop="15dp"
-                                app:cardCornerRadius="4dp"
-                                android:layout_marginBottom="15dp"
-                                android:layout_marginEnd="15dp"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textSize="12sp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:layout_toStartOf="@+id/btnRetry"
+                                android:text="@string/no_internet_text"
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp">
-                                <RelativeLayout
-                                    android:background="@drawable/search_background"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:textStyle="bold"
+                                android:layout_marginEnd="20dp"
+                                android:layout_toStartOf="@+id/btnHide"
+                                android:textSize="15sp"
+                                android:layout_gravity="center"
+                                android:textColor="@color/primary_dark"
+                                android:text="@string/retry"
+                                android:id="@+id/btnRetry"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
 
-                                    <TextView
-                                        android:layout_marginStart="20dp"
-                                        android:layout_centerVertical="true"
-                                        android:textSize="18sp"
-                                        android:text="Search"
-                                        android:textColor="@color/light_gray"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"/>
+                            <TextView
+                                android:textStyle="bold"
+                                android:layout_marginEnd="20dp"
+                                android:layout_alignParentEnd="true"
+                                android:textSize="15sp"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:text="@string/hide"
+                                android:id="@+id/btnHide"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
 
-                                    <ImageView
-                                        android:layout_marginEnd="15dp"
-                                        android:layout_centerVertical="true"
-                                        android:layout_alignParentEnd="true"
-                                        android:scaleType="fitXY"
-                                        android:src="@drawable/ic_baseline_arrow_drop_down"
-                                        android:layout_width="40dp"
-                                        android:layout_height="40dp"/>
-
-                                </RelativeLayout>
-                            </androidx.cardview.widget.CardView>
                         </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
 
-                    </androidx.appcompat.widget.Toolbar>
+        </androidx.cardview.widget.CardView>
 
-                </com.google.android.material.appbar.CollapsingToolbarLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/headerLayout"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <View
+                android:id="@+id/bgColor"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/v1_layout_bg_stories"
+                android:transitionName="transition_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            </com.google.android.material.appbar.AppBarLayout>
+            <TextView
+                android:id="@+id/activityName"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center|left"
+                android:text="@string/v1_ureport_results"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:transitionName="transition_text"
+                app:layout_constraintBottom_toBottomOf="@+id/backButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/backButton"
+                app:layout_constraintTop_toTopOf="@+id/backButton"
+                app:layout_constraintVertical_bias="0.5" />
 
-            <!--app:layout_behavior attribute value settings make app tool bar appear while RecyclerView scroll. -->
-
-            <androidx.recyclerview.widget.RecyclerView
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/emptyListWarning"
-            android:gravity="center"
-            android:text="@string/empty_poll"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <RelativeLayout
-            android:layout_alignParentBottom="true"
-            android:id="@+id/layout_footer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:visibility="gone"
-                android:paddingBottom="30dp"
-                android:id="@+id/loadingLayout"
-                android:weightSum="10"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="10dp"
-                android:background="@color/secondary_dark"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_weight="5"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:textSize="12sp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"
-                        tools:text="Fetching Data"
-                        android:id="@+id/loadingTvTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:textSize="12sp"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"
-                        tools:text="(24/40)"
-                        android:id="@+id/loadingTvProgress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
+                app:layout_constraintGuide_percent="-0.25" />
 
-                <ProgressBar
-                    android:indeterminate="false"
-                    android:id="@+id/progressBar"
-                    android:layout_weight="5"
-                    android:layout_width="0dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:indeterminateTint="@color/primary"
-                    android:indeterminateTintMode="multiply"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="145dp" />
 
-            </LinearLayout>
-            <RelativeLayout
-                android:visibility="gone"
-                android:paddingBottom="30dp"
-                android:id="@+id/no_internet_layout"
-                android:weightSum="10"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="10dp"
-                android:background="@color/secondary_dark"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textSize="12sp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:layout_toStartOf="@+id/btnRetry"
-                    android:text="@string/no_internet_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_marginEnd="20dp"
-                    android:layout_toStartOf="@+id/btnHide"
-                    android:textSize="15sp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/primary_dark"
-                    android:text="@string/retry"
-                    android:id="@+id/btnRetry"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/headerShade"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:transitionName="transition_shadow"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/guideline3"
 
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_marginEnd="20dp"
-                    android:layout_alignParentEnd="true"
-                    android:textSize="15sp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:text="@string/hide"
-                    android:id="@+id/btnHide"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                app:srcCompat="@drawable/icon_bg" />
 
-            </RelativeLayout>
-        </RelativeLayout>
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/activityImage"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:transitionName="transition_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/v1_header_image_results" />
 
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="16dp"
+                android:padding="12dp"
+                app:tint="#ffffff"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/v1_back_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>

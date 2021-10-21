@@ -1,5 +1,6 @@
 package com.risuplabs.ureport_r4v.di;
 
+import com.risuplabs.ureport_r4v.ui.about.AboutViewModel;
 import com.risuplabs.ureport_r4v.ui.auth.LoginViewModel;
 import com.risuplabs.ureport_r4v.ui.dashboard.DashboardViewModel;
 import com.risuplabs.ureport_r4v.ui.opinions.OpinionViewModel;
@@ -51,6 +52,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(OpinionViewModel.class)
     abstract OpinionViewModel bindOpinionViewModel(OpinionViewModel opinionViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AboutViewModel.class)
+    abstract AboutViewModel bindAboutViewModel(AboutViewModel aboutViewModel);
 
 
 

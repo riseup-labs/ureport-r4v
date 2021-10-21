@@ -12,5 +12,8 @@ public class PrefKeys {
     public static String SELECTED_COUNTRY = "selected_country";
     public static String SELECTED_COUNTRY_ID = "selected_country_id";
     public static String EXTERNAL_ID = "external_id";
+    public static String LATEST_OPINION = "latest_opinion";
+    public static String ABOUT_TITLE = "about_title";
+    public static String ABOUT_CONTENT = "about_content";
 
 }

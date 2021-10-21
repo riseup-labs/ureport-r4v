@@ -15,7 +15,7 @@ public class DateFormatUtils {
 
         @SuppressLint("SimpleDateFormat")
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'-05:00'");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSX");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
         SimpleDateFormat newFormatDate = new SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH);
 
         Date parseDate = dateFormat.parse(dateStr);
@@ -26,7 +26,7 @@ public class DateFormatUtils {
     public static String getPollDate(String dateStr) throws ParseException {
 
         @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:SS'+06:00'");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:SSX");
         SimpleDateFormat newFormatDate = new SimpleDateFormat("dd MMMM, yyyy", Locale.ENGLISH);
 
         Date parseDate = dateFormat.parse(dateStr);

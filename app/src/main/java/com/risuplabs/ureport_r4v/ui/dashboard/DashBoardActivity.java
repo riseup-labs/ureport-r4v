@@ -29,13 +29,16 @@ import com.risuplabs.ureport_r4v.di.SurveyorApplication;
 import com.risuplabs.ureport_r4v.surveyor.data.Org;
 import com.risuplabs.ureport_r4v.surveyor.data.Submission;
 import com.risuplabs.ureport_r4v.surveyor.task.SubmitSubmissionsTask;
+import com.risuplabs.ureport_r4v.ui.about.AboutActivity;
 import com.risuplabs.ureport_r4v.ui.opinions.flow_list.FlowListActivity;
 import com.risuplabs.ureport_r4v.ui.results.polls.PollsActivity;
 import com.risuplabs.ureport_r4v.ui.results.result_list.ResultListActivity;
 import com.risuplabs.ureport_r4v.ui.settings.SettingsActivity;
+import com.risuplabs.ureport_r4v.utils.AppConstant;
 import com.risuplabs.ureport_r4v.utils.ConnectivityCheck;
 import com.risuplabs.ureport_r4v.utils.IntentConstant;
 import com.risuplabs.ureport_r4v.utils.Navigator;
+import com.risuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 import com.risuplabs.ureport_r4v.utils.pref_manager.SurveyorPreferences;
 import com.risuplabs.ureport_r4v.utils.ui.ViewCache;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
@@ -93,27 +96,46 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
             StaticMethods.scaleView(findViewById(R.id.pendingOpinion), 0f, 0f, 0f, 0f, 1);
         }
 
+        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_brasil);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_ecuador);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_bolivia_logo);
+        }
+
         binding.stories.setOnClickListener(v ->{
+            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Navigator.navigate(this,StoriesListActivity.class);
         });
 
         binding.results.setOnClickListener(v ->{
+            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Navigator.navigate(this,PollsActivity.class);
         });
 
         binding.settings.setOnClickListener(v ->{
+            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Navigator.navigate(this,SettingsActivity.class);
         });
 
         binding.polls.setOnClickListener(v ->{
+            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Intent intent = new Intent(this,FlowListActivity.class);
             intent.putExtra(IntentConstant.COMING_FROM,"poll");
             startActivity(intent);
         });
 
         binding.yourRights.setOnClickListener(v->{
+            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
             Intent intent = new Intent(this,FlowListActivity.class);
             intent.putExtra(IntentConstant.COMING_FROM,"bot");
+            startActivity(intent);
+        });
+
+        binding.about.setOnClickListener(v->{
+            playNotification(prefManager, getApplicationContext(), R.raw.button_click_yes);
+            Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
         });
 
@@ -157,6 +179,14 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
         binding.btnTextStories.setText(R.string.v1_stories);
         binding.btnTextResults.setText(R.string.v1_ureport);
         binding.btnTextSettings.setText(R.string.v1_settings);
+
+        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_brasil);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_ecuador);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+            binding.programLogo.setImageResource(R.drawable.v2_bolivia_logo);
+        }
     }
 
     @Override

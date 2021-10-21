@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.risuplabs.ureport_r4v.R;
 import com.risuplabs.ureport_r4v.base.BaseSurveyorActivity;
@@ -42,13 +43,10 @@ public class OrgChooseActivity extends BaseSurveyorActivity<ActivityOrgChooseBin
 
         from = getIntent().getStringExtra(IntentConstant.COMING_FROM);
 
-//        if (!isLoggedIn()) {
-//            return;
-//        }
-
         List<Org> orgs = orgViewModel.getOrgs();
 
         String saved_OrgUUID = prefManager.getString(SurveyorPreferences.SAVED_UUID);
+
         if(!saved_OrgUUID.equals("")){
             // ORG_UUID Already Defined: Skip Selection
             for(int i = 0; i < orgs.size(); i++){
@@ -98,7 +96,9 @@ public class OrgChooseActivity extends BaseSurveyorActivity<ActivityOrgChooseBin
 
 
     private void showOrg(Org org) {
+
         prefManager.putString(SurveyorPreferences.SAVED_UUID,org.getUuid());
+        Log.d(TAG, "showOrg: "+org.getUuid());
 
         if(from.equals(AppConstant.GUEST)){
             startActivity(new Intent(this, RegistrationActivity.class));

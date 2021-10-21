@@ -1,6 +1,7 @@
 package com.risuplabs.ureport_r4v.di;
 
 import com.risuplabs.ureport_r4v.Splash;
+import com.risuplabs.ureport_r4v.ui.about.AboutActivity;
 import com.risuplabs.ureport_r4v.ui.auth.LoginActivity;
 import com.risuplabs.ureport_r4v.ui.auth.LoginChooserActivity;
 import com.risuplabs.ureport_r4v.ui.auth.ProgramChooserActivity;
@@ -87,7 +88,8 @@ public abstract class ActivityModule {
     @ContributesAndroidInjector
     abstract ProgramChooserActivity contributesProgramChooserActivity();
 
-
+    @ContributesAndroidInjector
+    abstract AboutActivity contributesAboutActivity();
 
 
 

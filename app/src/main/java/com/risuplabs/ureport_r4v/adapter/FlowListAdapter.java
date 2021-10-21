@@ -61,7 +61,7 @@ public class FlowListAdapter extends ArrayAdapter<Flow> {
             }else{
                 surveyor_last_updated.setText("Last updated: " + last_update + "\n"  + "Pull down to refresh");
             }
-            surveyor_last_updated.setVisibility(View.VISIBLE);
+//            surveyor_last_updated.setVisibility(View.VISIBLE);
             //firstUUID = "-1";
         }
 

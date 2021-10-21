@@ -104,6 +104,9 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
                 if (id == 0) {
 
                     viewModel.getLatestQuestionsFromLocal(org_id).observe(this, response -> {
+
+                        prefManager.putInt(PrefKeys.LATEST_OPINION,response.get(0).id);
+
                         mAdapter.addItems(response.get(0).questions);
 
                         binding.pollTitle.setText(response.get(0).title);
@@ -175,6 +178,12 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
                     });
                 } else {
                     viewModel.getQuestionsFromLocal(id, org_id).observe(this, response -> {
+
+                        if(response.get(0).id == prefManager.getInt(PrefKeys.LATEST_OPINION)){
+                            binding.textLatest.setVisibility(View.VISIBLE);
+                        }else{
+                            binding.textLatest.setVisibility(View.GONE);
+                        }
 
                         mAdapter.addItems(response.get(0).questions);
 
@@ -265,12 +274,21 @@ public class PollsActivity extends BaseActivity<ActivityPollsNewBinding> {
             finish();
         });
 
+//        binding.swipeToRefresh.setOnRefreshListener(() -> {
+//            binding.swipeToRefresh.setRefreshing(false);
+//            refresh();
+//        });
+
     }
 
     public void initRecyclerView() {
         binding.recyclerView.setHasFixedSize(true);
-        mAdapter = new PollsAdapter(this);
-        binding.recyclerView.setAdapter(mAdapter);
+        if(mAdapter == null){
+            mAdapter = new PollsAdapter(this);
+            binding.recyclerView.setAdapter(mAdapter);
+            binding.recyclerView.setHasFixedSize(true);
+        }
+
     }
 
     public void saveData(){

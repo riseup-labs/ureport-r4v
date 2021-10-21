@@ -3,6 +3,7 @@ package com.risuplabs.ureport_r4v.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,7 +64,15 @@ public class ResultSearchListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView name = (TextView) view.findViewById(R.id.name);
-        name.setText(modelPolls.title.trim());
+
+        String sourceString = null;
+        try {
+            sourceString = modelPolls.title.trim()+ "  <b>" + DateFormatUtils.getPollDate(modelPolls.poll_date) + "</b> ";
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        name.setText(Html.fromHtml(sourceString));
+
         name.setOnClickListener(v ->{
             Bundle b = new Bundle();
             b.putInt(IntentConstant.POLL_ID,modelPolls.id);

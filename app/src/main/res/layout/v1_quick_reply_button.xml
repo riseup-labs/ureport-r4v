@@ -10,4 +10,4 @@
     android:textAllCaps="false"
     android:textColor="@color/white"
     android:textStyle="bold"
-    android:textSize="14sp" />
+    android:textSize="18sp" />

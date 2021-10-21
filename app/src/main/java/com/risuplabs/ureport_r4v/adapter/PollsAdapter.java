@@ -1,6 +1,7 @@
 package com.risuplabs.ureport_r4v.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,12 +16,14 @@ import com.risuplabs.ureport_r4v.model.results.ModelQuestion;
 import com.risuplabs.ureport_r4v.utils.pref_manager.SharedPrefManager;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import static com.risuplabs.ureport_r4v.ui.results.polls.SetupAgeResult.setUpAge;
 import static com.risuplabs.ureport_r4v.ui.results.polls.SetupGenderResult.setupGenderResult;
 import static com.risuplabs.ureport_r4v.ui.results.polls.SetupLocationResult.setupLocation;
 import static com.risuplabs.ureport_r4v.ui.results.polls.SetupPieChart.setUpPieChart;
 import static com.risuplabs.ureport_r4v.ui.results.polls.SetupPollStatistics.setUpStatistics;
+import static com.risuplabs.ureport_r4v.ui.results.polls.SetupWordCloud.setUpWordCloud;
 
 public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPollsBinding> {
 
@@ -40,36 +43,38 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder<ItemPollsBinding> holder, int position) {
 
-        prefManager = new SharedPrefManager(context);
-        ModelQuestion item = items.get(position);
-        ItemPollsBinding binding = holder.binding;
-        binding.question.setText(item.title);
-        performClickOnTab(binding);
-        int numSub = item.results.set;
-        int numSup = item.results.unset + numSub;
-        binding.textViewResponded.setText(
-                context.getString(R.string.v1_ureport_out_of)
-                        .replace("%sup", String.valueOf(numSup))
-                        .replace("%sub", String.valueOf(numSub))
-        );
-        binding.textViewDate.setText(pollDate);
 
-        setUpStatistics(context,prefManager,items.get(position), binding.layoutStatistics);
+            prefManager = new SharedPrefManager(context);
+            ModelQuestion item = items.get(position);
+            ItemPollsBinding binding = holder.binding;
+            binding.question.setText(item.title);
+            Log.d(TAG, "onBindViewHolder: " + item.title);
+            performClickOnTab(binding);
+            int numSub = item.results.set;
+            int numSup = item.results.unset + numSub;
+            binding.textViewResponded.setText(
+                    context.getString(R.string.v1_ureport_out_of)
+                            .replace("%sup", String.valueOf(numSup))
+                            .replace("%sub", String.valueOf(numSub))
+            );
+            binding.textViewDate.setText(pollDate);
 
-        if (item.results.categories.size() > 5) {
-            setUpPieChart(items.get(position), binding.layoutPieChart, binding);
-        }
+            if (item.results_by_age != null) {
+                binding.layoutWordCloud.chartParent.setVisibility(View.GONE);
+                binding.layoutStatistics.stateParent.setVisibility(View.VISIBLE);
+                setUpAge(context, prefManager, item, binding.layoutAge);
+                setUpStatistics(context, prefManager, items.get(position), binding.layoutStatistics);
+                setupGenderResult(context, prefManager, item, binding.layoutGender);
+                setupLocation(item, binding.layoutLocation, context);
+            }else{
 
-        if (item.results_by_age != null) {
-            setUpAge(context,prefManager,item, binding.layoutAge);
-        }
+                binding.layoutWordCloud.chartParent.setVisibility(View.VISIBLE);
+                binding.layoutStatistics.stateParent.setVisibility(View.GONE);
+                binding.linearLayout3.setVisibility(View.GONE);
+                binding.linearLayout4.setVisibility(View.GONE);
 
-        if (item.results_by_gender != null) {
-            setupGenderResult(context,prefManager,item, binding.layoutGender);
-        }
-        if (item.results_by_location != null) {
-            setupLocation(item, binding.layoutLocation, context);
-        }
+                setUpWordCloud(items.get(position), binding.layoutWordCloud, binding);
+            }
 
     }
 

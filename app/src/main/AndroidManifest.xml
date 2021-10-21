@@ -15,7 +15,10 @@
         android:theme="@style/Theme.UReport"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.auth.ProgramChooserActivity"
+        <activity android:name=".ui.about.AboutActivity"
+            android:theme="@style/Theme.UReportOffline" />
+        <activity
+            android:name=".ui.auth.ProgramChooserActivity"
             android:theme="@style/Theme.UReportOffline" />
         <activity
             android:name=".ui.results.search.ResultsSearchActivity"
