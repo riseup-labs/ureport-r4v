@@ -23,6 +23,9 @@ public interface ResultsDao {
     @Query("SELECT DISTINCT COUNT(category) FROM table_polls WHERE org = :org_id ")
     LiveData<Integer> getAllPollCategoriesCount(int org_id);
 
+    @Query("SELECT COUNT(*) FROM table_polls WHERE org = :org_id ")
+    LiveData<Integer> getAllPollCount(int org_id);
+
     @Query("SELECT id,org,title,category_tag,created_on FROM table_polls WHERE category_tag = :tag AND org = :org_id")
     LiveData<List<ModelPolls>> getTitles(String tag,int org_id);
 

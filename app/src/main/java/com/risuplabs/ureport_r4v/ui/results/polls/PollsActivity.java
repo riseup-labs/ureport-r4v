@@ -59,23 +59,23 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
         viewModel.getAllCategoriesCountFromLocal(org_id).observe(PollsActivity.this, count -> {
             int pollCount = count;
             if (pollCount == 0) {
-                StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
+                StaticMethods.setLanguage(this, prefManager.getString(PrefKeys.SELECTED_LANGUAGE, "es"), prefManager.getString(PrefKeys.SELECTED_COUNTRY));
                 visible(binding.emptyListWarning);
-                if(ConnectivityCheck.isConnected(PollsActivity.this)) {
+                if (ConnectivityCheck.isConnected(PollsActivity.this)) {
                     binding.progressBar.setIndeterminate(true);
                     binding.loadingTvTitle.setText(R.string.fetch_polls);
                     visible(binding.loadingLayout);
                     gone(binding.noInternetLayout);
-                    ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
-                    ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
-                    getRemoteData(ApiConstants.POLLS+org_id + "/featured/?limit=30");
-                }else{
-                    ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
-                    ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
+//                    ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
+//                    ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
+                    getRemoteData("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/"+ApiConstants.POLLS + org_id + "/featured/?limit=30");
+                } else {
+//                    ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
+//                    ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
                     visible(binding.noInternetLayout);
                     gone(binding.loadingLayout);
                 }
-            }else{
+            } else {
                 gone(binding.emptyListWarning);
             }
         });
@@ -100,12 +100,12 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
         viewModel.getAllCategoriesCountFromLocal(org_id).observe(PollsActivity.this, count -> {
 
-            if(count != 0){
+            if (count != 0) {
                 if (id == 0) {
 
                     viewModel.getLatestQuestionsFromLocal(org_id).observe(this, response -> {
 
-                        prefManager.putInt(PrefKeys.LATEST_OPINION,response.get(0).id);
+                        prefManager.putInt(PrefKeys.LATEST_OPINION, response.get(0).id);
 
                         mAdapter.addItems(response.get(0).questions);
 
@@ -120,12 +120,12 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
                         if (response.get(0).questions.size() > 0) {
 
-                            if(response.get(0).questions.get(0).results_by_gender.size() == 3){
+                            if (response.get(0).questions.get(0).results_by_gender.size() == 3) {
                                 int set = response.get(0).questions.get(0).results.set;
                                 double total = set + response.get(0).questions.get(0).results.unset;
-                                if(total != 0){
+                                if (total != 0) {
                                     double percent_all = (set / total) * 100;
-                                    binding.responseRate.setText((int)Math.round(percent_all)  + " %");
+                                    binding.responseRate.setText((int) Math.round(percent_all) + " %");
                                 }
 
                                 binding.totalRespondents.setText(set + "");
@@ -137,14 +137,14 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
                                 double gender_total = male_responded + female_responded + other_responded;
 
-                                if(gender_total != 0){
+                                if (gender_total != 0) {
                                     double percent_male = (male_responded / gender_total) * 100;
-                                    binding.malePercent.setText((int)Math.round(percent_male) + " %");
+                                    binding.malePercent.setText((int) Math.round(percent_male) + " %");
                                     double percent_female = (female_responded / gender_total) * 100;
-                                    binding.femalePercent.setText((int)Math.round(percent_female) + " %");
+                                    binding.femalePercent.setText((int) Math.round(percent_female) + " %");
                                     double percent_other = (other_responded / gender_total) * 100;
-                                    binding.otherPercent.setText((int)Math.round(percent_other) + " %");
-                                }else{
+                                    binding.otherPercent.setText((int) Math.round(percent_other) + " %");
+                                } else {
                                     binding.malePercent.setText("-");
                                     binding.femalePercent.setText("-");
                                     binding.otherPercent.setText("-");
@@ -158,12 +158,12 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                                 binding.stateGenderLayout.setVisibility(View.VISIBLE);
                                 binding.stateGenderLayout2.setVisibility(View.GONE);
 
-                            }else{
+                            } else {
                                 int set = response.get(0).questions.get(0).results.set;
                                 double total = set + response.get(0).questions.get(0).results.unset;
-                                if(total != 0){
+                                if (total != 0) {
                                     double percent_all = (set / total) * 100;
-                                    binding.responseRate.setText((int)Math.round(percent_all)  + " %");
+                                    binding.responseRate.setText((int) Math.round(percent_all) + " %");
                                 }
 
                                 binding.totalRespondents.setText(set + "");
@@ -171,12 +171,12 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                                 int male_responded = response.get(0).questions.get(0).results_by_gender.get(0).set;
                                 int female_responded = response.get(0).questions.get(0).results_by_gender.get(1).set;
                                 double gender_total = male_responded + female_responded;
-                                if(gender_total != 0){
+                                if (gender_total != 0) {
                                     double percent_male = (male_responded / gender_total) * 100;
-                                    binding.malePercent2.setText((int)Math.round(percent_male) + " %");
+                                    binding.malePercent2.setText((int) Math.round(percent_male) + " %");
                                     double percent_female = (female_responded / gender_total) * 100;
-                                    binding.femalePercent2.setText((int)Math.round(percent_female) + " %");
-                                }else{
+                                    binding.femalePercent2.setText((int) Math.round(percent_female) + " %");
+                                } else {
                                     binding.malePercent2.setText("-");
                                     binding.femalePercent2.setText("-");
                                 }
@@ -203,9 +203,9 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                 } else {
                     viewModel.getQuestionsFromLocal(id, org_id).observe(this, response -> {
 
-                        if(response.get(0).id == prefManager.getInt(PrefKeys.LATEST_OPINION)){
+                        if (response.get(0).id == prefManager.getInt(PrefKeys.LATEST_OPINION)) {
                             binding.textLatest.setVisibility(View.VISIBLE);
-                        }else{
+                        } else {
                             binding.textLatest.setVisibility(View.GONE);
                         }
 
@@ -255,7 +255,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
                     });
                 }
-            }else{
+            } else {
                 gone(binding.body);
             }
 
@@ -283,7 +283,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
     public void initRecyclerView() {
         binding.recyclerView.setHasFixedSize(true);
-        if(mAdapter == null){
+        if (mAdapter == null) {
             mAdapter = new PollsAdapter(this);
             binding.recyclerView.setAdapter(mAdapter);
             binding.recyclerView.setHasFixedSize(true);
@@ -291,7 +291,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
     }
 
-    public void saveData(){
+    public void saveData() {
 
         viewModel.response.observe(PollsActivity.this, response -> {
 
@@ -299,28 +299,31 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
             String next_url = response.data.next;
             count = response.data.count;
             progressValue = list.size();
-            if(progressValue > response.data.count){
+            if (progressValue > response.data.count) {
                 progressValue = response.data.count;
             }
             binding.progressBar.setIndeterminate(false);
             binding.progressBar.setProgress(progressValue);
             binding.progressBar.setMax(count);
-            binding.loadingTvProgress.setText("("+progressValue+"/"+count+")");
-            if(next_url != null){
+            binding.loadingTvProgress.setText("(" + progressValue + "/" + count + ")");
+            if (next_url != null) {
                 getRemoteData(next_url);
-            }else{
+            } else {
                 progressValue = 0;
                 gone(binding.loadingLayout);
                 binding.loadingTvTitle.setText("");
                 binding.loadingTvProgress.setText("");
-                for(int i = 0; i < list.size() ; i++){
+                for (int i = 0; i < list.size(); i++) {
                     list.get(i).category_tag = list.get(i).category.name;
                     viewModel.insertPolls(list.get(i));
                 }
                 String tag = PrefKeys.LAST_LOCAL_POLL_UPDATE_TIME + org_id;
                 StaticMethods.setLocalUpdateDate(prefManager, tag);
             }
+
         });
+
+
     }
 
     @Override
@@ -334,17 +337,17 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
     }
 
     public void refresh() {
-        if(ConnectivityCheck.isConnected(PollsActivity.this)) {
-            ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
-            ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1000).start();
+        if (ConnectivityCheck.isConnected(PollsActivity.this)) {
+//            ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
+//            ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1000).start();
             visible(binding.loadingLayout);
             gone(binding.noInternetLayout);
             binding.loadingTvTitle.setText(R.string.updating_polls);
             binding.progressBar.setIndeterminate(true);
-            getRemoteData(ApiConstants.POLLS+org_id + "/featured/?limit=30");
-        }else{
-            ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
-            ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
+            getRemoteData("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/"+ApiConstants.POLLS + org_id + "/featured/?limit=30");
+        } else {
+//            ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
+//            ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
             visible(binding.noInternetLayout);
             gone(binding.loadingLayout);
         }

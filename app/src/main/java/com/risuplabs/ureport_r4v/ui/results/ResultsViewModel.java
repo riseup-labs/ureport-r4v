@@ -20,6 +20,7 @@ public class ResultsViewModel extends BaseViewModel {
 
     ResultRepository resultRepository;
     public MutableLiveData<ApiResponse<ModelResults>> response = new MutableLiveData<>();
+    public MutableLiveData<ApiResponse<ModelResults>> responseLatestPoll = new MutableLiveData<>();
 
     @Inject
     public ResultsViewModel(ResultRepository resultRepository) {
@@ -52,6 +53,32 @@ public class ResultsViewModel extends BaseViewModel {
         },url);
     }
 
+    public void getLatestResults(String url){
+        resultRepository.get_resultsFromRemote(new ResponseListener<ModelResults>() {
+            @Override
+            public void onStart() {
+                loadingStatus.setValue(true);
+            }
+
+            @Override
+            public void onFinish() {
+                loadingStatus.setValue(false);
+            }
+
+            @Override
+            public void onResponse(ApiResponse<ModelResults> apiResponse) {
+
+                if(apiResponse != null && apiResponse.data != null ){
+                    responseLatestPoll.setValue(apiResponse);
+                }
+                loadingStatus.setValue(false);
+                assert apiResponse != null;
+                Log.d("ERROR_CODE", "onResponse: "+ apiResponse.statusCode);
+
+            }
+        },url);
+    }
+
     public void insertPolls(ModelPolls polls){
         resultRepository.insertPolls(polls);
     }
@@ -62,6 +89,10 @@ public class ResultsViewModel extends BaseViewModel {
 
     public LiveData<Integer> getAllCategoriesCountFromLocal(int org_id){
         return resultRepository.getAllPollsCategoryCountFromLocal(org_id);
+    }
+
+    public LiveData<Integer> getAllCountFromLocal(int org_id){
+        return resultRepository.getAllPollsCountFromLocal(org_id);
     }
 
     public LiveData<List<ModelPolls>> getPollTitlesFromLocal(String tag,int org_id){

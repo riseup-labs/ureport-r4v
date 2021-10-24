@@ -45,6 +45,10 @@ public class ResultRepository {
         return resultsDao.getAllPollCategoriesCount(org_id);
     }
 
+    public LiveData<Integer> getAllPollsCountFromLocal(int org_id) {
+        return resultsDao.getAllPollCount(org_id);
+    }
+
     public LiveData<List<ModelPolls>> getPollTitlesFromLocal(String tag,int org_id){
         return resultsDao.getTitles(tag,org_id);
     }
