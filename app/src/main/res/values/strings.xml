@@ -192,5 +192,6 @@
     <string name="latest_opinion">LATEST OPINION</string>
     <string name="search">Search</string>
     <string name="riseup_labs" translatable="false">: <u>Riseup Labs</u> </string>
+    <string name="choose_workspace">Choose Workspace</string>
 
 </resources>

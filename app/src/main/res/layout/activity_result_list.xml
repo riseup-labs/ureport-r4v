@@ -33,7 +33,7 @@
 
             <fragment
                 android:id="@+id/fragment"
-                android:name="com.risuplabs.ureport_r4v.ui.results.result_list.ResultListFragment"
+                android:name="com.riseuplabs.ureport_r4v.ui.results.result_list.ResultListFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </androidx.cardview.widget.CardView>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "96591788706",
+    "project_id": "ureport-otm-r4v",
+    "storage_bucket": "ureport-otm-r4v.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96591788706:android:40d298024ba2aaa039b5fb",
+        "android_client_info": {
+          "package_name": "com.riseuplabs.ureport_r4v"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96591788706-empf75sf3qhedlhlsivijvqkvf4iiqd5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNLN_fwCXcQbqCcxi_hhEsY_wHgvvzAlE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96591788706-empf75sf3qhedlhlsivijvqkvf4iiqd5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

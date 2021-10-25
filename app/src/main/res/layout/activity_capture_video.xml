@@ -26,7 +26,7 @@
             android:padding="20dp"
             android:layout_alignParentBottom="true" >
 
-            <com.risuplabs.ureport_r4v.utils.ui.IconTextView
+            <com.riseuplabs.ureport_r4v.utils.ui.IconTextView
                 android:id="@+id/button_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
                 android:layout_alignParentRight="true"
                 android:text="@string/icon_camera_front" />
 
-            <com.risuplabs.ureport_r4v.utils.ui.IconTextView
+            <com.riseuplabs.ureport_r4v.utils.ui.IconTextView
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/button_capture"

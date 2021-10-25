@@ -124,4 +124,5 @@
     <string name="v2_continue">Continuar</string>
     <string name="latest_opinion">ÚLTIMA OPINIÓN</string>
     <string name="search">Buscar</string>
+    <string name="choose_workspace">Elija el espacio de trabajo</string>
 </resources>

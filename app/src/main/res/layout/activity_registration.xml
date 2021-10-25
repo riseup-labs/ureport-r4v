@@ -165,7 +165,7 @@
                 android:paddingBottom="6dp"
                 android:visibility="invisible">
 
-                <com.risuplabs.ureport_r4v.utils.ui.IconTextView
+                <com.riseuplabs.ureport_r4v.utils.ui.IconTextView
                     android:id="@+id/media_icon"
                     style="?android:textAppearanceSmall"
                     android:layout_width="wrap_content"
@@ -214,7 +214,7 @@
                     android:scaleY=".75"
                     app:srcCompat="@drawable/v1_icon_message_send" />
 
-                <com.risuplabs.ureport_r4v.utils.ui.IconTextView
+                <com.riseuplabs.ureport_r4v.utils.ui.IconTextView
                     android:id="@+id/button_send"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -288,7 +288,7 @@
                         android:paddingTop="@dimen/activity_vertical_margin"
                         android:paddingRight="@dimen/activity_horizontal_margin">
 
-                        <com.risuplabs.ureport_r4v.utils.ui.IconTextView
+                        <com.riseuplabs.ureport_r4v.utils.ui.IconTextView
                             android:id="@+id/download_icon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

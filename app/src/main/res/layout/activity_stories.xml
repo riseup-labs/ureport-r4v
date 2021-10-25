@@ -33,7 +33,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragment"
-                android:name="com.risuplabs.ureport_r4v.ui.stories.list.StoriesListFragment"
+                android:name="com.riseuplabs.ureport_r4v.ui.stories.list.StoriesListFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </androidx.cardview.widget.CardView>
