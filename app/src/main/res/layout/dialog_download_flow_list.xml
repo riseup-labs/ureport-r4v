@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
     android:layout_height="wrap_content">
 
@@ -20,7 +20,7 @@
                 android:layout_marginBottom="10dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="@string/opinions"
+                android:text="@string/download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -36,33 +36,6 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layout_informations"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_marginTop="10dp"
-                android:textSize="18sp"
-                android:layout_marginBottom="10dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="@string/informations"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:layout_marginBottom="10dp"
-                android:background="@color/dark_gray"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewBot"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
         <TextView
             android:visibility="gone"
             android:id="@+id/no_flows"
@@ -74,39 +47,87 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+
         <LinearLayout
+            android:layout_marginTop="25dp"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <androidx.appcompat.widget.AppCompatButton
-                android:background="@color/colorPrimary"
-                android:layout_weight="1"
-                android:text="@string/download"
-                android:drawableLeft="@drawable/ic_download"
-                android:paddingStart="10dp"
-                android:layout_marginTop="15dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textMessageTitle">
+
+            <RelativeLayout
                 android:id="@+id/btnDownload"
-                android:layout_width="0dp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginEnd="15dp"
-                android:layout_height="wrap_content"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:background="@drawable/v1_layout_bg_results"
+                android:gravity="center"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="@string/cancel"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:paddingStart="10dp"
-                android:drawableLeft="@drawable/v1_icon_cancel"
-                android:layout_marginTop="15dp"
+                android:background="@drawable/color_rounded"
+                android:elevation="4dp">
+
+                <TextView
+                    android:layout_toRightOf="@+id/imageView10"
+                    android:id="@+id/textView_download"
+                    style="@style/semiboldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/download"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView10"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:visibility="visible"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:srcCompat="@drawable/ic_download" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/btnCancel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/white_rounded"
+                android:elevation="4dp">
+
+                <TextView
+                    android:layout_toRightOf="@+id/imageView11"
+                    android:id="@+id/textView_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    style="@style/semiboldText"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/cancel"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    app:srcCompat="@drawable/v1_icon_cancel" />
+            </RelativeLayout>
+
         </LinearLayout>
-
-
 
 
     </LinearLayout>

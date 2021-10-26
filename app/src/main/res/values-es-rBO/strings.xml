@@ -97,7 +97,7 @@
     <string name="no_flows_available_for_download">No hay flujos disponibles para descargar.</string>
     <string name="cancel_registration">¿Estás seguro de que deseas cancelar el flujo de registro?</string>
     <string name="your_voice_matters">¡Tu voz importa!</string>
-    <string name="download">descargar</string>
+    <string name="download">Descargar</string>
     <string name="select">Seleccione</string>
     <string name="your_location">tu ubicación</string>
     <string name="submit_your_response">Envíe su respuesta</string>
@@ -125,4 +125,5 @@
     <string name="latest_opinion">ÚLTIMA OPINIÓN</string>
     <string name="search">Buscar</string>
     <string name="choose_workspace">Elija el espacio de trabajo</string>
+    <string name="confirm_latest_flow_download">¿Quieres descargar los últimos flujos?</string>
 </resources>

@@ -53,7 +53,7 @@ public class FlowListFragment extends BaseFragment<FragmentFlowListBinding> impl
 
         binding.flowRefreshLayout.setOnRefreshListener(() -> {
             playNotification(prefManager, getContext(), R.raw.swipe_sound);
-            ((FlowListActivity) containerx).refreshFlows();
+            ((FlowListActivity) containerx).refreshFlows(R.string.confirm_org_refresh);
         });
 
     }

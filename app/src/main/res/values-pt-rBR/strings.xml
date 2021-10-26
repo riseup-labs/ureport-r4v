@@ -125,4 +125,5 @@
     <string name="latest_opinion">ÚLTIMA OPINIÃO</string>
     <string name="search">Procurar</string>
     <string name="choose_workspace">Escolha o espaço de trabalho</string>
+    <string name="confirm_latest_flow_download">Quer baixar os fluxos mais recentes?</string>
 </resources>

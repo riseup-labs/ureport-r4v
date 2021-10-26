@@ -10,16 +10,19 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -27,6 +30,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.gms.cloudmessaging.CloudMessagingReceiver;
 import com.riseuplabs.ureport_r4v.R;
 import com.riseuplabs.ureport_r4v.adapter.FlowDownloadListAdapter;
 import com.riseuplabs.ureport_r4v.adapter.FlowListAdapter;
@@ -81,6 +85,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
     private boolean skipFirst = true;
     int from = -1;
     String poll_type = "";
+    String notification_flow_id = "";
 
     private Dialog confirmRefreshDialog;
 
@@ -95,11 +100,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
 
-        poll_type = prefManager.getString(PrefKeys.POLL_TYPE,"");
-
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.cancel(522);
-
+        poll_type = prefManager.getString(PrefKeys.POLL_TYPE, "poll");
         Intent intent = getIntent();
         if (intent != null && intent.getIntExtra(IntentConstant.SUBMISSION_INTENT, 1) == 0) {
             from = 0;
@@ -120,6 +121,13 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
                 });
             }
         }
+
+        if (intent != null && intent.getStringExtra(IntentConstant.FLOW_ID) != null) {
+            notification_flow_id = intent.getStringExtra(IntentConstant.FLOW_ID);
+            refreshFlows(R.string.confirm_latest_flow_download);
+        }
+
+        Log.d(TAG, "Notification Flow ID: " + notification_flow_id);
 
         if (poll_type.equals("poll")) {
             binding.activityName.setText(getResources().getString(R.string.polls));
@@ -250,9 +258,9 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         dialog3.show();
     }
 
-    public void refreshFlows() {
+    public void refreshFlows(int msgID) {
         if (ConnectivityCheck.isConnected(this)) {
-            confirmRefreshOrg(R.string.confirm_org_refresh);
+            confirmRefreshOrg(msgID);
             if (flowlistRefresh != null) {
                 flowlistRefresh.setRefreshing(false);
             }
@@ -261,7 +269,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
                 @Override
                 public void retry() {
-                    refreshFlows();
+                    refreshFlows(R.string.confirm_org_refresh);
                 }
 
                 @Override
@@ -653,8 +661,10 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
     public void downloadAlert() {
 
         List<com.riseuplabs.ureport_r4v.surveyor.net.responses.Flow> selected_flows = new ArrayList<>();
-        List<com.riseuplabs.ureport_r4v.surveyor.net.responses.Flow> bot_flows = new ArrayList<>();
         List<com.riseuplabs.ureport_r4v.surveyor.net.responses.Flow> poll_flows = new ArrayList<>();
+        List<Flow> pre_selected_flows = new ArrayList<>();
+
+        pre_selected_flows = getListItems();
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(FlowListActivity.this);
         LayoutInflater inflater = getLayoutInflater();
@@ -663,22 +673,30 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         AlertDialog dialog = alertDialog.create();
 
         RecyclerView rvOP = convertView.findViewById(R.id.recyclerViewOP);
-        RecyclerView rvBOT = convertView.findViewById(R.id.recyclerViewBot);
-        Button btnDownload = convertView.findViewById(R.id.btnDownload);
-        Button btnCancel = convertView.findViewById(R.id.btnCancel);
+        RelativeLayout btnDownload = convertView.findViewById(R.id.btnDownload);
+        RelativeLayout btnCancel = convertView.findViewById(R.id.btnCancel);
         LinearLayout layout_opinions = convertView.findViewById(R.id.layout_opinions);
-        LinearLayout layout_informations = convertView.findViewById(R.id.layout_informations);
         TextView no_flows = convertView.findViewById(R.id.no_flows);
 
 
         rvOP.setLayoutManager(new LinearLayoutManager(FlowListActivity.this));
-        rvBOT.setLayoutManager(new LinearLayoutManager(FlowListActivity.this));
         rvOP.setHasFixedSize(true);
-        rvBOT.setHasFixedSize(true);
 
         for (int i = 0; i < getOrg().flowTitles.size(); i++) {
+            if(getOrg().flowTitles.get(i).getUuid().equals(notification_flow_id)){
+                getOrg().flowTitles.get(i).setSelected(true);
+                selected_flows.add(getOrg().flowTitles.get(i));
+            }
             for (int j = 0; j < getOrg().flowTitles.get(i).getLabels().size(); j++) {
                 if (getOrg().flowTitles.get(i).getLabels().get(j).name.toLowerCase().equals(poll_type)) {
+                    Log.d(TAG, "downloadAlert : " + pre_selected_flows.size());
+                    for (int k = 0; k < pre_selected_flows.size(); k++) {
+
+                        if (pre_selected_flows.get(k).getUuid().equals(getOrg().flowTitles.get(i).getUuid())) {
+                            getOrg().flowTitles.get(i).setSelected(true);
+                            selected_flows.add(getOrg().flowTitles.get(i));
+                        }
+                    }
                     poll_flows.add(getOrg().flowTitles.get(i));
                 }
             }
@@ -687,15 +705,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
         FlowDownloadListAdapter adapterOP = new FlowDownloadListAdapter(SurveyorApplication.get());
         rvOP.setAdapter(adapterOP);
-        if (getOrg() != null) {
-            adapterOP.addItems(poll_flows);
-        }
 
-        FlowDownloadListAdapter adapterBOT = new FlowDownloadListAdapter(SurveyorApplication.get());
-        rvBOT.setAdapter(adapterBOT);
-        if (getOrg() != null) {
-            adapterBOT.addItems(bot_flows);
-        }
 
         if (poll_flows.size() == 0) {
             layout_opinions.setVisibility(View.GONE);
@@ -703,11 +713,6 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
             layout_opinions.setVisibility(View.VISIBLE);
         }
 
-        if (bot_flows.size() == 0) {
-            layout_informations.setVisibility(View.GONE);
-        } else {
-            layout_informations.setVisibility(View.VISIBLE);
-        }
 
         if (getOrg().flowTitles.size() == 0) {
             no_flows.setVisibility(View.VISIBLE);
@@ -717,11 +722,14 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
             no_flows.setVisibility(View.GONE);
         }
 
+        if (getOrg() != null) {
+            adapterOP.addItems(poll_flows);
+        }
+
         btnDownload.setOnClickListener(v -> {
-            if (adapterBOT.getCheckedList() != null) {
-                selected_flows.addAll(adapterBOT.getCheckedList());
-            }
+
             if (adapterOP.getCheckedList() != null) {
+                selected_flows.clear();
                 selected_flows.addAll(adapterOP.getCheckedList());
             }
             if (selected_flows.size() != 0) {
@@ -735,11 +743,18 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
         btnCancel.setOnClickListener(v -> {
             dialog.cancel();
-            finish();
         });
 
         dialog.setCancelable(false);
-        dialog.show();
+
+        if(notification_flow_id.equals("")){
+            dialog.show();
+        }else{
+            selected_flows.addAll(adapterOP.getCheckedList());
+            download(selected_flows);
+            notification_flow_id = "";
+        }
+
 
     }
 

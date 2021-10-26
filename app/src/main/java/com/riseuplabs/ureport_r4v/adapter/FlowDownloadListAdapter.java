@@ -1,6 +1,7 @@
 package com.riseuplabs.ureport_r4v.adapter;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -17,6 +18,8 @@ public class FlowDownloadListAdapter extends BaseRecyclerViewAdapter<com.riseupl
 
     private final Context context;
     private final List<com.riseuplabs.ureport_r4v.surveyor.net.responses.Flow> checkedList = new ArrayList<>();
+    private List<Flow> selectedList = new ArrayList<>();
+    List<com.riseuplabs.ureport_r4v.surveyor.net.responses.Flow> new_pre_selected_flows = new ArrayList<>();
 
     @Override
     public int getLayoutId() {
@@ -32,6 +35,13 @@ public class FlowDownloadListAdapter extends BaseRecyclerViewAdapter<com.riseupl
 
         prefManager = new SharedPrefManager(context);
         holder.binding.checkbox.setText(items.get(position).getName());
+
+
+        holder.binding.checkbox.setChecked(items.get(position).isSelected());
+        if(items.get(position).isSelected()){
+            checkedList.add(items.get(position));
+        }
+
         holder.binding.checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if(holder.binding.checkbox.isChecked()){
                 items.get(position).setSelected(true);

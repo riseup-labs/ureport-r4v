@@ -23,6 +23,7 @@
     <string name="please_refresh">Pull down to refresh…</string>
     <string name="confirm_org_download">Flows for this organization are not being downloaded yet. Download all flows now?</string>
     <string name="confirm_org_refresh">Refresh all flows for this organization?</string>
+    <string name="confirm_latest_flow_download">Do you want to download the latest flows?</string>
     <string name="confirm_org_refresh_old">Flows for this organization are too old to work with this app. Refresh all flows for this organization?</string>
     <string name="confirm_bug_report">Oops, it looks like app is having difficulty. Would you like to send a bug report so we can look into it?</string>
 
@@ -173,7 +174,7 @@
     <string name="no_flows_available_for_download">No flows are available to download.</string>
     <string name="cancel_registration">Are you sure you want to cancel registration flow ?</string>
     <string name="your_voice_matters">Your voice matters!</string>
-    <string name="download">download</string>
+    <string name="download">Download</string>
     <string name="select">Select</string>
     <string name="your_location">your location</string>
     <string name="submit_your_response">Submit your response</string>

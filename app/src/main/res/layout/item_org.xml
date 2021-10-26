@@ -13,8 +13,9 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:scaleType="fitXY"
+        android:padding="8dp"
         android:gravity="center_vertical"
-        app:srcCompat="@drawable/icon_folder" />
+        app:srcCompat="@drawable/v2_folder" />
 
     <LinearLayout
         android:layout_width="match_parent"
