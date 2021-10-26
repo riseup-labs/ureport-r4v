@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +32,7 @@ public class ResultSearchListAdapter extends BaseExpandableListAdapter {
     private ArrayList<CategoryResults> categoryList;
     private ArrayList<CategoryResults> originalList;
     int org_id;
+    String queryText = "";
 
     public ResultSearchListAdapter(Activity activity,Context context, ArrayList<CategoryResults> categoryList, int org_id) {
         this.activity = activity;
@@ -70,7 +74,7 @@ public class ResultSearchListAdapter extends BaseExpandableListAdapter {
             e.printStackTrace();
         }
         name.setText(Html.fromHtml(sourceString));
-
+        setHighLightedText(name, queryText);
         name.setOnClickListener(v ->{
             Bundle b = new Bundle();
             b.putInt(IntentConstant.POLL_ID,modelPolls.id);
@@ -133,7 +137,7 @@ public class ResultSearchListAdapter extends BaseExpandableListAdapter {
     }
 
     public void filterData(String query){
-
+        queryText = query;
         query = query.toLowerCase();
         categoryList.clear();
 
@@ -162,6 +166,22 @@ public class ResultSearchListAdapter extends BaseExpandableListAdapter {
         Log.v("MyListAdapter", String.valueOf(categoryList.size()));
         notifyDataSetChanged();
 
+    }
+
+    public void setHighLightedText(TextView tv, String textToHighlight) {
+        String tvt = tv.getText().toString().toLowerCase();
+        int ofe = tvt.indexOf(textToHighlight, 0);
+        Spannable wordToSpan = new SpannableString(tv.getText());
+        for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
+            ofe = tvt.indexOf(textToHighlight, ofs);
+            if (ofe == -1)
+                break;
+            else {
+                // set color here
+                wordToSpan.setSpan(new BackgroundColorSpan(0xFFFFFF00), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
+            }
+        }
     }
 
 }

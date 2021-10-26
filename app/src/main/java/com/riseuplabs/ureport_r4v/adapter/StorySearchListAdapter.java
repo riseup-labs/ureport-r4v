@@ -3,6 +3,10 @@ package com.riseuplabs.ureport_r4v.adapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +31,8 @@ public class StorySearchListAdapter extends BaseExpandableListAdapter {
     private ArrayList<CategoryStory> categoryList;
     private ArrayList<CategoryStory> originalList;
     int org_id;
+    TextView name;
+    String queryText = "";
 
     public StorySearchListAdapter(Context context, ArrayList<CategoryStory> categoryList, int org_id) {
         this.context = context;
@@ -58,16 +64,15 @@ public class StorySearchListAdapter extends BaseExpandableListAdapter {
             view = layoutInflater.inflate(R.layout.child_row, null);
         }
 
-        TextView name = (TextView) view.findViewById(R.id.name);
-
+        name = (TextView) view.findViewById(R.id.name);
         String sourceString = null;
         try {
             sourceString = modelStory.title.trim()+ "  <b>" + DateFormatUtils.getDate(modelStory.created_on) + "</b> ";
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         name.setText(Html.fromHtml(sourceString));
+        setHighLightedText(name, queryText);
         name.setOnClickListener(v ->{
             Bundle b = new Bundle();
             b.putInt(IntentConstant.CONTENT_ID, modelStory.id);
@@ -134,7 +139,7 @@ public class StorySearchListAdapter extends BaseExpandableListAdapter {
     }
 
     public void filterData(String query){
-
+        queryText = query;
         query = query.toLowerCase();
         categoryList.clear();
 
@@ -163,6 +168,22 @@ public class StorySearchListAdapter extends BaseExpandableListAdapter {
         Log.v("MyListAdapter", String.valueOf(categoryList.size()));
         notifyDataSetChanged();
 
+    }
+
+    public void setHighLightedText(TextView tv, String textToHighlight) {
+        String tvt = tv.getText().toString().toLowerCase();
+        int ofe = tvt.indexOf(textToHighlight, 0);
+        Spannable wordToSpan = new SpannableString(tv.getText());
+        for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
+            ofe = tvt.indexOf(textToHighlight, ofs);
+            if (ofe == -1)
+                break;
+            else {
+                // set color here
+                wordToSpan.setSpan(new BackgroundColorSpan(0xFFFFFF00), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
+            }
+        }
     }
 
 }
