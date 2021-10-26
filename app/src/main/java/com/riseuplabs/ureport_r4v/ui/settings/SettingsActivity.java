@@ -100,6 +100,7 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
         });
 
         binding.btnCountryBrazil.setOnClickListener(v -> {
+
             try {
                 setCountry(AppConstant.BRAZIL_ORG_ID, v);
             } catch (IOException e) {
@@ -248,6 +249,8 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
     }
 
     public void selectedCountryButton(int org_id) {
+
+
         binding.btnCountryEcuador.setBackground(getResources().getDrawable(R.drawable.v3_dialog_button_grey));
         binding.btnCountryBolivia.setBackground(getResources().getDrawable(R.drawable.v3_dialog_button_grey));
         binding.btnCountryBrazil.setBackground(getResources().getDrawable(R.drawable.v3_dialog_button_grey));

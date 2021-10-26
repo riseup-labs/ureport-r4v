@@ -61,18 +61,6 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
                         .build()
         );
 
-        FirebaseMessaging.getInstance().subscribeToTopic("weather")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Subscribed";
-                        if (!task.isSuccessful()) {
-                            msg = "Subscribed failed";
-                        }
-                        Log.d(TAG, msg);
-                    }
-                });
-
         if (getIntent().getExtras() != null && getIntent().getExtras().getString("flow_id") != null) {
             Intent intent = new Intent(this, FlowListActivity.class);
             intent.putExtra(IntentConstant.FLOW_ID, getIntent().getExtras().getString("flow_id"));

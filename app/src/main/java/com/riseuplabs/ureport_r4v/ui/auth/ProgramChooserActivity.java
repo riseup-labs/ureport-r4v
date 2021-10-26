@@ -1,11 +1,16 @@
 package com.riseuplabs.ureport_r4v.ui.auth;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.riseuplabs.ureport_r4v.R;
 import com.riseuplabs.ureport_r4v.base.BaseActivity;
 import com.riseuplabs.ureport_r4v.databinding.ActivityProgramChooserBinding;
@@ -59,6 +64,19 @@ public class ProgramChooserActivity extends BaseActivity<ActivityProgramChooserB
         });
 
         binding.next.setOnClickListener(v->{
+
+            FirebaseMessaging.getInstance().subscribeToTopic(prefManager.getString(PrefKeys.ORG_LABEL))
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            String msg = "Subscribed";
+                            if (!task.isSuccessful()) {
+                                msg = "Subscribed failed";
+                            }
+                            Log.d(TAG, msg);
+                        }
+                    });
+
             prefManager.putString(PrefKeys.LOGIN,"yes");
             Navigator.navigate(ProgramChooserActivity.this, DashBoardActivity.class);
             finish();
