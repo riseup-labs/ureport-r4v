@@ -1,4 +1,4 @@
-package com.riseuplabs.ureport_r4v.adapter;
+package com.riseuplabs.ureport_r4v.adapter.result;
 
 import android.content.Context;
 
@@ -12,12 +12,12 @@ import com.riseuplabs.ureport_r4v.utils.AppConstant;
 import com.riseuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 import com.riseuplabs.ureport_r4v.utils.pref_manager.SharedPrefManager;
 
-public class PollStatisticsAdapter extends BaseRecyclerViewAdapter<ModelQuestionCategory, ItemPollStatisticsProgressbarBinding> {
+public class PollAgeChildAdapter extends BaseRecyclerViewAdapter<ModelQuestionCategory, ItemPollStatisticsProgressbarBinding> {
 
     Context context;
     int set;
 
-    public PollStatisticsAdapter(Context context, int set) {
+    public PollAgeChildAdapter(Context context, int set) {
         this.context = context;
         this.set = set;
     }

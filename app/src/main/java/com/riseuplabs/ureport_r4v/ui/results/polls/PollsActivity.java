@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.richpath.RichPath;
 import com.riseuplabs.ureport_r4v.R;
-import com.riseuplabs.ureport_r4v.adapter.PollsAdapter;
+import com.riseuplabs.ureport_r4v.adapter.result.PollsAdapter;
 import com.riseuplabs.ureport_r4v.base.BaseActivity;
 import com.riseuplabs.ureport_r4v.databinding.ActivityPollsBinding;
 import com.riseuplabs.ureport_r4v.model.results.ModelPolls;

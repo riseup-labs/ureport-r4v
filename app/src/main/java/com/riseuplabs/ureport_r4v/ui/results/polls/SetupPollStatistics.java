@@ -1,16 +1,11 @@
 package com.riseuplabs.ureport_r4v.ui.results.polls;
 
 import android.content.Context;
-import android.view.View;
 
-import com.riseuplabs.ureport_r4v.R;
-import com.riseuplabs.ureport_r4v.adapter.PollStatisticsAdapter;
-import com.riseuplabs.ureport_r4v.adapter.PollTitlesAdapter;
+import com.riseuplabs.ureport_r4v.adapter.result.PollStatisticsAdapter;
 import com.riseuplabs.ureport_r4v.databinding.ItemPollStatisticsBinding;
 import com.riseuplabs.ureport_r4v.model.results.ModelQuestion;
 import com.riseuplabs.ureport_r4v.model.results.ModelQuestionCategory;
-import com.riseuplabs.ureport_r4v.utils.AppConstant;
-import com.riseuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 import com.riseuplabs.ureport_r4v.utils.pref_manager.SharedPrefManager;
 
 import java.util.List;

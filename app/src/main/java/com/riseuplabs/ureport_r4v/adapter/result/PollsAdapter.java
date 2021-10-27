@@ -1,4 +1,4 @@
-package com.riseuplabs.ureport_r4v.adapter;
+package com.riseuplabs.ureport_r4v.adapter.result;
 
 import android.content.Context;
 import android.util.Log;
