@@ -10,176 +10,35 @@
         android:id="@+id/parentLocation"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginBottom="5dp"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                style="@style/boldText"
-                android:text="@string/v1_ureport_participation_level" />
-
-            <View
-                android:id="@+id/view6"
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:background="@color/green2" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="5dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        style="@style/semiboldText"
-                        android:text="@string/v1_ureport_responses" />
-
-                    <TextView
-                        android:id="@+id/textViewResponseInZone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        style="@style/semiboldText"
-                        android:text="@string/response_rate_small" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textViewRespondedMap"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        style="@style/semiboldText"
-                        android:gravity="center"
-                        android:text="0" />
-
-                    <TextView
-                        android:id="@+id/textViewRespondedAllMap"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        style="@style/semiboldText"
-                        android:gravity="center"
-                        android:text="0 %" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                style="@style/boldText"
-                android:textSize="16sp"
-                android:text="@string/v1_ureport_results" />
-
-            <View
-                android:id="@+id/view8"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/green2" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/respondedPercentageMap"
-                    android:layout_width="wrap_content"
-                    android:textSize="16sp"
-                    style="@style/semiboldText"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="0%" />
-
-                <TextView
-                    android:id="@+id/respondedLabelMap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="16sp"
-                    style="@style/semiboldText"
-                    android:layout_weight="1"
-                    android:text="Yes" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textViewRest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    style="@style/semiboldText"
-                    android:layout_weight="1"
-                    android:text="0%" />
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:textSize="16sp"
-                    style="@style/semiboldText"
-                    android:text="@string/v1_ureport_other" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <com.richpath.RichPathView
-            android:layout_marginTop="20dp"
+        <RelativeLayout
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_gravity="center"
-            android:id="@+id/rich_path_view"
+            android:background="@drawable/spinner_border"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:vector="@drawable/ic_poll_map" />
+            android:layout_height="wrap_content">
+            <Spinner
+                android:id="@+id/spinner"
+                android:textAlignment="center"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
 
-        <TextView
-            android:layout_marginBottom="20dp"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:id="@+id/area_name"
-            android:textAlignment="center"
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:id="@+id/recyclerViewParent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
+
 </layout>

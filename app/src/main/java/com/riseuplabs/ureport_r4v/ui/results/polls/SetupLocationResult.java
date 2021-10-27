@@ -1,84 +1,67 @@
 package com.riseuplabs.ureport_r4v.ui.results.polls;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.SpinnerAdapter;
 
 import com.richpath.RichPath;
 import com.riseuplabs.ureport_r4v.R;
+import com.riseuplabs.ureport_r4v.adapter.result.LocationSpinnerAdapter;
+import com.riseuplabs.ureport_r4v.adapter.result.PollStatisticsAdapter;
 import com.riseuplabs.ureport_r4v.databinding.ItemPollLocationBinding;
 import com.riseuplabs.ureport_r4v.model.results.ModelQuestion;
+import com.riseuplabs.ureport_r4v.model.results.ModelQuestionCategory;
 import com.riseuplabs.ureport_r4v.model.results.ModelResultsByLocation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SetupLocationResult {
 
     public static void setupLocation(ModelQuestion item, ItemPollLocationBinding binding, Context context) {
 
+        int size = item.results_by_location.size();
+        final int[] set = {0};
 
-        final RichPath[] pathStack = new RichPath[2];
-        List<ModelResultsByLocation> model = item.results_by_location;
-        RichPath initialRichPath = binding.richPathView.findRichPathByName("Brasil");
-        highlight(model, pathStack, initialRichPath, binding, context);
+        // Spinner Drop down elements
+        ArrayList<ModelResultsByLocation> countries = new ArrayList<ModelResultsByLocation>();
+        countries.addAll(item.results_by_location);
 
-        binding.richPathView.setOnPathClickListener(richPath -> {
+        LocationSpinnerAdapter adapter = new LocationSpinnerAdapter(context, countries);
+        binding.spinner.setAdapter(adapter);
 
-            if (richPath.getName() != null) {
-                highlight(model, pathStack, richPath, binding, context);
-            }
-        });
+        binding.spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent,
+                                               View view, int position, long id)
+                    {
+                        ModelResultsByLocation clickedItem = (ModelResultsByLocation) parent.getItemAtPosition(position);
+                        String name = clickedItem.label;
 
-    }
+                        List<ModelQuestionCategory> category = new ArrayList<>();
 
-    public static void setLocationData(ItemPollLocationBinding binding, ModelResultsByLocation model) {
-        int responses = model.set;
-        binding.textViewRespondedMap.setText(String.valueOf(responses));
-        if (responses > 0) {
-            int total_response = model.set + model.unset;
-            int response_rate = (responses * 100) / total_response;
-            binding.textViewRespondedAllMap.setText(response_rate + "%");
+                        for(int i = 0 ; i < size ; i++){
+                            if(name.equals(item.results_by_location.get(i).label)){
+                                category.addAll(item.results_by_location.get(i).categories);
+                                set[0] = item.results_by_location.get(i).set;
+                            }
+                        }
 
-            int category_size = model.categories.size();
-            if (category_size >= 2) {
-                binding.respondedLabelMap.setText(model.categories.get(0).label);
-                int respo = model.categories.get(0).count * 100 / responses;
-                binding.respondedPercentageMap.setText(respo + "%");
-                binding.textViewRest.setText((100 - respo) + "%");
-            }
-        } else {
-            binding.respondedPercentageMap.setText("0%");
-            binding.textViewRest.setText("0%");
-            binding.textViewRespondedAllMap.setText("0%");
-        }
-    }
+                        binding.recyclerViewParent.setHasFixedSize(true);
+                        PollStatisticsAdapter mAdapter = new PollStatisticsAdapter(context, set[0]);
+                        binding.recyclerViewParent.setAdapter(mAdapter);
 
-    public static void highlight(
-            List<ModelResultsByLocation> model,
-            RichPath[] pathStack,
-            RichPath richPath,
-            ItemPollLocationBinding binding,
-            Context context) {
-        float scalex = 1.005f;
-        pathStack[1] = richPath;
-        binding.areaName.setText(richPath.getName().toUpperCase());
-        richPath.setScaleX(scalex);
-        richPath.setFillColor(context.getResources().getColor(R.color.colorPrimary));
-        if (pathStack[0] != null) {
-            if (pathStack[0] == pathStack[1]) {
-                pathStack[0].setFillColor(context.getResources().getColor(R.color.colorPrimary));
-            } else {
-                pathStack[0].setFillColor(context.getResources().getColor(R.color.mapColor));
-            }
-            //saving previous view
-            pathStack[0] = pathStack[1];
-        } else {
-            //Insert initial view
-            pathStack[0] = pathStack[1];
-        }
-        for (int i = 0; i < model.size(); i++) {
-            if (model.get(i).label.equals(richPath.getName())) {
-                setLocationData(binding, model.get(i));
-            }
-        }
+                        mAdapter.addItems(category);
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent)
+                    {
+                    }
+                });
+
 
     }
 }
