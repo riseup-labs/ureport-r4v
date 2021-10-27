@@ -144,8 +144,10 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         cache.setText(R.id.button_pending, NumberFormat.getInstance().format(pending));
 
         if (pending == 0) {
+            binding.pendingSubmission.setVisibility(View.GONE);
             StaticMethods.scaleView(cache.getView(R.id.pending_submission), 0f, 0f, 0f, 0f, 1);
         } else {
+            binding.pendingSubmission.setVisibility(View.VISIBLE);
             StaticMethods.scaleView(cache.getView(R.id.pending_submission), 0f, 0f, 1f, 1f, 1);
         }
 
@@ -349,8 +351,10 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
                     //cache.setVisible(R.id.pending_submission, pending > 0);
 
                     if (pending == 0) {
+                        binding.pendingSubmission.setVisibility(View.GONE);
                         StaticMethods.scaleView(cache.getView(R.id.pending_submission), 0f, 0f, 0f, 0f, 1);
                     } else {
+                        binding.pendingSubmission.setVisibility(View.VISIBLE);
                         StaticMethods.scaleView(cache.getView(R.id.pending_submission), 0f, 0f, 1f, 1f, 1);
                     }
 
@@ -364,6 +368,7 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
                         // Zoom Out
                         new Handler().postDelayed(() -> {
+                            binding.pendingSubmission.setVisibility(View.VISIBLE);
                             StaticMethods.scaleView(cache.getView(R.id.pending_submission), 1.02f, 1.02f, 1.0f, 1.0f, 200);
                         }, 260);
 
@@ -405,8 +410,10 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         cache.setText(R.id.button_pending, NumberFormat.getInstance().format(pending));
 
         if (pending == 0) {
+            binding.pendingSubmission.setVisibility(View.GONE);
             StaticMethods.scaleView(cache.getView(R.id.pending_submission), 0f, 0f, 0f, 0f, 1);
         } else {
+            binding.pendingSubmission.setVisibility(View.VISIBLE);
             StaticMethods.scaleView(cache.getView(R.id.pending_submission), 0f, 0f, 1f, 1f, 1);
         }
 
@@ -485,8 +492,10 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
         cache.setText(R.id.button_pending, String.valueOf(pending));
 
         if (pending == 0) {
+            binding.pendingSubmission.setVisibility(View.GONE);
             StaticMethods.scaleView(cache.getView(R.id.pending_submission), 0f, 0f, 0f, 0f, 1);
         } else {
+            binding.pendingSubmission.setVisibility(View.VISIBLE);
             StaticMethods.scaleView(cache.getView(R.id.pending_submission), 0f, 0f, 1f, 1f, 1);
         }
 

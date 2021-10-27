@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:textSize="16sp"
                 style="@style/boldText"
                 android:text="0-14" />
 
@@ -361,6 +362,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 style="@style/boldText"
+                android:textSize="16sp"
                 android:text="15-19" />
 
             <LinearLayout
@@ -693,6 +695,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:textSize="16sp"
                 style="@style/boldText"
                 android:text="20-24" />
 
@@ -1025,6 +1028,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:textSize="16sp"
                 style="@style/boldText"
                 android:text="25-30" />
 
@@ -1356,6 +1360,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:textSize="16sp"
                 style="@style/boldText"
                 android:text="31-34" />
 
@@ -1687,6 +1692,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:textSize="16sp"
                 style="@style/boldText"
                 android:text="35+" />
 

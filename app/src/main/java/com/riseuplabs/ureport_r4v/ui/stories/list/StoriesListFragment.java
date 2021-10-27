@@ -2,9 +2,11 @@ package com.riseuplabs.ureport_r4v.ui.stories.list;
 
 import android.animation.ObjectAnimator;
 import android.util.Log;
+import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.riseuplabs.ureport_r4v.R;
 import com.riseuplabs.ureport_r4v.adapter.StoryListAdapter;
@@ -21,6 +23,9 @@ import com.riseuplabs.ureport_r4v.utils.ImageDownloader;
 import com.riseuplabs.ureport_r4v.utils.Navigator;
 import com.riseuplabs.ureport_r4v.utils.ProgressData;
 import com.riseuplabs.ureport_r4v.utils.StaticMethods;
+import com.riseuplabs.ureport_r4v.utils.custom_dialog.CustomDialog;
+import com.riseuplabs.ureport_r4v.utils.custom_dialog.CustomDialogComponent;
+import com.riseuplabs.ureport_r4v.utils.custom_dialog.CustomDialogInterface;
 import com.riseuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 
 import java.util.ArrayList;
@@ -140,7 +145,7 @@ public class StoriesListFragment extends BaseFragment<FragmentStoriesListBinding
                 gone(binding.noInternetLayout);
                 binding.loadingTvTitle.setText(R.string.updating_stories);
                 binding.progressBar.setIndeterminate(true);
-                getRemoteData(ApiConstants.STORIES + org_id);
+                getRemoteData("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/"+ApiConstants.STORIES + org_id);
             }else{
                 ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
                 ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
@@ -152,6 +157,11 @@ public class StoriesListFragment extends BaseFragment<FragmentStoriesListBinding
 
     public void saveData() {
         storyViewModel.response.observe(getViewLifecycleOwner(), response -> {
+
+            Log.d(TAG, "saveData: "+response.statusCode);
+
+            if(response.statusCode.equals("200")){
+
             list.addAll(response.data.stories);
             next_url = response.data.next;
             count = response.data.count;
@@ -209,8 +219,30 @@ public class StoriesListFragment extends BaseFragment<FragmentStoriesListBinding
                 //Download Images
                 downloader.downloadImage(imageList, getContext());
                 imageList = new ArrayList<>();
-            }
 
+            }
+            }else{
+                gone(binding.emptyListWarning);
+                gone(binding.loadingLayout);
+                new CustomDialog(getContext()).displayCustomDialog(new CustomDialogComponent()
+                                .setSubTextVisible(View.VISIBLE)
+                                .setSubText(getString(R.string.wait_for_retry))
+                                .setMainText(getString(R.string.server_error))
+                                .setButtonYes(getContext().getString(R.string.retry))
+                                .setButtonNo(getContext().getString(R.string.cancel)),
+                        new CustomDialogInterface() {
+                            @Override
+                            public void retry() {
+                                visible(binding.loadingLayout);
+                                getRemoteData("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/"+ApiConstants.STORIES + org_id);
+                            }
+
+                            @Override
+                            public void cancel() {
+                                getActivity().finish();
+                            }
+                        });
+            }
         });
     }
 

@@ -21,6 +21,9 @@ import com.riseuplabs.ureport_r4v.utils.DateFormatUtils;
 import com.riseuplabs.ureport_r4v.utils.IntentConstant;
 import com.riseuplabs.ureport_r4v.utils.Navigator;
 import com.riseuplabs.ureport_r4v.utils.StaticMethods;
+import com.riseuplabs.ureport_r4v.utils.custom_dialog.CustomDialog;
+import com.riseuplabs.ureport_r4v.utils.custom_dialog.CustomDialogComponent;
+import com.riseuplabs.ureport_r4v.utils.custom_dialog.CustomDialogInterface;
 import com.riseuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 
 import java.text.ParseException;
@@ -291,30 +294,53 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
         viewModel.response.observe(PollsActivity.this, response -> {
 
-            list.addAll(response.data.results);
-            String next_url = response.data.next;
-            count = response.data.count;
-            progressValue = list.size();
-            if (progressValue > response.data.count) {
-                progressValue = response.data.count;
-            }
-            binding.progressBar.setIndeterminate(false);
-            binding.progressBar.setProgress(progressValue);
-            binding.progressBar.setMax(count);
-            binding.loadingTvProgress.setText("(" + progressValue + "/" + count + ")");
-            if (next_url != null) {
-                getRemoteData(next_url);
-            } else {
-                progressValue = 0;
-                gone(binding.loadingLayout);
-                binding.loadingTvTitle.setText("");
-                binding.loadingTvProgress.setText("");
-                for (int i = 0; i < list.size(); i++) {
-                    list.get(i).category_tag = list.get(i).category.name;
-                    viewModel.insertPolls(list.get(i));
+            if(response.statusCode.equals("200")) {
+                list.addAll(response.data.results);
+                String next_url = response.data.next;
+                count = response.data.count;
+                progressValue = list.size();
+                if (progressValue > response.data.count) {
+                    progressValue = response.data.count;
                 }
-                String tag = PrefKeys.LAST_LOCAL_POLL_UPDATE_TIME + org_id;
-                StaticMethods.setLocalUpdateDate(prefManager, tag);
+                binding.progressBar.setIndeterminate(false);
+                binding.progressBar.setProgress(progressValue);
+                binding.progressBar.setMax(count);
+                binding.loadingTvProgress.setText("(" + progressValue + "/" + count + ")");
+                if (next_url != null) {
+                    getRemoteData(next_url);
+                } else {
+                    progressValue = 0;
+                    gone(binding.loadingLayout);
+                    binding.loadingTvTitle.setText("");
+                    binding.loadingTvProgress.setText("");
+                    for (int i = 0; i < list.size(); i++) {
+                        list.get(i).category_tag = list.get(i).category.name;
+                        viewModel.insertPolls(list.get(i));
+                    }
+                    String tag = PrefKeys.LAST_LOCAL_POLL_UPDATE_TIME + org_id;
+                    StaticMethods.setLocalUpdateDate(prefManager, tag);
+                }
+            }else{
+                gone(binding.emptyListWarning);
+                gone(binding.loadingLayout);
+                new CustomDialog(this).displayCustomDialog(new CustomDialogComponent()
+                                .setSubTextVisible(View.VISIBLE)
+                                .setSubText(getString(R.string.wait_for_retry))
+                                .setMainText(getString(R.string.server_error))
+                                .setButtonYes(getString(R.string.retry))
+                                .setButtonNo(getString(R.string.cancel)),
+                        new CustomDialogInterface() {
+                            @Override
+                            public void retry() {
+                                visible(binding.loadingLayout);
+                                getRemoteData("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/"+ApiConstants.POLLS + org_id + "/featured/?limit=30");
+                            }
+
+                            @Override
+                            public void cancel() {
+                                finish();
+                            }
+                        });
             }
 
         });

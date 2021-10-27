@@ -127,17 +127,18 @@ public class StoryDetailsActivity extends AppCompatActivity {
         Handler handler = new Handler();
         Runnable r = () -> {
             content = StorageUtils.getContent(StoryDetailsActivity.this, content_file_name);
-            content = content.replaceAll("(?s)style=\".*?\"", "");
-            content = content.replaceAll("(?s)href=\".*?\"", "");
-            content = content.replaceAll("(?s)<iframe.*?</iframe>", "");
-            content = content.replaceAll("(?s)<p.*?>", "");
-            content = content.replaceAll("<p>", "");
-            content = content.replaceAll("</p>", "");
-            content = content.replaceAll("</p>", "");
-            content = content.replaceAll("<s>", "");
-            content = content.replaceAll("</s>", "");
-            content = content.replaceAll("</s>", "");
-            content = content.replaceAll(".png", "");
+
+//            content = content.replaceAll("(?s)style=\".*?\"", "");
+//            content = content.replaceAll("(?s)href=\".*?\"", "");
+//            content = content.replaceAll("(?s)<iframe.*?</iframe>", "");
+//            content = content.replaceAll("(?s)<p.*?>", "");
+//            content = content.replaceAll("<p>", "");
+//            content = content.replaceAll("</p>", "");
+//            content = content.replaceAll("</p>", "");
+//            content = content.replaceAll("<s>", "");
+//            content = content.replaceAll("</s>", "");
+//            content = content.replaceAll("</s>", "");
+//            content = content.replaceAll(".png", "");
 
 
             data = Html.fromHtml(content).toString();

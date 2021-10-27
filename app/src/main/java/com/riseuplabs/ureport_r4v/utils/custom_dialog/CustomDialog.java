@@ -72,6 +72,7 @@ public class CustomDialog {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setContentView(R.layout.custom_dialog_layout);
+        dialog.setCanceledOnTouchOutside(false);
 
         dialog.findViewById(R.id.textMainText).setVisibility(customDialogComponent.getMainTextVisible());
         dialog.findViewById(R.id.textSubText).setVisibility(customDialogComponent.getSubTextVisible());

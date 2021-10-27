@@ -11,7 +11,7 @@
     <string name="v1_settings">Configurações</string>
     <string name="v1_ureport">Resultados</string>
     <string name="v1_survey">Opiniões</string>
-    <string name="v1_welcome_to_app">Aplicativo U-Report</string>
+    <string name="v1_welcome_to_app">U-Report Uniendo Voces</string>
     <string name="v1_story_see_more">Ver mais</string>
     <string name="v1_story_details">Detalhes da história</string>
     <string name="v1_ureport_female">Mulher</string>
@@ -126,4 +126,6 @@
     <string name="search">Procurar</string>
     <string name="choose_workspace">Escolha o espaço de trabalho</string>
     <string name="confirm_latest_flow_download">Quer baixar os fluxos mais recentes?</string>
+    <string name="server_error">Erro de servidor!</string>
+    <string name="wait_for_retry">Aguarde um momento e toque em tentar novamente.</string>
 </resources>

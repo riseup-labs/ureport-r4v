@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.riseuplabs.ureport_r4v.R;
 import com.riseuplabs.ureport_r4v.base.BaseSubmissionActivity;
 import com.riseuplabs.ureport_r4v.databinding.ActivityDashboardBinding;
@@ -55,6 +59,9 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
 
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
+
+        subscribeCurrentTopic();
+
         cache = getViewCache();
         orgUUID = prefManager.getString(SurveyorPreferences.SAVED_UUID);
         if (org == null && !orgUUID.equals("")) {
@@ -236,5 +243,19 @@ public class DashBoardActivity extends BaseSubmissionActivity<ActivityDashboardB
         });
 
         task.execute(asArray);
+    }
+
+    public void subscribeCurrentTopic(){
+        FirebaseMessaging.getInstance().subscribeToTopic(prefManager.getString(PrefKeys.ORG_LABEL))
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Subscribed to "+prefManager.getString(PrefKeys.ORG_LABEL);
+                        if (!task.isSuccessful()) {
+                            msg = "Subscribed failed";
+                        }
+                        Log.d(TAG, msg);
+                    }
+                });
     }
 }

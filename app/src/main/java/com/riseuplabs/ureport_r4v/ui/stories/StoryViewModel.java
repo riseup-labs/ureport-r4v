@@ -40,12 +40,13 @@ public class StoryViewModel extends BaseViewModel {
             @Override
             public void onResponse(ApiResponse<ModelStories> apiResponse) {
 
-                if (apiResponse!=null && apiResponse.data!=null){
+                if (apiResponse!=null){
                     response.setValue(apiResponse);
                 }
                 loadingStatus.setValue(true);
                 assert apiResponse != null;
                 Log.d("ERROR_CODE", "onResponse: "+ apiResponse.statusCode);
+
 
             }
         },url);

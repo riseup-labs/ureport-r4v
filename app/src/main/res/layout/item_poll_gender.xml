@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:textSize="16sp"
                 style="@style/boldText"
                 android:text="@string/v1_ureport_female" />
 
@@ -350,6 +351,7 @@
                 android:textStyle="bold"
                 style="@style/boldText"
                 android:id="@+id/male"
+                android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/v1_ureport_male" />

@@ -5,10 +5,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.riseuplabs.ureport_r4v.R;
 import com.riseuplabs.ureport_r4v.base.BaseSurveyorActivity;
 import com.riseuplabs.ureport_r4v.databinding.ActivitySettingsBinding;
@@ -100,7 +105,7 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
         });
 
         binding.btnCountryBrazil.setOnClickListener(v -> {
-
+            unsubscribeCurrentTopic(prefManager.getString(PrefKeys.ORG_LABEL));
             try {
                 setCountry(AppConstant.BRAZIL_ORG_ID, v);
             } catch (IOException e) {
@@ -109,6 +114,7 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
         });
 
         binding.btnCountryEcuador.setOnClickListener(v -> {
+            unsubscribeCurrentTopic(prefManager.getString(PrefKeys.ORG_LABEL));
             try {
                 setCountry(AppConstant.ECUADOR_ORG_ID, v);
             } catch (IOException e) {
@@ -117,6 +123,7 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
         });
 
         binding.btnCountryBolivia.setOnClickListener(v -> {
+            unsubscribeCurrentTopic(prefManager.getString(PrefKeys.ORG_LABEL));
             try {
                 setCountry(AppConstant.BOLIVIA_ORG_ID, v);
             } catch (IOException e) {
@@ -250,7 +257,6 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
 
     public void selectedCountryButton(int org_id) {
 
-
         binding.btnCountryEcuador.setBackground(getResources().getDrawable(R.drawable.v3_dialog_button_grey));
         binding.btnCountryBolivia.setBackground(getResources().getDrawable(R.drawable.v3_dialog_button_grey));
         binding.btnCountryBrazil.setBackground(getResources().getDrawable(R.drawable.v3_dialog_button_grey));
@@ -261,14 +267,17 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
 
         if (org_id == AppConstant.BRAZIL_ORG_ID) {
             prefManager.putString(PrefKeys.ORG_LABEL, AppConstant.BRAZIL_LABEL);
+            subscribeCurrentTopic();
             binding.btnCountryBrazil.setBackground(getResources().getDrawable(R.drawable.v1_card_bg_reports));
             binding.btnCountryBrazil.setTextColor(Color.WHITE);
         } else if (org_id == AppConstant.ECUADOR_ORG_ID) {
             prefManager.putString(PrefKeys.ORG_LABEL, AppConstant.ECUADOR_LABEL);
+            subscribeCurrentTopic();
             binding.btnCountryEcuador.setBackground(getResources().getDrawable(R.drawable.v1_card_bg_reports));
             binding.btnCountryEcuador.setTextColor(Color.WHITE);
         } else if (org_id == AppConstant.BOLIVIA_ORG_ID) {
             prefManager.putString(PrefKeys.ORG_LABEL, AppConstant.BOLIVIA_LABEL);
+            subscribeCurrentTopic();
             binding.btnCountryBolivia.setBackground(getResources().getDrawable(R.drawable.v1_card_bg_reports));
             binding.btnCountryBolivia.setTextColor(Color.WHITE);
         }
@@ -276,7 +285,6 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
     }
 
     public void reload() {
-
         binding.activityName.setText(R.string.v1_settings);
         binding.txtChangeLanguage.setText(R.string.v1_change_language);
         binding.txtCountryLanguage.setText(R.string.select_your_location);
@@ -293,6 +301,34 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
             binding.textLogout.setText(R.string.login);
         }
 
+    }
+
+    public void unsubscribeCurrentTopic(String label){
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(label)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "unSubscribed from "+label;
+                        if (!task.isSuccessful()) {
+                            msg = "Subscribed failed";
+                        }
+                        Log.d(TAG, msg);
+                    }
+                });
+    }
+
+    public void subscribeCurrentTopic(){
+        FirebaseMessaging.getInstance().subscribeToTopic(prefManager.getString(PrefKeys.ORG_LABEL))
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Subscribed to "+prefManager.getString(PrefKeys.ORG_LABEL);
+                        if (!task.isSuccessful()) {
+                            msg = "Subscribed failed";
+                        }
+                        Log.d(TAG, msg);
+                    }
+                });
     }
 
     @Override

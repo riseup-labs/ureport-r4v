@@ -110,7 +110,7 @@
     <string name="v1_stories">Stories</string>
     <string name="v1_ureport">Results</string>
     <string name="v1_survey">Opinions</string>
-    <string name="v1_welcome_to_app">U-Report Application</string>
+    <string name="v1_welcome_to_app">U-Report Uniendo Voces</string>
     <string name="v1_story_see_more">See More</string>
     <string name="v1_story_details">Story Details</string>
 
@@ -194,5 +194,7 @@
     <string name="search">Search</string>
     <string name="riseup_labs" translatable="false">: <u>Riseup Labs</u> </string>
     <string name="choose_workspace">Choose Workspace</string>
+    <string name="server_error">Server error!</string>
+    <string name="wait_for_retry">Please wait for some moment and tap retry.</string>
 
 </resources>

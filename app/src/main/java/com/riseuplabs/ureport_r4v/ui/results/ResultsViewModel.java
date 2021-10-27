@@ -42,7 +42,7 @@ public class ResultsViewModel extends BaseViewModel {
             @Override
             public void onResponse(ApiResponse<ModelResults> apiResponse) {
 
-                if(apiResponse != null && apiResponse.data != null ){
+                if(apiResponse != null ){
                     response.setValue(apiResponse);
                 }
                 loadingStatus.setValue(false);

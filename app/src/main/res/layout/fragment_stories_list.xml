@@ -149,7 +149,6 @@
                     android:layout_marginEnd="10dp"
                     android:layout_gravity="center"
                     android:textColor="@color/white"
-
                     android:layout_toStartOf="@+id/btnRetry"
                     android:text="@string/no_internet_text"
                     android:layout_width="match_parent"

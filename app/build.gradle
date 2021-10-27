@@ -11,8 +11,8 @@ android {
         applicationId "com.riseuplabs.ureport_r4v"
         minSdkVersion 22
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 12
+        versionName "1.1.12"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
