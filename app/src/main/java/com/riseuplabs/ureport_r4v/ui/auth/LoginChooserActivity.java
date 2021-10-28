@@ -51,6 +51,10 @@ public class LoginChooserActivity extends BaseSurveyorActivity<ActivityLoginChoo
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
 
+        binding.backButton.setOnClickListener(v->{
+            onBackPressed();
+        });
+
         if(getIntent().getStringExtra(IntentConstant.COMING_FROM) != null){
             from = getIntent().getStringExtra(IntentConstant.COMING_FROM);
         }

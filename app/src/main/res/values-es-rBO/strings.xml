@@ -120,6 +120,7 @@
     <string name="polls">Sondeos</string>
     <string name="about">Sobre</string>
     <string name="admin_login">Inicio de sesión de administrador?</string>
+    <string name="admin_login_tag">Inicio de sesión de administrador</string>
     <string name="click_here">haga clic aquí</string>
     <string name="v2_continue">Continuar</string>
     <string name="latest_opinion">ÚLTIMA OPINIÓN</string>

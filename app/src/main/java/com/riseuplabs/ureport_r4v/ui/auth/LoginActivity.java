@@ -57,6 +57,10 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
 
+        binding.backButton.setOnClickListener(v->{
+            onBackPressed();
+        });
+
         try {
             fromDashboard = this.getIntent().getExtras().getBoolean("fromDashboard", false);
         } catch (Exception e) {

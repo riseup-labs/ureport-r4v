@@ -552,6 +552,7 @@
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 android:id="@+id/recyclerView"
                                 android:layout_width="match_parent"
+                                android:layout_marginBottom="25dp"
                                 android:layout_height="wrap_content"
                                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
@@ -637,8 +638,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
-                            android:textSize="12sp"
+                            android:textSize="16sp"
                             android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp"
                             android:layout_gravity="center"
                             android:textColor="@color/white"
                             android:layout_toStartOf="@+id/btnRetry"
@@ -739,15 +741,13 @@
 
             <ImageView
                 android:id="@+id/activityImage"
-                android:layout_width="80dp"
-                android:padding="10dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="28dp"
                 android:transitionName="transition_image"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/v1_header_image_results" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/backButton"

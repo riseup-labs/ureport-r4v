@@ -46,7 +46,7 @@
                     android:gravity="center|left"
                     android:text="@string/v1_story_details"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:transitionName="transition_text"
                     app:layout_constraintBottom_toBottomOf="@+id/backButton"

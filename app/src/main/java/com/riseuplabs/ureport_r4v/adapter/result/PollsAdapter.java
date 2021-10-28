@@ -13,6 +13,8 @@ import com.riseuplabs.ureport_r4v.databinding.ItemPollsBinding;
 import com.riseuplabs.ureport_r4v.model.results.ModelQuestion;
 import com.riseuplabs.ureport_r4v.utils.pref_manager.SharedPrefManager;
 
+import java.text.DecimalFormat;
+
 import static com.riseuplabs.ureport_r4v.ui.results.polls.SetupAgeResult.setUpAge;
 import static com.riseuplabs.ureport_r4v.ui.results.polls.SetupGenderResult.setupGenderResult;
 import static com.riseuplabs.ureport_r4v.ui.results.polls.SetupLocationResult.setupLocation;
@@ -37,38 +39,39 @@ public class PollsAdapter extends BaseRecyclerViewAdapter<ModelQuestion, ItemPol
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder<ItemPollsBinding> holder, int position) {
 
+        DecimalFormat formatter = new DecimalFormat("###,###");
 
-            prefManager = new SharedPrefManager(context);
-            ModelQuestion item = items.get(position);
-            ItemPollsBinding binding = holder.binding;
-            binding.question.setText(item.title);
-            Log.d(TAG, "onBindViewHolder: " + item.title);
-            performClickOnTab(binding);
-            int numSub = item.results.set;
-            int numSup = item.results.unset + numSub;
-            binding.textViewResponded.setText(
-                    context.getString(R.string.v1_ureport_out_of)
-                            .replace("%sup", String.valueOf(numSup))
-                            .replace("%sub", String.valueOf(numSub))
-            );
-            binding.textViewDate.setText(pollDate);
+        prefManager = new SharedPrefManager(context);
+        ModelQuestion item = items.get(position);
+        ItemPollsBinding binding = holder.binding;
+        binding.question.setText(item.title);
+        Log.d(TAG, "onBindViewHolder: " + item.title);
+        performClickOnTab(binding);
+        int numSub = item.results.set;
+        int numSup = item.results.unset + numSub;
+        binding.textViewResponded.setText(
+                context.getString(R.string.v1_ureport_out_of)
+                        .replace("%sup", formatter.format(numSup))
+                        .replace("%sub", formatter.format(numSub))
+        );
+        binding.textViewDate.setText(pollDate);
 
-            if (item.results_by_age != null) {
-                binding.layoutWordCloud.chartParent.setVisibility(View.GONE);
-                binding.layoutStatistics.stateParent.setVisibility(View.VISIBLE);
-                setUpAge(context, prefManager, item, binding.layoutAge);
-                setUpStatistics(context, prefManager, items.get(position), binding.layoutStatistics);
-                setupGenderResult(context, prefManager, item, binding.layoutGender);
-                setupLocation(item, binding.layoutLocation, context);
-            }else{
+        if (item.results_by_age != null) {
+            binding.layoutWordCloud.chartParent.setVisibility(View.GONE);
+            binding.layoutStatistics.stateParent.setVisibility(View.VISIBLE);
+            setUpAge(context, prefManager, item, binding.layoutAge);
+            setUpStatistics(context, prefManager, items.get(position), binding.layoutStatistics);
+            setupGenderResult(context, prefManager, item, binding.layoutGender);
+            setupLocation(item, binding.layoutLocation, context);
+        } else {
 
-                binding.layoutWordCloud.chartParent.setVisibility(View.VISIBLE);
-                binding.layoutStatistics.stateParent.setVisibility(View.GONE);
-                binding.linearLayout3.setVisibility(View.GONE);
-                binding.linearLayout4.setVisibility(View.GONE);
+            binding.layoutWordCloud.chartParent.setVisibility(View.VISIBLE);
+            binding.layoutStatistics.stateParent.setVisibility(View.GONE);
+            binding.linearLayout3.setVisibility(View.GONE);
+            binding.linearLayout4.setVisibility(View.GONE);
 
-                setUpWordCloud(items.get(position), binding.layoutWordCloud, binding);
-            }
+            setUpWordCloud(items.get(position), binding.layoutWordCloud, binding);
+        }
 
     }
 

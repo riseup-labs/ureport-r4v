@@ -120,6 +120,7 @@
     <string name="polls">Enquetes</string>
     <string name="about">Cerca de</string>
     <string name="admin_login">Login de administrador?</string>
+    <string name="admin_login_tag">Login de administrador</string>
     <string name="click_here">Clique aqui</string>
     <string name="v2_continue">Prosseguir</string>
     <string name="latest_opinion">ÚLTIMA OPINIÃO</string>

@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.riseuplabs.ureport_r4v.BuildConfig;
 import com.riseuplabs.ureport_r4v.R;
 import com.riseuplabs.ureport_r4v.base.BaseSurveyorActivity;
 import com.riseuplabs.ureport_r4v.databinding.ActivitySettingsBinding;
@@ -45,7 +46,15 @@ public class SettingsActivity extends BaseSurveyorActivity<ActivitySettingsBindi
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
 
-//        initAnimation();
+        binding.versionName.setText("Ver : "+BuildConfig.VERSION_NAME);
+
+        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_brasil);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_ecuador);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_bolivia);
+        }
 
         if (!isLoggedIn()) {
             binding.textLogout.setText(R.string.login);

@@ -13,7 +13,19 @@
         tools:context=".ui.auth.LoginChooserActivity">
 
 
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="10dp"
+            android:padding="12dp"
+            android:src="@drawable/v1_back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/dark_gray" />
+
         <TextView
+            android:visibility="gone"
             android:id="@+id/skip_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +51,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="320dp"
+            android:layout_marginBottom="292dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -74,8 +86,8 @@
                         android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:indeterminateTint="@color/white"
                         android:layout_marginEnd="8dp"
+                        android:indeterminateTint="@color/white"
                         android:visibility="gone" />
 
                     <TextView

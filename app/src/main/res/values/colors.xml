@@ -42,7 +42,7 @@
 
     <color name="magenta">#6E78F7</color>
 
-    <color name="color_bolivia">#00B5A6</color>
-    <color name="color_brasil">#009A17</color>
-    <color name="color_ecuador">#0050B5</color>
+    <color name="color_bolivia">#47C2C4</color>
+    <color name="color_brasil">#47C2C4</color>
+    <color name="color_ecuador">#47C2C4</color>
 </resources>

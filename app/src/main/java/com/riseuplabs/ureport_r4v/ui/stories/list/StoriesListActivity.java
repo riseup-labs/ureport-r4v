@@ -9,7 +9,9 @@ import androidx.annotation.Nullable;
 import com.riseuplabs.ureport_r4v.R;
 import com.riseuplabs.ureport_r4v.base.BaseActivity;
 import com.riseuplabs.ureport_r4v.databinding.ActivityStoriesBinding;
+import com.riseuplabs.ureport_r4v.utils.AppConstant;
 import com.riseuplabs.ureport_r4v.utils.StaticMethods;
+import com.riseuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 
 public class StoriesListActivity extends BaseActivity<ActivityStoriesBinding> {
 
@@ -27,6 +29,14 @@ public class StoriesListActivity extends BaseActivity<ActivityStoriesBinding> {
 
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
+
+        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_brasil);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_ecuador);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_bolivia);
+        }
 
         isOpen = true;
 

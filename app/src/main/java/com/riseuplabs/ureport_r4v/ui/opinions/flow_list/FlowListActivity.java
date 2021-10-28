@@ -46,6 +46,7 @@ import com.riseuplabs.ureport_r4v.surveyor.task.RefreshOrgTask;
 import com.riseuplabs.ureport_r4v.ui.dashboard.DashBoardActivity;
 import com.riseuplabs.ureport_r4v.ui.opinions.OpinionViewModel;
 import com.riseuplabs.ureport_r4v.ui.opinions.flow.RunFlowActivity;
+import com.riseuplabs.ureport_r4v.utils.AppConstant;
 import com.riseuplabs.ureport_r4v.utils.ConnectivityCheck;
 import com.riseuplabs.ureport_r4v.utils.IntentConstant;
 import com.riseuplabs.ureport_r4v.utils.Navigator;
@@ -100,6 +101,14 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
 
+        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_brasil);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_ecuador);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_bolivia);
+        }
+
         poll_type = prefManager.getString(PrefKeys.POLL_TYPE, "poll");
         Intent intent = getIntent();
         if (intent != null && intent.getIntExtra(IntentConstant.SUBMISSION_INTENT, 1) == 0) {
@@ -131,10 +140,8 @@ public class FlowListActivity extends BaseSubmissionActivity<ActivityFlowListBin
 
         if (poll_type.equals("poll")) {
             binding.activityName.setText(getResources().getString(R.string.polls));
-            binding.activityImage.setImageResource(R.drawable.v2_polls);
         } else {
             binding.activityName.setText(getResources().getString(R.string.your_rights));
-            binding.activityImage.setImageResource(R.drawable.v2_your_rights);
         }
 
 

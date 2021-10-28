@@ -16,6 +16,7 @@ import com.riseuplabs.ureport_r4v.model.results.ModelResultsByLocation;
 import com.riseuplabs.ureport_r4v.network.data.ApiConstants;
 import com.riseuplabs.ureport_r4v.ui.results.ResultsViewModel;
 import com.riseuplabs.ureport_r4v.ui.results.search.ResultsSearchActivity;
+import com.riseuplabs.ureport_r4v.utils.AppConstant;
 import com.riseuplabs.ureport_r4v.utils.ConnectivityCheck;
 import com.riseuplabs.ureport_r4v.utils.DateFormatUtils;
 import com.riseuplabs.ureport_r4v.utils.IntentConstant;
@@ -26,6 +27,7 @@ import com.riseuplabs.ureport_r4v.utils.custom_dialog.CustomDialogComponent;
 import com.riseuplabs.ureport_r4v.utils.custom_dialog.CustomDialogInterface;
 import com.riseuplabs.ureport_r4v.utils.pref_manager.PrefKeys;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +86,16 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
 
+        DecimalFormat formatter = new DecimalFormat("###,###");
+
+        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_brasil);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_ecuador);
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+            binding.activityImage.setImageResource(R.drawable.uv_bolivia);
+        }
+
         saveData();
 
         Bundle b = getIntent().getBundleExtra(IntentConstant.INTENT_DATA);
@@ -127,7 +139,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                                     binding.responseRate.setText((int) Math.round(percent_all) + " %");
                                 }
 
-                                binding.totalRespondents.setText(set + "");
+                                binding.totalRespondents.setText(formatter.format(set) + "");
 
 
                                 int male_responded = response.get(0).questions.get(0).results_by_gender.get(0).set;
@@ -149,9 +161,9 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                                     binding.otherPercent.setText("-");
                                 }
 
-                                binding.femaleNumber.setText(female_responded + "");
-                                binding.maleNumber.setText(male_responded + "");
-                                binding.otherNumber.setText(other_responded + "");
+                                binding.femaleNumber.setText(formatter.format(female_responded) + "");
+                                binding.maleNumber.setText(formatter.format(male_responded )+ "");
+                                binding.otherNumber.setText(formatter.format(other_responded) + "");
 
                                 binding.body.setVisibility(View.VISIBLE);
                                 binding.stateGenderLayout.setVisibility(View.VISIBLE);
@@ -165,7 +177,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                                     binding.responseRate.setText((int) Math.round(percent_all) + " %");
                                 }
 
-                                binding.totalRespondents.setText(set + "");
+                                binding.totalRespondents.setText(formatter.format(set) + "");
 
                                 int male_responded = response.get(0).questions.get(0).results_by_gender.get(0).set;
                                 int female_responded = response.get(0).questions.get(0).results_by_gender.get(1).set;
@@ -180,8 +192,8 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                                     binding.femalePercent2.setText("-");
                                 }
 
-                                binding.femaleNumber2.setText(female_responded + "");
-                                binding.maleNumber2.setText(male_responded + "");
+                                binding.femaleNumber2.setText(formatter.format(female_responded) + "");
+                                binding.maleNumber2.setText(formatter.format(male_responded) + "");
                                 binding.body.setVisibility(View.VISIBLE);
                                 binding.stateGenderLayout.setVisibility(View.GONE);
                                 binding.stateGenderLayout2.setVisibility(View.VISIBLE);
@@ -224,7 +236,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                             double total = set + response.get(0).questions.get(0).results.unset;
                             double percent_all = (set / total) * 100;
 
-                            binding.totalRespondents.setText(set + "");
+                            binding.totalRespondents.setText(formatter.format(set )+ "");
                             binding.responseRate.setText((int) percent_all + " %");
 
                             int male_responded = response.get(0).questions.get(0).results_by_gender.get(0).set;
@@ -233,8 +245,8 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                             double percent_male = (male_responded / gender_total) * 100;
                             double percent_female = (female_responded / gender_total) * 100;
 
-                            binding.femaleNumber.setText(female_responded + "");
-                            binding.maleNumber.setText(male_responded + "");
+                            binding.femaleNumber.setText(formatter.format(female_responded) + "");
+                            binding.maleNumber.setText(formatter.format(male_responded) + "");
 
                             binding.femalePercent.setText((int) percent_female + " %");
                             binding.malePercent.setText((int) percent_male + " %");

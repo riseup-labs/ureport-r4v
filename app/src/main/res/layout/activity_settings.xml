@@ -47,7 +47,7 @@
                         android:gravity="center|left"
                         android:text="@string/v1_settings"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:textStyle="bold"
                         android:transitionName="transition_text"
                         app:layout_constraintBottom_toBottomOf="@+id/backButton"
@@ -86,12 +86,11 @@
                         android:id="@+id/activityImage"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="25dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="28dp"
                         android:transitionName="transition_image"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/v1_header_image_settings" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/backButton"
@@ -446,9 +445,9 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:id="@+id/version_name"
                                 android:textColor="@color/black"
                                 android:layout_marginStart="20dp"
-                                android:text="Ver: 1.0.1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
 

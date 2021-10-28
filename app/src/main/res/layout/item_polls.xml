@@ -13,11 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
-        android:clipToPadding="true"
+        android:clipToPadding="false"
         app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
+        app:cardElevation="6dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:paddingTop="10dp"

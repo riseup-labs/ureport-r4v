@@ -180,7 +180,7 @@ public class StorySearchListAdapter extends BaseExpandableListAdapter {
                 break;
             else {
                 // set color here
-                wordToSpan.setSpan(new BackgroundColorSpan(0xFFFFFF00), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                wordToSpan.setSpan(new BackgroundColorSpan(0xFF47C2C4), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
             }
         }
