@@ -67,12 +67,8 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                     binding.loadingTvTitle.setText(R.string.fetch_polls);
                     visible(binding.loadingLayout);
                     gone(binding.noInternetLayout);
-//                    ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
-//                    ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
-                    getRemoteData("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/"+ApiConstants.POLLS + org_id + "/featured/?limit=30");
+                    getRemoteData("https://" + prefManager.getString(PrefKeys.ORG_LABEL) + ".ureport.in/api/v1/" + ApiConstants.POLLS + org_id + "/featured/?limit=30");
                 } else {
-//                    ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
-//                    ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
                     visible(binding.noInternetLayout);
                     gone(binding.loadingLayout);
                 }
@@ -88,11 +84,11 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
         DecimalFormat formatter = new DecimalFormat("###,###");
 
-        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+        if (prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)) {
             binding.activityImage.setImageResource(R.drawable.uv_brasil);
-        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+        } else if (prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)) {
             binding.activityImage.setImageResource(R.drawable.uv_ecuador);
-        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+        } else if (prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)) {
             binding.activityImage.setImageResource(R.drawable.uv_bolivia);
         }
 
@@ -162,7 +158,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                                 }
 
                                 binding.femaleNumber.setText(formatter.format(female_responded) + "");
-                                binding.maleNumber.setText(formatter.format(male_responded )+ "");
+                                binding.maleNumber.setText(formatter.format(male_responded) + "");
                                 binding.otherNumber.setText(formatter.format(other_responded) + "");
 
                                 binding.body.setVisibility(View.VISIBLE);
@@ -236,7 +232,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                             double total = set + response.get(0).questions.get(0).results.unset;
                             double percent_all = (set / total) * 100;
 
-                            binding.totalRespondents.setText(formatter.format(set )+ "");
+                            binding.totalRespondents.setText(formatter.format(set) + "");
                             binding.responseRate.setText((int) percent_all + " %");
 
                             int male_responded = response.get(0).questions.get(0).results_by_gender.get(0).set;
@@ -306,7 +302,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
 
         viewModel.response.observe(PollsActivity.this, response -> {
 
-            if(response.statusCode.equals("200")) {
+            if (response.statusCode.equals("200")) {
                 list.addAll(response.data.results);
                 String next_url = response.data.next;
                 count = response.data.count;
@@ -332,7 +328,7 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                     String tag = PrefKeys.LAST_LOCAL_POLL_UPDATE_TIME + org_id;
                     StaticMethods.setLocalUpdateDate(prefManager, tag);
                 }
-            }else{
+            } else {
                 gone(binding.emptyListWarning);
                 gone(binding.loadingLayout);
                 new CustomDialog(this).displayCustomDialog(new CustomDialogComponent()
@@ -345,7 +341,57 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
                             @Override
                             public void retry() {
                                 visible(binding.loadingLayout);
-                                getRemoteData("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/"+ApiConstants.POLLS + org_id + "/featured/?limit=30");
+                                getRemoteData("https://" + prefManager.getString(PrefKeys.ORG_LABEL) + ".ureport.in/api/v1/" + ApiConstants.POLLS + org_id + "/featured/?limit=30");
+                            }
+
+                            @Override
+                            public void cancel() {
+                                finish();
+                            }
+                        });
+            }
+
+        });
+
+        viewModel.responseLatestPoll.observe(PollsActivity.this, response -> {
+
+            if (response.statusCode.equals("200")) {
+                list.addAll(response.data.results);
+                String next_url = response.data.next;
+                count = response.data.count;
+                progressValue = list.size();
+                if (progressValue > response.data.count) {
+                    progressValue = response.data.count;
+                }
+                binding.progressBar.setIndeterminate(false);
+                binding.progressBar.setProgress(progressValue);
+                binding.progressBar.setMax(count);
+                binding.loadingTvProgress.setText("(" + progressValue + "/" + count + ")");
+                progressValue = 0;
+                gone(binding.loadingLayout);
+                binding.loadingTvTitle.setText("");
+                binding.loadingTvProgress.setText("");
+                for (int i = 0; i < list.size(); i++) {
+                    list.get(i).category_tag = list.get(i).category.name;
+                    viewModel.insertPolls(list.get(i));
+                }
+                String tag = PrefKeys.LAST_LOCAL_POLL_UPDATE_TIME + org_id;
+                StaticMethods.setLocalUpdateDate(prefManager, tag);
+
+            } else {
+                gone(binding.emptyListWarning);
+                gone(binding.loadingLayout);
+                new CustomDialog(this).displayCustomDialog(new CustomDialogComponent()
+                                .setSubTextVisible(View.VISIBLE)
+                                .setSubText(getString(R.string.wait_for_retry))
+                                .setMainText(getString(R.string.server_error))
+                                .setButtonYes(getString(R.string.retry))
+                                .setButtonNo(getString(R.string.cancel)),
+                        new CustomDialogInterface() {
+                            @Override
+                            public void retry() {
+                                visible(binding.loadingLayout);
+                                getRemoteData("https://" + prefManager.getString(PrefKeys.ORG_LABEL) + ".ureport.in/api/v1/" + ApiConstants.POLLS + org_id + "/featured/?limit=30");
                             }
 
                             @Override
@@ -370,18 +416,18 @@ public class PollsActivity extends BaseActivity<ActivityPollsBinding> {
         viewModel.getResults(url);
     }
 
+    public void getLatestData(String url) {
+        viewModel.getLatestResults(url);
+    }
+
     public void refresh() {
         if (ConnectivityCheck.isConnected(PollsActivity.this)) {
-//            ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
-//            ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1000).start();
             visible(binding.loadingLayout);
             gone(binding.noInternetLayout);
             binding.loadingTvTitle.setText(R.string.updating_polls);
             binding.progressBar.setIndeterminate(true);
-            getRemoteData("https://"+prefManager.getString(PrefKeys.ORG_LABEL)+".ureport.in/api/v1/"+ApiConstants.POLLS + org_id + "/featured/?limit=30");
+            getLatestData("https://" + prefManager.getString(PrefKeys.ORG_LABEL) + ".ureport.in/api/v1/" + ApiConstants.POLLS + org_id + "/featured/?limit=1");
         } else {
-//            ObjectAnimator.ofFloat(binding.layoutFooter, "alpha",  0, 1f).setDuration(2000).start();
-//            ObjectAnimator.ofFloat(binding.layoutFooter, "translationY", 300, 0).setDuration(1500).start();
             visible(binding.noInternetLayout);
             gone(binding.loadingLayout);
         }
