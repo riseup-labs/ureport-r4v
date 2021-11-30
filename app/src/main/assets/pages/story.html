@@ -156,8 +156,6 @@
             <div class="image_box"><img :src="imgUrl" /></div>
         </div>
 
-        <!-- <div id="sourceText" style="display: none">#TextData</div> -->
-        <!-- <div id="sourceText" style="display: none" v-html="`${textData}`">{{textData}}</div> -->
         <!-- NOTE:: main text here  -->
         <div id="sourceText" style="display: none" v-html="`${textData}`"></div>
 
@@ -258,7 +256,7 @@
 								'sp_' + vueApp.last_index
 							).style.backgroundColor = '';
 							vueApp.click_locked = 0;
-						}, 1000);
+						}, 3000);
 
 						this.click_locked = 1;
 
@@ -315,7 +313,7 @@
 								document.getElementById(
 									'sp_' + vueApp.last_index
 								).style.backgroundColor = '';
-							}, 1500);
+							}, 3500);
 
 							console.log('N-Playing: ' + textData);
 						} else {

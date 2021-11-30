@@ -128,19 +128,6 @@ public class StoryDetailsActivity extends AppCompatActivity {
         Runnable r = () -> {
             content = StorageUtils.getContent(StoryDetailsActivity.this, content_file_name);
 
-//            content = content.replaceAll("(?s)style=\".*?\"", "");
-//            content = content.replaceAll("(?s)href=\".*?\"", "");
-//            content = content.replaceAll("(?s)<iframe.*?</iframe>", "");
-//            content = content.replaceAll("(?s)<p.*?>", "");
-//            content = content.replaceAll("<p>", "");
-//            content = content.replaceAll("</p>", "");
-//            content = content.replaceAll("</p>", "");
-//            content = content.replaceAll("<s>", "");
-//            content = content.replaceAll("</s>", "");
-//            content = content.replaceAll("</s>", "");
-//            content = content.replaceAll(".png", "");
-
-
             data = Html.fromHtml(content).toString();
             data = data.replace("\n\n\n\n\n","\n\n");
             data = data.replace("\n\n\n\n","\n\n");
@@ -219,7 +206,6 @@ public class StoryDetailsActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override
@@ -293,6 +279,13 @@ public class StoryDetailsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (ttsEngine != null) {
+            ttsEngine.stop();
+        }
+    }
 
     @JavascriptInterface
     public void ttsData(String tts_text) {

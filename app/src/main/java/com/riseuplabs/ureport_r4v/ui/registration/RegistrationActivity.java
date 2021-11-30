@@ -110,7 +110,7 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
     public DownloadOrgTask donx;
     private Org org;
     String orgUUID = "invalid";
-    List<com.riseuplabs.ureport_r4v.surveyor.net.responses.Flow> registration_flows = new ArrayList<>();
+    List<Flow> registration_flows = new ArrayList<>();
 
     // the different types of requests for media
     public static final String REQUEST_IMAGE = "image";
@@ -150,7 +150,14 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
 
         orgUUID = prefManager.getString(SurveyorPreferences.SAVED_UUID);
         refresh();
-        registration_flows.add(new Flow(AppConstant.REG_FLOW_UUID));
+        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+            registration_flows.add(new Flow(AppConstant.REG_FLOW_UUID_BRASIL));
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+            registration_flows.add(new Flow(AppConstant.REG_FLOW_UUID_ECUADOR));
+        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+            registration_flows.add(new Flow(AppConstant.REG_FLOW_UUID_BOLIVIA));
+        }
+
         download(registration_flows);
 
     }
@@ -159,6 +166,8 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
     public boolean requireLogin() {
         return false;
     }
+
+    com.riseuplabs.ureport_r4v.surveyor.data.Flow flow;
 
     public void download(List<Flow> flows) {
 
@@ -190,7 +199,17 @@ public class RegistrationActivity extends BaseSubmissionActivity<ActivityRegistr
                         Environment environment = Engine.createEnvironment(org);
                         SessionAssets assets = Engine.createSessionAssets(environment, Engine.loadAssets(org.getAssets("reg")));
 
-                        com.riseuplabs.ureport_r4v.surveyor.data.Flow flow = org.getFlow(AppConstant.REG_FLOW_UUID);
+
+
+                        if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BRAZIL_LABEL)){
+                            flow = org.getFlow(AppConstant.REG_FLOW_UUID_BRASIL);
+                        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.ECUADOR_LABEL)){
+                            flow = org.getFlow(AppConstant.REG_FLOW_UUID_ECUADOR);
+                        }else if(prefManager.getString(PrefKeys.ORG_LABEL).equals(AppConstant.BOLIVIA_LABEL)){
+                            flow = org.getFlow(AppConstant.REG_FLOW_UUID_BOLIVIA);
+                        }
+
+
                         setTitle(flow.getName());
 
                         Trigger trigger = Engine.createManualTrigger(environment, Contact.createEmpty(assets), flow.toReference());

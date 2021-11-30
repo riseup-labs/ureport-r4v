@@ -14,12 +14,12 @@ import com.riseuplabs.ureport_r4v.utils.pref_manager.SharedPrefManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlowDownloadListAdapter extends BaseRecyclerViewAdapter<com.riseuplabs.ureport_r4v.surveyor.net.responses.Flow, ItemDownloadFlowListBinding> {
+public class FlowDownloadListAdapter extends BaseRecyclerViewAdapter<Flow, ItemDownloadFlowListBinding> {
 
     private final Context context;
-    private final List<com.riseuplabs.ureport_r4v.surveyor.net.responses.Flow> checkedList = new ArrayList<>();
+    private final List<Flow> checkedList = new ArrayList<>();
     private List<Flow> selectedList = new ArrayList<>();
-    List<com.riseuplabs.ureport_r4v.surveyor.net.responses.Flow> new_pre_selected_flows = new ArrayList<>();
+    List<Flow> new_pre_selected_flows = new ArrayList<>();
 
     @Override
     public int getLayoutId() {

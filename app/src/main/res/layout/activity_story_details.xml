@@ -269,12 +269,12 @@
                 <!--                app:layout_constraintEnd_toEndOf="parent"-->
                 <!--                app:srcCompat="@drawable/v1_icon_text_to_speech" />-->
 
-                <com.airbnb.lottie.LottieAnimationView
+                <ImageView
                     android:id="@+id/btn_tts"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="10dp"
                     android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -282,10 +282,10 @@
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/btn_tts_lottie"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="10dp"
                     android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

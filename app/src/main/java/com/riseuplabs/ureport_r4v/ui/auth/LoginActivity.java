@@ -85,10 +85,10 @@ public class LoginActivity extends BaseSurveyorActivity<ActivityLoginBinding> {
             binding.programLogo.setImageResource(R.drawable.v2_bolivia_logo);
         }
 
-        binding.textView3.setOnClickListener(v->{
-            binding.email.setText("robiul@riseuplabs.com");
-            binding.password.setText("robiul@riseuplabs");
-        });
+//        binding.textView3.setOnClickListener(v->{
+//            binding.email.setText("robiul@riseuplabs.com");
+//            binding.password.setText("robiul@riseuplabs");
+//        });
 
     }
 

@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.riseuplabs.ureport_r4v.base.BaseActivity;
 import com.riseuplabs.ureport_r4v.databinding.ActivitySplashBinding;
@@ -35,6 +36,8 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
     @Inject
     SplashViewModel splashViewModel;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -48,13 +51,16 @@ public class Splash extends BaseActivity<ActivitySplashBinding> {
     @Override
     public void onViewReady(@Nullable Bundle savedInstanceState) {
 
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+
         StaticMethods.setLanguage(this,prefManager.getString(PrefKeys.SELECTED_LANGUAGE,"es"),prefManager.getString(PrefKeys.SELECTED_COUNTRY));
         binding.txtDeveloped.setText(R.string.v1_settings_designed_and_developed);
 
 
         AndroidRemoteDebugger.init(
                 new AndroidRemoteDebugger.Builder(this)
-                        .enabled(true)
+                        .enabled(false)
                         .enableDuplicateLogging()
                         .excludeUncaughtException()
                         .port(8082)

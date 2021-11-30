@@ -70,7 +70,7 @@ public class PushNotificationService extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent)
                 .setLights(Color.GREEN, 3000, 3000);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationManager notificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             int importance = NotificationManager.IMPORTANCE_HIGH;

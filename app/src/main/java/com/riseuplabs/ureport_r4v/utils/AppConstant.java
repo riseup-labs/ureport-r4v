@@ -15,6 +15,8 @@ public interface AppConstant {
 
     String TOKEN = "token";
     String ORG_UUID = StaticMethods.getAlphaNumericString(15);
-    String REG_FLOW_UUID = "598d947c-a7bc-4223-be17-727f94018088";
+    String REG_FLOW_UUID_BRASIL = "1b923b27-f0d0-4c3e-821d-bde65aee1a09";
+    String REG_FLOW_UUID_ECUADOR = "a0f1b2cb-b975-4c95-b3fe-a673f49ea170";
+    String REG_FLOW_UUID_BOLIVIA = "91295617-2420-4992-8e99-a86f4dafad65";
 
 }
