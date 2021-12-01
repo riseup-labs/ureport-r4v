@@ -16,14 +16,14 @@ This documatation has several pages of information for developers, and people co
 
 ## Contribution
 
-Please make sure to read the [contributing guide](https://github.com/riseup-labs/ureport-online/blob/main/CONTRIBUTING.md) before making a pull request. 
+Please make sure to read the [contributing guide](/CONTRIBUTING.md) before making a pull request. 
 
 Thank you to all the people who already contributed to U-Report Offline!
 
             
 
 ## License
-[GNU AFFERO GENERAL PUBLIC LICENSE](https://github.com/riseup-labs/ureport-online/LICENSE)
+[GNU AFFERO GENERAL PUBLIC LICENSE](/LICENSE)
 
 
 ## [Click here to Download the latest APK](http://riseuplabs.me/otmr4v).
