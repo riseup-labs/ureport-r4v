@@ -1,9 +1,9 @@
-# U-Report Offline
+# U-Report R4V
 
 
 ## Documentation
 
-This documatation has several pages of information for developers, and people contributing to "U-Report Offline". Check it out for your authoritative source of information about the <ureport-offline> community.
+This documatation has several pages of information for developers, and people contributing to "U-Report R4V". Check it out for your authoritative source of information about the UReport R4V community.
   
 ## Language
 1. Java
@@ -18,7 +18,7 @@ This documatation has several pages of information for developers, and people co
 
 Please make sure to read the [contributing guide](/CONTRIBUTING.md) before making a pull request. 
 
-Thank you to all the people who already contributed to U-Report Offline!
+Thank you to all the people who already contributed to U-Report R4V!
 
             
 
